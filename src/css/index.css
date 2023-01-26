@@ -19,10 +19,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-picture,
-source,
 img {
   pointer-events: none;
+  @apply max-w-full;
 }
 
 @layer components {
@@ -44,5 +43,11 @@ img {
 
   .Sub-heading-text {
     @apply text-4xl text-center w-full font-medium;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
   }
 }
