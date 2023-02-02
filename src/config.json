@@ -1,0 +1,13 @@
+{
+  "SETTING": {
+    "FIRST_SECTION": 1,
+    "LOADING_PAGE": "true",
+    "DURATION": 500
+  },
+  "CONTENT": {
+    "SECTION_01": {
+      "HEADING_01": "\"คุณเคยประสบปัญหานี้หรือไม่ ?\"",
+      "SUB_HEADING_01": "Have you ever met this problem before?"
+    }
+  }
+}

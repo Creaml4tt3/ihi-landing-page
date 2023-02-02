@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Prompt", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  pointer-events: none;
+  @apply max-w-full;
+}
+
+@layer components {
+  .Page-section {
+    @apply mx-auto h-full w-full max-w-[1540px] snap-center scroll-smooth;
+  }
+
+  .Page-section section {
+    @apply snap-always;
+  }
+
+  .Text-section {
+    @apply w-full;
+  }
+
+  .Heading-text {
+    @apply w-full text-center text-6xl font-semibold;
+  }
+
+  .Sub-heading-text {
+    @apply w-full text-center text-4xl font-medium;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  :is(.App, .Page-inner-wrap)::-webkit-scrollbar {
+    @apply w-0;
+  }
+}
