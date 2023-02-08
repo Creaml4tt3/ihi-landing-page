@@ -79,10 +79,11 @@ img {
   }
 
   .Code-container::-webkit-scrollbar {
-    @apply w-2 bg-opacity-0;
+    @apply h-2 w-2 bg-opacity-0;
   }
 
-  .Code-container::-webkit-scrollbar-thumb {
+  .Code-container::-webkit-scrollbar-thumb,
+  .Code-container::-webkit-scrollbar-corner {
     @apply rounded-full bg-orange;
   }
 

@@ -38,15 +38,15 @@ export default function Config() {
           classpic="Picture-section h-0 w-screen fixed bottom-0 z-0 mix-blend-overlay opacity-40"
           classimg="mx-auto w-full absolute bottom-0"
         />
-        <div className="Json-container flex w-[640px] max-w-3xl flex-grow flex-col items-center justify-between rounded-xl bg-black p-12 text-white">
-          <pre className="Code-container w-full max-w-3xl overflow-y-auto overflow-x-hidden">
+        <div className="Json-container flex w-full max-w-[640px] flex-col items-center justify-between rounded-xl bg-black p-12 text-white">
+          <pre className="Code-container mb-8 w-full max-w-3xl flex-1 overflow-y-auto">
             <code
-              className="Json w-full flex-wrap break-all"
+              className="Json h-full w-full break-all"
               ref={jsonCode}
               onInput={(e) => {
                 setEditing(e.target.innerText);
               }}
-              contentEditable="true"
+              contentEditable
             ></code>
           </pre>
           <section className="Button-container flex gap-4">
