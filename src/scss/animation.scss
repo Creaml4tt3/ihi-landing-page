@@ -41,6 +41,16 @@
   }
 }
 
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
 .Page-inner-wrap {
   animation: 0.7s slideup;
 }

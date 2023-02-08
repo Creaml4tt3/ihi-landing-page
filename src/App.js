@@ -55,26 +55,32 @@ export default function App() {
   }); */
 
   return (
-    <div className="App h-screen w-screen overflow-x-hidden bg-blue">
-      {/* //?Header - Starting */}
-      <header className="App-header"></header>
-      {/* //?Header - Ending */}
+    <>
+      <div className="App h-screen w-screen overflow-x-hidden bg-blue">
+        {/* //?Header - Starting */}
+        <header className="App-header"></header>
+        {/* //?Header - Ending */}
 
-      <CSSTransition
-        in={onLoad}
-        timeout={duration}
-        classNames="fade"
-        unmountOnExit
-      >
-        <Loading />
-      </CSSTransition>
+        <CSSTransition
+          in={onLoad}
+          timeout={duration}
+          classNames="fade"
+          unmountOnExit
+        >
+          <Loading />
+        </CSSTransition>
 
-      {onFinish && (
-        <>
-          {sectionStage === 1 && <Section01 changeStage={sectionStageChange} />}
-          {sectionStage === 2 && <Section02 changeStage={sectionStageChange} />}
-        </>
-      )}
-    </div>
+        {onFinish && (
+          <>
+            {sectionStage === 1 && (
+              <Section01 changeStage={sectionStageChange} />
+            )}
+            {sectionStage === 2 && (
+              <Section02 changeStage={sectionStageChange} />
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 }

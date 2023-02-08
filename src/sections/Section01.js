@@ -50,14 +50,6 @@ export default function Section01({ changeStage }) {
         </section>
         {/* //?Page 03 */}
         <section className="Page-section relative flex items-end justify-center">
-          <Picture
-            webp={page_01_people_webp}
-            normal={page_01_people_png}
-            alt="page_01_people_png"
-            classpic="Picture-section w-full mx-auto absolute bottom-0 z-10"
-            classimg="mx-auto"
-            lazy
-          />
           {/* //?Page Down */}
           <div className="Page-controller h-8 w-screen">
             <button

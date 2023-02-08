@@ -4,6 +4,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500;600&display=swap");
 
+$white: #ffffff;
+$black: #262626;
+
 * {
   box-sizing: border-box;
 }
@@ -53,5 +56,48 @@ img {
 
   :is(.App, .Page-inner-wrap)::-webkit-scrollbar {
     @apply w-0;
+  }
+
+  pre,
+  code {
+    @apply text-sm;
+    font-family: monospace;
+  }
+
+  .shadow,
+  .Modal-container {
+    box-shadow: 0 8px 0 $white;
+    transition: box-shadow 0.1s ease-out, -webkit-transform 0.1s ease-out;
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out,
+      -webkit-transform 0.1s ease-out;
+  }
+
+  .shadow:is(:active, :focus, :hover) {
+    transform: translateY(8px);
+    box-shadow: none;
+  }
+
+  .Code-container::-webkit-scrollbar {
+    @apply w-2 bg-opacity-0;
+  }
+
+  .Code-container::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-orange;
+  }
+
+  :is(.Code-container, .Json):focus-visible {
+    @apply border-none outline-none;
+  }
+
+  .Modal-container {
+    animation-name: fadeout;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-timing-function: ease-in;
+  }
+
+  .Json {
+    word-wrap: break-word;
   }
 }
