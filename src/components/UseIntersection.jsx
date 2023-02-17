@@ -4,12 +4,12 @@ export const UseIntersection = (element, rootMargin) => {
   const [isVisible, setState] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
         setState(entry.isIntersecting);
-      },
-      { rootMargin }
-    );
+        observer.unobserve(element.current);
+      }
+    });
 
     const newElement = element.current;
 
