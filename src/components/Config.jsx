@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import configJSON from "../config.json";
-import Picture from "../components/Picture";
+import Picture from "./Picture";
 import page_01_bg_webp from "../images/webp/page-01-bg.webp";
 import page_01_bg_png from "../images/png/page-01-bg.png";
 export default function Config() {

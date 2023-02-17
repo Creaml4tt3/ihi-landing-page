@@ -5,10 +5,10 @@ export default function Section02({ changeStage }) {
   return (
     <>
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap bg-blue w-full h-full snap-proximity snap-y overflow-y-scroll">
+      <div className="Page-inner-wrap h-full w-full snap-y snap-proximity overflow-y-scroll bg-blue">
         {/* //?Page 01 */}
-        <section className="Page-section flex relative">
-          <picture className="Picture-section w-full mx-auto absolute bottom-0 z-10">
+        <section className="Page-section relative flex">
+          <picture className="Picture-section absolute bottom-0 z-10 mx-auto w-full">
             <source className="mx-auto" srcSet={page_01_people_webp} />
             <img
               className="mx-auto"
@@ -16,7 +16,7 @@ export default function Section02({ changeStage }) {
               alt="page_01_people_png"
             />
           </picture>
-          <section className="Text-section mt-[25vh] flex flex-col gap-4 z-20">
+          <section className="Text-section z-20 mt-[25vh] flex flex-col gap-4">
             <h1 className="Heading-text text-white">Section02</h1>
             <h2 className="Sub-heading-text text-orange">
               Have you ever met this problem before?
@@ -38,7 +38,7 @@ export default function Section02({ changeStage }) {
               </span>
             </section>
             <section className="Column-container w-1/2">
-              <picture className="Picture-section w-full mx-auto sticky top-[30%]">
+              <picture className="Picture-section sticky top-[30%] mx-auto w-full">
                 <source className="mx-auto" srcSet={page_01_people_webp} />
                 <img
                   className="mx-auto"
@@ -50,18 +50,18 @@ export default function Section02({ changeStage }) {
           </section>
         </section>
         {/* //?Page 03 */}
-        <section className="Page-section flex justify-center items-end">
+        <section className="Page-section flex items-end justify-center">
           {/* //?Page Up */}
-          <div className="Page-controller w-screen h-8">
+          <div className="Page-controller h-8 w-screen">
             <button
-              className="Next-page w-full bg-orange h-full"
+              className="Next-page h-full w-full bg-orange"
               onClick={() => changeStage("-")}
             ></button>
           </div>
           {/* //?Page Down */}
-          <div className="Page-controller w-screen h-8">
+          <div className="Page-controller h-8 w-screen">
             <button
-              className="Next-page w-full bg-white h-full"
+              className="Next-page h-full w-full bg-white"
               onClick={() => changeStage("+")}
             ></button>
           </div>

@@ -8,22 +8,7 @@ import Config from "./components/Config";
 import Error from "./components/Error";
 import reportWebVitals from "./reportWebVitals";
 
-/* const home = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "config",
-        element: <Config />,
-        errorElement: <Error />,
-      },
-    ],
-  },
-]); */
-
-const home = createBrowserRouter([
+const route = createBrowserRouter([
   {
     path: "/",
     element: <App />,
@@ -39,7 +24,7 @@ const home = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={home} />
+    <RouterProvider router={route} />
   </React.StrictMode>
 );
 
