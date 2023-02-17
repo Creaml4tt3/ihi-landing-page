@@ -16,7 +16,16 @@ module.exports = {
       tablet: { max: "1280px", min: "768px" },
       mobile: { max: "767px" },
     },
-    extend: {},
+    extend: {
+      maxWidth: {
+        "1540px": "1540px",
+      },
+      spacing: {
+        desktop: "60px",
+        tablet: "30px",
+        mobile: "20px",
+      },
+    },
   },
   plugins: [],
 };

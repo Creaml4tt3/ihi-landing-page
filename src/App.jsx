@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { animated, useSpring } from "react-spring";
 import { CSSTransition } from "react-transition-group";
 import configJSON from "./config.json";
 import Loading from "./components/Loading";
-import Section01 from "./sections/Section01";
-import Section02 from "./sections/Section02";
+import Section01 from "./pages/Page01";
+import Section02 from "./pages/Page02";
 
 export default function App() {
   //? ตั้งค่าหน้าที่จะแสดงหน้าแรก
@@ -47,16 +46,9 @@ export default function App() {
     localStorage.setItem("currentStage", sectionStage);
   }, [sectionStage]);
 
-  /*   const styles = useSpring({
-    loop: true,
-    from: { opacity: "0" },
-    to: { opacity: "1" },
-    config: { duration: "2000" },
-  }); */
-
   return (
     <>
-      <div className="App h-screen w-screen overflow-x-hidden bg-blue">
+      <main className="App h-screen w-screen overflow-x-hidden bg-blue">
         {/* //?Header - Starting */}
         <header className="App-header"></header>
         {/* //?Header - Ending */}
@@ -80,7 +72,7 @@ export default function App() {
             )}
           </>
         )}
-      </div>
+      </main>
     </>
   );
 }

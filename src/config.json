@@ -5,9 +5,33 @@
     "DURATION": 500
   },
   "CONTENT": {
-    "SECTION_01": {
-      "HEADING_01": "\"คุณเคยประสบปัญหานี้หรือไม่ ?\"",
-      "SUB_HEADING_01": "Have you ever met this problem before?"
+    "PAGE_01": {
+      "SECTION_01": {
+        "HEADING_01": "\"คุณเคยประสบปัญหานี้หรือไม่ ?\"",
+        "SUB_HEADING_01": "Have you ever met this problem before?"
+      },
+      "SECTION_02": {
+        "HEADING_01": "ค่าไฟแพง",
+        "SUB_HEADING_01": "High Electricity Bill",
+        "HEADING_02": "ขาดสภาพคล่อง",
+        "HEADING_02_02": "ทางเศรษฐกิจ",
+        "SUB_HEADING_02": "Lack of economic liquidity",
+        "HEADING_03": "ต้นทุนการผลิตสูง",
+        "SUB_HEADING_03": "High production costs"
+      },
+      "SECTION_03": {
+        "HEADING_01": "ที่ผ่านมา...เราใช้พลังงานในด้านการผลิตอย่างสิ้นเปลือง",
+        "SUB_HEADING_01": "In the past, we have wasted enormous energy in production.",
+        "LINK_01": "https://transportgeography.org/contents/chapter4/transportation-and-energy/world-energy-consumption/"
+      },
+      "SECTION_04": {
+        "HEADING_01": "ส่งผลให้ทรัพยากรพลังงานของโลก",
+        "HEADING_02": "ลดลง และส่งผลต่อสิ่งแวดล้อม",
+        "SUB_HEADING_01": "That has an impact on the world's",
+        "SUB_HEADING_02": "energy resources and environment.",
+        "TEXT_01": "ต้นทุนค่าพลังงานพุ่งสูงขึ้น",
+        "LINK_01": "https://twitter.com/telebusiness/status/1435143898687582209"
+      }
     }
   }
 }
