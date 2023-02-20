@@ -6,6 +6,12 @@
 
 $white: #ffffff;
 $black: #262626;
+$coal: #d9edff;
+$oil: #7cc2ff;
+$gas: #269aff;
+$renew: #0e70c6;
+$nuclear: #0d416f;
+$hydro: #0f283e;
 
 * {
   box-sizing: border-box;
@@ -41,9 +47,6 @@ img {
 
   .Text-section {
     @apply w-full;
-    .Text {
-      @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-medium text-white;
-    }
   }
 
   .Heading-text {
@@ -112,5 +115,41 @@ img {
 
   .Json {
     word-wrap: break-word;
+  }
+
+  .Graph-inside-info {
+    @apply flex justify-start;
+  }
+
+  .Graph-info {
+    @apply text-xl font-medium text-white;
+  }
+
+  .Circle {
+    @apply mr-3 h-[22px] w-[22px];
+  }
+
+  #Circle-01 {
+    fill: $coal;
+  }
+  #Circle-02 {
+    fill: $oil;
+  }
+  #Circle-03 {
+    fill: $gas;
+  }
+  #Circle-04 {
+    fill: $renew;
+  }
+  #Circle-05 {
+    fill: $nuclear;
+  }
+  #Circle-06 {
+    fill: $hydro;
+  }
+
+  #Page-01-next {
+    border-radius: 20px 0px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
   }
 }

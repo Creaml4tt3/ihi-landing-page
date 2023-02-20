@@ -31,6 +31,18 @@
         "SUB_HEADING_02": "energy resources and environment.",
         "TEXT_01": "ต้นทุนค่าพลังงานพุ่งสูงขึ้น",
         "LINK_01": "https://twitter.com/telebusiness/status/1435143898687582209"
+      },
+      "SECTION_05": {
+        "HEADING_01": "อีกทั้งยังใช้ต้นทุนการผลิตที่สูง",
+        "SUB_HEADING_01": "High Expenses",
+        "HEADING_02": "แต่ให้ประสิทธิภาพต่ำ",
+        "SUB_HEADING_02": "Low Potential"
+      },
+      "SECTION_06": {
+        "LINK": "https://www.researchgate.net/figure/Effect-of-unplanned-downtime-on-cost-and-profit-of-the-industry-a-standard-working_fig1_353591876"
+      },
+      "BUTTON_NEXT": {
+        "TEXT": "See Our Solution"
       }
     }
   }
