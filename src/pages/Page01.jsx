@@ -56,22 +56,45 @@ export default function Section01({ changeStage }) {
   const arrowUpIn = UseIntersection(arrowUpRef, "100%");
   const arrowDownIn = UseIntersection(arrowDownRef, "100%");
 
+  const [pastSolutionState, setPastSolutionState] = useState(1);
+
   function pictureChange(webp, png) {
     const pictureChangeSource =
       solutionRef.current.childNodes[0].getElementsByTagName("source")[0];
     const pictureChangeImg =
       solutionRef.current.childNodes[0].getElementsByTagName("img")[0];
-
     pictureChangeSource.setAttribute("srcset", webp);
     pictureChangeImg.setAttribute("src", png);
   }
 
+  function setFade(ref, state) {
+    if (pastSolutionState === state) {
+      return;
+    } else {
+      setPastSolutionState(state);
+      console.log(pastSolutionState);
+      ref.current.setAttribute("style", "animation: fadeout 1s east-out");
+      setTimeout(() => {
+        ref.current.setAttribute("style", "animation: fadein 1s ease-in");
+      }, 500);
+    }
+  }
+
   if (solution_01In) {
-    pictureChange(solution_01_webp, solution_01_png);
+    setFade(solutionRef, 1);
+    setTimeout(() => {
+      pictureChange(solution_01_webp, solution_01_png);
+    }, 200);
   } else if (solution_02In) {
-    pictureChange(solution_02_webp, solution_02_png);
+    setFade(solutionRef, 2);
+    setTimeout(() => {
+      pictureChange(solution_02_webp, solution_02_png);
+    }, 200);
   } else if (solution_03In) {
-    pictureChange(solution_03_webp, solution_03_png);
+    setFade(solutionRef, 3);
+    setTimeout(() => {
+      pictureChange(solution_03_webp, solution_03_png);
+    }, 200);
   }
 
   const pushUp01 = useSpring({
@@ -110,12 +133,12 @@ export default function Section01({ changeStage }) {
     delay: 1000,
   });
   const arrowUp = useSpring({
-    config: { friction: 12, delay: 300 },
+    config: { friction: 12, delay: 700 },
     from: { y: 550, opacity: 0 },
     to: { y: arrowUpIn ? 0 : 550, opacity: arrowUpIn ? 1 : 0 },
   });
   const arrowDown = useSpring({
-    config: { friction: 12, delay: 400 },
+    config: { friction: 12, delay: 1000 },
     from: { y: -275, opacity: 0 },
     to: { y: arrowDownIn ? 0 : -275, opacity: arrowDownIn ? 1 : 0 },
   });
