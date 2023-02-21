@@ -39,7 +39,7 @@ import {
   solution_01_png,
   solution_02_png,
   solution_03_png,
-} from "../components/Image";
+} from "../components/image/Image01";
 
 export default function Section01({ changeStage }) {
   const graphContainerRef = useRef(null);
@@ -58,6 +58,13 @@ export default function Section01({ changeStage }) {
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
+  function changePicture(ref, state, webp, png, duration) {
+    setFade(ref, state, duration);
+    setTimeout(() => {
+      pictureChange(webp, png);
+    }, duration);
+  }
+
   function pictureChange(webp, png) {
     const pictureChangeSource =
       solutionRef.current.childNodes[0].getElementsByTagName("source")[0];
@@ -67,34 +74,26 @@ export default function Section01({ changeStage }) {
     pictureChangeImg.setAttribute("src", png);
   }
 
-  function setFade(ref, state) {
+  function setFade(ref, state, duration) {
     if (pastSolutionState === state) {
       return;
     } else {
       setPastSolutionState(state);
-      console.log(pastSolutionState);
-      ref.current.setAttribute("style", "animation: fadeout 1s east-out");
+      ref.current.getElementsByTagName("picture")[0].style.animation =
+        "0.5s ease-out fadeout";
       setTimeout(() => {
-        ref.current.setAttribute("style", "animation: fadein 1s ease-in");
-      }, 500);
+        ref.current.getElementsByTagName("picture")[0].style.animation =
+          "0.5s ease-in fadein";
+      }, duration);
     }
   }
 
   if (solution_01In) {
-    setFade(solutionRef, 1);
-    setTimeout(() => {
-      pictureChange(solution_01_webp, solution_01_png);
-    }, 200);
+    changePicture(solutionRef, 1, solution_01_webp, solution_01_png, 400);
   } else if (solution_02In) {
-    setFade(solutionRef, 2);
-    setTimeout(() => {
-      pictureChange(solution_02_webp, solution_02_png);
-    }, 200);
+    changePicture(solutionRef, 2, solution_02_webp, solution_02_png, 400);
   } else if (solution_03In) {
-    setFade(solutionRef, 3);
-    setTimeout(() => {
-      pictureChange(solution_03_webp, solution_03_png);
-    }, 200);
+    changePicture(solutionRef, 3, solution_03_webp, solution_03_png, 400);
   }
 
   const pushUp01 = useSpring({
@@ -151,7 +150,7 @@ export default function Section01({ changeStage }) {
         <Picture
           webp={page_01_bg_webp}
           normal={page_01_bg_png}
-          alt="page_01_people_png"
+          alt="page_01_bg_png"
           classpic="Picture-section h-0 w-screen fixed bottom-0 z-0 mix-blend-overlay opacity-40"
           classimg="mx-auto w-full absolute bottom-0"
         />
@@ -197,9 +196,9 @@ export default function Section01({ changeStage }) {
                 className="Text-section flex-center z-20 h-screen flex-col gap-4"
                 ref={solution_01Ref}
               >
-                <h1 className="Heading-text text-start text-white">
+                <h2 className="Heading-text text-start text-white">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_01}
-                </h1>
+                </h2>
                 <h2 className="Sub-heading-text text-start text-orange">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_01}
                 </h2>
@@ -208,12 +207,12 @@ export default function Section01({ changeStage }) {
                 className="Text-section flex-center z-20 h-screen flex-col gap-4"
                 ref={solution_02Ref}
               >
-                <h1 className="Heading-text text-start text-white">
+                <h2 className="Heading-text text-start text-white">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02}
-                </h1>
-                <h1 className="Heading-text text-start text-white">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02_02}
-                </h1>
+                </h2>
+                <h2 className="Heading-text text-start text-white">
+                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_03}
+                </h2>
                 <h2 className="Sub-heading-text text-start text-orange">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_02}
                 </h2>
@@ -222,9 +221,9 @@ export default function Section01({ changeStage }) {
                 className="Text-section flex-center z-20 h-screen flex-col gap-4"
                 ref={solution_03Ref}
               >
-                <h1 className="Heading-text text-start text-white">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_03}
-                </h1>
+                <h2 className="Heading-text text-start text-white">
+                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_04}
+                </h2>
                 <h2 className="Sub-heading-text text-start text-orange">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_03}
                 </h2>
@@ -235,9 +234,9 @@ export default function Section01({ changeStage }) {
         {/* //?Page 03 */}
         <section className="Page-section relative flex h-fit flex-col items-center px-desktop pt-[8%]">
           <section className="Text-section z-20 flex flex-col gap-4">
-            <h1 className="Heading-text text-white">
+            <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_03.HEADING_01}
-            </h1>
+            </h2>
             <h2 className="Sub-heading-text text-orange">
               {configJSON.CONTENT.PAGE_01.SECTION_03.SUB_HEADING_01}
             </h2>
@@ -246,14 +245,7 @@ export default function Section01({ changeStage }) {
             className="Graph-section relative mt-14 mb-10 flex w-fit items-end"
             ref={graphContainerRef}
           >
-            <Picture
-              webp={graph_bg_webp}
-              normal={graph_bg_png}
-              alt="graph_bg_png"
-              classpic="Picture-section w-full z-10"
-              classimg="mx-auto"
-            />
-            <div className="Graph-inside-container absolute bottom-[52px] left-[212px] flex gap-[105px]">
+            <div className="Graph-inside-container z-20 flex gap-[105px] pl-48 pb-8">
               <animated.div style={pushUp01} className="Graph">
                 <Picture
                   webp={graph_01_webp}
@@ -261,6 +253,7 @@ export default function Section01({ changeStage }) {
                   alt="graph_01_png"
                   classpic="Picture-section w-fit z-20"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
               <animated.div style={pushUp02} className="Graph">
@@ -270,6 +263,7 @@ export default function Section01({ changeStage }) {
                   alt="graph_02_png"
                   classpic="Picture-section w-fit z-20"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
               <animated.div style={pushUp03} className="Graph">
@@ -279,6 +273,7 @@ export default function Section01({ changeStage }) {
                   alt="graph_03_png"
                   classpic="Picture-section w-fit z-20"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
               <animated.div style={pushUp04} className="Graph">
@@ -288,6 +283,7 @@ export default function Section01({ changeStage }) {
                   alt="graph_04_png"
                   classpic="Picture-section w-fit z-20"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
               <animated.div style={pushUp05} className="Graph">
@@ -297,6 +293,7 @@ export default function Section01({ changeStage }) {
                   alt="graph_05_png"
                   classpic="Picture-section w-fit z-20"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
               <animated.div style={pushUp06} className="Graph">
@@ -306,6 +303,7 @@ export default function Section01({ changeStage }) {
                   alt="graph_06_png"
                   classpic="Picture-section w-fit z-20"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
             </div>
@@ -362,12 +360,12 @@ export default function Section01({ changeStage }) {
         {/* //?Page 04 */}
         <section className="Page-section relative mt-56 mb-64 flex h-fit flex-col items-center px-desktop pt-[8%]">
           <section className="Text-section z-20 flex flex-col gap-4">
-            <h1 className="Heading-text text-white">
+            <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_04.HEADING_01}
-            </h1>
-            <h1 className="Heading-text text-white">
+            </h2>
+            <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_04.HEADING_02}
-            </h1>
+            </h2>
             <h2 className="Sub-heading-text text-orange">
               {configJSON.CONTENT.PAGE_01.SECTION_04.SUB_HEADING_01}
             </h2>
@@ -382,6 +380,7 @@ export default function Section01({ changeStage }) {
               alt="graph_line_png"
               classpic="Picture-section w-full z-10"
               classimg="mx-auto"
+              lazy
             />
             <section className="Text-section z-30">
               <span className="Text absolute left-1/2 top-[40%] -translate-x-1/2 text-4xl font-medium text-white">
@@ -405,9 +404,9 @@ export default function Section01({ changeStage }) {
         <section className="Page-section relative flex h-fit items-end justify-center px-desktop">
           <div className="Arrow-up-container">
             <section className="Text-section z-20 flex flex-col gap-4">
-              <h1 className="Heading-text text-white">
+              <h2 className="Heading-text text-white">
                 {configJSON.CONTENT.PAGE_01.SECTION_05.HEADING_01}
-              </h1>
+              </h2>
               <h2 className="Sub-heading-text text-orange">
                 {configJSON.CONTENT.PAGE_01.SECTION_05.SUB_HEADING_01}
               </h2>
@@ -420,15 +419,16 @@ export default function Section01({ changeStage }) {
                   alt="arrow_up_png"
                   classpic="Picture-section w-full z-10 mt-16"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
             </div>
           </div>
           <div className="Arrow-down-container">
             <section className="Text-section z-20 flex flex-col gap-4">
-              <h1 className="Heading-text text-white">
+              <h2 className="Heading-text text-white">
                 {configJSON.CONTENT.PAGE_01.SECTION_05.HEADING_02}
-              </h1>
+              </h2>
               <h2 className="Sub-heading-text text-orange">
                 {configJSON.CONTENT.PAGE_01.SECTION_05.SUB_HEADING_02}
               </h2>
@@ -441,6 +441,7 @@ export default function Section01({ changeStage }) {
                   alt="arrow_down_png"
                   classpic="Picture-section w-full z-10 mt-16"
                   classimg="mx-auto"
+                  lazy
                 />
               </animated.div>
             </div>
@@ -456,6 +457,7 @@ export default function Section01({ changeStage }) {
                 alt="arrow_down_png"
                 classpic="Picture-section w-full z-10 mt-16"
                 classimg="mx-auto"
+                lazy
               />
             </div>
             <div className="Graph-container">
@@ -465,6 +467,7 @@ export default function Section01({ changeStage }) {
                 alt="arrow_down_png"
                 classpic="Picture-section w-full z-10 mt-16"
                 classimg="mx-auto"
+                lazy
               />
             </div>
           </div>

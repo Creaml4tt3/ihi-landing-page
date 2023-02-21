@@ -12,11 +12,11 @@
       },
       "SECTION_02": {
         "HEADING_01": "ค่าไฟแพง",
-        "SUB_HEADING_01": "High Electricity Bill",
         "HEADING_02": "ขาดสภาพคล่อง",
-        "HEADING_02_02": "ทางเศรษฐกิจ",
+        "HEADING_03": "ทางเศรษฐกิจ",
+        "HEADING_04": "ต้นทุนการผลิตสูง",
+        "SUB_HEADING_01": "High Electricity Bill",
         "SUB_HEADING_02": "Lack of economic liquidity",
-        "HEADING_03": "ต้นทุนการผลิตสูง",
         "SUB_HEADING_03": "High production costs"
       },
       "SECTION_03": {
@@ -34,8 +34,8 @@
       },
       "SECTION_05": {
         "HEADING_01": "อีกทั้งยังใช้ต้นทุนการผลิตที่สูง",
-        "SUB_HEADING_01": "High Expenses",
         "HEADING_02": "แต่ให้ประสิทธิภาพต่ำ",
+        "SUB_HEADING_01": "High Expenses",
         "SUB_HEADING_02": "Low Potential"
       },
       "SECTION_06": {
@@ -43,6 +43,21 @@
       },
       "BUTTON_NEXT": {
         "TEXT": "See Our Solution"
+      }
+    },
+    "PAGE_02": {
+      "SECTION_01": {
+        "HEADING_01": "IHI",
+        "HEADING_02": "ได้ศึกษาและคิดค้นนวัตกรรมที่จะแก้ไขปัญหา",
+        "HEADING_03": "และช่วยพัฒนาคุณภาพการผลิตให้มีประสิทธิภาพมากขึ้น",
+        "SUB_HEADING_01": "IHI have researched and invented innovations",
+        "SUB_HEADING_02": "to solve problems and help improve the quality",
+        "SUB_HEADING_03": "of work production to be more efficient."
+      },
+      "SECTION_02": {
+        "HEADING_01": "“Turbo Compressor และ Boiler”",
+        "TEXT_01": "เป็นผลงานนวัตกรรมที่เราคิดค้นขึ้นมาเพื่อแก้ปัญหาในการควบคุมงบประมาณและครอบคลุมในหลายด้านไม่ว่าจะเป็นความแม่นยำและประหยัดพลังงานเพื่อประสิทธิภาพการทำงานที่เพิ่มมากขึ้น",
+        "SUB_TEXT_01": "It is an innovative product that we have invented to solve the problem of controlling the budget, covering many aspects such as accuracy and saving the energy for more performance."
       }
     }
   }

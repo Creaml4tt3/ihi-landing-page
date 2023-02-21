@@ -36,8 +36,9 @@ img {
 
 @layer base {
   .Page-section {
-    @apply mx-auto h-full w-full snap-center scroll-smooth;
-    section {
+    @apply mx-auto h-full w-full scroll-smooth;
+    @apply snap-start;
+    .section {
       @apply snap-always;
     }
     .Section-container {
@@ -115,6 +116,17 @@ img {
 
   .Json {
     word-wrap: break-word;
+  }
+
+  .Graph-inside-container {
+    background: url("../images/webp/graph-bg.webp");
+    @apply bg-auto bg-bottom bg-no-repeat;
+    .Graph {
+      @apply w-full pb-5;
+      .Picture-section {
+        @apply w-full;
+      }
+    }
   }
 
   .Graph-inside-info {
