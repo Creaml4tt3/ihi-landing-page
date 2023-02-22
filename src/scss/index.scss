@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&display=swap");
 
 $white: #ffffff;
 $black: #262626;
@@ -48,14 +48,18 @@ img {
 
   .Text-section {
     @apply w-full;
-  }
-
-  .Heading-text {
-    @apply w-full text-center text-6xl font-semibold;
-  }
-
-  .Sub-heading-text {
-    @apply w-full text-center text-5xl font-medium;
+    .Heading-text {
+      @apply w-full text-center text-6xl font-semibold leading-snug;
+    }
+    .Sub-heading-text {
+      @apply w-full text-center text-5xl font-medium leading-snug;
+    }
+    .Second-text {
+      @apply text-center text-40px font-medium;
+    }
+    .Second-sub-text {
+      @apply text-center text-4xl font-medium leading-snug;
+    }
   }
 
   .Link-container {
@@ -160,8 +164,61 @@ img {
     fill: $hydro;
   }
 
+  button,
   #Page-01-next {
     border-radius: 20px 0px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .Belt-container {
+    .Belt {
+      @apply z-0 flex w-fit flex-auto items-end gap-6;
+      .Text-section {
+        @apply z-10 flex h-full flex-col items-start gap-4 pb-6;
+        .Belt-text {
+          @apply text-3xl font-bold text-blue;
+        }
+        .Belt-text-bold {
+          @apply text-6xl font-bold leading-none text-navy;
+        }
+        .Belt-sub-text {
+          @apply flex flex-col text-2xl font-semibold text-orange;
+          .Belt-sub-text-bold {
+            @apply text-40px font-bold;
+          }
+        }
+      }
+    }
+  }
+
+  .Icon-card {
+    @apply z-10 flex h-full h-56 w-60 flex-col items-center justify-between gap-6 bg-blue p-6;
+    .Icon-text {
+      @apply flex w-full items-start justify-start gap-2 text-start;
+      .Icon-number {
+        @apply text-40px font-medium leading-none text-white;
+      }
+      .Icon-info {
+        @apply text-base font-semibold uppercase -tracking-[0.02em] text-white;
+      }
+    }
+    .Icon {
+    }
+  }
+
+  .Column {
+    @apply flex flex-1 flex-col justify-end;
+    .Text-section {
+      @apply flex-center z-10 flex-col;
+      .Second-text {
+        @apply text-40px font-semibold text-blue;
+      }
+      .Divide-text {
+        @apply text-2xl font-semibold text-blue;
+      }
+      .Second-second-text {
+        @apply text-center text-3xl font-medium text-orange;
+      }
+    }
   }
 }

@@ -56,8 +56,72 @@
       },
       "SECTION_02": {
         "HEADING_01": "“Turbo Compressor และ Boiler”",
-        "TEXT_01": "เป็นผลงานนวัตกรรมที่เราคิดค้นขึ้นมาเพื่อแก้ปัญหาในการควบคุมงบประมาณและครอบคลุมในหลายด้านไม่ว่าจะเป็นความแม่นยำและประหยัดพลังงานเพื่อประสิทธิภาพการทำงานที่เพิ่มมากขึ้น",
-        "SUB_TEXT_01": "It is an innovative product that we have invented to solve the problem of controlling the budget, covering many aspects such as accuracy and saving the energy for more performance."
+        "TEXT_01": "เป็นผลงานนวัตกรรมที่เราคิดค้นขึ้นมาเพื่อแก้ปัญหาในการควบคุม",
+        "TEXT_02": "งบประมาณและครอบคลุมในหลายด้านไม่ว่าจะเป็นความแม่นยำ",
+        "TEXT_03": "และประหยัดพลังงานเพื่อประสิทธิภาพการทำงานที่เพิ่มมากขึ้น",
+        "SUB_TEXT_01": "It is an innovative product that we have invented to solve the problem",
+        "SUB_TEXT_02": "of controlling the budget, covering many aspects such as accuracy and",
+        "SUB_TEXT_03": "saving the energy for more performance."
+      },
+      "SECTION_03": {
+        "HEADING_01": "“เป็นมิตรต่อสิ่งแวดล้อมและประสิทธิภาพสูง”",
+        "SUB_HEADING_01": "“Eco-Friendly and High Efficiency”",
+        "BUTTON_01": "See Our Product",
+        "LINK_01": "https://ihiapt.co.th/ihi-products/industrial-compressors/"
+      },
+      "SECTION_04": {
+        "BELT_TEXT_01": "ประหยัดพลังงาน",
+        "BELT_TEXT_BOLD_01": "สูงสุด",
+        "BELT_SUB_TEXT_01": "Maximum",
+        "BELT_SUB_TEXT_BOLD_01": "Energy",
+        "BELT_SUB_TEXT_BOLD_02": "Saving",
+        "BELT_TEXT_02": "ปราศจากน้ำมัน",
+        "BELT_TEXT_BOLD_02": "100%",
+        "BELT_SUB_TEXT_02": "100%",
+        "BELT_SUB_TEXT_BOLD_03": "Oil Free",
+        "BELT_TEXT_03": "ประสิทธิภาพอัดอากาศ",
+        "BELT_TEXT_BOLD_03": "3 ชั้น",
+        "BELT_SUB_TEXT_03": "Efficiency of",
+        "BELT_SUB_TEXT_04": "of Compressed Air",
+        "BELT_SUB_TEXT_BOLD_04": "3 Layers",
+        "BELT_TEXT_04": "หลายรุ่นและขนาด",
+        "BELT_TEXT_BOLD_04": "ตามความต้องการ",
+        "BELT_SUB_TEXT_05": "Upon Request",
+        "BELT_SUB_TEXT_BOLD_05": "Many Models",
+        "BELT_SUB_TEXT_BOLD_06": "and Size",
+        "LARGE_TEXT_01": "Sustainable Development Goals",
+        "ICON_TEXT_01": "affordable",
+        "ICON_TEXT_02": "and clean",
+        "ICON_TEXT_03": "energy",
+        "ICON_TEXT_04": "responsible ",
+        "ICON_TEXT_05": "consumption",
+        "ICON_TEXT_06": "and production",
+        "ICON_TEXT_07": "climate",
+        "ICON_TEXT_08": "action",
+        "NUMBER_ICON_01": "7",
+        "NUMBER_ICON_02": "12",
+        "NUMBER_ICON_03": "13"
+      },
+      "SECTION_05": {
+        "HEADING_01": "Turbo Compressor ช่วยลดต้นทุนได้อย่างไร?",
+        "SUB_HEADING_01": "How Turbo Compressor can reduce the costs?"
+      },
+      "SECTION_06": {
+        "HEADING_01": "จึงทำให้สามารถลดต้นทุนการผลิตได้",
+        "SUB_HEADING_01": "Therefore, it can reduce production costs.",
+        "TEXT_01": "เพราะการเปลี่ยนมาใช้คอมเพรสเซอร์ที่มีประสิทธิภาพสูง",
+        "SUB_TEXT_01": "Because changing to use high-efficiency compressors",
+        "TEXT_02": "ช่วยลดค่าไฟฟ้า",
+        "TEXT_03": "ได้มากกว่าปีละ 1 ล้านบาท",
+        "DIVIDE_TEXT_01": "(ประมาณการ)",
+        "SUB_TEXT_02": "can reduce electricity bill",
+        "SUB_TEXT_03": "more than 1 million baht per year (Approx.)",
+        "TEXT_04": "ลดค่าซ่อมบำรุง",
+        "TEXT_05": "ได้มากกว่าปีละ 3 แสนบาท",
+        "DIVIDE_TEXT_02": "(ประมาณการ)",
+        "SUB_TEXT_04": "and can reduce maintenance cost more than ",
+        "SUB_TEXT_05": "300 thousand baht per year (Approx.).",
+        "VIDEO_LINK": ""
       }
     }
   }

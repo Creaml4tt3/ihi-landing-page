@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { UseIntersection } from "../components/UseIntersection";
 import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import { useSpring, animated, easings } from "@react-spring/web";
+import Lottie from "lottie-react";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
 import {
@@ -40,6 +41,7 @@ import {
   solution_02_png,
   solution_03_png,
 } from "../components/image/Image01";
+import solution_01_lottie from "../lotties/solution-01.json";
 
 export default function Section01({ changeStage }) {
   const graphContainerRef = useRef(null);
@@ -88,13 +90,13 @@ export default function Section01({ changeStage }) {
     }
   }
 
-  if (solution_01In) {
+  /* if (solution_01In) {
     changePicture(solutionRef, 1, solution_01_webp, solution_01_png, 400);
   } else if (solution_02In) {
     changePicture(solutionRef, 2, solution_02_webp, solution_02_png, 400);
   } else if (solution_03In) {
     changePicture(solutionRef, 3, solution_03_webp, solution_03_png, 400);
-  }
+  } */
 
   const pushUp01 = useSpring({
     config: { friction: 12 },
@@ -176,18 +178,23 @@ export default function Section01({ changeStage }) {
         {/* //?Page 02 */}
         <section className="Page-section relative h-fit">
           <section className="Section-container flex-center px-desktop">
-            <section className="Column-container h-[300vh] w-3/5 py-[20vh]">
+            <section className="Column-container h-[300vh] w-3/5 py-20vh">
               <div
-                className="Picture-change sticky top-[20vh]"
+                className="Picture-change sticky top-onefifth"
                 ref={solutionRef}
               >
-                <Picture
+                {/* <Picture
                   webp={solution_01_webp}
                   normal={solution_01_png}
                   alt="solution"
                   classpic="Picture-section w-full mx-auto z-10"
                   classimg="mx-auto"
                   lazy
+                /> */}
+                <Lottie
+                  animationData={solution_01_lottie}
+                  className="Lottie-section z-10 mx-auto w-full"
+                  style={{ height: 620 }}
                 />
               </div>
             </section>
@@ -209,8 +216,7 @@ export default function Section01({ changeStage }) {
               >
                 <h2 className="Heading-text text-start text-white">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02}
-                </h2>
-                <h2 className="Heading-text text-start text-white">
+                  <br></br>
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_03}
                 </h2>
                 <h2 className="Sub-heading-text text-start text-orange">
@@ -245,7 +251,7 @@ export default function Section01({ changeStage }) {
             className="Graph-section relative mt-14 mb-10 flex w-fit items-end"
             ref={graphContainerRef}
           >
-            <div className="Graph-inside-container z-20 flex gap-[105px] pl-48 pb-8">
+            <div className="Graph-inside-container z-20 flex gap-[105px] overflow-hidden pl-48 pb-8">
               <animated.div style={pushUp01} className="Graph">
                 <Picture
                   webp={graph_01_webp}
@@ -362,14 +368,12 @@ export default function Section01({ changeStage }) {
           <section className="Text-section z-20 flex flex-col gap-4">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_04.HEADING_01}
-            </h2>
-            <h2 className="Heading-text text-white">
+              <br></br>
               {configJSON.CONTENT.PAGE_01.SECTION_04.HEADING_02}
             </h2>
             <h2 className="Sub-heading-text text-orange">
               {configJSON.CONTENT.PAGE_01.SECTION_04.SUB_HEADING_01}
-            </h2>
-            <h2 className="Sub-heading-text text-orange">
+              <br></br>
               {configJSON.CONTENT.PAGE_01.SECTION_04.SUB_HEADING_02}
             </h2>
           </section>

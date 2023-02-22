@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     colors: {
       blue: "#004EA2",
+      navy: "#002A59",
       cream: "#FFF7F0",
       white: "#ffffff",
       orange: "#FF8A00",
@@ -20,11 +21,30 @@ module.exports = {
     extend: {
       maxWidth: {
         "1540px": "1540px",
+        "1480px": "1480px",
       },
       spacing: {
         desktop: "60px",
         tablet: "30px",
         mobile: "20px",
+        onefifth: "20vh",
+      },
+      fontSize: {
+        "40px": ["40px", "1.375em"],
+      },
+      padding: {
+        "50vh": "50vh",
+        "40vh": "40vh",
+        "30vh": "30vh",
+        "20vh": "20vh",
+        "15vh": "15vh",
+      },
+      margin: {
+        "50vh": "50vh",
+        "40vh": "40vh",
+        "30vh": "30vh",
+        "20vh": "20vh",
+        "15vh": "15vh",
       },
     },
   },
