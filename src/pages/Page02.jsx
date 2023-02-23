@@ -1,9 +1,16 @@
 import { useRef } from "react";
 import { UseIntersection } from "../components/UseIntersection";
 import { useSpring, animated, easings } from "@react-spring/web";
+import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
 import {
+  icon_line_webp,
+  icon_line_png,
+  page_02_boiler_webp,
+  page_02_boiler_png,
+  video_icon_webp,
+  video_icon_png,
   page_02_how_webp,
   page_02_factory_webp,
   page_02_how_png,
@@ -31,10 +38,28 @@ export default function Section02({ changeStage }) {
   const beltIn = UseIntersection(beltRef, "0px");
   const howRef = useRef(null);
   const howIn = UseIntersection(howRef, "0px");
+  const columnRef = useRef(null);
+  const columnIn = UseIntersection(columnRef, "200%");
 
   const duration = 1500;
   const delay = 400;
   const pushUpY = 600;
+  const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
+  const previewVideoURL01 = page_02_people_webp;
+  const previewVideoURL02 = page_02_people_webp;
+
+  const videoIcon = () => {
+    return (
+      <Picture
+        webp={video_icon_webp}
+        normal={video_icon_png}
+        alt="video_icon_png"
+        classpic="Picture-section"
+        classimg=""
+        lazy
+      />
+    );
+  };
 
   const pushUp01 = useSpring({
     config: { duration: duration, easing: easings.easeInOutQuint },
@@ -58,7 +83,14 @@ export default function Section02({ changeStage }) {
   const popUp = useSpring({
     config: { friction: 12, mass: 5 },
     to: { opacity: howIn ? 1 : 0, scale: howIn ? 1 : 0 },
-    delay: 1000,
+  });
+  const slideUp01 = useSpring({
+    config: { duration: duration, easing: easings.easeInOutQuint },
+    to: { y: columnIn ? 0 : 120 },
+  });
+  const slideUp02 = useSpring({
+    config: { duration: duration * 1.5, easing: easings.easeInOutQuint },
+    to: { y: columnIn ? 0 : 215 },
   });
 
   return (
@@ -80,7 +112,7 @@ export default function Section02({ changeStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-0 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-50vh">
+        <section className="Page-section z-0 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text text-[90px] font-medium text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_01}
@@ -408,7 +440,7 @@ export default function Section02({ changeStage }) {
           />
         </section>
         {/* //?Page 06 */}
-        <section className="Page-section flex-center relative h-fit w-full flex-col">
+        <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 mb-10 flex-col">
             <h3 className="Second-text font-semibold text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_01}
@@ -417,45 +449,209 @@ export default function Section02({ changeStage }) {
               {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_01}
             </h3>
           </section>
-          <div className="Column-container flex-center">
+          <div
+            className="Column-container flex items-end justify-center"
+            ref={columnRef}
+          >
             <div className="Column">
-              <div>
-                <section className="Text-section">
-                  <h3 className="Second-text">
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_02}
-                    <br></br>
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_03}
-                  </h3>
-                  <h4 className="Divide-text">
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.DIVIDE_TEXT_01}
-                  </h4>
-                  <h3 className="Second-second-text">
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_02}
-                    <br></br>
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_03}
-                  </h3>
-                </section>
-              </div>
+              <section className="Text-section">
+                <h3 className="Second-text">
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_02}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_03}
+                </h3>
+                <h4 className="Divide-text">
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.DIVIDE_TEXT_01}
+                </h4>
+                <h3 className="Second-second-text">
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_02}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_03}
+                </h3>
+              </section>
+              <animated.div
+                className="Column-line mx-auto mt-6 h-[120px] w-[200px] bg-orange"
+                style={slideUp01}
+              ></animated.div>
             </div>
             <div className="Column">
-              <div>
-                <section className="Text-section">
-                  <h3 className="Second-text">
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_04}
-                    <br></br>
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_05}
-                  </h3>
-                  <h4 className="Divide-text">
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.DIVIDE_TEXT_02}
-                  </h4>
-                  <h3 className="Second-second-text">
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_04}
-                    <br></br>
-                    {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_05}
-                  </h3>
-                </section>
+              <section className="Text-section">
+                <h3 className="Second-text">
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_04}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_05}
+                </h3>
+                <h4 className="Divide-text">
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.DIVIDE_TEXT_02}
+                </h4>
+                <h3 className="Second-second-text">
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_04}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_05}
+                </h3>
+              </section>
+              <animated.div
+                className="Column-line mx-auto mt-6 h-[215px] w-[200px] bg-orange"
+                style={slideUp02}
+              ></animated.div>
+            </div>
+          </div>
+          <div className="Box-container rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue">
+            <section className="Text-section">
+              <h2 className="Second-text text-center !text-5xl !font-bold !leading-relaxed text-blue">
+                {configJSON.CONTENT.PAGE_02.SECTION_06.HEADING_01}
+              </h2>
+              <h3 className="Sub-second-text text-center text-40px font-medium text-orange">
+                {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_HEADING_01}
+              </h3>
+            </section>
+          </div>
+          <div className="Video-container w-full max-w-1360px pt-44 pb-48">
+            <ReactPlayer
+              className="React-player"
+              url={videoURL}
+              width="100%"
+              height="550px"
+              light={previewVideoURL01}
+              playing="true"
+              playIcon={videoIcon()}
+            />
+          </div>
+        </section>
+        {/* //?Page 07 */}
+        <section className="Page-section flex-center relative h-fit w-full flex-col">
+          <div className="Info-container flex-center relative h-fit w-full max-w-1360px pb-8">
+            <div className="Info flex-center w-full gap-20 px-desktop">
+              <section className="Text-section w-1/2 flex-1">
+                <h2 className="Heading-text !text-start !font-bold !leading-snug text-blue">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.HEADING_01}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.HEADING_02}
+                </h2>
+                <h3 className="Sub-heading-text !text-start text-orange">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_01}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_02}
+                </h3>
+              </section>
+              <div className="Picure-button-container w-1/2 flex-1">
+                <Picture
+                  webp={page_02_boiler_webp}
+                  normal={page_02_boiler_png}
+                  alt="page_02_boiler_png"
+                  classpic="Picture-section h-fit mix-blend-multiply"
+                  classimg="z-10"
+                  lazy
+                />
+                <div className="Link-container flex justify-center">
+                  <a
+                    href={configJSON.CONTENT.PAGE_02.SECTION_07.LINK_01}
+                    className="Link"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="Button bg-blue py-5 px-8">
+                      <span className="Text-Button text-xl font-semibold text-white">
+                        {configJSON.CONTENT.PAGE_02.SECTION_07.BUTTON_01}
+                      </span>
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
+            <div className="Flow-element pointer-events-none absolute -bottom-[15px] flex h-fit w-full flex-col items-center justify-center">
+              <div className="Flow-cirle -mb-[15px] mr-[7.5px] h-20 w-20 rounded-full border-[15px] border-blue"></div>
+              <div className="Flow-up ml-[7.5px] h-64 w-[15px] -translate-x-1/2 rounded-xl bg-blue"></div>
+            </div>
+          </div>
+          <div className="Flow-container">
+            <div className="Flow-left w-[calc(50%-60px)]"></div>
+            <div className="Icon-show-container flex h-full flex-col items-start justify-end gap-8 pl-44">
+              <section className="Text-section">
+                <h2 className="Second-text font-semi-bold !text-start text-40px leading-snug text-blue">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.HEADING_01}
+                </h2>
+                <h3 className="Sub-second-text text-start text-4xl font-medium text-orange">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_01}
+                </h3>
+              </section>
+              <div className="Icon-show flex h-fit w-fit items-end gap-11">
+                <Picture
+                  webp={icon_line_webp}
+                  normal={icon_line_png}
+                  alt="icon_line_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
+          </div>
+          <div className="Flow-container -mt-[15px]">
+            <div className="Flow-right right-0 mx-desktop w-1/2 border-t-[15px] border-r-[15px]"></div>
+          </div>
+          <div className="Flow-container -mt-[15px] mb-16">
+            <div className="Flow-left w-1/2"></div>
+            <div className="Flow-right -right-1/2 w-full"></div>
+          </div>
+          <div className="Icon-card-container flex-center gap-4 pb-20vh">
+            <div className="Icon-card" id="Icon-card-04">
+              <div className="Icon-text">
+                <span className="Icon-number">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.NUMBER_ICON_04}
+                </span>
+                <span className="Icon-info">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_09}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_10}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_11}
+                </span>
+              </div>
+              <div className="Icon">
+                <Picture
+                  webp={icon_02_webp}
+                  normal={icon_02_png}
+                  alt="icon_02_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
+            <div className="Icon-card" id="Icon-card-05">
+              <div className="Icon-text">
+                <span className="Icon-number">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.NUMBER_ICON_05}
+                </span>
+                <span className="Icon-info">
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_12}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_13}
+                </span>
+              </div>
+              <div className="Icon">
+                <Picture
+                  webp={icon_03_webp}
+                  normal={icon_03_png}
+                  alt="icon_03_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
+          </div>
+          <div className="Video-container w-full max-w-1360px pt-44 pb-48">
+            <ReactPlayer
+              className="React-player"
+              url={videoURL}
+              width="100%"
+              height="550px"
+              light={previewVideoURL02}
+              playing="true"
+              playIcon={videoIcon()}
+            />
           </div>
         </section>
         {/* //?Page 0x */}

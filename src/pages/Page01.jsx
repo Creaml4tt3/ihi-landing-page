@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { UseIntersection } from "../components/UseIntersection";
 import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import { useSpring, animated, easings } from "@react-spring/web";
+import ReactPlayer from "react-player";
 import Lottie from "lottie-react";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
@@ -42,6 +43,7 @@ import {
   solution_03_png,
 } from "../components/image/Image01";
 import solution_01_lottie from "../lotties/solution-01.json";
+import solution_02_webm from "../lotties/webm/solution-02.webm";
 
 export default function Section01({ changeStage }) {
   const graphContainerRef = useRef(null);
@@ -49,6 +51,9 @@ export default function Section01({ changeStage }) {
   const solution_01Ref = useRef(null);
   const solution_02Ref = useRef(null);
   const solution_03Ref = useRef(null);
+  const solution_01AnimationRef = useRef(null);
+  const solution_02AnimationRef = useRef(null);
+  const solution_03AnimationRef = useRef(null);
   const arrowUpRef = useRef(null);
   const arrowDownRef = useRef(null);
   const graphContainerIn = UseIntersection(graphContainerRef, "20%");
@@ -57,23 +62,29 @@ export default function Section01({ changeStage }) {
   const solution_03In = UseIntersectionLoop(solution_03Ref, "-20%");
   const arrowUpIn = UseIntersection(arrowUpRef, "100%");
   const arrowDownIn = UseIntersection(arrowDownRef, "100%");
+  const solutionRefArr = [
+    solution_01AnimationRef,
+    solution_02AnimationRef,
+    solution_03AnimationRef,
+  ];
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
-  function changePicture(ref, state, webp, png, duration) {
+  function changePicture(ref, state, duration) {
     setFade(ref, state, duration);
     setTimeout(() => {
-      pictureChange(webp, png);
+      changeElement(ref);
     }, duration);
   }
 
-  function pictureChange(webp, png) {
-    const pictureChangeSource =
-      solutionRef.current.childNodes[0].getElementsByTagName("source")[0];
-    const pictureChangeImg =
-      solutionRef.current.childNodes[0].getElementsByTagName("img")[0];
-    pictureChangeSource.setAttribute("srcset", webp);
-    pictureChangeImg.setAttribute("src", png);
+  function changeElement(ref) {
+    solutionRefArr.forEach((solution) => {
+      if (solution === ref) {
+        solution.current.style.display = "block";
+      } else {
+        solution.current.style.display = "none";
+      }
+    });
   }
 
   function setFade(ref, state, duration) {
@@ -81,22 +92,24 @@ export default function Section01({ changeStage }) {
       return;
     } else {
       setPastSolutionState(state);
-      ref.current.getElementsByTagName("picture")[0].style.animation =
-        "0.5s ease-out fadeout";
-      setTimeout(() => {
-        ref.current.getElementsByTagName("picture")[0].style.animation =
-          "0.5s ease-in fadein";
-      }, duration);
+      solutionRefArr.forEach((solution) => {
+        if (solution === ref) {
+          solution.current.style.animation = "0.5s ease-in fadein";
+        } else {
+          solution.current.style.animation = "0.5s ease-out fadeout";
+        }
+      });
+      setTimeout(() => {}, duration);
     }
   }
 
-  /* if (solution_01In) {
-    changePicture(solutionRef, 1, solution_01_webp, solution_01_png, 400);
+  if (solution_01In) {
+    changePicture(solution_01AnimationRef, 1, 400);
   } else if (solution_02In) {
-    changePicture(solutionRef, 2, solution_02_webp, solution_02_png, 400);
+    changePicture(solution_02AnimationRef, 2, 400);
   } else if (solution_03In) {
-    changePicture(solutionRef, 3, solution_03_webp, solution_03_png, 400);
-  } */
+    changePicture(solution_03AnimationRef, 3, 400);
+  }
 
   const pushUp01 = useSpring({
     config: { friction: 12 },
@@ -183,19 +196,41 @@ export default function Section01({ changeStage }) {
                 className="Picture-change sticky top-onefifth"
                 ref={solutionRef}
               >
-                {/* <Picture
-                  webp={solution_01_webp}
-                  normal={solution_01_png}
-                  alt="solution"
-                  classpic="Picture-section w-full mx-auto z-10"
-                  classimg="mx-auto"
-                  lazy
-                /> */}
-                <Lottie
-                  animationData={solution_01_lottie}
-                  className="Lottie-section z-10 mx-auto w-full"
-                  style={{ height: 620 }}
-                />
+                <div className="Lottie-container" ref={solution_01AnimationRef}>
+                  <Lottie
+                    animationData={solution_01_lottie}
+                    className="Lottie-section z-10 mx-auto w-full"
+                    style={{ height: 620 }}
+                  />
+                </div>
+                <div
+                  className="Player-container hidden"
+                  ref={solution_02AnimationRef}
+                >
+                  <ReactPlayer
+                    className="React-player"
+                    url={solution_02_webm}
+                    width="100%"
+                    height="620px"
+                    playing
+                    loop
+                    muted
+                  />
+                </div>
+                <div
+                  className="Player-container hidden"
+                  ref={solution_03AnimationRef}
+                >
+                  <ReactPlayer
+                    className="React-player"
+                    url={solution_02_webm}
+                    width="100%"
+                    height="620px"
+                    playing
+                    loop
+                    muted
+                  />
+                </div>
               </div>
             </section>
             <section className="Column-container h-auto w-2/5">
@@ -203,10 +238,10 @@ export default function Section01({ changeStage }) {
                 className="Text-section flex-center z-20 h-screen flex-col gap-4"
                 ref={solution_01Ref}
               >
-                <h2 className="Heading-text text-start text-white">
+                <h2 className="Heading-text !text-start text-white">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_01}
                 </h2>
-                <h2 className="Sub-heading-text text-start text-orange">
+                <h2 className="Sub-heading-text !text-start text-orange">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_01}
                 </h2>
               </section>
@@ -214,12 +249,12 @@ export default function Section01({ changeStage }) {
                 className="Text-section flex-center z-20 h-screen flex-col gap-4"
                 ref={solution_02Ref}
               >
-                <h2 className="Heading-text text-start text-white">
+                <h2 className="Heading-text !text-start text-white">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02}
                   <br></br>
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_03}
                 </h2>
-                <h2 className="Sub-heading-text text-start text-orange">
+                <h2 className="Sub-heading-text !text-start text-orange">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_02}
                 </h2>
               </section>
@@ -227,10 +262,10 @@ export default function Section01({ changeStage }) {
                 className="Text-section flex-center z-20 h-screen flex-col gap-4"
                 ref={solution_03Ref}
               >
-                <h2 className="Heading-text text-start text-white">
+                <h2 className="Heading-text !text-start text-white">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_04}
                 </h2>
-                <h2 className="Sub-heading-text text-start text-orange">
+                <h2 className="Sub-heading-text !text-start text-orange">
                   {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_03}
                 </h2>
               </section>

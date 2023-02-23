@@ -20,8 +20,11 @@ module.exports = {
     },
     extend: {
       maxWidth: {
+        "1620px": "1620px",
         "1540px": "1540px",
         "1480px": "1480px",
+        "1360px": "1360px",
+        "1300px": "1300px",
       },
       spacing: {
         desktop: "60px",
@@ -45,6 +48,9 @@ module.exports = {
         "30vh": "30vh",
         "20vh": "20vh",
         "15vh": "15vh",
+      },
+      boxShadow: {
+        yblue: "20px 20px 0px #004EA2",
       },
     },
   },

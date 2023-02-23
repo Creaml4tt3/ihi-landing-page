@@ -207,7 +207,7 @@ img {
   }
 
   .Column {
-    @apply flex flex-1 flex-col justify-end;
+    @apply flex h-full flex-auto flex-col overflow-hidden;
     .Text-section {
       @apply flex-center z-10 flex-col;
       .Second-text {
@@ -219,6 +219,16 @@ img {
       .Second-second-text {
         @apply text-center text-3xl font-medium text-orange;
       }
+    }
+  }
+
+  .Flow-container {
+    @apply relative h-[490px] w-full max-w-1620px px-desktop;
+    .Flow-left {
+      @apply pointer-events-none absolute top-0 left-0 mx-desktop h-full rounded-xl border-t-[15px] border-l-[15px] border-b-[15px] border-blue;
+    }
+    .Flow-right {
+      @apply pointer-events-none absolute top-0 h-full rounded-xl border-b-[15px] border-blue;
     }
   }
 }

@@ -18,8 +18,20 @@ import page_02_how_webp from "../../images/webp/page-02-how.webp";
 import page_02_factory_webp from "../../images/webp/page-02-factory.webp";
 import page_02_how_png from "../../images/png/page-02-how.png";
 import page_02_factory_png from "../../images/png/page-02-factory.png";
+import video_icon_webp from "../../images/webp/video-icon.webp";
+import video_icon_png from "../../images/png/video-icon.png";
+import page_02_boiler_png from "../../images/png/page-02-boiler.png";
+import page_02_boiler_webp from "../../images/webp/page-02-boiler.webp";
+import icon_line_webp from "../../images/webp/icon-line.webp";
+import icon_line_png from "../../images/png/icon-line.png";
 
 export {
+  icon_line_webp,
+  icon_line_png,
+  page_02_boiler_webp,
+  page_02_boiler_png,
+  video_icon_webp,
+  video_icon_png,
   page_02_how_webp,
   page_02_factory_webp,
   page_02_how_png,

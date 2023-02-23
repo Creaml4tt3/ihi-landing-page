@@ -122,6 +122,43 @@
         "SUB_TEXT_04": "and can reduce maintenance cost more than ",
         "SUB_TEXT_05": "300 thousand baht per year (Approx.).",
         "VIDEO_LINK": ""
+      },
+      "SECTION_07": {
+        "HEADING_01": "แล้ว Boiler ล่ะ",
+        "HEADING_02": "ดีอย่างไร?",
+        "SUB_HEADING_01": "How about the Boiler?",
+        "SUB_HEADING_02": "How good is it?",
+        "BUTTON_01": "See Our Product",
+        "LINK_01": "https://ihiapt.co.th/ihi-products/package-boilers/",
+        "ICON_TEXT_09": "responsible",
+        "ICON_TEXT_10": "consumption",
+        "ICON_TEXT_11": "and production",
+        "ICON_TEXT_12": "climate",
+        "ICON_TEXT_13": "action",
+        "NUMBER_ICON_04": "12",
+        "NUMBER_ICON_05": "13",
+        "ICON_SHOW": {
+          "ICON_01": {
+            "ICON_HEADING_01": "“ปลอดภัยสูง” ไม่ระเบิด",
+            "ICON_SUB_HEADING_01": "“High Security”not explode"
+          },
+          "ICON_02": {
+            "ICON_HEADING_01": "“ประสิทธิภาพสูง” 97-98%",
+            "ICON_SUB_HEADING_01": "“High Performance” 97-98%"
+          },
+          "ICON_03": {
+            "ICON_HEADING_01": "Advance 4 stages",
+            "ICON_HEADING_02": "ได้ต่อเนื่อง แม้จะใช้งานน้อยแค่ 20%",
+            "ICON_SUB_HEADING_01": "The machine can be conducted",
+            "ICON_SUB_HEADING_02": "continuously. Even using only 20%"
+          },
+          "ICON_04": {
+            "ICON_HEADING_01": "“ประหยัดพื้นที่“",
+            "ICON_HEADING_02": "ขนาดกะทัดรัด",
+            "ICON_SUB_HEADING_01": "“Compact“",
+            "ICON_SUB_HEADING_02": "save space"
+          }
+        }
       }
     }
   }
