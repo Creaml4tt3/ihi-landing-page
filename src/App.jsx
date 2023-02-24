@@ -4,6 +4,7 @@ import configJSON from "./config.json";
 import Loading from "./components/Loading";
 import Section01 from "./pages/Page01";
 import Section02 from "./pages/Page02";
+import Section03 from "./pages/Page03";
 
 export default function App() {
   //? ตั้งค่าหน้าที่จะแสดงหน้าแรก
@@ -69,6 +70,9 @@ export default function App() {
             )}
             {sectionStage === 2 && (
               <Section02 changeStage={sectionStageChange} />
+            )}
+            {sectionStage === 3 && (
+              <Section03 changeStage={sectionStageChange} />
             )}
           </>
         )}

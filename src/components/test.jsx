@@ -45,8 +45,10 @@ import {
 import solution_01_lottie from "../lotties/solution-01.json";
 import solution_02_webm from "../lotties/webm/solution-02.webm";
 import solution_03_webm from "../lotties/webm/solution-03.webm";
+import chicken from "../lotties/chicken.json";
+import bicycle from "../lotties/bicycle.json";
 
-export default function Section01({ changeStage }) {
+export default function Test({ changeStage }) {
   const graphContainerRef = useRef(null);
   const solutionRef = useRef(null);
   const solution_01Ref = useRef(null);
@@ -68,6 +70,8 @@ export default function Section01({ changeStage }) {
     solution_02AnimationRef,
     solution_03AnimationRef,
   ];
+  const chickenRef = useRef(null);
+  const chickenLottieRef = useRef();
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
@@ -158,11 +162,52 @@ export default function Section01({ changeStage }) {
     to: { y: arrowDownIn ? 0 : -275, opacity: arrowDownIn ? 1 : 0 },
   });
 
+  useEffect(() => {
+    let stateGo = 0;
+
+    window.addEventListener("scroll", (e) => {
+      const documentHeight = document.body.clientHeight;
+      const scrollHeight = document.documentElement.scrollTop;
+
+      let test01 = documentHeight / 100;
+      let test02 = scrollHeight / test01;
+
+      chickenRef.current.style.left = `${test02}%`;
+      console.log(test02);
+      console.log(stateGo);
+      if (test02 > stateGo) {
+        chickenRef.current.style.transform = `scaleX(1)`;
+      } else if (test02 < stateGo) {
+        chickenRef.current.style.transform = `scaleX(-1)`;
+      }
+      stateGo = test02;
+      if (chickenLottieRef.current) {
+        chickenLottieRef.current.play();
+      }
+      setTimeout(() => {
+        if (chickenLottieRef.current) {
+          chickenLottieRef.current.pause();
+        }
+      }, 150);
+    });
+  }, []);
+
   return (
     <>
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap h-full w-full snap-y snap-proximity overflow-y-scroll bg-blue">
         {/* //?Background - Starting */}
+        <div
+          className="Lottie-container pointer-events-none fixed -bottom-[41px] left-0 z-50"
+          ref={chickenRef}
+        >
+          <Lottie
+            animationData={bicycle}
+            lottieRef={chickenLottieRef}
+            className="Lottie-section z-10"
+            style={{ height: 200 }}
+          />
+        </div>
         <Picture
           webp={page_01_bg_webp}
           normal={page_01_bg_png}

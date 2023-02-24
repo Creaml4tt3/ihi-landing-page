@@ -24,8 +24,12 @@ import page_02_boiler_png from "../../images/png/page-02-boiler.png";
 import page_02_boiler_webp from "../../images/webp/page-02-boiler.webp";
 import icon_line_webp from "../../images/webp/icon-line.webp";
 import icon_line_png from "../../images/png/icon-line.png";
+import icon_line_small_webp from "../../images/webp/icon-line-small.webp";
+import icon_line_small_png from "../../images/png/icon-line-small.png";
 
 export {
+  icon_line_small_webp,
+  icon_line_small_png,
   icon_line_webp,
   icon_line_png,
   page_02_boiler_webp,

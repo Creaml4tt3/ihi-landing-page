@@ -147,7 +147,7 @@
             "ICON_SUB_HEADING_01": "“High Performance” 97-98%"
           },
           "ICON_03": {
-            "ICON_HEADING_01": "Advance 4 stages",
+            "ICON_HEADING_01": "Advance 4 stages เครื่องเดิม",
             "ICON_HEADING_02": "ได้ต่อเนื่อง แม้จะใช้งานน้อยแค่ 20%",
             "ICON_SUB_HEADING_01": "The machine can be conducted",
             "ICON_SUB_HEADING_02": "continuously. Even using only 20%"
@@ -157,8 +157,81 @@
             "ICON_HEADING_02": "ขนาดกะทัดรัด",
             "ICON_SUB_HEADING_01": "“Compact“",
             "ICON_SUB_HEADING_02": "save space"
+          },
+          "ICON_05": {
+            "ICON_HEADING_01": "“สร้างไอน้ำรวดเร็ว”",
+            "ICON_HEADING_02": " ภายใน 5 นาที",
+            "ICON_SUB_HEADING_01": "“Generate Steam Quickly”",
+            "ICON_SUB_HEADING_02": "just 5 minutes"
+          },
+          "ICON_06": {
+            "ICON_HEADING_01": "Blue-i System ช่วยให้เผาไหม้หมดจด",
+            "ICON_HEADING_02": "เปลี่ยนจากการใช้รุ่นเก่า มาเป็นรุ่นใหม่",
+            "ICON_HEADING_03": "ที่มีประสิทธิภาพสูงขึ้น",
+            "ICON_SUB_HEADING_01": "“Blue-i System” burn completely",
+            "ICON_SUB_HEADING_02": "new innovations with higher efficiency"
           }
         }
+      },
+      "SECTION_08": {
+        "TEXT_01": "ลด",
+        "SUB_TEXT_01": "Reduce",
+        "TEXT_SHOW": {
+          "TEXT_01": {
+            "TEXT_01": "ต้นทุน",
+            "TEXT_02": "พลังงาน",
+            "SUB_TEXT_01": "Reduce energy costs"
+          },
+          "TEXT_02": {
+            "TEXT_01": "ต้นทุน",
+            "TEXT_02": "ค่าซ่อมบํารุง",
+            "SUB_TEXT_01": "Reduce maintenance costs"
+          },
+          "TEXT_03": {
+            "TEXT_01": "ความสูญเสียจากสาเหตุ",
+            "TEXT_02": "เครื่องจักรหยุดทํางาน",
+            "SUB_TEXT_01": "Reduce machine downtime losses"
+          }
+        }
+      }
+    },
+    "PAGE_03": {
+      "SECTION_01": {
+        "HEADING_01": "นอกจากนี้การใช้บุคลากรในอุตสาหกรรมอย่างหนัก",
+        "HEADING_02": "ยังมีผลต่อสุขภาพจิตของประชากรโดยรวม",
+        "HEADING_03": "ส่งผลให้ประสิทธิภาพ ในการทำงานลดลง",
+        "SUB_HEADING_01": "In addition, labour-intensive industries are suffering from workload",
+        "SUB_HEADING_02": "management, resulting in labour’s mental health issues."
+      },
+      "SECTION_02": {
+        "HEADING_01": "ความผิดพลาดของมนุษย์",
+        "SUB_HEADING_01": "Human Error",
+        "TEXT_SHOW": {
+          "TEXT_01": {
+            "UPPER_TEXT": "For skill-based errors",
+            "TITLE_TEXT_01": "พลั้งเผลอ",
+            "TITLE_TEXT_02": "Slips",
+            "DESCRIPTION_TEXT_01": "ความบกพร่องด้านสมาธิส่งผลให้การกระทำ",
+            "DESCRIPTION_TEXT_02": "ไม่เป็นไปตามที่ตั้งใจ หรือวางแผนไว้ เช่น",
+            "DESCRIPTION_TEXT_03": "ถูกขัดจังหวะ ผิดจังหวะ พลาด เสียสมาธิ เป็นต้น",
+            "SUB_DESCRIPTION_TEXT_01": "Attention deficits affect actions",
+            "SUB_DESCRIPTION_TEXT_02": "not as intended or planned such as",
+            "SUB_DESCRIPTION_TEXT_03": "interrupted, misplaced, missed, distracted, etc."
+          },
+          "TEXT_02": {
+            "UPPER_TEXT": "For skill-based errors",
+            "TITLE_TEXT_01": "หลงลืม",
+            "TITLE_TEXT_02": "Lapses",
+            "DESCRIPTION_TEXT_01": "ความบกพร่องด้านความจำ ส่งผลให้ละเลย สิ่งที่ตั้งใจ",
+            "DESCRIPTION_TEXT_02": "หรือวางแผนไว้ เช่น ลืมข้อมูล ลืมสิ่งของ ข้ามขั้นตอน เป็นต้น",
+            "SUB_DESCRIPTION_TEXT_01": "Memory impairment leads to neglect of intentions",
+            "SUB_DESCRIPTION_TEXT_02": "or planned, such as forgetting information, forgetting",
+            "SUB_DESCRIPTION_TEXT_03": "things, skipping basics, etc."
+          }
+        }
+      },
+      "BUTTON_NEXT": {
+        "TEXT": "See Our Solution"
       }
     }
   }

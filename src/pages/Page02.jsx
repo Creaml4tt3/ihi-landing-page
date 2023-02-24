@@ -5,6 +5,8 @@ import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
 import {
+  icon_line_small_webp,
+  icon_line_small_png,
   icon_line_webp,
   icon_line_png,
   page_02_boiler_webp,
@@ -40,11 +42,14 @@ export default function Section02({ changeStage }) {
   const howIn = UseIntersection(howRef, "0px");
   const columnRef = useRef(null);
   const columnIn = UseIntersection(columnRef, "200%");
+  const slideRef = useRef(null);
+  /* const slideIn = UseIntersection(slideRef, "100%"); */
 
   const duration = 1500;
   const delay = 400;
   const pushUpY = 600;
   const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
+  const videoURL02 = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
   const previewVideoURL01 = page_02_people_webp;
   const previewVideoURL02 = page_02_people_webp;
 
@@ -92,6 +97,10 @@ export default function Section02({ changeStage }) {
     config: { duration: duration * 1.5, easing: easings.easeInOutQuint },
     to: { y: columnIn ? 0 : 215 },
   });
+  /*   const slideRight = useSpring({
+    config: { duration: 10000, easing: easings.easeInOutQuint },
+    to: { x: slideIn ? "0" : "-100%" },
+  }); */
 
   return (
     <>
@@ -564,18 +573,50 @@ export default function Section02({ changeStage }) {
               <div className="Flow-up ml-[7.5px] h-64 w-[15px] -translate-x-1/2 rounded-xl bg-blue"></div>
             </div>
           </div>
-          <div className="Flow-container">
+          <div className="Flow-container h-[500px]">
             <div className="Flow-left w-[calc(50%-60px)]"></div>
-            <div className="Icon-show-container flex h-full flex-col items-start justify-end gap-8 pl-44">
+            <div className="Icon-show-container pl-44">
               <section className="Text-section">
-                <h2 className="Second-text font-semi-bold !text-start text-40px leading-snug text-blue">
-                  {configJSON.CONTENT.PAGE_02.SECTION_07.HEADING_01}
-                </h2>
-                <h3 className="Sub-second-text text-start text-4xl font-medium text-orange">
-                  {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_01}
+                <h3 className="Icon-show-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_01
+                      .ICON_HEADING_01
+                  }
+                </h3>
+                <h3 className="Icon-show-sub-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_01
+                      .ICON_SUB_HEADING_01
+                  }
                 </h3>
               </section>
-              <div className="Icon-show flex h-fit w-fit items-end gap-11">
+              <div className="Icon-show">
+                <Picture
+                  webp={icon_line_webp}
+                  normal={icon_line_png}
+                  alt="icon_line_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
+            <div className="Icon-show-container">
+              <section className="Text-section">
+                <h3 className="Icon-show-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_02
+                      .ICON_HEADING_01
+                  }
+                </h3>
+                <h3 className="Icon-show-sub-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_02
+                      .ICON_SUB_HEADING_01
+                  }
+                </h3>
+              </section>
+              <div className="Icon-show">
                 <Picture
                   webp={icon_line_webp}
                   normal={icon_line_png}
@@ -587,12 +628,156 @@ export default function Section02({ changeStage }) {
               </div>
             </div>
           </div>
-          <div className="Flow-container -mt-[15px]">
+          <div className="Flow-container -mt-[15px] h-[540px] flex-row-reverse">
             <div className="Flow-right right-0 mx-desktop w-1/2 border-t-[15px] border-r-[15px]"></div>
+            <div className="Icon-show-container !items-end pr-44">
+              <section className="Text-section">
+                <h3 className="Icon-show-text text-end">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_HEADING_02
+                  }
+                </h3>
+                <h3 className="Icon-show-sub-text text-end">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_SUB_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_SUB_HEADING_02
+                  }
+                </h3>
+              </section>
+              <div className="Icon-show">
+                <Picture
+                  webp={icon_line_small_webp}
+                  normal={icon_line_small_png}
+                  alt="icon_line_small_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
+            <div className="Icon-show-container !items-end">
+              <section className="Text-section">
+                <h3 className="Icon-show-text text-end">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_HEADING_02
+                  }
+                </h3>
+                <h3 className="Icon-show-sub-text text-end">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_SUB_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_SUB_HEADING_02
+                  }
+                </h3>
+              </section>
+              <div className="Icon-show">
+                <Picture
+                  webp={icon_line_small_webp}
+                  normal={icon_line_small_png}
+                  alt="icon_line_small_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
           </div>
-          <div className="Flow-container -mt-[15px] mb-16">
+          <div className="Flow-container -mt-[15px] mb-16 h-[640px]">
             <div className="Flow-left w-1/2"></div>
             <div className="Flow-right -right-1/2 w-full"></div>
+            <div className="Icon-show-container pl-44">
+              <section className="Text-section">
+                <h3 className="Icon-show-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_HEADING_02
+                  }
+                </h3>
+                <h3 className="Icon-show-sub-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_SUB_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                      .ICON_SUB_HEADING_02
+                  }
+                </h3>
+              </section>
+              <div className="Icon-show">
+                <Picture
+                  webp={icon_line_small_webp}
+                  normal={icon_line_small_png}
+                  alt="icon_line_small_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
+            <div className="Icon-show-container">
+              <section className="Text-section">
+                <h3 className="Icon-show-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_HEADING_02
+                  }
+                </h3>
+                <h3 className="Icon-show-sub-text">
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_SUB_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                      .ICON_SUB_HEADING_02
+                  }
+                </h3>
+              </section>
+              <div className="Icon-show">
+                <Picture
+                  webp={icon_line_small_webp}
+                  normal={icon_line_small_png}
+                  alt="icon_line_small_png"
+                  classpic="Picture-section h-fit"
+                  classimg="mx-auto z-10"
+                  lazy
+                />
+              </div>
+            </div>
           </div>
           <div className="Icon-card-container flex-center gap-4 pb-20vh">
             <div className="Icon-card" id="Icon-card-04">
@@ -645,7 +830,7 @@ export default function Section02({ changeStage }) {
           <div className="Video-container w-full max-w-1360px pt-44 pb-48">
             <ReactPlayer
               className="React-player"
-              url={videoURL}
+              url={videoURL02}
               width="100%"
               height="550px"
               light={previewVideoURL02}
@@ -654,21 +839,46 @@ export default function Section02({ changeStage }) {
             />
           </div>
         </section>
+        {/* //?Page 08 */}
+        <section className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop">
+          {/* <div className="Slide-container" ref={slideRef}>
+            <div className="Slide-container relative h-12 w-full overflow-hidden rounded-full">
+              <div className="Slide-text-container">
+                <section className="Text-section">
+                  <h3 className="Icon-show-text">
+                    {
+                      configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                        .ICON_HEADING_01
+                    }
+                  </h3>
+                  <h3 className="Icon-show-sub-text">
+                    {
+                      configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                        .ICON_SUB_HEADING_01
+                    }
+                  </h3>
+                </section>
+              </div>
+              <div className="Slide-background absolute left-0 bottom-0 z-10 h-full w-full rounded-full bg-blue opacity-20"></div>
+              <animated.div
+                className="Slide absolute bottom-0 z-20 h-full w-full rounded-full bg-blue"
+                style={slideRight}
+              ></animated.div>
+            </div>
+          </div> */}
+        </section>
         {/* //?Page 0x */}
         <section className="Page-section flex items-end justify-center">
-          {/* //?Page Up */}
-          <div className="Page-controller h-8 w-screen">
-            <button
-              className="Next-page h-full w-full bg-orange"
-              onClick={() => changeStage("-")}
-            ></button>
-          </div>
           {/* //?Page Down */}
-          <div className="Page-controller h-8 w-screen">
+          <div
+            className="Page-controller h-52 w-screen"
+            id="Page-controller-02"
+          >
             <button
-              className="Next-page h-full w-full bg-white"
+              className="Next-page h-full w-full"
               onClick={() => changeStage("+")}
             ></button>
+            <div className="Background-screen pointer-events-none fixed top-0 left-0 h-screen w-screen bg-blue"></div>
           </div>
         </section>
       </div>
