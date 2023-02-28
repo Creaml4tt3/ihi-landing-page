@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import configJSON from "./config.json";
 import Loading from "./components/Loading";
+import Nav from "./components/Nav";
 import Section01 from "./pages/Page01";
 import Section02 from "./pages/Page02";
 import Section03 from "./pages/Page03";
@@ -24,6 +25,8 @@ export default function App() {
       setSectionStage(sectionStage + 1);
     } else if (operation === "-") {
       setSectionStage(sectionStage - 1);
+    } else {
+      setSectionStage(operation);
     }
   }
 
@@ -51,7 +54,9 @@ export default function App() {
     <>
       <main className="App h-screen w-screen overflow-x-hidden bg-blue">
         {/* //?Header - Starting */}
-        <header className="App-header"></header>
+        <header className="App-header">
+          <Nav changeStage={sectionStageChange} />
+        </header>
         {/* //?Header - Ending */}
 
         <CSSTransition

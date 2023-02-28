@@ -45,6 +45,7 @@ import {
 import solution_01_lottie from "../lotties/solution-01.json";
 import solution_02_webm from "../lotties/webm/solution-02.webm";
 import solution_03_webm from "../lotties/webm/solution-03.webm";
+import graph from "../lotties/graph.json";
 
 export default function Section01({ changeStage }) {
   const graphContainerRef = useRef(null);
@@ -57,12 +58,15 @@ export default function Section01({ changeStage }) {
   const solution_03AnimationRef = useRef(null);
   const arrowUpRef = useRef(null);
   const arrowDownRef = useRef(null);
+  const graphLineRef = useRef(null);
+  const graphLineLottieRef = useRef(null);
   const graphContainerIn = UseIntersection(graphContainerRef, "20%");
   const solution_01In = UseIntersectionLoop(solution_01Ref, "-20%");
   const solution_02In = UseIntersectionLoop(solution_02Ref, "-20%");
   const solution_03In = UseIntersectionLoop(solution_03Ref, "-20%");
   const arrowUpIn = UseIntersection(arrowUpRef, "100%");
   const arrowDownIn = UseIntersection(arrowDownRef, "100%");
+  const graphLineIn = UseIntersection(graphLineRef, "0px");
   const solutionRefArr = [
     solution_01AnimationRef,
     solution_02AnimationRef,
@@ -105,11 +109,16 @@ export default function Section01({ changeStage }) {
   }
 
   if (solution_01In) {
-    changePicture(solution_01AnimationRef, 1, 400);
+    changePicture(solution_01AnimationRef, 1, 200);
   } else if (solution_02In) {
-    changePicture(solution_02AnimationRef, 2, 400);
+    changePicture(solution_02AnimationRef, 2, 200);
   } else if (solution_03In) {
-    changePicture(solution_03AnimationRef, 3, 400);
+    changePicture(solution_03AnimationRef, 3, 200);
+  }
+
+  if (graphLineIn) {
+    graphLineLottieRef.current.play();
+    graphLineLottieRef.current.setSpeed(3);
   }
 
   const pushUp01 = useSpring({
@@ -413,14 +422,25 @@ export default function Section01({ changeStage }) {
               {configJSON.CONTENT.PAGE_01.SECTION_04.SUB_HEADING_02}
             </h2>
           </section>
-          <div className="Graph-line-container relative mt-16">
-            <Picture
+          <div
+            className="Graph-line-container relative mt-16"
+            ref={graphLineRef}
+          >
+            {/* <Picture
               webp={graph_line_webp}
               normal={graph_line_png}
               alt="graph_line_png"
               classpic="Picture-section w-full z-10"
               classimg="mx-auto"
               lazy
+            /> */}
+            <Lottie
+              animationData={graph}
+              lottieRef={graphLineLottieRef}
+              className="Lottie-section z-10"
+              style={{ height: 680 }}
+              loop={false}
+              autoplay={false}
             />
             <section className="Text-section z-30">
               <span className="Text absolute left-1/2 top-[40%] -translate-x-1/2 text-4xl font-medium text-white">

@@ -202,7 +202,7 @@ export default function Test({ changeStage }) {
           ref={chickenRef}
         >
           <Lottie
-            animationData={bicycle}
+            animationData={chicken}
             lottieRef={chickenLottieRef}
             className="Lottie-section z-10"
             style={{ height: 200 }}

@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { UseIntersection } from "../components/UseIntersection";
 import { useSpring, animated, easings } from "@react-spring/web";
+import Lottie from "lottie-react";
 import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
@@ -34,6 +35,10 @@ import {
   icon_02_webp,
   icon_03_webp,
 } from "../components/image/Image02";
+import line from "../lotties/line.json";
+import working from "../lotties/working.json";
+/* import epidemic from "../lotties/epidemic.json"; */
+import smoke from "../lotties/smoke.json";
 
 export default function Section02({ changeStage }) {
   const beltRef = useRef(null);
@@ -43,6 +48,7 @@ export default function Section02({ changeStage }) {
   const columnRef = useRef(null);
   const columnIn = UseIntersection(columnRef, "200%");
   const slideRef = useRef(null);
+  const testRef = useRef(null);
   /* const slideIn = UseIntersection(slideRef, "100%"); */
 
   const duration = 1500;
@@ -102,6 +108,10 @@ export default function Section02({ changeStage }) {
     to: { x: slideIn ? "0" : "-100%" },
   }); */
 
+  useEffect(() => {
+    testRef.current.setSpeed(0.002);
+  }, []);
+
   return (
     <>
       {/* //?Main - Starting */}
@@ -146,6 +156,31 @@ export default function Section02({ changeStage }) {
             classpic="Picture-section h-fit"
             classimg="mx-auto -mt-10 z-0"
             lazy
+          />
+
+          <Lottie
+            animationData={line}
+            className="Lottie-section z-10"
+            style={{ height: 560 }}
+          />
+
+          <Lottie
+            animationData={working}
+            className="Lottie-section z-10"
+            style={{ height: 910 }}
+          />
+          <div className="Test bg-blue">
+            {/*             <Lottie
+              animationData={epidemic}
+              lottieRef={testRef}
+              className="Lottie-section z-10 mix-blend-lighten"
+              style={{ height: 600 }}
+            /> */}
+          </div>
+          <Lottie
+            animationData={smoke}
+            className="Lottie-section z-10"
+            style={{ height: 300 }}
           />
         </section>
         {/* //?Page 02 */}

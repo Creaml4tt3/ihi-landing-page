@@ -23,6 +23,7 @@ module.exports = {
         "1620px": "1620px",
         "1540px": "1540px",
         "1480px": "1480px",
+        "1400px": "1400px",
         "1360px": "1360px",
         "1300px": "1300px",
       },
@@ -51,6 +52,7 @@ module.exports = {
       },
       boxShadow: {
         yblue: "20px 20px 0px #004EA2",
+        soft: "0px 0px 16px rgba(0,0,0,0.25)",
       },
     },
   },

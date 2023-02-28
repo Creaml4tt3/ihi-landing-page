@@ -205,7 +205,11 @@
       },
       "SECTION_02": {
         "HEADING_01": "ความผิดพลาดของมนุษย์",
+        "HEADING_02": "“พฤติกรรมที่ผิดพลาดของมนุษย์”",
+        "HEADING_03": "เป็นปัจจัยหนึ่งที่สําคัญที่เป็นสาเหตุทําให้เกิดอุบัติเหตุ",
         "SUB_HEADING_01": "Human Error",
+        "SUB_HEADING_02": "Human Error is one of the major factors that cause accidents.",
+        "LINK_01": "https://www.ohswa.or.th/17816723/hse-morning-talk-by-safety-kku-ep8",
         "TEXT_SHOW": {
           "TEXT_01": {
             "UPPER_TEXT": "For skill-based errors",
@@ -227,8 +231,132 @@
             "SUB_DESCRIPTION_TEXT_01": "Memory impairment leads to neglect of intentions",
             "SUB_DESCRIPTION_TEXT_02": "or planned, such as forgetting information, forgetting",
             "SUB_DESCRIPTION_TEXT_03": "things, skipping basics, etc."
+          },
+          "TEXT_03": {
+            "UPPER_TEXT": "For mistakes",
+            "TITLE_TEXT_01": "มีพื้นฐานจากกฏข้อบังคับ",
+            "TITLE_TEXT_02": "Rule-Based",
+            "DESCRIPTION_TEXT_01": "การใช้กฏข้อบังคับไม่ถูกต้องตามสถานการณ์",
+            "DESCRIPTION_TEXT_02": "กฏข้อบังคับกำหนดไว้ถูกต้องแล้วแต่การกระทำไม่ถูกต้องตามกฏ",
+            "DESCRIPTION_TEXT_03": "ความบกพร่องในการประยุกต์ใช้กฏข้อบังคับ",
+            "SUB_DESCRIPTION_TEXT_01": "The use of regulations is not appropriate in the situation.",
+            "SUB_DESCRIPTION_TEXT_02": "The regulations are correct, but the action is not according to the rules.",
+            "SUB_DESCRIPTION_TEXT_03": "Failure to apply regulations."
+          },
+          "TEXT_04": {
+            "UPPER_TEXT": "For mistakes",
+            "TITLE_TEXT_01": "มีพื้นฐานจากความรู้",
+            "TITLE_TEXT_02": "Knowledge-based",
+            "DESCRIPTION_TEXT_01": "การกระทำที่ผิดพลาด ซึ่งเกิดจากการมีความรู้ไม่เพียงพอ",
+            "DESCRIPTION_TEXT_02": "การกระทำที่ผิดพลาดจากการใช้ความรู้เดิมกับสถานการณ์ไหม่",
+            "SUB_DESCRIPTION_TEXT_01": "The action mistake caused by insufficient knowledge.",
+            "SUB_DESCRIPTION_TEXT_02": "The action mistake to use prior knowledge to a new situation."
+          },
+          "TEXT_05": {
+            "UPPER_TEXT": "Violations",
+            "TITLE_TEXT_01": "จงใจที่จะไม่ปฏิบัติตามกฏ",
+            "TITLE_TEXT_02": "ระเบียบมาตรฐาน หรือขั้นตอน",
+            "TITLE_TEXT_03": "การปฏิบัติที่ปลอดภัย",
+            "TITLE_TEXT_04": "Intentionally failing to",
+            "TITLE_TEXT_05": "comply with regulations,",
+            "TITLE_TEXT_06": "standards or safe procedures."
           }
         }
+      },
+      "SECTION_03": {
+        "HEADING_01": "อีกทั้งยังมีปัญหาขาดแคลนแรงงาน",
+        "SUB_HEADING_01": "Also, there is a labor shortage.",
+        "GRAPH": {
+          "HEADING_01": "โครงสร้างความต้องการของแรงงาน",
+          "SUB_HEADING_01": "Labor Demand Structure",
+          "TEXT_01": "การผลิต",
+          "SUB_TEXT_01": "Manufacturer",
+          "TEXT_02": "ก่อสร้าง",
+          "SUB_TEXT_02": "Construction",
+          "TEXT_03": "ขนส่ง/ขายปลีก",
+          "SUB_TEXT_03": "Transport/Retail",
+          "TEXT_04": "โรงแรม/ภัตราคาร",
+          "SUB_TEXT_04": "Hotel/Restaurant",
+          "TEXT_05": "อื่นๆ",
+          "SUB_TEXT_05": "Others",
+          "LINE_01": "40.8",
+          "LINE_02": "3.4",
+          "LINE_03": "26.0",
+          "LINE_04": "3.9",
+          "LINE_05": "25.9",
+          "PERCENT_01": "0%",
+          "PERCENT_02": "20%",
+          "PERCENT_03": "40%",
+          "PERCENT_04": "60%",
+          "PERCENT_05": "80%",
+          "PERCENT_06": "100%"
+        },
+        "LINK_01": "https://www.bot.or.th/Thai/MonetaryPolicy/ArticleAndResearch/DocumentEconomicSeminar/LabourShortage.pdf"
+      },
+      "SECTION_04": {
+        "TITLE_01": "สาเหตุหนึ่งของการขาดแคลนแรงงาน โดยเฉพาะในภาคอุตสาหกรรม",
+        "TITLE_02": "คือการย้ายแรงงานจากภาคอุตสาหกรรมสู่ภาคเกษตรโดยเฉพาะ",
+        "TITLE_03": "ในช่วงที่ราคาสินค้าเกษตรดีต่อเนื่องดังเช่นในปัจจุบัน",
+        "SUB_TITLE_01": "One of the reasons for the labor shortage especially in the industry is, to",
+        "SUB_TITLE_02": "move labor from the industrial sector to the agricultural sector, especially",
+        "SUB_TITLE_03": "during the continuous good price of agricultural products as at present.",
+        "LINK_01": "https://www.ryt9.com/s/bot/1161746"
+      },
+      "SECTION_05": {
+        "HEADING_01": "โรคระบาด",
+        "SUB_HEADING_01": "Epidemic",
+        "TITLE_01": "และสถานการณ์โควิดยังคงมีต่อเนื่อง",
+        "SUB_TITLE_01": "The COVID situation continues.",
+        "GRID": {
+          "GIRD_01": {
+            "UPPER_TEXT": "ผู้ติดเชื้อรวม",
+            "SUB_UPPER_TEXT": "Total infected",
+            "NUMBER": "4,727,628",
+            "LOWER_TEXT": "ได้รับรายงาน 13 ก.พ. 23 : +0",
+            "SUB_LOWER_TEXT": "Report from Feb 13, 23 : +0"
+          },
+          "GIRD_02": {
+            "UPPER_TEXT": "ผู้เสียชีวิต",
+            "SUB_UPPER_TEXT": "Deceased",
+            "NUMBER": "33,894",
+            "LOWER_TEXT": "ได้รับรายงานเมื่อวานนี้ : +0",
+            "SUB_LOWER_TEXT": "Report from Yesterday : +0"
+          },
+          "GIRD_03": {
+            "UPPER_TEXT": "ผู้ติดเชื้อรายใหม่ ( 14 วัน )",
+            "SUB_UPPER_TEXT": "New infected",
+            "LOWER_TEXT": "31 ม.ค. 23 - 13 ก.พ. 23 : +644",
+            "SUB_LOWER_TEXT": "Jan 31, 23 - Feb 13, 23 : +644"
+          },
+          "GIRD_04": {
+            "UPPER_TEXT": "จำนวนโดสทั้งหมดที่แจกจ่าย",
+            "SUB_UPPER_TEXT_01": "Total Number of Doses",
+            "SUB_UPPER_TEXT_02": "Distributed",
+            "NUMBER": "142,635,014"
+          },
+          "GIRD_05": {
+            "UPPER_TEXT": "จำนวนโดสใหม่ที่แจกจ่าย (14 วัน)",
+            "SUB_UPPER_TEXT_01": "Number of New Doses ",
+            "SUB_UPPER_TEXT_02": "Distributed (14 days)",
+            "NUMBER": "ไม่มีข้อมูล",
+            "SUB_LOWER_TEXT": "No Data"
+          },
+          "GIRD_06": {
+            "UPPER_TEXT": "ผู้ที่ได้รับการฉีดวัคซีนครบแล้ว",
+            "SUB_UPPER_TEXT_01": "Those who have been",
+            "SUB_UPPER_TEXT_02": "fully vaccinated",
+            "NUMBER": "53,486,086",
+            "LOWER_TEXT": "% ของประชากร : 80.4%",
+            "SUB_LOWER_TEXT": "% of population : 80.4%"
+          }
+        },
+        "LINK_01": "https://news.google.com/covid19/map?hl=th&mid=%2Fm%2F07f1x&gl=TH&ceid=TH%3Ath"
+      },
+      "SECTION_06": {
+        "HEADING_01": "เราจะเห็นได้ว่าสิ่งที่เกิดขึ้นนั้น",
+        "HEADING_02": "ส่งผลต่อภาคอุตสาหกรรมของเรามากเพียงใด",
+        "SUB_HEADING_01": "We've seen a number of negative",
+        "SUB_HEADING_02": "impacts on our planet."
       },
       "BUTTON_NEXT": {
         "TEXT": "See Our Solution"

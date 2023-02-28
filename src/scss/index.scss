@@ -255,4 +255,52 @@ img {
       }
     }
   }
+
+  .Column-Text {
+    .Column-inside {
+      @apply flex h-full max-h-[650px] flex-col items-start justify-center;
+      .Text-section {
+        @apply z-10 flex flex-col items-start justify-start gap-6;
+        .Upper-text {
+          @apply text-2xl font-normal text-orange;
+        }
+        .Title-text {
+          @apply text-6xl font-semibold leading-tight text-white;
+        }
+        .Base-text {
+          @apply text-lg font-medium;
+        }
+        .Description-text {
+          @apply text-2xl font-normal text-white;
+          .List-container {
+            .List-text {
+              @apply list-item list-inside list-disc text-base;
+            }
+          }
+        }
+        .Sub-description-text {
+          @apply text-2xl font-normal text-orange;
+          .Sub-list-container {
+            .Sub-list-text {
+              @apply list-item list-inside list-disc text-base;
+            }
+          }
+        }
+      }
+    }
+  }
+  .Graph-side-container {
+    .Text {
+      @apply flex flex-col items-start;
+      .Base {
+        @apply w-fit text-2xl font-medium text-white;
+      }
+      .Sub-base {
+        @apply w-fit text-2xl font-medium text-orange;
+      }
+    }
+    .Percent {
+      @apply text-xl font-normal text-white;
+    }
+  }
 }
