@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&display=swap");
 
@@ -13,28 +14,29 @@ $renew: #0e70c6;
 $nuclear: #0d416f;
 $hydro: #0f283e;
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  @apply scroll-smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Prompt", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  @apply scroll-smooth;
-}
-
-img {
-  pointer-events: none;
-  @apply max-w-full;
-}
-
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Prompt", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply scroll-smooth;
+  }
+
+  img {
+    pointer-events: none;
+    @apply max-w-full;
+  }
+}
+@layer components {
   .Page-section {
     @apply mx-auto h-full w-full scroll-smooth;
     @apply snap-start;
@@ -301,6 +303,27 @@ img {
     }
     .Percent {
       @apply text-xl font-normal text-white;
+    }
+  }
+
+  .Grid-container {
+    .Grid-content {
+      @apply flex w-full flex-col items-start justify-start gap-5 justify-self-center;
+      .Number-text {
+        @apply text-40px font-semibold text-white;
+      }
+      .Upper,
+      .Lower {
+        @apply flex flex-col;
+        .Upper-text,
+        .Lower-text {
+          @apply text-2xl font-normal text-white;
+        }
+        .Sub-upper-text,
+        .Sub-lower-text {
+          @apply text-2xl font-normal text-orange;
+        }
+      }
     }
   }
 }

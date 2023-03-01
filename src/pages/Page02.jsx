@@ -108,10 +108,6 @@ export default function Section02({ changeStage }) {
     to: { x: slideIn ? "0" : "-100%" },
   }); */
 
-  useEffect(() => {
-    testRef.current.setSpeed(0.002);
-  }, []);
-
   return (
     <>
       {/* //?Main - Starting */}
@@ -157,13 +153,11 @@ export default function Section02({ changeStage }) {
             classimg="mx-auto -mt-10 z-0"
             lazy
           />
-
           <Lottie
             animationData={line}
             className="Lottie-section z-10"
             style={{ height: 560 }}
           />
-
           <Lottie
             animationData={working}
             className="Lottie-section z-10"

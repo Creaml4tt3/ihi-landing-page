@@ -1,29 +1,32 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useLayoutEffect } from "react";
 import { UseIntersection } from "../components/UseIntersection";
 import { useSpring, animated, easings } from "@react-spring/web";
+import { gsap } from "gsap";
 import Lottie from "lottie-react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
+import epidemicJSON from "../components/json/epidemic.json";
 import {
   page_03_bg_webp,
   page_03_bg_png,
   page_03_men_webp,
   page_03_men_png,
 } from "../components/image/Image03";
-
+import { ReactComponent as GraphSVG } from "../images/svg/graph.svg";
 import epidemic01 from "../lotties/epidemic-01.json";
 import epidemic02 from "../lotties/epidemic-02.json";
 import epidemic03 from "../lotties/epidemic-03.json";
 
 export default function Section03({ changeStage }) {
   const lineRef = useRef(null);
+  const epidemicRef = useRef(null);
   const lineIn = UseIntersection(lineRef, "200%");
-  const epidemic01Ref = useRef(null);
-  const epidemic02Ref = useRef(null);
-  const epidemic03Ref = useRef(null);
+  const epidemicIn = UseIntersection(epidemicRef, "0px");
   const duration = 2000;
+
+  const epidemicImport = [epidemic01, epidemic02, epidemic03];
 
   const slideRight01 = useSpring({
     config: { duration: duration * 1.25, easing: easings.easeInOutCubic },
@@ -48,6 +51,20 @@ export default function Section03({ changeStage }) {
   const slideRight05 = useSpring({
     config: { duration: duration * 1, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
+  });
+
+  const epidemic = epidemicJSON.map((el, index) => {
+    let currentID = `Epidemic-content-${index}`;
+    return (
+      <Epidemic
+        src={epidemicImport[el.src]}
+        size={el.size}
+        speed={el.speed}
+        y={el.y}
+        x={el.x}
+        id={currentID}
+      />
+    );
   });
 
   const graphLine = [
@@ -77,6 +94,47 @@ export default function Section03({ changeStage }) {
       animation: slideRight05,
     },
   ];
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      for (let i = 1; i <= epidemicJSON.length; i++) {
+        gsap.to(`#Epidemic-content-${i - 1}`, {
+          scale: "+=1",
+          duration: 2,
+          ease: "elastic",
+          delay: 0.4 * i,
+        });
+      }
+    }, epidemicRef);
+
+    return () => ctx.revert();
+  }, [epidemicIn]);
+
+  function Epidemic({ src, size, speed, y, x, id }) {
+    let softLight = false;
+    let brightness = false;
+
+    if (src === epidemic03) {
+      softLight = true;
+      brightness = true;
+    }
+    return (
+      <Player
+        autoplay
+        loop
+        speed={speed ? speed : 1}
+        src={src}
+        style={{
+          height: size,
+          transform: `translate(${x ? x : 0}vw,${y ? y : 0}vh) scale(0,0)`,
+          mixBlendMode: `${softLight ? "soft-light" : "lighten"}`,
+          filter: `brightness(${brightness ? 0 : 1})`,
+        }}
+        id={id}
+        className="Epidemic-section Lottie-section absolute top-0 left-0 z-0"
+      />
+    );
+  }
 
   return (
     <>
@@ -122,7 +180,7 @@ export default function Section03({ changeStage }) {
           </section>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section h-fit w-full px-desktop">
+        <section className="Page-section flex-center h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 flex-col ">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_01}
@@ -131,7 +189,7 @@ export default function Section03({ changeStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_01}
             </h2>
           </section>
-          <div className="Column-container flex-center h-fit max-w-1400px">
+          <div className="Column-container flex-center h-fit w-full max-w-1400px">
             <div className="Column-Text flex h-fit w-3/5 flex-col items-start gap-52">
               <div className="Column-inside" id="Column-inside-01">
                 <section className="Text-section">
@@ -444,10 +502,10 @@ export default function Section03({ changeStage }) {
         <section className="Page-section flex-center h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 flex-col">
             <h2 className="Heading-text text-white">
-              {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
+              {configJSON.CONTENT.PAGE_03.SECTION_03.HEADING_01}
             </h2>
             <h2 className="Sub-heading-text z-10 text-[45px] text-orange">
-              {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_02}
+              {configJSON.CONTENT.PAGE_03.SECTION_03.SUB_HEADING_01}
             </h2>
           </section>
           <div
@@ -601,37 +659,252 @@ export default function Section03({ changeStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
+        <section
+          className="Page-section flex-center relative h-fit w-full flex-col px-desktop"
+          ref={epidemicRef}
+        >
+          <section className="Text-section flex-center z-10 flex-col">
+            <span className="Title-text text-center text-40px font-semibold text-white">
+              {configJSON.CONTENT.PAGE_03.SECTION_05.TITLE_01}
+            </span>
+            <span className="Sub-title-text z-10 text-center text-4xl font-medium text-orange">
+              {configJSON.CONTENT.PAGE_03.SECTION_05.SUB_TITLE_01}
+            </span>
+            <h2 className="Heading-text text-center !leading-loose text-white">
+              {configJSON.CONTENT.PAGE_03.SECTION_05.HEADING_01}
+              <span className="Sub-heading-text ml-5 text-center text-orange">
+                {configJSON.CONTENT.PAGE_03.SECTION_05.SUB_HEADING_01}
+              </span>
+            </h2>
+          </section>
+          <section className="Grid-container mt-20 mb-72 grid w-full max-w-1300px grid-cols-3 gap-y-14 gap-x-20">
+            <div className="Grid-content" id="Grid-01">
+              <div className="Upper">
+                <span className="Upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01
+                      .UPPER_TEXT
+                  }
+                </span>
+                <span className="Sub-upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01
+                      .SUB_UPPER_TEXT
+                  }
+                </span>
+              </div>
+              <span className="Number-text">
+                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01.NUMBER}
+              </span>
+              <div className="Lower">
+                <span className="Lower-text ">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01
+                      .LOWER_TEXT
+                  }
+                </span>
+                <span className="Sub-lower-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01
+                      .SUB_LOWER_TEXT
+                  }
+                </span>
+              </div>
+            </div>
+            <div className="Grid-content" id="Grid-02">
+              <div className="Upper">
+                <span className="Upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02
+                      .UPPER_TEXT
+                  }
+                </span>
+                <span className="Sub-upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02
+                      .SUB_UPPER_TEXT
+                  }
+                </span>
+              </div>
+              <span className="Number-text">
+                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02.NUMBER}
+              </span>
+              <div className="Lower">
+                <span className="Lower-text ">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02
+                      .LOWER_TEXT
+                  }
+                </span>
+                <span className="Sub-lower-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02
+                      .SUB_LOWER_TEXT
+                  }
+                </span>
+              </div>
+            </div>
+            <div className="Grid-content" id="Grid-03">
+              <div className="Upper">
+                <span className="Upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_03
+                      .UPPER_TEXT
+                  }
+                </span>
+                <span className="Sub-upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_03
+                      .SUB_UPPER_TEXT
+                  }
+                </span>
+              </div>
+              <GraphSVG />
+              <div className="Lower">
+                <span className="Lower-text ">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_03
+                      .LOWER_TEXT
+                  }
+                </span>
+                <span className="Sub-lower-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_03
+                      .SUB_LOWER_TEXT
+                  }
+                </span>
+              </div>
+            </div>
+            <div className="Grid-content" id="Grid-04">
+              <div className="Upper">
+                <span className="Upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04
+                      .UPPER_TEXT
+                  }
+                </span>
+                <span className="Sub-upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04
+                      .SUB_UPPER_TEXT_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04
+                      .SUB_UPPER_TEXT_02
+                  }
+                </span>
+              </div>
+              <span className="Number-text">
+                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04.NUMBER}
+              </span>
+            </div>
+            <div className="Grid-content" id="Grid-05">
+              <div className="Upper">
+                <span className="Upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
+                      .UPPER_TEXT
+                  }
+                </span>
+                <span className="Sub-upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
+                      .SUB_UPPER_TEXT_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
+                      .SUB_UPPER_TEXT_02
+                  }
+                </span>
+              </div>
+              <span className="Number-text">
+                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05.NUMBER}
+              </span>
+              <div className="Lower">
+                <span className="Lower-text ">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
+                      .LOWER_TEXT
+                  }
+                </span>
+                <span className="Sub-lower-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
+                      .SUB_LOWER_TEXT
+                  }
+                </span>
+              </div>
+            </div>
+            <div className="Grid-content" id="Grid-06">
+              <div className="Upper">
+                <span className="Upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06
+                      .UPPER_TEXT
+                  }
+                </span>
+                <span className="Sub-upper-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06
+                      .SUB_UPPER_TEXT_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06
+                      .SUB_UPPER_TEXT_02
+                  }
+                </span>
+              </div>
+              <span className="Number-text">
+                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06.NUMBER}
+              </span>
+              <div className="Lower">
+                <span className="Lower-text ">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06
+                      .LOWER_TEXT
+                  }
+                </span>
+                <span className="Sub-lower-text">
+                  {
+                    configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06
+                      .SUB_LOWER_TEXT
+                  }
+                </span>
+              </div>
+            </div>
+          </section>
+          {epidemic}
+          <div className="Link-container mb-32 flex justify-center">
+            <a
+              href={configJSON.CONTENT.PAGE_03.SECTION_05.LINK_01}
+              className="Link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {configJSON.CONTENT.PAGE_03.SECTION_05.LINK_01}
+            </a>
+          </div>
+        </section>
+        {/* //?Page 06 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop">
-          <Player
-            autoplay
-            loop
-            className="Lottie-section absolute left-1/3 mix-blend-lighten"
-            speed={0.1}
-            lottieRef={epidemic01Ref}
-            src={epidemic01}
-            style={{ height: 100 }}
-          />
-          <Player
-            autoplay
-            loop
-            className="Lottie-section absolute left-2/3 mix-blend-lighten"
-            speed={0.01}
-            lottieRef={epidemic02Ref}
-            src={epidemic02}
-            style={{ height: 200 }}
-          />
-          <Player
-            autoplay
-            loop
-            className="Lottie-section absolute right-0 mix-blend-soft-light"
-            speed={0.001}
-            lottieRef={epidemic03Ref}
-            src={epidemic03}
-            style={{ height: 300 }}
-          />
+          <section className="Text-section flex-center z-10 flex-col">
+            <h2 className="Heading-text text-center text-white">
+              {configJSON.CONTENT.PAGE_03.SECTION_06.HEADING_01}
+              <br></br>
+              {configJSON.CONTENT.PAGE_03.SECTION_06.HEADING_02}
+            </h2>
+            <h2 className="Sub-heading-text z-10 text-center  text-orange">
+              {configJSON.CONTENT.PAGE_03.SECTION_06.SUB_HEADING_01}
+              <br></br>
+              {configJSON.CONTENT.PAGE_03.SECTION_06.SUB_HEADING_02}
+            </h2>
+          </section>
         </section>
         {/* //?Page Down */}
-        <div className="Page-controller flex-center mb-24 mt-10">
+        <div className="Page-controller flex-center mt-10 mb-52">
           <button
             className="Next-page bg-white py-5 px-8"
             id="Page-01-next"

@@ -44,7 +44,7 @@ import {
 } from "../components/image/Image01";
 import solution_01_lottie from "../lotties/solution-01.json";
 import solution_02_webm from "../lotties/webm/solution-02.webm";
-import solution_03_webm from "../lotties/webm/solution-03.webm";
+import solution_03_lottie from "../lotties/solution-03.json";
 import graph from "../lotties/graph.json";
 
 export default function Section01({ changeStage }) {
@@ -117,8 +117,10 @@ export default function Section01({ changeStage }) {
   }
 
   if (graphLineIn) {
-    graphLineLottieRef.current.play();
-    graphLineLottieRef.current.setSpeed(3);
+    if (graphContainerRef.current) {
+      graphLineLottieRef.current.play();
+      graphLineLottieRef.current.setSpeed(3);
+    }
   }
 
   const pushUp01 = useSpring({
@@ -228,17 +230,13 @@ export default function Section01({ changeStage }) {
                   />
                 </div>
                 <div
-                  className="Player-container hidden"
+                  className="Lottie-container hidden"
                   ref={solution_03AnimationRef}
                 >
-                  <ReactPlayer
-                    className="React-player"
-                    url={solution_03_webm}
-                    width="100%"
-                    height="620px"
-                    playing
-                    loop
-                    muted
+                  <Lottie
+                    animationData={solution_03_lottie}
+                    className="Lottie-section z-10 mx-auto w-full"
+                    style={{ height: 620 }}
                   />
                 </div>
               </div>

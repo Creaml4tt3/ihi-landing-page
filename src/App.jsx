@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import configJSON from "./config.json";
 import Loading from "./components/Loading";
 import Nav from "./components/Nav";
+import ButtonNav from "./components/ButtonNav";
 import Section01 from "./pages/Page01";
 import Section02 from "./pages/Page02";
 import Section03 from "./pages/Page03";
@@ -50,12 +51,17 @@ export default function App() {
     localStorage.setItem("currentStage", sectionStage);
   }, [sectionStage]);
 
+  const startPoint = useRef(null);
+  const endPoint = useRef(null);
+
   return (
     <>
+      <div className="Start-point" ref={startPoint}></div>
       <main className="App h-screen w-screen overflow-x-hidden bg-blue">
         {/* //?Header - Starting */}
         <header className="App-header">
           <Nav changeStage={sectionStageChange} />
+          <ButtonNav endRef={endPoint} />
         </header>
         {/* //?Header - Ending */}
 
@@ -82,6 +88,7 @@ export default function App() {
           </>
         )}
       </main>
+      <div className="End-point" ref={endPoint}></div>
     </>
   );
 }
