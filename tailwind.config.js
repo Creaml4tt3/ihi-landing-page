@@ -53,6 +53,7 @@ module.exports = {
       boxShadow: {
         yblue: "20px 20px 0px #004EA2",
         soft: "0px 0px 16px rgba(0,0,0,0.25)",
+        outline: "0px 0px 0px 2px rgba(0,78,162,1)",
       },
     },
   },

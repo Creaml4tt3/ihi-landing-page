@@ -1,12 +1,14 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import configJSON from "./config.json";
 import Loading from "./components/Loading";
 import Nav from "./components/Nav";
+import NavDot from "./components/NavDot";
 import ButtonNav from "./components/ButtonNav";
 import Section01 from "./pages/Page01";
 import Section02 from "./pages/Page02";
 import Section03 from "./pages/Page03";
+import Section04 from "./pages/Page04";
 
 export default function App() {
   //? ตั้งค่าหน้าที่จะแสดงหน้าแรก
@@ -51,17 +53,17 @@ export default function App() {
     localStorage.setItem("currentStage", sectionStage);
   }, [sectionStage]);
 
-  const startPoint = useRef(null);
-  const endPoint = useRef(null);
-
   return (
     <>
-      <div className="Start-point" ref={startPoint}></div>
-      <main className="App h-screen w-screen overflow-x-hidden bg-blue">
+      <main className="App h-screen w-full bg-blue">
         {/* //?Header - Starting */}
         <header className="App-header">
-          <Nav changeStage={sectionStageChange} />
-          <ButtonNav endRef={endPoint} />
+          <NavDot
+            changeStage={sectionStageChange}
+            currentStage={sectionStage}
+          />
+          {/* <Nav changeStage={sectionStageChange} />
+          <ButtonNav /> */}
         </header>
         {/* //?Header - Ending */}
 
@@ -85,10 +87,12 @@ export default function App() {
             {sectionStage === 3 && (
               <Section03 changeStage={sectionStageChange} />
             )}
+            {sectionStage === 4 && (
+              <Section04 changeStage={sectionStageChange} />
+            )}
           </>
         )}
       </main>
-      <div className="End-point" ref={endPoint}></div>
     </>
   );
 }

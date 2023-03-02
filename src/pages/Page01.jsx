@@ -172,7 +172,7 @@ export default function Section01({ changeStage }) {
   return (
     <>
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap h-full w-full snap-y snap-proximity overflow-y-scroll bg-blue">
+      <div className="Page-inner-wrap h-screen w-full overflow-y-scroll bg-blue">
         {/* //?Background - Starting */}
         <Picture
           webp={page_01_bg_webp}

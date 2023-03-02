@@ -41,6 +41,15 @@
   }
 }
 
+@keyframes slideupOver {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 @keyframes fadeout {
   0% {
     opacity: 1;
@@ -71,5 +80,9 @@
 }
 
 .Page-inner-wrap {
-  animation: 0.7s slideup;
+  animation: 0.7s slideup ease-out;
+}
+
+.Page-sub-background {
+  animation: 0.7s slideupOver ease-out;
 }

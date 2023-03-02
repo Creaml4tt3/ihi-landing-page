@@ -6,39 +6,46 @@ import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
 import {
-  icon_line_small_webp,
-  icon_line_small_png,
-  icon_line_webp,
+  black_png,
+  black_webp,
+  icon_01_png,
+  icon_01_webp,
+  icon_02_png,
+  icon_02_webp,
+  icon_03_png,
+  icon_03_webp,
   icon_line_png,
-  page_02_boiler_webp,
-  page_02_boiler_png,
-  video_icon_webp,
-  video_icon_png,
-  page_02_how_webp,
-  page_02_factory_webp,
-  page_02_how_png,
-  page_02_factory_png,
-  page_02_bg_png,
-  page_02_bg_webp,
-  page_02_engine_png,
-  page_02_engine_webp,
-  page_02_people_png,
-  page_02_people_webp,
+  icon_line_small_png,
+  icon_line_small_webp,
+  icon_line_webp,
   page_02_belt_png,
   page_02_belt_webp,
+  page_02_bg_png,
+  page_02_bg_webp,
+  page_02_boiler_png,
+  page_02_boiler_webp,
+  page_02_engine_png,
+  page_02_engine_webp,
+  page_02_factory_png,
+  page_02_factory_webp,
+  page_02_how_png,
+  page_02_how_webp,
   page_02_line_belt_png,
   page_02_line_belt_webp,
-  icon_01_png,
-  icon_02_png,
-  icon_03_png,
-  icon_01_webp,
-  icon_02_webp,
-  icon_03_webp,
+  page_02_people_png,
+  page_02_people_webp,
+  video_icon_png,
+  video_icon_webp,
 } from "../components/image/Image02";
 import line from "../lotties/line.json";
 import working from "../lotties/working.json";
-/* import epidemic from "../lotties/epidemic.json"; */
 import smoke from "../lotties/smoke.json";
+import shield from "../lotties/shield.json";
+import high_quality from "../lotties/high-quality.json";
+import gear from "../lotties/gear.json";
+import minimize from "../lotties/minimize.json";
+import steaming from "../lotties/steaming.json";
+import fire from "../lotties/fire.json";
 
 export default function Section02({ changeStage }) {
   const beltRef = useRef(null);
@@ -47,30 +54,42 @@ export default function Section02({ changeStage }) {
   const howIn = UseIntersection(howRef, "0px");
   const columnRef = useRef(null);
   const columnIn = UseIntersection(columnRef, "200%");
-  const slideRef = useRef(null);
-  const testRef = useRef(null);
-  /* const slideIn = UseIntersection(slideRef, "100%"); */
+  const lineRef = useRef(null);
+  const lineLottieRef = useRef(null);
+  const lineIn = UseIntersection(lineRef, "100%");
+  const workRef = useRef(null);
+  const workLottieRef = useRef(null);
+  const workIn = UseIntersection(workRef, "100%");
 
   const duration = 1500;
   const delay = 400;
   const pushUpY = 600;
   const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
   const videoURL02 = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
-  const previewVideoURL01 = page_02_people_webp;
-  const previewVideoURL02 = page_02_people_webp;
+  const previewVideoURL01 = black_webp;
+  const previewVideoURL02 = black_webp;
 
   const videoIcon = () => {
     return (
-      <Picture
-        webp={video_icon_webp}
-        normal={video_icon_png}
-        alt="video_icon_png"
-        classpic="Picture-section"
-        classimg=""
-        lazy
-      />
+      <div className="Icon-player-container flex-center">
+        <Picture
+          webp={video_icon_webp}
+          normal={video_icon_png}
+          alt="video_icon_png"
+          classpic="Picture-section"
+          classimg=""
+          lazy
+        />
+      </div>
     );
   };
+
+  if (lineIn) {
+    lineLottieRef.current.play();
+  }
+  if (workIn) {
+    workLottieRef.current.play();
+  }
 
   const pushUp01 = useSpring({
     config: { duration: duration, easing: easings.easeInOutQuint },
@@ -103,15 +122,11 @@ export default function Section02({ changeStage }) {
     config: { duration: duration * 1.5, easing: easings.easeInOutQuint },
     to: { y: columnIn ? 0 : 215 },
   });
-  /*   const slideRight = useSpring({
-    config: { duration: 10000, easing: easings.easeInOutQuint },
-    to: { x: slideIn ? "0" : "-100%" },
-  }); */
 
   return (
     <>
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap h-full w-full snap-y snap-proximity overflow-y-scroll bg-cream">
+      <div className="Page-inner-wrap h-screen w-full overflow-y-scroll bg-cream">
         {/* //?Background - Starting */}
         <Picture
           webp={page_02_bg_webp}
@@ -145,37 +160,16 @@ export default function Section02({ changeStage }) {
               {configJSON.CONTENT.PAGE_02.SECTION_01.SUB_HEADING_03}
             </h2>
           </section>
-          <Picture
-            webp={page_02_people_webp}
-            normal={page_02_people_png}
-            alt="page_02_people_png"
-            classpic="Picture-section h-fit"
-            classimg="mx-auto -mt-10 z-0"
-            lazy
-          />
-          <Lottie
-            animationData={line}
-            className="Lottie-section z-10"
-            style={{ height: 560 }}
-          />
-          <Lottie
-            animationData={working}
-            className="Lottie-section z-10"
-            style={{ height: 910 }}
-          />
-          <div className="Test bg-blue">
-            {/*             <Lottie
-              animationData={epidemic}
-              lottieRef={testRef}
-              className="Lottie-section z-10 mix-blend-lighten"
-              style={{ height: 600 }}
-            /> */}
+          <div className="Work-container mx-auto h-fit w-fit" ref={workRef}>
+            <Lottie
+              animationData={working}
+              lottieRef={workLottieRef}
+              className="Lottie-section z-0 -mt-12"
+              style={{ height: "100%", width: "100%" }}
+              autoplay={false}
+              loop={false}
+            />
           </div>
-          <Lottie
-            animationData={smoke}
-            className="Lottie-section z-10"
-            style={{ height: 300 }}
-          />
         </section>
         {/* //?Page 02 */}
         <section className="Page-section relative h-fit w-full px-desktop pb-50vh">
@@ -468,13 +462,10 @@ export default function Section02({ changeStage }) {
               {configJSON.CONTENT.PAGE_02.SECTION_05.SUB_HEADING_01}
             </h3>
           </section>
-          <Picture
-            webp={page_02_factory_webp}
-            normal={page_02_factory_png}
-            alt="page_02_factory_png"
-            classpic="Picture-section h-fit"
-            classimg="mx-auto z-10 -mt-10"
-            lazy
+          <Lottie
+            animationData={smoke}
+            className="Lottie-section z-10"
+            style={{ height: "100%", width: "100%" }}
           />
         </section>
         {/* //?Page 06 */}
@@ -628,6 +619,13 @@ export default function Section02({ changeStage }) {
                   classimg="mx-auto z-10"
                   lazy
                 />
+                <Lottie
+                  animationData={shield}
+                  loop
+                  autoPlay
+                  height={150}
+                  className="Icon-lottie pt-3"
+                />
               </div>
             </div>
             <div className="Icon-show-container">
@@ -653,6 +651,13 @@ export default function Section02({ changeStage }) {
                   classpic="Picture-section h-fit"
                   classimg="mx-auto z-10"
                   lazy
+                />
+                <Lottie
+                  animationData={high_quality}
+                  loop
+                  autoPlay
+                  height={150}
+                  className="Icon-lottie pt-3"
                 />
               </div>
             </div>
@@ -684,7 +689,7 @@ export default function Section02({ changeStage }) {
                   }
                 </h3>
               </section>
-              <div className="Icon-show">
+              <div className="Icon-show !flex-row-reverse">
                 <Picture
                   webp={icon_line_small_webp}
                   normal={icon_line_small_png}
@@ -692,6 +697,13 @@ export default function Section02({ changeStage }) {
                   classpic="Picture-section h-fit"
                   classimg="mx-auto z-10"
                   lazy
+                />
+                <Lottie
+                  animationData={gear}
+                  loop
+                  autoPlay
+                  height={150}
+                  className="Icon-lottie"
                 />
               </div>
             </div>
@@ -720,7 +732,7 @@ export default function Section02({ changeStage }) {
                   }
                 </h3>
               </section>
-              <div className="Icon-show">
+              <div className="Icon-show !flex-row-reverse">
                 <Picture
                   webp={icon_line_small_webp}
                   normal={icon_line_small_png}
@@ -728,6 +740,13 @@ export default function Section02({ changeStage }) {
                   classpic="Picture-section h-fit"
                   classimg="mx-auto z-10"
                   lazy
+                />
+                <Lottie
+                  animationData={minimize}
+                  loop
+                  autoPlay
+                  height={150}
+                  className="Icon-lottie"
                 />
               </div>
             </div>
@@ -769,6 +788,13 @@ export default function Section02({ changeStage }) {
                   classimg="mx-auto z-10"
                   lazy
                 />
+                <Lottie
+                  animationData={steaming}
+                  loop
+                  autoPlay
+                  height={150}
+                  className="Icon-lottie"
+                />
               </div>
             </div>
             <div className="Icon-show-container">
@@ -804,6 +830,13 @@ export default function Section02({ changeStage }) {
                   classpic="Picture-section h-fit"
                   classimg="mx-auto z-10"
                   lazy
+                />
+                <Lottie
+                  animationData={fire}
+                  loop
+                  autoPlay
+                  height={150}
+                  className="Icon-lottie"
                 />
               </div>
             </div>
@@ -869,45 +902,30 @@ export default function Section02({ changeStage }) {
           </div>
         </section>
         {/* //?Page 08 */}
-        <section className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop">
-          {/* <div className="Slide-container" ref={slideRef}>
-            <div className="Slide-container relative h-12 w-full overflow-hidden rounded-full">
-              <div className="Slide-text-container">
-                <section className="Text-section">
-                  <h3 className="Icon-show-text">
-                    {
-                      configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
-                        .ICON_HEADING_01
-                    }
-                  </h3>
-                  <h3 className="Icon-show-sub-text">
-                    {
-                      configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
-                        .ICON_SUB_HEADING_01
-                    }
-                  </h3>
-                </section>
-              </div>
-              <div className="Slide-background absolute left-0 bottom-0 z-10 h-full w-full rounded-full bg-blue opacity-20"></div>
-              <animated.div
-                className="Slide absolute bottom-0 z-20 h-full w-full rounded-full bg-blue"
-                style={slideRight}
-              ></animated.div>
-            </div>
-          </div> */}
+        <section
+          className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop"
+          ref={lineRef}
+        >
+          <Lottie
+            animationData={line}
+            lottieRef={lineLottieRef}
+            className="Lottie-section z-10"
+            style={{ height: 560 }}
+            autoplay={false}
+            loop={false}
+          />
         </section>
         {/* //?Page 0x */}
-        <section className="Page-section flex items-end justify-center">
+        <section className="Page-section flex h-fit items-end justify-center">
           {/* //?Page Down */}
           <div
-            className="Page-controller h-52 w-screen"
+            className="Page-controller group h-52 w-screen"
             id="Page-controller-02"
           >
             <button
-              className="Next-page h-full w-full"
+              className="Next-page h-full w-full !rounded-none !shadow-none transition-all hover:bg-white"
               onClick={() => changeStage("+")}
             ></button>
-            <div className="Background-screen pointer-events-none fixed top-0 left-0 h-screen w-screen bg-blue"></div>
           </div>
         </section>
       </div>

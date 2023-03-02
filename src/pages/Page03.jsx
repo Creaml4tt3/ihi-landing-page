@@ -3,6 +3,7 @@ import { UseIntersection } from "../components/UseIntersection";
 import { useSpring, animated, easings } from "@react-spring/web";
 import { gsap } from "gsap";
 import Lottie from "lottie-react";
+import CountUp from "react-countup";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
@@ -18,13 +19,16 @@ import { ReactComponent as GraphSVG } from "../images/svg/graph.svg";
 import epidemic01 from "../lotties/epidemic-01.json";
 import epidemic02 from "../lotties/epidemic-02.json";
 import epidemic03 from "../lotties/epidemic-03.json";
+import mini_line from "../lotties/mini-line.json";
 
 export default function Section03({ changeStage }) {
+  const destroyRef = useRef(null);
   const lineRef = useRef(null);
   const epidemicRef = useRef(null);
   const lineIn = UseIntersection(lineRef, "200%");
   const epidemicIn = UseIntersection(epidemicRef, "0px");
   const duration = 2000;
+  const counterDuration = 0.5;
 
   const epidemicImport = [epidemic01, epidemic02, epidemic03];
 
@@ -136,10 +140,25 @@ export default function Section03({ changeStage }) {
     );
   }
 
+  let countStart = false;
+
+  if (epidemicIn) {
+    countStart = true;
+  }
+
+  function turnStrToNumber(value) {
+    let newValue = value.split(",").join("");
+    return Number(newValue);
+  }
+
   return (
     <>
+      <div
+        className="Page-sub-background pointer-events-none absolute top-0 left-0 z-0 h-screen w-screen -translate-y-full bg-cream transition-all"
+        ref={destroyRef}
+      ></div>
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap h-full w-full snap-y snap-proximity overflow-y-scroll bg-blue">
+      <div className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-blue">
         {/* //?Background - Starting */}
         <Picture
           webp={page_03_bg_webp}
@@ -694,7 +713,15 @@ export default function Section03({ changeStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01.NUMBER}
+                {countStart && (
+                  <CountUp
+                    end={turnStrToNumber(
+                      configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01.NUMBER
+                    )}
+                    duration={counterDuration * 10}
+                    separator=","
+                  />
+                )}
               </span>
               <div className="Lower">
                 <span className="Lower-text ">
@@ -727,7 +754,15 @@ export default function Section03({ changeStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02.NUMBER}
+                {countStart && (
+                  <CountUp
+                    end={turnStrToNumber(
+                      configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02.NUMBER
+                    )}
+                    duration={counterDuration * 5}
+                    separator=","
+                  />
+                )}
               </span>
               <div className="Lower">
                 <span className="Lower-text ">
@@ -759,7 +794,13 @@ export default function Section03({ changeStage }) {
                   }
                 </span>
               </div>
-              <GraphSVG />
+              <Lottie
+                animationData={mini_line}
+                loop
+                autoPlay
+                height={45}
+                className="Icon-lottie"
+              />
               <div className="Lower">
                 <span className="Lower-text ">
                   {
@@ -796,7 +837,15 @@ export default function Section03({ changeStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04.NUMBER}
+                {countStart && (
+                  <CountUp
+                    end={turnStrToNumber(
+                      configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04.NUMBER
+                    )}
+                    duration={counterDuration * 20}
+                    separator=","
+                  />
+                )}
               </span>
             </div>
             <div className="Grid-content" id="Grid-05">
@@ -858,7 +907,15 @@ export default function Section03({ changeStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06.NUMBER}
+                {countStart && (
+                  <CountUp
+                    end={turnStrToNumber(
+                      configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06.NUMBER
+                    )}
+                    duration={counterDuration * 15}
+                    separator=","
+                  />
+                )}
               </span>
               <div className="Lower">
                 <span className="Lower-text ">

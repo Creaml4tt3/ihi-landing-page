@@ -14,7 +14,7 @@ export default function Error() {
         ขอโทษสำหรับปัญหาที่เกิดขึ้น
       </span>
       <pre className="Error flex-center rounded-lg bg-navy p-4">
-        <code className="text-2xl text-orange">
+        <code className="w-fit break-all text-2xl text-orange">
           {error.statusText || error.message}
         </code>
       </pre>

@@ -28,7 +28,6 @@ $hydro: #0f283e;
     font-family: "Prompt", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply scroll-smooth;
   }
 
   img {
@@ -172,15 +171,6 @@ $hydro: #0f283e;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
   }
 
-  #Page-controller-02 .Background-screen {
-    @apply opacity-0;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  #Page-controller-02:hover .Background-screen {
-    @apply opacity-100;
-  }
-
   .Belt-container {
     .Belt {
       @apply z-0 flex w-fit flex-auto items-end gap-6;
@@ -251,9 +241,9 @@ $hydro: #0f283e;
         .Icon-show-sub-text {
           @apply w-fit text-4xl font-medium text-orange;
         }
-        .Icon-show {
-          @apply flex h-fit w-fit items-end gap-11;
-        }
+      }
+      .Icon-show {
+        @apply flex h-fit w-fit items-start gap-11;
       }
     }
   }

@@ -361,6 +361,20 @@
       "BUTTON_NEXT": {
         "TEXT": "See Our Solution"
       }
+    },
+    "PAGE_04": {
+      "SECTION_01": {
+        "TITLE_01": "อีกหนึ่งนวัตกรรมที่จะช่วยแก้ไขปัญหาดังกล่าว ",
+        "TITLE_02": "ทำให้สามารถทำงานได้อย่างแม่นยำและมีประสิทธิภาพมากขึ้น",
+        "SUB_TITLE_01": "And more innovation which can solve the problem in",
+        "SUB_TITLE_02": "workplace. It can increase the accurate and efficient work."
+      },
+      "SECTION_02": {
+        "HEADING_01": "“ระบบจัดเก็บสินค้าอัตโนมัติ AS/RS”",
+        "SUB_HEADING_01": "With the Automated Storage and Retrieval System (AS/RS).",
+        "BUTTON_TEXT_01": "See Our Product",
+        "LINK_01": "https://ihiapt.co.th/ihi-products/logistics-systems/"
+      }
     }
   }
 }
