@@ -35,11 +35,13 @@ export default function NavDot({ changeStage, currentStage }) {
             currentActive = true;
           }
           return (
-            <div className="Nav-button flex-center group relative h-4 w-full">
+            <div
+              className="Nav-button flex-center group relative h-4 w-full"
+              key={button.id}
+            >
               <button
-                className="Nav z-40 h-[6px] w-[6px] rounded-full bg-white shadow-outline transition-all group-hover:h-[10px] group-hover:w-[10px]"
+                className="Nav z-40 h-[6px] w-[6px] rounded-full bg-white mix-blend-multiply shadow-outline transition-all group-hover:h-[10px] group-hover:w-[10px]"
                 onClick={() => changeStage(button.goTo)}
-                key={button.id}
                 style={currentActive ? { width: 10, height: 10 } : {}}
               ></button>
               <span className="Nav-text pointer-events-none absolute left-8 -top-1/2 min-w-max rounded-full bg-white px-3 py-1 text-lg font-semibold text-blue opacity-0 transition-all group-hover:opacity-100">

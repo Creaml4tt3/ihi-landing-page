@@ -13,11 +13,11 @@ export default function Error() {
       <span className="Error-sub-heading text-4xl text-white">
         ขอโทษสำหรับปัญหาที่เกิดขึ้น
       </span>
-      <pre className="Error flex-center rounded-lg bg-navy p-4">
+      <div className="Error flex-center rounded-lg bg-navy p-4">
         <code className="w-fit break-all text-2xl text-orange">
           {error.statusText || error.message}
         </code>
-      </pre>
+      </div>
       {/* //?Page Down */}
       <div className="Page-controller flex-center mb-24 mt-10">
         <a href="/" className="Link" rel="noreferrer">

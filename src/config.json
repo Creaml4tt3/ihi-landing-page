@@ -374,6 +374,76 @@
         "SUB_HEADING_01": "With the Automated Storage and Retrieval System (AS/RS).",
         "BUTTON_TEXT_01": "See Our Product",
         "LINK_01": "https://ihiapt.co.th/ihi-products/logistics-systems/"
+      },
+      "SECTION_03": {
+        "ICON_CARD": {
+          "ICON_01": {
+            "NUMBER": "3",
+            "ICON_TEXT_01": "good health",
+            "ICON_TEXT_02": "and well-being"
+          },
+          "ICON_02": {
+            "NUMBER": "8",
+            "ICON_TEXT_01": "Decent work",
+            "ICON_TEXT_02": "and economic",
+            "ICON_TEXT_03": "growth"
+          },
+          "ICON_03": {
+            "NUMBER": "9",
+            "ICON_TEXT_01": "industry,",
+            "ICON_TEXT_02": "innovation and",
+            "ICON_TEXT_03": "infrastructure"
+          },
+          "ICON_04": {
+            "NUMBER": "12",
+            "ICON_TEXT_01": "responsible",
+            "ICON_TEXT_02": "consumption",
+            "ICON_TEXT_03": "and production"
+          }
+        }
+      },
+      "SECTION_04": {
+        "HEADING_01": "ช่วยให้ธุรกิจที่เกี่ยวข้องกับการรับคําสั่งซื้อ",
+        "HEADING_02": "และการดําเนินงานด้านคลังสินค้า...",
+        "SUB_HEADING_01": "It enables businesses involved in order",
+        "SUB_HEADING_02": "taking and warehousing operations...",
+        "ROW_CONTAINER": {
+          "ROW_01": {
+            "HEADING_01": "...สามารถจัดการสินค้าคงคลัง",
+            "HEADING_02": "ให้เป็นไปโดยอัตโนมัติ",
+            "SUB_HEADING_01": "...to automate inventory",
+            "SUB_HEADING_02": "management."
+          },
+          "ROW_02": {
+            "HEADING_01": "มีความแม่นยํา",
+            "HEADING_02": "และมีประสิทธิภาพสูง",
+            "SUB_HEADING_01": "Precision and",
+            "SUB_HEADING_02": "high efficiency"
+          }
+        }
+      },
+      "SECTION_05": {
+        "HEADING_01": "เหมาะสำหรับ",
+        "SUB_HEADING_01": "Suitable for",
+        "ITEM_SHOW": {
+          "ITEM_01": {
+            "TITLE_01": "โรงงานที่มีปริมาณ",
+            "TITLE_02": "คําสั่งซื้อจํานวนมาก",
+            "SUB_TITLE_01": "Factories with large",
+            "SUB_TITLE_02": "quantities orders"
+          },
+          "ITEM_02": {
+            "TITLE_01": "โรงงานที่มีความ",
+            "TITLE_02": "หลากหลายของสินค้า",
+            "SUB_TITLE_01": "Factories with",
+            "SUB_TITLE_02": "a variety of products"
+          },
+          "ITEM_03": {
+            "TITLE_01": "มูลค่าต่อชิ้นสูง",
+            "SUB_TITLE_01": "High product",
+            "SUB_TITLE_02": "value per piece"
+          }
+        }
       }
     }
   }

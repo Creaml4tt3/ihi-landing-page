@@ -205,7 +205,7 @@ export default function Section01({ changeStage }) {
           <section className="Section-container flex-center px-desktop">
             <section className="Column-container h-[300vh] w-3/5 py-20vh">
               <div
-                className="Picture-change sticky top-onefifth"
+                className="Picture-change sticky top-twenty"
                 ref={solutionRef}
               >
                 <div className="Lottie-container" ref={solution_01AnimationRef}>

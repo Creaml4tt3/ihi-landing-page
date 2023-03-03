@@ -28,7 +28,7 @@ export default function Section03({ changeStage }) {
   const lineIn = UseIntersection(lineRef, "200%");
   const epidemicIn = UseIntersection(epidemicRef, "0px");
   const duration = 2000;
-  const counterDuration = 0.5;
+  const counterDuration = 2.5;
 
   const epidemicImport = [epidemic01, epidemic02, epidemic03];
 
@@ -718,7 +718,7 @@ export default function Section03({ changeStage }) {
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01.NUMBER
                     )}
-                    duration={counterDuration * 10}
+                    duration={counterDuration}
                     separator=","
                   />
                 )}
@@ -759,7 +759,7 @@ export default function Section03({ changeStage }) {
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02.NUMBER
                     )}
-                    duration={counterDuration * 5}
+                    duration={counterDuration}
                     separator=","
                   />
                 )}
@@ -842,7 +842,7 @@ export default function Section03({ changeStage }) {
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04.NUMBER
                     )}
-                    duration={counterDuration * 20}
+                    duration={counterDuration}
                     separator=","
                   />
                 )}
@@ -912,7 +912,7 @@ export default function Section03({ changeStage }) {
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06.NUMBER
                     )}
-                    duration={counterDuration * 15}
+                    duration={counterDuration}
                     separator=","
                   />
                 )}

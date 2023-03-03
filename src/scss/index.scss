@@ -316,4 +316,13 @@ $hydro: #0f283e;
       }
     }
   }
+
+  .Row-container {
+    .Row {
+      @apply flex gap-40;
+      .Lottie-section {
+        @apply flex-auto;
+      }
+    }
+  }
 }
