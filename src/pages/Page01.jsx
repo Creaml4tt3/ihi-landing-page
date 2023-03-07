@@ -424,14 +424,6 @@ export default function Section01({ changeStage }) {
             className="Graph-line-container relative mt-16"
             ref={graphLineRef}
           >
-            {/* <Picture
-              webp={graph_line_webp}
-              normal={graph_line_png}
-              alt="graph_line_png"
-              classpic="Picture-section w-full z-10"
-              classimg="mx-auto"
-              lazy
-            /> */}
             <Lottie
               animationData={graph}
               lottieRef={graphLineLottieRef}

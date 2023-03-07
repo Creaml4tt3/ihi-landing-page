@@ -34,19 +34,23 @@
 
 @keyframes slideup {
   0% {
+    opacity: 0.5;
     transform: translateY(100%);
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideupOver {
   0% {
+    opacity: 0.5;
     transform: translateY(0);
   }
   100% {
     transform: translateY(-100%);
+    opacity: 1;
   }
 }
 

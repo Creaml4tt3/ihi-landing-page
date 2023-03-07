@@ -1,11 +1,26 @@
+import { useLayoutEffect, useRef, useEffect, Draggable, useState } from "react";
+import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import Picture from "../components/Picture";
 import Video from "../components/Video";
+import { gsap } from "gsap";
 import configJSON from "../config.json";
 import {
+  page_04_solution_01_webp,
+  page_04_solution_01_png,
+  page_04_solution_02_webp,
+  page_04_solution_02_png,
+  page_04_solution_03_webp,
+  page_04_solution_03_png,
   page_04_bg_webp,
   page_04_bg_png,
   asrs_png,
   asrs_webp,
+  boxes_png,
+  boxes_webp,
+  coins_png,
+  coins_webp,
+  orders_png,
+  orders_webp,
   icon_04_webp,
   icon_04_png,
   icon_05_webp,
@@ -22,6 +37,351 @@ import {
 export default function Section03({ changeStage }) {
   const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
   const previewVideoURL01 = black_webp;
+  const solution_01Ref = useRef(null);
+  const solution_02Ref = useRef(null);
+  const solution_03Ref = useRef(null);
+  const solution_01PicRef = useRef(null);
+  const solution_02PicRef = useRef(null);
+  const solution_03PicRef = useRef(null);
+  const solution_01In = UseIntersectionLoop(solution_01Ref, "-20%");
+  const solution_02In = UseIntersectionLoop(solution_02Ref, "-20%");
+  const solution_03In = UseIntersectionLoop(solution_03Ref, "-20%");
+  const solutionRefArr = [
+    solution_01PicRef,
+    solution_02PicRef,
+    solution_03PicRef,
+  ];
+  let sliders;
+  let scrollPassed = 0;
+  let scrollLast = 0;
+
+  const [pastSolutionState, setPastSolutionState] = useState(1);
+
+  function changePicture(ref, state, duration) {
+    setFade(ref, state, duration);
+    setTimeout(() => {
+      changeElement(ref);
+    }, duration);
+  }
+
+  function changeElement(ref) {
+    solutionRefArr.forEach((solution) => {
+      if (solution === ref) {
+        solution.current.style.display = "block";
+      } else {
+        solution.current.style.display = "none";
+      }
+    });
+  }
+
+  function setFade(ref, state, duration) {
+    if (pastSolutionState === state) {
+      return;
+    } else {
+      setPastSolutionState(state);
+      solutionRefArr.forEach((solution) => {
+        if (solution === ref) {
+          solution.current.style.animation = "0.5s ease-in fadein";
+        } else {
+          solution.current.style.animation = "0.5s ease-out fadeout";
+        }
+      });
+      setTimeout(() => {}, duration);
+    }
+  }
+
+  if (solution_01In) {
+    changePicture(solution_01PicRef, 1, 200);
+  } else if (solution_02In) {
+    changePicture(solution_02PicRef, 2, 200);
+  } else if (solution_03In) {
+    changePicture(solution_03PicRef, 3, 200);
+  }
+
+  function scrollAndCheckForNextPage(el) {
+    let bodyHeight = document.body.clientHeight;
+    let scrolling = el.scrollTop;
+    let scrollingHeight = el.scrollHeight;
+
+    if (bodyHeight + scrolling >= scrollingHeight) {
+      if (scrollPassed >= 1) {
+        changeStage("+");
+      }
+      if (scrolling < scrollLast) {
+        scrollPassed = 0;
+      } else {
+        scrollPassed++;
+      }
+      scrollLast = scrolling;
+      return;
+    } else {
+      scrollPassed = 0;
+    }
+  }
+
+  useEffect(() => {
+    sliders = document.querySelectorAll(".Slide-container");
+    const loop = horizontalLoop(sliders, {
+      repeat: -1,
+    });
+
+    let pageWrapper = document.querySelector(".Page-inner-wrap");
+    pageWrapper.addEventListener("scroll", (e) => {
+      scrollAndCheckForNextPage(pageWrapper);
+    });
+  }, []);
+
+  function horizontalLoop(items, config) {
+    items = gsap.utils.toArray(items);
+    config = config || {};
+    let onChange = config.onChange,
+      lastIndex = 0,
+      tl = gsap.timeline({
+        repeat: config.repeat,
+        onUpdate:
+          onChange &&
+          function () {
+            let i = tl.closestIndex();
+            if (lastIndex !== i) {
+              lastIndex = i;
+              onChange(items[i], i);
+            }
+          },
+        duration: config.duration,
+        paused: config.paused,
+        defaults: { ease: "none" },
+        onReverseComplete: () =>
+          tl.totalTime(tl.rawTime() + tl.duration() * 100),
+      }),
+      length = items.length,
+      startX = items[0].offsetLeft,
+      times = [],
+      widths = [],
+      spaceBefore = [],
+      xPercents = [],
+      curIndex = 0,
+      indexIsDirty = false,
+      center = config.center,
+      pixelsPerSecond = (config.speed || 1) * 100,
+      snap =
+        config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1), // some browsers shift by a pixel to accommodate flex layouts, so for example if width is 20% the first element's width might be 242px, and the next 243px, alternating back and forth. So we snap to 5 percentage points to make things look more natural
+      timeOffset = 0,
+      container =
+        center === true
+          ? items[0].parentNode
+          : gsap.utils.toArray(center)[0] || items[0].parentNode,
+      totalWidth,
+      getTotalWidth = () =>
+        items[length - 1].offsetLeft +
+        (xPercents[length - 1] / 100) * widths[length - 1] -
+        startX +
+        spaceBefore[0] +
+        items[length - 1].offsetWidth *
+          gsap.getProperty(items[length - 1], "scaleX") +
+        (parseFloat(config.paddingRight) || 0),
+      populateWidths = () => {
+        let b1 = container.getBoundingClientRect(),
+          b2;
+        items.forEach((el, i) => {
+          widths[i] = parseFloat(gsap.getProperty(el, "width", "px"));
+          xPercents[i] = snap(
+            (parseFloat(gsap.getProperty(el, "x", "px")) / widths[i]) * 100 +
+              gsap.getProperty(el, "xPercent")
+          );
+          b2 = el.getBoundingClientRect();
+          spaceBefore[i] = b2.left - (i ? b1.right : b1.left);
+          b1 = b2;
+        });
+        gsap.set(items, {
+          // convert "x" to "xPercent" to make things responsive, and populate the widths/xPercents Arrays to make lookups faster.
+          xPercent: (i) => xPercents[i],
+        });
+        totalWidth = getTotalWidth();
+      },
+      timeWrap,
+      populateOffsets = () => {
+        timeOffset = center
+          ? (tl.duration() * (container.offsetWidth / 2)) / totalWidth
+          : 0;
+        center &&
+          times.forEach((t, i) => {
+            times[i] = timeWrap(
+              tl.labels["label" + i] +
+                (tl.duration() * widths[i]) / 2 / totalWidth -
+                timeOffset
+            );
+          });
+      },
+      getClosest = (values, value, wrap) => {
+        let i = values.length,
+          closest = 1e10,
+          index = 0,
+          d;
+        while (i--) {
+          d = Math.abs(values[i] - value);
+          if (d > wrap / 2) {
+            d = wrap - d;
+          }
+          if (d < closest) {
+            closest = d;
+            index = i;
+          }
+        }
+        return index;
+      },
+      populateTimeline = () => {
+        let i, item, curX, distanceToStart, distanceToLoop;
+        tl.clear();
+        for (i = 0; i < length; i++) {
+          item = items[i];
+          curX = (xPercents[i] / 100) * widths[i];
+          distanceToStart = item.offsetLeft + curX - startX + spaceBefore[0];
+          distanceToLoop =
+            distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
+          tl.to(
+            item,
+            {
+              xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100),
+              duration: distanceToLoop / pixelsPerSecond,
+            },
+            0
+          )
+            .fromTo(
+              item,
+              {
+                xPercent: snap(
+                  ((curX - distanceToLoop + totalWidth) / widths[i]) * 100
+                ),
+              },
+              {
+                xPercent: xPercents[i],
+                duration:
+                  (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
+                immediateRender: false,
+              },
+              distanceToLoop / pixelsPerSecond
+            )
+            .add("label" + i, distanceToStart / pixelsPerSecond);
+          times[i] = distanceToStart / pixelsPerSecond;
+        }
+        timeWrap = gsap.utils.wrap(0, tl.duration());
+      },
+      refresh = (deep) => {
+        let progress = tl.progress();
+        tl.progress(0, true);
+        populateWidths();
+        deep && populateTimeline();
+        populateOffsets();
+        deep && tl.draggable
+          ? tl.time(times[curIndex], true)
+          : tl.progress(progress, true);
+      },
+      proxy;
+    gsap.set(items, { x: 0 });
+    populateWidths();
+    populateTimeline();
+    populateOffsets();
+    window.addEventListener("resize", () => refresh(true));
+    function toIndex(index, vars) {
+      vars = vars || {};
+      Math.abs(index - curIndex) > length / 2 &&
+        (index += index > curIndex ? -length : length); // always go in the shortest direction
+      let newIndex = gsap.utils.wrap(0, length, index),
+        time = times[newIndex];
+      if (time > tl.time() !== index > curIndex && index !== curIndex) {
+        // if we're wrapping the timeline's playhead, make the proper adjustments
+        time += tl.duration() * (index > curIndex ? 1 : -1);
+      }
+      if (time < 0 || time > tl.duration()) {
+        vars.modifiers = { time: timeWrap };
+      }
+      curIndex = newIndex;
+      vars.overwrite = true;
+      gsap.killTweensOf(proxy);
+      return vars.duration === 0
+        ? tl.time(timeWrap(time))
+        : tl.tweenTo(time, vars);
+    }
+    tl.toIndex = (index, vars) => toIndex(index, vars);
+    tl.closestIndex = (setCurrent) => {
+      let index = getClosest(times, tl.time(), tl.duration());
+      if (setCurrent) {
+        curIndex = index;
+        indexIsDirty = false;
+      }
+      return index;
+    };
+    tl.current = () => (indexIsDirty ? tl.closestIndex(true) : curIndex);
+    tl.next = (vars) => toIndex(tl.current() + 1, vars);
+    tl.previous = (vars) => toIndex(tl.current() - 1, vars);
+    tl.times = times;
+    tl.progress(1, true).progress(0, true); // pre-render for performance
+    if (config.reversed) {
+      tl.vars.onReverseComplete();
+      tl.reverse();
+    }
+    if (config.draggable && typeof Draggable === "function") {
+      proxy = document.createElement("div");
+      let wrap = gsap.utils.wrap(0, 1),
+        ratio,
+        startProgress,
+        draggable,
+        dragSnap,
+        lastSnap,
+        initChangeX,
+        align = () =>
+          tl.progress(
+            wrap(startProgress + (draggable.startX - draggable.x) * ratio)
+          ),
+        syncIndex = () => tl.closestIndex(true);
+      typeof InertiaPlugin === "undefined" &&
+        console.warn(
+          "InertiaPlugin required for momentum-based scrolling and snapping. https://greensock.com/club"
+        );
+      draggable = Draggable.create(proxy, {
+        trigger: items[0].parentNode,
+        type: "x",
+        onPressInit() {
+          let x = this.x;
+          gsap.killTweensOf(tl);
+          startProgress = tl.progress();
+          refresh();
+          ratio = 1 / totalWidth;
+          initChangeX = startProgress / -ratio - x;
+          gsap.set(proxy, { x: startProgress / -ratio });
+        },
+        onDrag: align,
+        onThrowUpdate: align,
+        overshootTolerance: 0,
+        inertia: true,
+        snap(value) {
+          //note: if the user presses and releases in the middle of a throw, due to the sudden correction of proxy.x in the onPressInit(), the velocity could be very large, throwing off the snap. So sense that condition and adjust for it. We also need to set overshootTolerance to 0 to prevent the inertia from causing it to shoot past and come back
+          if (Math.abs(startProgress / -ratio - this.x) < 10) {
+            return lastSnap + initChangeX;
+          }
+          let time = -(value * ratio) * tl.duration(),
+            wrappedTime = timeWrap(time),
+            snapTime = times[getClosest(times, wrappedTime, tl.duration())],
+            dif = snapTime - wrappedTime;
+          Math.abs(dif) > tl.duration() / 2 &&
+            (dif += dif < 0 ? tl.duration() : -tl.duration());
+          lastSnap = (time + dif) / tl.duration() / -ratio;
+          return lastSnap;
+        },
+        onRelease() {
+          syncIndex();
+          draggable.isThrowing && (indexIsDirty = true);
+        },
+        onThrowComplete: syncIndex,
+      })[0];
+      tl.draggable = draggable;
+    }
+    tl.closestIndex(true);
+    lastIndex = curIndex;
+    onChange && onChange(items[curIndex], curIndex);
+    return tl;
+  }
+
   return (
     <>
       {/* //?Main - Starting */}
@@ -43,12 +403,12 @@ export default function Section03({ changeStage }) {
         {/* //?Page 01 */}
         <section className="Page-section flex-center z-0 -mt-[100vh] h-screen w-full flex-col rounded-t-full bg-cream px-desktop">
           <section className="Text-section flex-center z-10 flex-col gap-3">
-            <span className="Title-text text-center text-40px font-semibold text-blue">
+            <span className="Title-text text-center text-40px font-semibold leading-normal text-blue">
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_01}
               <br></br>
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_02}
             </span>
-            <span className="Sub-title-text z-10 text-center text-4xl font-medium text-orange">
+            <span className="Sub-title-text text-center text-4xl font-medium leading-normal text-orange">
               {configJSON.CONTENT.PAGE_04.SECTION_01.SUB_TITLE_01}
               <br></br>
               {configJSON.CONTENT.PAGE_04.SECTION_01.SUB_TITLE_02}
@@ -61,7 +421,7 @@ export default function Section03({ changeStage }) {
             <h2 className="Heading-text text-center text-blue">
               {configJSON.CONTENT.PAGE_04.SECTION_02.HEADING_01}
             </h2>
-            <h2 className="Sub-heading-text z-10 text-center text-orange">
+            <h2 className="Sub-heading-text text-center text-orange">
               {configJSON.CONTENT.PAGE_04.SECTION_02.SUB_HEADING_01}
             </h2>
           </section>
@@ -71,6 +431,7 @@ export default function Section03({ changeStage }) {
             alt="asrs_png"
             classpic="Picture-section z-10"
             classimg="mx-auto w-full h-auto mb-11 mt-5"
+            lazy
           />
           <div className="Link-container">
             <a
@@ -237,79 +598,415 @@ export default function Section03({ changeStage }) {
               </div>
             </div>
           </div>
-          {/* //?Page 04 */}
-          <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop">
-            <section className="Text-section flex-center z-10 flex-col py-25vh">
-              <h2 className="Heading-text text-center text-blue">
-                {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_01}
-                <br></br>
-                {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_02}
+        </section>
+        {/* //?Page 04 */}
+        <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop">
+          <section className="Text-section flex-center z-10 flex-col py-25vh">
+            <h2 className="Heading-text text-center text-blue">
+              {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_01}
+              <br></br>
+              {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_02}
+            </h2>
+            <h2 className="Sub-heading-text text-center text-orange">
+              {configJSON.CONTENT.PAGE_04.SECTION_04.SUB_HEADING_01}
+              <br></br>
+              {configJSON.CONTENT.PAGE_04.SECTION_04.SUB_HEADING_02}
+            </h2>
+          </section>
+          <div className="Row-container flex-center flex-col gap-fifthteen">
+            <div className="Row">
+              <div className="Lottie-section"></div>
+              <section className="Text-section z-10 flex flex-auto flex-col items-start">
+                <h2 className="Heading-text !text-start text-blue">
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
+                      .HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
+                      .HEADING_02
+                  }
+                </h2>
+                <h2 className="Sub-heading-text z-10 !text-start text-orange">
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
+                      .SUB_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
+                      .SUB_HEADING_02
+                  }
+                </h2>
+              </section>
+            </div>
+            <div className="Row">
+              <section className="Text-section z-10 flex flex-auto flex-col items-start">
+                <h2 className="Heading-text !text-start text-blue">
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
+                      .HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
+                      .HEADING_02
+                  }
+                </h2>
+                <h2 className="Sub-heading-text !text-start text-orange">
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
+                      .SUB_HEADING_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
+                      .SUB_HEADING_02
+                  }
+                </h2>
+              </section>
+              <div className="Lottie-section"></div>
+            </div>
+          </div>
+        </section>
+        {/* //?Page 05 */}
+        <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop pt-25vh">
+          <div className="Convenient-container relative flex h-fit w-full max-w-1360px flex-col justify-center gap-[60px]">
+            <div className="Line-place pointer-events-none absolute left-0 top-0 h-full w-1/3 border-t-8 border-l-8 border-blue"></div>
+            <section className="Text-section flex-center z-10 -mt-20 w-full flex-col">
+              <h2 className="Heading-text !w-fit text-blue">
+                {configJSON.CONTENT.PAGE_04.SECTION_05.HEADING_01}
               </h2>
-              <h2 className="Sub-heading-text z-10 text-center text-orange">
-                {configJSON.CONTENT.PAGE_04.SECTION_04.SUB_HEADING_01}
-                <br></br>
-                {configJSON.CONTENT.PAGE_04.SECTION_04.SUB_HEADING_02}
+              <h2 className="Sub-heading-text !w-fit text-orange">
+                {configJSON.CONTENT.PAGE_04.SECTION_05.SUB_HEADING_01}
               </h2>
             </section>
-            <div className="Row-container flex-center flex-col gap-fifthteen">
-              <div className="Row">
-                <div className="Lottie-section"></div>
-                <section className="Text-section z-10 flex flex-auto flex-col items-start">
-                  <h2 className="Heading-text !text-start text-blue">
+            <div className="Line-place pointer-events-none absolute right-0 top-0 h-full w-1/3 border-t-8 border-r-8 border-blue"></div>
+            <div className="Slide-track z-50 flex w-full max-w-1360px -translate-x-[32%] justify-between px-10">
+              <div className="Slide-container" id="Slide-01">
+                <section className="Text-section flex-center z-10 w-fit flex-col">
+                  <span className="Title-text text-blue">
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
-                        .HEADING_01
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .TITLE_01
                     }
                     <br></br>
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
-                        .HEADING_02
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .TITLE_02
                     }
-                  </h2>
-                  <h2 className="Sub-heading-text z-10 !text-start text-orange">
+                  </span>
+                  <span className="Sub-title-text text-orange">
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
-                        .SUB_HEADING_01
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .SUB_TITLE_01
                     }
                     <br></br>
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
-                        .SUB_HEADING_02
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .SUB_TITLE_02
                     }
-                  </h2>
+                  </span>
                 </section>
+                <Picture
+                  webp={orders_webp}
+                  normal={orders_png}
+                  alt="orders_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-full h-auto"
+                  lazy
+                />
               </div>
-              <div className="Row">
-                <section className="Text-section z-10 flex flex-auto flex-col items-start">
-                  <h2 className="Heading-text !text-start text-blue">
+              <div className="Slide-container" id="Slide-02">
+                <section className="Text-section flex-center z-10 w-fit flex-col">
+                  <span className="Title-text text-blue">
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
-                        .HEADING_01
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .TITLE_01
                     }
                     <br></br>
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
-                        .HEADING_02
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .TITLE_02
                     }
-                  </h2>
-                  <h2 className="Sub-heading-text z-10 !text-start text-orange">
+                  </span>
+                  <span className="Sub-title-text text-orange">
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
-                        .SUB_HEADING_01
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .SUB_TITLE_01
                     }
                     <br></br>
                     {
-                      configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
-                        .SUB_HEADING_02
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .SUB_TITLE_02
                     }
-                  </h2>
+                  </span>
                 </section>
-                <div className="Lottie-section"></div>
+                <Picture
+                  webp={boxes_webp}
+                  normal={boxes_png}
+                  alt="boxes_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-full h-auto"
+                  lazy
+                />
+              </div>
+              <div className="Slide-container" id="Slide-03">
+                <section className="Text-section flex-center z-10 w-fit flex-col">
+                  <span className="Title-text text-blue">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
+                        .TITLE_01
+                    }
+                  </span>
+                  <span className="Sub-title-text text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
+                        .SUB_TITLE_02
+                    }
+                  </span>
+                </section>
+                <Picture
+                  webp={coins_webp}
+                  normal={coins_png}
+                  alt="coins_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-full h-auto"
+                  lazy
+                />
+              </div>
+              <div className="Slide-container" id="Slide-04">
+                <section className="Text-section flex-center z-10 w-fit flex-col">
+                  <span className="Title-text text-blue">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .TITLE_02
+                    }
+                  </span>
+                  <span className="Sub-title-text text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
+                        .SUB_TITLE_02
+                    }
+                  </span>
+                </section>
+                <Picture
+                  webp={orders_webp}
+                  normal={orders_png}
+                  alt="orders_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-full h-auto"
+                  lazy
+                />
+              </div>
+              <div className="Slide-container" id="Slide-05">
+                <section className="Text-section flex-center z-10 w-fit flex-col">
+                  <span className="Title-text text-blue">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .TITLE_02
+                    }
+                  </span>
+                  <span className="Sub-title-text text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
+                        .SUB_TITLE_02
+                    }
+                  </span>
+                </section>
+                <Picture
+                  webp={boxes_webp}
+                  normal={boxes_png}
+                  alt="boxes_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-full h-auto"
+                  lazy
+                />
+              </div>
+              <div className="Slide-container" id="Slide-06">
+                <section className="Text-section flex-center z-10 w-fit flex-col">
+                  <span className="Title-text text-blue">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
+                        .TITLE_01
+                    }
+                  </span>
+                  <span className="Sub-title-text text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
+                        .SUB_TITLE_02
+                    }
+                  </span>
+                </section>
+                <Picture
+                  webp={coins_webp}
+                  normal={coins_png}
+                  alt="coins_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-full h-auto"
+                  lazy
+                />
               </div>
             </div>
+          </div>
+        </section>
+        {/* //?Page 06 */}
+        <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop pt-44">
+          <section className="Section-container flex-center max-w-1540px gap-24">
+            <section className="Column-container h-[300vh] w-2/5 py-20vh">
+              <div
+                className="Solution-picture-container sticky top-twenty pt-36"
+                id="Picture-01"
+                ref={solution_01PicRef}
+              >
+                <Picture
+                  webp={page_04_solution_01_webp}
+                  normal={page_04_solution_01_png}
+                  alt="page_04_solution_01_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-fit h-auto"
+                  lazy
+                />
+              </div>
+              <div
+                className="Solution-picture-container sticky top-twenty hidden pt-36"
+                id="Picture-02"
+                ref={solution_02PicRef}
+              >
+                <Picture
+                  webp={page_04_solution_02_webp}
+                  normal={page_04_solution_02_png}
+                  alt="page_04_solution_02_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-fit h-auto"
+                  lazy
+                />
+              </div>
+              <div
+                className="Solution-picture-container sticky top-twenty hidden pt-36"
+                id="Picture-03"
+                ref={solution_03PicRef}
+              >
+                <Picture
+                  webp={page_04_solution_03_webp}
+                  normal={page_04_solution_03_png}
+                  alt="page_04_solution_03_png"
+                  classpic="Picture-section z-10"
+                  classimg="mx-auto w-fit h-auto"
+                  lazy
+                />
+              </div>
+            </section>
+            <section className="Column-container h-auto w-3/5">
+              <section
+                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+                ref={solution_01Ref}
+              >
+                <h2 className="Heading-text !text-start text-blue">
+                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01.TITLE_01}
+                </h2>
+                <h2 className="Sub-heading-text !text-start text-orange">
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01
+                      .SUB_TITLE_01
+                  }
+                </h2>
+              </section>
+              <section
+                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+                ref={solution_02Ref}
+              >
+                <h2 className="Heading-text !text-start text-blue">
+                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_03}
+                </h2>
+                <h2 className="Sub-heading-text !text-start text-orange">
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                      .SUB_TITLE_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                      .SUB_TITLE_02
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                      .SUB_TITLE_03
+                  }
+                </h2>
+              </section>
+              <section
+                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+                ref={solution_03Ref}
+              >
+                <h2 className="Heading-text !text-start text-blue">
+                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_01}
+                  <br></br>
+                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_02}
+                </h2>
+                <h2 className="Sub-heading-text !text-start text-orange">
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
+                      .SUB_TITLE_01
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
+                      .SUB_TITLE_02
+                  }
+                </h2>
+              </section>
+            </section>
           </section>
-          {/* //?Page 05 */}
-          <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop pt-25vh"></section>
+        </section>
+        {/* //?Page 0x */}
+        <section className="Page-section flex h-[100vh] items-end justify-center">
+          {/* //?Page Down */}
+          {/* <div
+            className="Page-controller group h-52 w-screen"
+            id="Page-controller-04"
+          >
+            <button
+              className="Next-page h-full w-full !rounded-none !shadow-none transition-all hover:bg-white"
+              onClick={() => changeStage("+")}
+            ></button>
+          </div> */}
         </section>
       </div>
     </>

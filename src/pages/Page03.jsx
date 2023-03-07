@@ -20,6 +20,7 @@ import epidemic01 from "../lotties/epidemic-01.json";
 import epidemic02 from "../lotties/epidemic-02.json";
 import epidemic03 from "../lotties/epidemic-03.json";
 import mini_line from "../lotties/mini-line.json";
+import help from "../lotties/help.json";
 
 export default function Section03({ changeStage }) {
   const destroyRef = useRef(null);
@@ -174,16 +175,15 @@ export default function Section03({ changeStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-0 -mt-[100vh] h-fit w-full rounded-t-full bg-blue px-desktop pb-30vh pt-40vh">
+        <section className="Page-section z-0 -mt-[100vh] h-fit w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
-            {/* <Picture
-            webp={page_02_people_webp}
-            normal={page_02_people_png}
-            alt="page_02_people_png"
-            classpic="Picture-section h-fit"
-            classimg="mx-auto -mt-10 z-0"
-            lazy
-          /> */}
+            <Lottie
+              animationData={help}
+              loop
+              autoPlay
+              height={"auto"}
+              className="Lottie z-20"
+            />
             <h1 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_01.HEADING_01}
               <br></br>

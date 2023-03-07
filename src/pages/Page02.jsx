@@ -69,6 +69,30 @@ export default function Section02({ changeStage }) {
   const previewVideoURL01 = black_webp;
   const previewVideoURL02 = black_webp;
 
+  let scrollPassed = 0;
+  let scrollLast = 0;
+
+  function scrollAndCheckForNextPage(el) {
+    let bodyHeight = document.body.clientHeight;
+    let scrolling = el.scrollTop;
+    let scrollingHeight = el.scrollHeight;
+
+    if (bodyHeight + scrolling >= scrollingHeight) {
+      if (scrollPassed >= 1) {
+        changeStage("+");
+      }
+      if (scrolling < scrollLast) {
+        scrollPassed = 0;
+      } else {
+        scrollPassed++;
+      }
+      scrollLast = scrolling;
+      return;
+    } else {
+      scrollPassed = 0;
+    }
+  }
+
   const videoIcon = () => {
     return (
       <div className="Icon-player-container flex-center">
@@ -90,6 +114,13 @@ export default function Section02({ changeStage }) {
   if (workIn) {
     workLottieRef.current.play();
   }
+
+  useEffect(() => {
+    let pageWrapper = document.querySelector(".Page-inner-wrap");
+    pageWrapper.addEventListener("scroll", (e) => {
+      scrollAndCheckForNextPage(pageWrapper);
+    });
+  }, []);
 
   const pushUp01 = useSpring({
     config: { duration: duration, easing: easings.easeInOutQuint },
@@ -142,7 +173,7 @@ export default function Section02({ changeStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-0 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh">
+        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text text-[90px] font-medium text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_01}
@@ -164,7 +195,7 @@ export default function Section02({ changeStage }) {
             <Lottie
               animationData={working}
               lottieRef={workLottieRef}
-              className="Lottie-section z-0 -mt-12"
+              className="Lottie-section -mt-12"
               style={{ height: "100%", width: "100%" }}
               autoplay={false}
               loop={false}
@@ -535,7 +566,7 @@ export default function Section02({ changeStage }) {
               </h3>
             </section>
           </div>
-          <div className="Video-container w-full max-w-1360px pt-44 pb-48">
+          <div className="Video-container w-full max-w-1360px px-desktop pt-44 pb-48">
             <ReactPlayer
               className="React-player"
               url={videoURL}
@@ -758,23 +789,23 @@ export default function Section02({ changeStage }) {
               <section className="Text-section">
                 <h3 className="Icon-show-text">
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_HEADING_01
                   }
                   <br></br>
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_HEADING_02
                   }
                 </h3>
                 <h3 className="Icon-show-sub-text">
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_SUB_HEADING_01
                   }
                   <br></br>
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_SUB_HEADING_02
                   }
                 </h3>
@@ -801,23 +832,28 @@ export default function Section02({ changeStage }) {
               <section className="Text-section">
                 <h3 className="Icon-show-text">
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_01
                   }
                   <br></br>
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_02
+                  }
+                  <br></br>
+                  {
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
+                      .ICON_HEADING_03
                   }
                 </h3>
                 <h3 className="Icon-show-sub-text">
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_SUB_HEADING_01
                   }
                   <br></br>
                   {
-                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
+                    configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_SUB_HEADING_02
                   }
                 </h3>
@@ -889,7 +925,7 @@ export default function Section02({ changeStage }) {
               </div>
             </div>
           </div>
-          <div className="Video-container w-full max-w-1360px pt-44 pb-48">
+          <div className="Video-container w-full max-w-1360px px-desktop pt-44 pb-48">
             <ReactPlayer
               className="React-player"
               url={videoURL02}
@@ -916,9 +952,9 @@ export default function Section02({ changeStage }) {
           />
         </section>
         {/* //?Page 0x */}
-        <section className="Page-section flex h-fit items-end justify-center">
+        <section className="Page-section flex h-[100vh] items-end justify-center">
           {/* //?Page Down */}
-          <div
+          {/* <div
             className="Page-controller group h-52 w-screen"
             id="Page-controller-02"
           >
@@ -926,7 +962,7 @@ export default function Section02({ changeStage }) {
               className="Next-page h-full w-full !rounded-none !shadow-none transition-all hover:bg-white"
               onClick={() => changeStage("+")}
             ></button>
-          </div>
+          </div> */}
         </section>
       </div>
       {/* //?Main - Ending */}

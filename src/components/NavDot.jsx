@@ -40,7 +40,7 @@ export default function NavDot({ changeStage, currentStage }) {
               key={button.id}
             >
               <button
-                className="Nav z-40 h-[6px] w-[6px] rounded-full bg-white mix-blend-multiply shadow-outline transition-all group-hover:h-[10px] group-hover:w-[10px]"
+                className="Nav z-50 h-[6px] w-[6px] rounded-full bg-white mix-blend-multiply shadow-outline transition-all group-hover:h-[10px] group-hover:w-[10px]"
                 onClick={() => changeStage(button.goTo)}
                 style={currentActive ? { width: 10, height: 10 } : {}}
               ></button>

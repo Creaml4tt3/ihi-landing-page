@@ -9,6 +9,7 @@ import Section01 from "./pages/Page01";
 import Section02 from "./pages/Page02";
 import Section03 from "./pages/Page03";
 import Section04 from "./pages/Page04";
+import Section05 from "./pages/Page05";
 
 export default function App() {
   //? ตั้งค่าหน้าที่จะแสดงหน้าแรก
@@ -17,7 +18,7 @@ export default function App() {
   );
   //? ตั้งค่าว่าจะเอาหน้าโหลดไหม true = โหลด flase = ไม่โหลด
   const [onLoad, setOnLoad] = useState(configJSON.SETTING.LOADING_PAGE);
-  const [onFinish, setOnFinish] = useState(false);
+  const [onFinish, setOnFinish] = useState(!configJSON.SETTING.LOADING_PAGE);
 
   //? ตั้งค่าเวลาในการเปลี่ยนหน้า
   const duration = configJSON.SETTING.DURATION;
@@ -89,6 +90,9 @@ export default function App() {
             )}
             {sectionStage === 4 && (
               <Section04 changeStage={sectionStageChange} />
+            )}
+            {sectionStage === 5 && (
+              <Section05 changeStage={sectionStageChange} />
             )}
           </>
         )}

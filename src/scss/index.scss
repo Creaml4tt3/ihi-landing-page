@@ -325,4 +325,18 @@ $hydro: #0f283e;
       }
     }
   }
+
+  .Slide-track {
+    .Slide-container {
+      @apply flex min-w-[33.3%] flex-1 flex-col items-center justify-end gap-16;
+      .Text-section {
+        .Title-text {
+          @apply text-center text-3xl font-semibold leading-relaxed text-blue;
+        }
+        .Sub-title-text {
+          @apply text-center text-3xl font-medium leading-relaxed text-orange;
+        }
+      }
+    }
+  }
 }

@@ -1,7 +1,7 @@
 {
   "SETTING": {
     "FIRST_SECTION": 1,
-    "LOADING_PAGE": "true",
+    "LOADING_PAGE": true,
     "DURATION": 500
   },
   "CONTENT": {
@@ -444,6 +444,54 @@
             "SUB_TITLE_02": "value per piece"
           }
         }
+      },
+      "SECTION_06": {
+        "SOLUTION_01": {
+          "TITLE_01": "เพื่อลดต้นทุนด้านโลจิสติกส์",
+          "SUB_TITLE_01": "To reduce logistics costs"
+        },
+        "SOLUTION_02": {
+          "TITLE_01": "ลดพื้นที่จัดเก็บสินค้าจำกัด",
+          "TITLE_02": "จากการจัดเก็บและเรียกคืน",
+          "TITLE_03": "สินค้าภายในคลัง",
+          "SUB_TITLE_01": "To store and retrieve products",
+          "SUB_TITLE_02": "within limited space of the",
+          "SUB_TITLE_03": "warehouse"
+        },
+        "SOLUTION_03": {
+          "TITLE_01": "ลดปัญหาสภาวะ",
+          "TITLE_02": "แรงงานขาดแคลน",
+          "SUB_TITLE_01": "To reduce the problem",
+          "SUB_TITLE_02": "of labor shortage"
+        }
+      }
+    },
+    "PAGE_05": {
+      "SECTION_01": {
+        "SUPER_HEADING_01": "“จะดีกว่าไหม”",
+        "HEADING_01": "หากเราสามารถทำให้โลกน่าอยู่ขึ้น",
+        "SUB_HEADING_01": "Would it be better if we could",
+        "SUB_HEADING_02": "make the world a better place?"
+      },
+      "SECTION_02": {
+        "HEADING_01": "ลดการคายความร้อน ลดมลพิษ",
+        "HEADING_02": "และยังให้กำลังการผลิตที่มีประสิทธิภาพสูง",
+        "SUB_HEADING_01": "Maintaining high production rate, whilst reducing",
+        "SUB_HEADING_02": "the emission of Carbon Dioxide and air pollution."
+      },
+      "SECTION_03": {
+        "HEADING_01": "อีกทั้งยังลดต้นทุนการผลิตทั้งในเชิงค่าพลังงาน",
+        "HEADING_02": "การบำรุงรักษา และทรัพยากรบุคคล",
+        "SUB_HEADING_01": "We can contribute to reduce the production cost",
+        "SUB_HEADING_02": "by saving energy, conducting efficient maintenance",
+        "SUB_HEADING_03": "and utilising less human resources."
+      },
+      "SECTION_04": {
+        "HEADING_01": "ไม่ยาก…หากต้องการหยุดทุกปัญหา",
+        "HEADING_02": "เปลี่ยนสิ่งที่เป็นไปไม่ได้ ให้เป็นไปได้",
+        "SUB_HEADING_01": "It's not difficult ... to change the world a better",
+        "SUB_HEADING_02": "place. Just realize \"impossible\" to \"possible\".",
+        "LINK_01": "https://www.ihi.co.jp/hi_ihi/en/business/"
       }
     }
   }
