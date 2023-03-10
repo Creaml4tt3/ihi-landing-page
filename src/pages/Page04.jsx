@@ -1,4 +1,6 @@
 import { useLayoutEffect, useRef, useEffect, useState } from "react";
+import ReactPlayer from "react-player";
+import Lottie from "lottie-react";
 import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import Picture from "../components/Picture";
 import Video from "../components/Video";
@@ -34,6 +36,9 @@ import {
   icon_02_png,
   icon_02_webp,
 } from "../components/image/Image02";
+import belt_webm from "../lotties/webm/belt.webm";
+import warehouse_01 from "../lotties/warehouse-01.json";
+import warehouse_02 from "../lotties/warehouse-02.json";
 export default function Section03({ changeStage }) {
   const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
   const previewVideoURL01 = black_webp;
@@ -52,8 +57,6 @@ export default function Section03({ changeStage }) {
     solution_03PicRef,
   ];
   let sliders;
-  let scrollPassed = 0;
-  let scrollLast = 0;
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
@@ -103,19 +106,11 @@ export default function Section03({ changeStage }) {
     let scrolling = el.scrollTop;
     let scrollingHeight = el.scrollHeight;
 
+    console.log("height" + scrollingHeight);
+    console.log(scrolling + bodyHeight);
+
     if (bodyHeight + scrolling >= scrollingHeight) {
-      if (scrollPassed >= 1) {
-        changeStage("+");
-      }
-      if (scrolling < scrollLast) {
-        scrollPassed = 0;
-      } else {
-        scrollPassed++;
-      }
-      scrollLast = scrolling;
-      return;
-    } else {
-      scrollPassed = 0;
+      changeStage("+");
     }
   }
 
@@ -126,9 +121,23 @@ export default function Section03({ changeStage }) {
     });
 
     let pageWrapper = document.querySelector(".Page-inner-wrap");
-    pageWrapper.addEventListener("scroll", (e) => {
+    pageWrapper.addEventListener("wheel", () => {
       scrollAndCheckForNextPage(pageWrapper);
+      scrollUp(pageWrapper);
     });
+
+    let firstScroll = 0;
+
+    function scrollUp(el) {
+      let scrolling = el.scrollTop;
+      console.log(scrolling);
+      if (firstScroll > 2) {
+        if (scrolling === 0) {
+          changeStage("-");
+        }
+      }
+      firstScroll++;
+    }
   }, []);
 
   function horizontalLoop(items, config) {
@@ -237,17 +246,17 @@ export default function Section03({ changeStage }) {
 
   return (
     <>
+      {/* //?Background - Starting */}
+      <Picture
+        webp={page_04_bg_webp}
+        normal={page_04_bg_png}
+        alt="page_04_bg_png"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-multiply pointer-events-none"
+        classimg="mx-auto w-full h-auto"
+      />
+      {/* //?Background - Ending */}
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-cream">
-        {/* //?Background - Starting */}
-        <Picture
-          webp={page_04_bg_webp}
-          normal={page_04_bg_png}
-          alt="page_04_bg_png"
-          classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-multiply pointer-events-none"
-          classimg="mx-auto w-full h-auto"
-        />
-        {/* //?Background - Ending */}
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-blue"
@@ -468,9 +477,18 @@ export default function Section03({ changeStage }) {
           </section>
           <div className="Row-container flex-center flex-col gap-fifthteen">
             <div className="Row">
-              <div className="Lottie-section"></div>
-              <section className="Text-section z-10 flex flex-auto flex-col items-start">
-                <h2 className="Heading-text !text-start text-blue">
+              <div className="Lottie-section">
+                <div className="Lottie-container">
+                  <Lottie
+                    animationData={warehouse_01}
+                    className="Lottie-section z-20 mx-auto w-full"
+                    style={{ height: "auto" }}
+                    loop={true}
+                  />
+                </div>
+              </div>
+              <section className="Text-section z-10 flex w-fit flex-auto flex-col items-start justify-center gap-4">
+                <h2 className="Heading-text !w-fit !text-start text-blue">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .HEADING_01
@@ -481,7 +499,7 @@ export default function Section03({ changeStage }) {
                       .HEADING_02
                   }
                 </h2>
-                <h2 className="Sub-heading-text z-10 !text-start text-orange">
+                <h2 className="Sub-heading-text z-10 !w-fit !text-start text-orange">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .SUB_HEADING_01
@@ -495,8 +513,8 @@ export default function Section03({ changeStage }) {
               </section>
             </div>
             <div className="Row">
-              <section className="Text-section z-10 flex flex-auto flex-col items-start">
-                <h2 className="Heading-text !text-start text-blue">
+              <section className="Text-section z-10 flex w-fit flex-col items-start justify-center gap-4">
+                <h2 className="Heading-text !w-fit !text-start text-blue">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .HEADING_01
@@ -507,7 +525,7 @@ export default function Section03({ changeStage }) {
                       .HEADING_02
                   }
                 </h2>
-                <h2 className="Sub-heading-text !text-start text-orange">
+                <h2 className="Sub-heading-text !w-fit !text-start text-orange">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .SUB_HEADING_01
@@ -519,12 +537,32 @@ export default function Section03({ changeStage }) {
                   }
                 </h2>
               </section>
-              <div className="Lottie-section"></div>
+              <div className="Lottie-section">
+                <div className="Lottie-container">
+                  <Lottie
+                    animationData={warehouse_02}
+                    className="Lottie-section z-20 mx-auto w-full"
+                    style={{ height: "auto" }}
+                    loop={true}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop pt-25vh">
+        <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop pt-25vh">
+          <div className="Player-container absolute left-0 -bottom-[5vw] z-20 w-full scale-x-[-1]">
+            <ReactPlayer
+              className="React-player"
+              url={belt_webm}
+              width="100%"
+              height="auto"
+              playing
+              loop
+              muted
+            />
+          </div>
           <div className="Convenient-container relative flex h-fit w-full max-w-1360px flex-col justify-center gap-[60px]">
             <div className="Line-place pointer-events-none absolute left-0 top-0 h-full w-1/3 border-t-8 border-l-8 border-blue"></div>
             <section className="Text-section flex-center z-10 -mt-20 w-full flex-col">
@@ -566,7 +604,7 @@ export default function Section03({ changeStage }) {
                   webp={orders_webp}
                   normal={orders_png}
                   alt="orders_png"
-                  classpic="Picture-section z-10"
+                  classpic="Picture-section"
                   classimg="mx-auto w-full h-auto"
                   lazy
                 />
@@ -600,7 +638,7 @@ export default function Section03({ changeStage }) {
                   webp={boxes_webp}
                   normal={boxes_png}
                   alt="boxes_png"
-                  classpic="Picture-section z-10"
+                  classpic="Picture-section"
                   classimg="mx-auto w-full h-auto"
                   lazy
                 />
@@ -629,7 +667,7 @@ export default function Section03({ changeStage }) {
                   webp={coins_webp}
                   normal={coins_png}
                   alt="coins_png"
-                  classpic="Picture-section z-10"
+                  classpic="Picture-section"
                   classimg="mx-auto w-full h-auto"
                   lazy
                 />
@@ -663,7 +701,7 @@ export default function Section03({ changeStage }) {
                   webp={orders_webp}
                   normal={orders_png}
                   alt="orders_png"
-                  classpic="Picture-section z-10"
+                  classpic="Picture-section"
                   classimg="mx-auto w-full h-auto"
                   lazy
                 />
@@ -697,7 +735,7 @@ export default function Section03({ changeStage }) {
                   webp={boxes_webp}
                   normal={boxes_png}
                   alt="boxes_png"
-                  classpic="Picture-section z-10"
+                  classpic="Picture-section"
                   classimg="mx-auto w-full h-auto"
                   lazy
                 />
@@ -726,7 +764,7 @@ export default function Section03({ changeStage }) {
                   webp={coins_webp}
                   normal={coins_png}
                   alt="coins_png"
-                  classpic="Picture-section z-10"
+                  classpic="Picture-section"
                   classimg="mx-auto w-full h-auto"
                   lazy
                 />

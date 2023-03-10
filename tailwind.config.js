@@ -18,6 +18,9 @@ module.exports = {
       tablet: { max: "1280px", min: "768px" },
       mobile: { max: "767px" },
     },
+    fontFamily: {
+      libre: ["Libre Franklin", "sans-serif"],
+    },
     extend: {
       maxWidth: {
         "1620px": "1620px",
@@ -29,8 +32,9 @@ module.exports = {
       },
       spacing: {
         desktop: "60px",
-        tablet: "30px",
-        mobile: "20px",
+        laptop: "40px",
+        tablet: "40px",
+        mobile: "30px",
         twenty: "20vh",
         fifthteen: "15vh",
       },

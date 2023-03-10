@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useLayoutEffect } from "react";
 import { UseIntersection } from "../components/UseIntersection";
+import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import { useSpring, animated, easings } from "@react-spring/web";
 import { gsap } from "gsap";
 import Lottie from "lottie-react";
@@ -19,6 +20,11 @@ import { ReactComponent as GraphSVG } from "../images/svg/graph.svg";
 import epidemic01 from "../lotties/epidemic-01.json";
 import epidemic02 from "../lotties/epidemic-02.json";
 import epidemic03 from "../lotties/epidemic-03.json";
+import person01 from "../lotties/person-01.json";
+import person02 from "../lotties/person-02.json";
+import person03 from "../lotties/person-03.json";
+import person04 from "../lotties/person-04.json";
+import person05 from "../lotties/person-05.json";
 import mini_line from "../lotties/mini-line.json";
 import help from "../lotties/help.json";
 
@@ -26,10 +32,35 @@ export default function Section03({ changeStage }) {
   const destroyRef = useRef(null);
   const lineRef = useRef(null);
   const epidemicRef = useRef(null);
+  const person01LottieRef = useRef(null);
   const lineIn = UseIntersection(lineRef, "200%");
   const epidemicIn = UseIntersection(epidemicRef, "0px");
   const duration = 2000;
   const counterDuration = 2.5;
+  const person01Ref = useRef(null),
+    person02Ref = useRef(null),
+    person03Ref = useRef(null),
+    person04Ref = useRef(null),
+    person05Ref = useRef(null),
+    person01AnimationRef = useRef(null),
+    person02AnimationRef = useRef(null),
+    person03AnimationRef = useRef(null),
+    person04AnimationRef = useRef(null),
+    person05AnimationRef = useRef(null);
+  const person01In = UseIntersectionLoop(person01Ref, "-20%"),
+    person02In = UseIntersectionLoop(person02Ref, "-20%"),
+    person03In = UseIntersectionLoop(person03Ref, "-20%"),
+    person04In = UseIntersectionLoop(person04Ref, "-20%"),
+    person05In = UseIntersectionLoop(person05Ref, "-20%");
+  const personArr = [
+    person01AnimationRef,
+    person02AnimationRef,
+    person03AnimationRef,
+    person04AnimationRef,
+    person05AnimationRef,
+  ];
+
+  const [pastSolutionState, setPastSolutionState] = useState(1);
 
   const epidemicImport = [epidemic01, epidemic02, epidemic03];
 
@@ -152,30 +183,98 @@ export default function Section03({ changeStage }) {
     return Number(newValue);
   }
 
+  function changePicture(ref, state, duration) {
+    setFade(ref, state, duration);
+    setTimeout(() => {
+      changeElement(ref);
+    }, duration);
+  }
+
+  function changeElement(ref) {
+    personArr.forEach((person) => {
+      if (person === ref) {
+        person.current.style.display = "block";
+      } else {
+        person.current.style.display = "none";
+      }
+    });
+  }
+
+  function setFade(ref, state, duration) {
+    if (pastSolutionState === state) {
+      return;
+    } else {
+      setPastSolutionState(state);
+      personArr.forEach((preson) => {
+        if (preson === ref) {
+          preson.current.style.animation = "0.5s ease-in fadein";
+        } else {
+          preson.current.style.animation = "0.5s ease-out fadeout";
+        }
+      });
+      setTimeout(() => {}, duration);
+    }
+  }
+
+  if (person01In) {
+    changePicture(person01AnimationRef, 1, 200);
+    if (pastSolutionState !== 1) {
+      person01LottieRef.current.goToAndPlay(0);
+    }
+  } else if (person02In) {
+    changePicture(person02AnimationRef, 2, 200);
+  } else if (person03In) {
+    changePicture(person03AnimationRef, 3, 200);
+  } else if (person04In) {
+    changePicture(person04AnimationRef, 4, 200);
+  } else if (person05In) {
+    changePicture(person05AnimationRef, 5, 200);
+  }
+
+  useEffect(() => {
+    let pageWrapper = document.querySelector(".Page-inner-wrap");
+    pageWrapper.addEventListener("wheel", () => {
+      scrollUp(pageWrapper);
+    });
+
+    let firstScroll = 0;
+
+    function scrollUp(el) {
+      let scrolling = el.scrollTop;
+      console.log(scrolling);
+      if (firstScroll > 2) {
+        if (scrolling === 0) {
+          changeStage("-");
+        }
+      }
+      firstScroll++;
+    }
+  }, []);
+
   return (
     <>
+      {/* //?Background - Starting */}
+      <Picture
+        webp={page_03_bg_webp}
+        normal={page_03_bg_png}
+        alt="page_03_bg_png"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-overlay pointer-events-none"
+        classimg="mx-auto w-full h-auto"
+      />
+      {/* //?Background - Ending */}
       <div
         className="Page-sub-background pointer-events-none absolute top-0 left-0 z-0 h-screen w-screen -translate-y-full bg-cream transition-all"
         ref={destroyRef}
       ></div>
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-blue">
-        {/* //?Background - Starting */}
-        <Picture
-          webp={page_03_bg_webp}
-          normal={page_03_bg_png}
-          alt="page_03_bg_png"
-          classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-overlay pointer-events-none"
-          classimg="mx-auto w-full h-auto"
-        />
-        {/* //?Background - Ending */}
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-cream"
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-0 -mt-[100vh] h-fit w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh">
+        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <Lottie
               animationData={help}
@@ -199,7 +298,7 @@ export default function Section03({ changeStage }) {
           </section>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section flex-center h-fit w-full flex-col px-desktop">
+        <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 flex-col ">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_01}
@@ -208,10 +307,10 @@ export default function Section03({ changeStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_01}
             </h2>
           </section>
-          <div className="Column-container flex-center h-fit w-full max-w-1400px">
+          <div className="Column-container relative flex h-fit w-full max-w-1400px">
             <div className="Column-Text flex h-fit w-3/5 flex-col items-start gap-52">
               <div className="Column-inside" id="Column-inside-01">
-                <section className="Text-section">
+                <section className="Text-section" ref={person01Ref}>
                   <span className="Upper-text">
                     {
                       configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
@@ -264,7 +363,7 @@ export default function Section03({ changeStage }) {
                 </section>
               </div>
               <div className="Column-inside" id="Column-inside-02">
-                <section className="Text-section">
+                <section className="Text-section" ref={person02Ref}>
                   <span className="Upper-text">
                     {
                       configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
@@ -312,8 +411,7 @@ export default function Section03({ changeStage }) {
                 </section>
               </div>
               <div className="Column-inside" id="Column-inside-03">
-                {" "}
-                <section className="Text-section">
+                <section className="Text-section" ref={person03Ref}>
                   <span className="Upper-text">
                     {
                       configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_03
@@ -365,7 +463,7 @@ export default function Section03({ changeStage }) {
                         <span className="Base-text">
                           {
                             configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                              .TEXT_01.SUB_DESCRIPTION_TEXT_01
+                              .TEXT_03.SUB_DESCRIPTION_TEXT_01
                           }
                         </span>
                       </li>
@@ -373,7 +471,7 @@ export default function Section03({ changeStage }) {
                         <span className="Base-text">
                           {
                             configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                              .TEXT_01.SUB_DESCRIPTION_TEXT_02
+                              .TEXT_03.SUB_DESCRIPTION_TEXT_02
                           }
                         </span>
                       </li>
@@ -381,7 +479,7 @@ export default function Section03({ changeStage }) {
                         <span className="Base-text">
                           {
                             configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                              .TEXT_01.SUB_DESCRIPTION_TEXT_03
+                              .TEXT_03.SUB_DESCRIPTION_TEXT_03
                           }
                         </span>
                       </li>
@@ -390,7 +488,7 @@ export default function Section03({ changeStage }) {
                 </section>
               </div>
               <div className="Column-inside" id="Column-inside-04">
-                <section className="Text-section">
+                <section className="Text-section" ref={person04Ref}>
                   <span className="Upper-text">
                     {
                       configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_04
@@ -451,8 +549,7 @@ export default function Section03({ changeStage }) {
                 </section>
               </div>
               <div className="Column-inside" id="Column-inside-05">
-                {" "}
-                <section className="Text-section">
+                <section className="Text-section" ref={person05Ref}>
                   <span className="Upper-text">
                     {
                       configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
@@ -494,7 +591,63 @@ export default function Section03({ changeStage }) {
                 </section>
               </div>
             </div>
-            <div className="Column flex h-fit w-2/5 flex-col items-start justify-center"></div>
+            <div className="Column-animation z-20 flex h-auto w-2/5 justify-end">
+              <div className="Column-lottie sticky top-twenty h-fit">
+                <div className="Lottie-container" ref={person01AnimationRef}>
+                  <Lottie
+                    animationData={person01}
+                    lottieRef={person01LottieRef}
+                    className="Lottie-section z-20 mx-auto w-full"
+                    style={{ height: "auto" }}
+                    loop={false}
+                  />
+                </div>
+                <div
+                  className="Lottie-container hidden"
+                  ref={person02AnimationRef}
+                >
+                  <Lottie
+                    animationData={person02}
+                    className="Lottie-section z-20 mx-auto w-full"
+                    style={{ height: "auto" }}
+                    loop={true}
+                  />
+                </div>
+                <div
+                  className="Lottie-container hidden"
+                  ref={person03AnimationRef}
+                >
+                  <Lottie
+                    animationData={person03}
+                    className="Lottie-section z-20 mx-auto w-full"
+                    style={{ height: "auto" }}
+                    loop={true}
+                  />
+                </div>
+                <div
+                  className="Lottie-container hidden"
+                  ref={person04AnimationRef}
+                >
+                  <Lottie
+                    animationData={person04}
+                    className="Lottie-section z-20 mx-auto w-full"
+                    style={{ height: "auto" }}
+                    loop={true}
+                  />
+                </div>
+                <div
+                  className="Lottie-container hidden"
+                  ref={person05AnimationRef}
+                >
+                  <Lottie
+                    animationData={person05}
+                    className="Lottie-section z-20 mx-auto w-full"
+                    style={{ height: "auto" }}
+                    loop={true}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="Link-container mt-28 flex justify-center">
             <a

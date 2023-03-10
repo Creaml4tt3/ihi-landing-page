@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useLayoutEffect } from "react";
 import Picture from "../components/Picture";
+import ReactPlayer from "react-player";
 import configJSON from "../config.json";
 import {
   ihi_logo_webp,
@@ -7,26 +8,47 @@ import {
   page_05_bg_webp,
   page_05_bg_png,
 } from "../components/image/Image05.jsx";
+import laef_webm from "../lotties/webm/laef.webm";
 export default function Section05({ changeStage }) {
   const destroyRef = useRef(null);
 
+  useEffect(() => {
+    let pageWrapper = document.querySelector(".Page-inner-wrap");
+    pageWrapper.addEventListener("wheel", () => {
+      scrollUp(pageWrapper);
+    });
+
+    let firstScroll = 0;
+
+    function scrollUp(el) {
+      let scrolling = el.scrollTop;
+      console.log(scrolling);
+      if (firstScroll > 2) {
+        if (scrolling === 0) {
+          changeStage("-");
+        }
+      }
+      firstScroll++;
+    }
+  }, []);
+
   return (
     <>
+      {/* //?Background - Starting */}
+      <Picture
+        webp={page_05_bg_webp}
+        normal={page_05_bg_png}
+        alt="page_05_bg_png"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-40 pointer-events-none"
+        classimg="mx-auto w-full h-full"
+      />
+      {/* //?Background - Ending */}
       <div
         className="Page-sub-background pointer-events-none absolute top-0 left-0 z-0 h-screen w-screen -translate-y-full bg-cream transition-all"
         ref={destroyRef}
       ></div>
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-blue">
-        {/* //?Background - Starting */}
-        <Picture
-          webp={page_05_bg_webp}
-          normal={page_05_bg_png}
-          alt="page_05_bg_png"
-          classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-40 pointer-events-none"
-          classimg="mx-auto w-full h-full"
-        />
-        {/* //?Background - Ending */}
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-cream"
@@ -64,14 +86,25 @@ export default function Section05({ changeStage }) {
           </section>
         </section>
         {/* //?Page 03 */}
-        <section className="Page-section z-0 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pt-50vh pb-25vh">
-          <section className="Text-section flex-center z-10 flex-col gap-4">
-            <h2 className="Heading-text !font-medium text-blue">
+        <section className="Page-section relative z-10 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pt-50vh pb-25vh">
+          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 h-auto w-auto overflow-hidden rounded-t-full">
+            <ReactPlayer
+              className="React-player z-20"
+              url={laef_webm}
+              width="auto"
+              height="auto"
+              playing
+              loop
+              muted
+            />
+          </div>
+          <section className="Text-section flex-center z-30 flex-col gap-4">
+            <h2 className="Heading-text z-30 !font-medium text-blue">
               {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_01}
               <br></br>
               {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_02}
             </h2>
-            <h2 className="Sub-heading-text z-10 text-orange">
+            <h2 className="Sub-heading-text z-30 text-orange">
               {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_01}
               <br></br>
               {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_02}
@@ -83,12 +116,12 @@ export default function Section05({ changeStage }) {
         {/* //?Page 04 */}
         <section className="Page-section z-0 h-fit w-full bg-cream px-desktop pt-20vh pb-20vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
-            <h2 className="Heading-text !font-bold text-blue">
+            <h2 className="Heading-text z-30 !font-bold text-blue">
               {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}
               <br></br>
               {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_02}
             </h2>
-            <h2 className="Sub-heading-text z-10 text-orange">
+            <h2 className="Sub-heading-text z-30 text-orange">
               {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_01}
               <br></br>
               {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_02}
@@ -108,12 +141,12 @@ export default function Section05({ changeStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section flex-center z-0 h-fit w-full bg-cream px-desktop py-50vh">
+        <section className="Page-section flex-center z-30 h-fit w-full bg-cream px-desktop pt-25vh pb-50vh">
           <Picture
             webp={ihi_logo_webp}
             normal={ihi_logo_png}
             alt="ihi_logo_png"
-            classpic="Picture-section z-10"
+            classpic="Picture-section"
             classimg="mx-auto w-full h-auto"
           />
         </section>

@@ -5,7 +5,7 @@ import "./css/animation.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Config from "./components/Config";
-import Test from "./components/test";
+import Test from "./components/Test";
 import Error from "./components/Error";
 import reportWebVitals from "./reportWebVitals";
 

@@ -171,17 +171,17 @@ export default function Section01({ changeStage }) {
 
   return (
     <>
+      {/* //?Background - Starting */}
+      <Picture
+        webp={page_01_bg_webp}
+        normal={page_01_bg_png}
+        alt="page_01_bg_png"
+        classpic="Picture-section h-0 w-screen fixed bottom-0 z-0 mix-blend-overlay opacity-40"
+        classimg="mx-auto w-full absolute bottom-0"
+      />
+      {/* //?Background - Ending */}
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap h-screen w-full overflow-y-scroll bg-blue">
-        {/* //?Background - Starting */}
-        <Picture
-          webp={page_01_bg_webp}
-          normal={page_01_bg_png}
-          alt="page_01_bg_png"
-          classpic="Picture-section h-0 w-screen fixed bottom-0 z-0 mix-blend-overlay opacity-40"
-          classimg="mx-auto w-full absolute bottom-0"
-        />
-        {/* //?Background - Ending */}
         {/* //?Page 01 */}
         <section className="Page-section relative flex h-screen px-desktop">
           <Picture

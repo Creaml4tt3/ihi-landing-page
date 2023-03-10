@@ -46,6 +46,7 @@ import gear from "../lotties/gear.json";
 import minimize from "../lotties/minimize.json";
 import steaming from "../lotties/steaming.json";
 import fire from "../lotties/fire.json";
+import belt_small_webm from "../lotties/webm/belt-small.webm";
 
 export default function Section02({ changeStage }) {
   const beltRef = useRef(null);
@@ -60,7 +61,6 @@ export default function Section02({ changeStage }) {
   const workRef = useRef(null);
   const workLottieRef = useRef(null);
   const workIn = UseIntersection(workRef, "100%");
-
   const duration = 1500;
   const delay = 400;
   const pushUpY = 600;
@@ -69,27 +69,16 @@ export default function Section02({ changeStage }) {
   const previewVideoURL01 = black_webp;
   const previewVideoURL02 = black_webp;
 
-  let scrollPassed = 0;
-  let scrollLast = 0;
-
   function scrollAndCheckForNextPage(el) {
     let bodyHeight = document.body.clientHeight;
     let scrolling = el.scrollTop;
     let scrollingHeight = el.scrollHeight;
 
+    console.log("height" + scrollingHeight);
+    console.log(scrolling + bodyHeight);
+
     if (bodyHeight + scrolling >= scrollingHeight) {
-      if (scrollPassed >= 1) {
-        changeStage("+");
-      }
-      if (scrolling < scrollLast) {
-        scrollPassed = 0;
-      } else {
-        scrollPassed++;
-      }
-      scrollLast = scrolling;
-      return;
-    } else {
-      scrollPassed = 0;
+      changeStage("+");
     }
   }
 
@@ -117,9 +106,23 @@ export default function Section02({ changeStage }) {
 
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
-    pageWrapper.addEventListener("scroll", (e) => {
+    pageWrapper.addEventListener("wheel", () => {
       scrollAndCheckForNextPage(pageWrapper);
+      scrollUp(pageWrapper);
     });
+
+    let firstScroll = 0;
+
+    function scrollUp(el) {
+      let scrolling = el.scrollTop;
+      console.log(scrolling);
+      if (firstScroll > 2) {
+        if (scrolling === 0) {
+          changeStage("-");
+        }
+      }
+      firstScroll++;
+    }
   }, []);
 
   const pushUp01 = useSpring({
@@ -156,17 +159,17 @@ export default function Section02({ changeStage }) {
 
   return (
     <>
+      {/* //?Background - Starting */}
+      <Picture
+        webp={page_02_bg_webp}
+        normal={page_02_bg_png}
+        alt="page_02_bg_png"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-multiply pointer-events-none"
+        classimg="mx-auto w-full h-auto"
+      />
+      {/* //?Background - Ending */}
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap h-screen w-full overflow-y-scroll bg-cream">
-        {/* //?Background - Starting */}
-        <Picture
-          webp={page_02_bg_webp}
-          normal={page_02_bg_png}
-          alt="page_02_bg_png"
-          classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-multiply pointer-events-none"
-          classimg="mx-auto w-full h-auto"
-        />
-        {/* //?Background - Ending */}
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-blue"
@@ -281,7 +284,7 @@ export default function Section02({ changeStage }) {
                 </span>
                 <span className="Belt-sub-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_SUB_TEXT_01}
-                  <span className="Belt-sub-text-bold !leading-none">
+                  <span className="Belt-sub-text-bold !leading-tight">
                     {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_01
@@ -313,7 +316,7 @@ export default function Section02({ changeStage }) {
                 </span>
                 <span className="Belt-sub-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_SUB_TEXT_02}
-                  <span className="Belt-sub-text-bold !leading-none">
+                  <span className="Belt-sub-text-bold !leading-tight">
                     {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_03
@@ -340,7 +343,7 @@ export default function Section02({ changeStage }) {
                 </span>
                 <span className="Belt-sub-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_SUB_TEXT_03}
-                  <span className="Belt-sub-text-bold !leading-none">
+                  <span className="Belt-sub-text-bold !leading-tight">
                     {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_04
@@ -368,7 +371,7 @@ export default function Section02({ changeStage }) {
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_BOLD_04}
                 </span>
                 <span className="Belt-sub-text">
-                  <span className="Belt-sub-text-bold !leading-none">
+                  <span className="Belt-sub-text-bold !leading-tight">
                     {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_05
@@ -384,14 +387,25 @@ export default function Section02({ changeStage }) {
               </section>
             </animated.div>
           </div>
-          <Picture
+          {/* <Picture
             webp={page_02_belt_webp}
             normal={page_02_belt_png}
             alt="page_02_belt_png"
             classpic="Picture-section h-fit z-10"
             classimg="mx-auto"
             lazy
-          />
+          /> */}
+          <div className="Player-container z-10 -my-3">
+            <ReactPlayer
+              className="React-player"
+              url={belt_small_webm}
+              width="100%"
+              height="auto"
+              playing
+              loop
+              muted
+            />
+          </div>
           <div className="Development relative py-20">
             <section className="Text-section flex-center">
               <span className="Heading-text z-10 rounded-3xl bg-orange px-20 py-2 font-bold text-white">

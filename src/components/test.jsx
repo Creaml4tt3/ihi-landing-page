@@ -1,10 +1,12 @@
-import { useRef, useState, useEffect } from "react";
-import { UseIntersection } from "../components/UseIntersection";
-import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
+import { UseIntersection } from "./UseIntersection";
+import { UseIntersectionLoop } from "./UseIntersectionLoop";
 import { useSpring, animated, easings } from "@react-spring/web";
+import Draggable from "gsap/Draggable";
+import gsap from "gsap";
 import ReactPlayer from "react-player";
 import Lottie from "lottie-react";
-import Picture from "../components/Picture";
+import Picture from "./Picture";
 import configJSON from "../config.json";
 import {
   page_01_people_webp,
@@ -41,12 +43,13 @@ import {
   solution_01_png,
   solution_02_png,
   solution_03_png,
-} from "../components/image/Image01";
+} from "./image/Image01";
 import solution_01_lottie from "../lotties/solution-01.json";
 import solution_02_webm from "../lotties/webm/solution-02.webm";
 import solution_03_webm from "../lotties/webm/solution-03.webm";
 import chicken from "../lotties/chicken.json";
 import bicycle from "../lotties/bicycle.json";
+import { ReactComponent as GraphSVG } from "../images/svg/graph.svg";
 
 export default function Test({ changeStage }) {
   const graphContainerRef = useRef(null);
@@ -192,10 +195,27 @@ export default function Test({ changeStage }) {
     });
   }, []);
 
+  gsap.registerPlugin(Draggable);
+
+  useLayoutEffect(() => {
+    Draggable.create(".test01", {
+      type: "x,y",
+      inertia: true,
+      edgeResistance: 0.65,
+      bounds: ".Page-inner-wrap",
+      onPress: function () {
+        console.log("clicked");
+      },
+    });
+  }, []);
+
   return (
     <>
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap h-full w-full snap-y snap-proximity overflow-y-scroll bg-blue">
+        <div className="test01 absolute top-0 left-0 z-[1000] w-fit">
+          <GraphSVG />
+        </div>
         {/* //?Background - Starting */}
         <div
           className="Lottie-container pointer-events-none fixed -bottom-[41px] left-0 z-50"
@@ -239,7 +259,7 @@ export default function Test({ changeStage }) {
           <section className="Section-container flex-center px-desktop">
             <section className="Column-container h-[300vh] w-3/5 py-20vh">
               <div
-                className="Picture-change sticky top-onefifth"
+                className="Picture-change top-onefifth sticky"
                 ref={solutionRef}
               >
                 <div className="Lottie-container" ref={solution_01AnimationRef}>
