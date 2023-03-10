@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import configJSON from "./config.json";
 import Loading from "./components/Loading";
@@ -20,6 +20,9 @@ export default function App() {
   const [onLoad, setOnLoad] = useState(configJSON.SETTING.LOADING_PAGE);
   const [onFinish, setOnFinish] = useState(!configJSON.SETTING.LOADING_PAGE);
 
+  //? ค่าสำหรับการโหลดหน้าก่อนหน้า
+  const [pastStage, setPastStage] = useState(null);
+
   //? ตั้งค่าเวลาในการเปลี่ยนหน้า
   const duration = configJSON.SETTING.DURATION;
 
@@ -29,8 +32,16 @@ export default function App() {
       setSectionStage(sectionStage + 1);
     } else if (operation === "-") {
       setSectionStage(sectionStage - 1);
+      sectionStagePastScroll(sectionStage - 1);
     } else {
       setSectionStage(operation);
+    }
+  }
+
+  //? ฟังก์ชั่นการเลื่อนไปหน้าสุดท้ายของหน้าก่อนหน้า
+  function sectionStagePastScroll(state) {
+    if (state) {
+      setPastStage(state);
     }
   }
 
@@ -80,19 +91,34 @@ export default function App() {
         {onFinish && (
           <>
             {sectionStage === 1 && (
-              <Section01 changeStage={sectionStageChange} />
+              <Section01
+                changeStage={sectionStageChange}
+                scrollStage={pastStage}
+              />
             )}
             {sectionStage === 2 && (
-              <Section02 changeStage={sectionStageChange} />
+              <Section02
+                changeStage={sectionStageChange}
+                scrollStage={pastStage}
+              />
             )}
             {sectionStage === 3 && (
-              <Section03 changeStage={sectionStageChange} />
+              <Section03
+                changeStage={sectionStageChange}
+                scrollStage={pastStage}
+              />
             )}
             {sectionStage === 4 && (
-              <Section04 changeStage={sectionStageChange} />
+              <Section04
+                changeStage={sectionStageChange}
+                scrollStage={pastStage}
+              />
             )}
             {sectionStage === 5 && (
-              <Section05 changeStage={sectionStageChange} />
+              <Section05
+                changeStage={sectionStageChange}
+                scrollStage={pastStage}
+              />
             )}
           </>
         )}

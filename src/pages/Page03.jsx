@@ -28,7 +28,7 @@ import person05 from "../lotties/person-05.json";
 import mini_line from "../lotties/mini-line.json";
 import help from "../lotties/help.json";
 
-export default function Section03({ changeStage }) {
+export default function Section03({ changeStage, pastStage, scrollStage }) {
   const destroyRef = useRef(null);
   const lineRef = useRef(null);
   const epidemicRef = useRef(null);
@@ -231,23 +231,27 @@ export default function Section03({ changeStage }) {
     changePicture(person05AnimationRef, 5, 200);
   }
 
+  let firstScroll = 0;
+
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
     pageWrapper.addEventListener("wheel", () => {
       scrollUp(pageWrapper);
     });
 
-    let firstScroll = 0;
-
     function scrollUp(el) {
       let scrolling = el.scrollTop;
-      console.log(scrolling);
       if (firstScroll > 2) {
         if (scrolling === 0) {
           changeStage("-");
         }
+        firstScroll = 0;
       }
       firstScroll++;
+    }
+
+    if (scrollStage === 3) {
+      pageWrapper.scrollTop = pageWrapper.scrollHeight;
     }
   }, []);
 

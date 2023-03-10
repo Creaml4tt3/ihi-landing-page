@@ -39,7 +39,7 @@ import {
 import belt_webm from "../lotties/webm/belt.webm";
 import warehouse_01 from "../lotties/warehouse-01.json";
 import warehouse_02 from "../lotties/warehouse-02.json";
-export default function Section03({ changeStage }) {
+export default function Section03({ changeStage, scrollStage }) {
   const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
   const previewVideoURL01 = black_webp;
   const solution_01Ref = useRef(null);
@@ -101,18 +101,19 @@ export default function Section03({ changeStage }) {
     changePicture(solution_03PicRef, 3, 200);
   }
 
-  function scrollAndCheckForNextPage(el) {
+  function scrollAndCheckForNextPage(el, scroll) {
     let bodyHeight = document.body.clientHeight;
     let scrolling = el.scrollTop;
     let scrollingHeight = el.scrollHeight;
 
-    console.log("height" + scrollingHeight);
-    console.log(scrolling + bodyHeight);
-
-    if (bodyHeight + scrolling >= scrollingHeight) {
-      changeStage("+");
+    if (scroll > 2) {
+      if (bodyHeight + scrolling - scrollingHeight === 15) {
+        changeStage("+");
+      }
     }
   }
+
+  let firstScroll = 0;
 
   useEffect(() => {
     sliders = document.querySelectorAll(".Slide-container");
@@ -122,21 +123,23 @@ export default function Section03({ changeStage }) {
 
     let pageWrapper = document.querySelector(".Page-inner-wrap");
     pageWrapper.addEventListener("wheel", () => {
-      scrollAndCheckForNextPage(pageWrapper);
+      scrollAndCheckForNextPage(pageWrapper, firstScroll);
       scrollUp(pageWrapper);
     });
 
-    let firstScroll = 0;
-
     function scrollUp(el) {
       let scrolling = el.scrollTop;
-      console.log(scrolling);
       if (firstScroll > 2) {
         if (scrolling === 0) {
           changeStage("-");
         }
+        firstScroll = 0;
       }
       firstScroll++;
+    }
+
+    if (scrollStage === 4) {
+      pageWrapper.scrollTop = pageWrapper.scrollHeight;
     }
   }, []);
 

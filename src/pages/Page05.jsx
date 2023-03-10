@@ -11,6 +11,7 @@ import {
 import laef_webm from "../lotties/webm/laef.webm";
 export default function Section05({ changeStage }) {
   const destroyRef = useRef(null);
+  let firstScroll = 0;
 
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
@@ -18,15 +19,13 @@ export default function Section05({ changeStage }) {
       scrollUp(pageWrapper);
     });
 
-    let firstScroll = 0;
-
     function scrollUp(el) {
       let scrolling = el.scrollTop;
-      console.log(scrolling);
       if (firstScroll > 2) {
         if (scrolling === 0) {
           changeStage("-");
         }
+        firstScroll = 0;
       }
       firstScroll++;
     }

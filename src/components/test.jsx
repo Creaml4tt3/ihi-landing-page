@@ -199,7 +199,6 @@ export default function Test({ changeStage }) {
 
   useLayoutEffect(() => {
     Draggable.create(".test01", {
-      type: "x,y",
       inertia: true,
       edgeResistance: 0.65,
       bounds: ".Page-inner-wrap",
@@ -207,6 +206,55 @@ export default function Test({ changeStage }) {
         console.log("clicked");
       },
     });
+
+    const tl = gsap.timeline({ repeat: -1, delay: 1 });
+    tl.to(".test01", {
+      x: "+=250",
+      y: "+=100",
+      rotation: -5,
+      ease: "Power1.easeInOut",
+      duration: 5,
+    });
+    tl.to(".test01", {
+      x: "-=100",
+      y: "+=200",
+      top: "+=30",
+      rotation: 5,
+      ease: "Power1.easeInOut",
+      duration: 7,
+    });
+    tl.to(".test01", {
+      x: "+=500",
+      y: "+=200",
+      top: "-+20",
+      rotation: -5,
+      ease: "Power1.easeInOut",
+      duration: 7,
+    });
+
+    /* function swingLeaf() {
+      tl.add([
+        TweenMax.to(leaf, 1.5, {
+          left: 300,
+          rotation: -5,
+          ease: Power1.easeInOut,
+        }),
+        TweenMax.to(leaf, 1.5, {
+          top: "+=30",
+          ease: Power1.easeOut,
+        }),
+      ]).add([
+        TweenMax.to(leaf, 1.5, {
+          left: 0,
+          rotation: 5,
+          ease: Power1.easeInOut,
+        }),
+        TweenMax.to(leaf, 1.5, {
+          top: "+=30",
+          ease: Power1.easeOut,
+        }),
+      ]);
+    } */
   }, []);
 
   return (

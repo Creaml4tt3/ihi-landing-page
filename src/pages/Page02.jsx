@@ -46,9 +46,10 @@ import gear from "../lotties/gear.json";
 import minimize from "../lotties/minimize.json";
 import steaming from "../lotties/steaming.json";
 import fire from "../lotties/fire.json";
+import fire_webm from "../lotties/webm/fire.webm";
 import belt_small_webm from "../lotties/webm/belt-small.webm";
 
-export default function Section02({ changeStage }) {
+export default function Section02({ changeStage, pastStage, scrollStage }) {
   const beltRef = useRef(null);
   const beltIn = UseIntersection(beltRef, "0px");
   const howRef = useRef(null);
@@ -69,16 +70,15 @@ export default function Section02({ changeStage }) {
   const previewVideoURL01 = black_webp;
   const previewVideoURL02 = black_webp;
 
-  function scrollAndCheckForNextPage(el) {
+  function scrollAndCheckForNextPage(el, scroll) {
     let bodyHeight = document.body.clientHeight;
     let scrolling = el.scrollTop;
     let scrollingHeight = el.scrollHeight;
 
-    console.log("height" + scrollingHeight);
-    console.log(scrolling + bodyHeight);
-
-    if (bodyHeight + scrolling >= scrollingHeight) {
-      changeStage("+");
+    if (scroll > 2) {
+      if (bodyHeight + scrolling - scrollingHeight === 15) {
+        changeStage("+");
+      }
     }
   }
 
@@ -104,14 +104,14 @@ export default function Section02({ changeStage }) {
     workLottieRef.current.play();
   }
 
+  let firstScroll = 0;
+
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
     pageWrapper.addEventListener("wheel", () => {
-      scrollAndCheckForNextPage(pageWrapper);
+      scrollAndCheckForNextPage(pageWrapper, firstScroll);
       scrollUp(pageWrapper);
     });
-
-    let firstScroll = 0;
 
     function scrollUp(el) {
       let scrolling = el.scrollTop;
@@ -120,8 +120,13 @@ export default function Section02({ changeStage }) {
         if (scrolling === 0) {
           changeStage("-");
         }
+        firstScroll = 0;
       }
       firstScroll++;
+    }
+
+    if (scrollStage === 2) {
+      pageWrapper.scrollTop = pageWrapper.scrollHeight;
     }
   }, []);
 
@@ -881,12 +886,21 @@ export default function Section02({ changeStage }) {
                   classimg="mx-auto z-10"
                   lazy
                 />
-                <Lottie
+                {/* <Lottie
                   animationData={fire}
                   loop
                   autoPlay
                   height={150}
                   className="Icon-lottie"
+                /> */}
+                <ReactPlayer
+                  className="React-player"
+                  url={fire_webm}
+                  width="auto"
+                  height="auto"
+                  playing
+                  loop
+                  muted
                 />
               </div>
             </div>

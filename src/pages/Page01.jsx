@@ -47,7 +47,7 @@ import solution_02_webm from "../lotties/webm/solution-02.webm";
 import solution_03_lottie from "../lotties/solution-03.json";
 import graph from "../lotties/graph.json";
 
-export default function Section01({ changeStage }) {
+export default function Section01({ changeStage, scrollStage }) {
   const graphContainerRef = useRef(null);
   const solutionRef = useRef(null);
   const solution_01Ref = useRef(null);
@@ -122,6 +122,14 @@ export default function Section01({ changeStage }) {
       graphLineLottieRef.current.setSpeed(3);
     }
   }
+
+  useEffect(() => {
+    let pageWrapper = document.querySelector(".Page-inner-wrap");
+
+    if (scrollStage === 1) {
+      pageWrapper.scrollTop = pageWrapper.scrollHeight;
+    }
+  }, []);
 
   const pushUp01 = useSpring({
     config: { friction: 12 },
