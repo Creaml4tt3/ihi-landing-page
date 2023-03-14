@@ -12,11 +12,11 @@ module.exports = {
       lightblue: "#2799FF",
     },
     screens: {
-      maxlaptop: { max: "1536px" },
-      labtop: { max: "1536px", min: "1281px" },
-      maxtablet: { max: "1280px" },
-      tablet: { max: "1280px", min: "768px" },
-      mobile: { max: "767px" },
+      maxlaptop: { max: "1366px" },
+      labtop: { max: "1366px", min: "1025px" },
+      maxtablet: { max: "1024px" },
+      tablet: { max: "1024px", min: "426px" },
+      mobile: { max: "425px" },
     },
     fontFamily: {
       libre: ["Libre Franklin", "sans-serif"],

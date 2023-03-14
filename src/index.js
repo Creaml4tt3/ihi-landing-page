@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./css/index.css";
-import "./css/animation.css";
+import "./scss/index.scss";
+import "./scss/animation.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Config from "./components/Config";

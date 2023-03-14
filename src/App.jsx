@@ -67,7 +67,7 @@ export default function App() {
 
   return (
     <>
-      <main className="App h-screen w-full bg-blue">
+      <main className="App h-screen w-screen bg-blue">
         {/* //?Header - Starting */}
         <header className="App-header">
           <NavDot

@@ -191,15 +191,8 @@ export default function Section01({ changeStage, scrollStage }) {
       {/* //?Main - Starting */}
       <div className="Page-inner-wrap h-screen w-full overflow-y-scroll bg-blue">
         {/* //?Page 01 */}
-        <section className="Page-section relative flex h-screen px-desktop">
-          <Picture
-            webp={page_01_people_webp}
-            normal={page_01_people_png}
-            alt="page_01_people_png"
-            classpic="Picture-section w-full absolute bottom-0 z-10 left-0"
-            classimg="mx-auto"
-          />
-          <section className="Text-section z-20 mt-[25vh] flex flex-col gap-4">
+        <section className="Page-section relative flex h-screen flex-col items-center justify-end px-desktop">
+          <section className="Text-section z-20 flex flex-col gap-4">
             <h1 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_01.HEADING_01}
             </h1>
@@ -207,6 +200,13 @@ export default function Section01({ changeStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_01.SECTION_01.SUB_HEADING_01}
             </h2>
           </section>
+          <Picture
+            webp={page_01_people_webp}
+            normal={page_01_people_png}
+            alt="page_01_people_png"
+            classpic="Picture-section w-full z-10"
+            classimg="mx-auto"
+          />
         </section>
         {/* //?Page 02 */}
         <section className="Page-section relative h-fit">
@@ -302,69 +302,78 @@ export default function Section01({ changeStage, scrollStage }) {
             className="Graph-section relative mt-14 mb-10 flex w-fit items-end"
             ref={graphContainerRef}
           >
-            <div className="Graph-inside-container z-20 flex gap-[105px] overflow-hidden pl-48 pb-8">
-              <animated.div style={pushUp01} className="Graph">
-                <Picture
-                  webp={graph_01_webp}
-                  normal={graph_01_png}
-                  alt="graph_01_png"
-                  classpic="Picture-section w-fit z-20"
-                  classimg="mx-auto"
-                  lazy
-                />
-              </animated.div>
-              <animated.div style={pushUp02} className="Graph">
-                <Picture
-                  webp={graph_02_webp}
-                  normal={graph_02_png}
-                  alt="graph_02_png"
-                  classpic="Picture-section w-fit z-20"
-                  classimg="mx-auto"
-                  lazy
-                />
-              </animated.div>
-              <animated.div style={pushUp03} className="Graph">
-                <Picture
-                  webp={graph_03_webp}
-                  normal={graph_03_png}
-                  alt="graph_03_png"
-                  classpic="Picture-section w-fit z-20"
-                  classimg="mx-auto"
-                  lazy
-                />
-              </animated.div>
-              <animated.div style={pushUp04} className="Graph">
-                <Picture
-                  webp={graph_04_webp}
-                  normal={graph_04_png}
-                  alt="graph_04_png"
-                  classpic="Picture-section w-fit z-20"
-                  classimg="mx-auto"
-                  lazy
-                />
-              </animated.div>
-              <animated.div style={pushUp05} className="Graph">
-                <Picture
-                  webp={graph_05_webp}
-                  normal={graph_05_png}
-                  alt="graph_05_png"
-                  classpic="Picture-section w-fit z-20"
-                  classimg="mx-auto"
-                  lazy
-                />
-              </animated.div>
-              <animated.div style={pushUp06} className="Graph">
-                <Picture
-                  webp={graph_06_webp}
-                  normal={graph_06_png}
-                  alt="graph_06_png"
-                  classpic="Picture-section w-fit z-20"
-                  classimg="mx-auto"
-                  lazy
-                />
-              </animated.div>
+            <div className="Graph-inside-container relative z-20 flex h-full overflow-hidden">
+              <Picture
+                webp={graph_bg_webp}
+                normal={graph_bg_webp}
+                alt="graph_bg_webp"
+                classpic="Picture-section w-full z-10"
+                classimg="w-full h-auto"
+              />
+              <div className="Graph-line-container absolute right-0 bottom-12 flex w-full items-end justify-between pl-[17%]">
+                <animated.div style={pushUp01} className="Graph">
+                  <Picture
+                    webp={graph_01_webp}
+                    normal={graph_01_png}
+                    alt="graph_01_png"
+                    classpic="Picture-section w-fit z-20"
+                    classimg="mx-auto"
+                    lazy
+                  />
+                </animated.div>
+                <animated.div style={pushUp02} className="Graph">
+                  <Picture
+                    webp={graph_02_webp}
+                    normal={graph_02_png}
+                    alt="graph_02_png"
+                    classpic="Picture-section w-fit z-20"
+                    classimg="mx-auto"
+                    lazy
+                  />
+                </animated.div>
+                <animated.div style={pushUp03} className="Graph">
+                  <Picture
+                    webp={graph_03_webp}
+                    normal={graph_03_png}
+                    alt="graph_03_png"
+                    classpic="Picture-section w-fit z-20"
+                    classimg="mx-auto"
+                    lazy
+                  />
+                </animated.div>
+                <animated.div style={pushUp04} className="Graph">
+                  <Picture
+                    webp={graph_04_webp}
+                    normal={graph_04_png}
+                    alt="graph_04_png"
+                    classpic="Picture-section w-fit z-20"
+                    classimg="mx-auto"
+                    lazy
+                  />
+                </animated.div>
+                <animated.div style={pushUp05} className="Graph">
+                  <Picture
+                    webp={graph_05_webp}
+                    normal={graph_05_png}
+                    alt="graph_05_png"
+                    classpic="Picture-section w-fit z-20"
+                    classimg="mx-auto"
+                    lazy
+                  />
+                </animated.div>
+                <animated.div style={pushUp06} className="Graph">
+                  <Picture
+                    webp={graph_06_webp}
+                    normal={graph_06_png}
+                    alt="graph_06_png"
+                    classpic="Picture-section w-fit z-20"
+                    classimg="mx-auto"
+                    lazy
+                  />
+                </animated.div>
+              </div>
             </div>
-            <div className="Graph-info-container ml-[52px] mb-12 flex flex-col gap-5">
+            <div className="Graph-info-container ml-[52px] mb-12 flex flex-col gap-5 maxlaptop:ml-[28px]">
               <div className="Graph-inside-info">
                 <svg className="Circle" id="Circle-01">
                   <circle cx="11" cy="11" r="11" />

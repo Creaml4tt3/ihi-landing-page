@@ -65,7 +65,7 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
   const duration = 1500;
   const delay = 400;
   const pushUpY = 600;
-  const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
+  const videoURL = "https://www.youtube.com/watch?v=NUIvibOL5kI";
   const videoURL02 = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
   const previewVideoURL01 = black_webp;
   const previewVideoURL02 = black_webp;
@@ -99,6 +99,7 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
 
   if (lineIn) {
     lineLottieRef.current.play();
+    lineLottieRef.current.setSpeed(2);
   }
   if (workIn) {
     workLottieRef.current.play();
@@ -115,7 +116,6 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
 
     function scrollUp(el) {
       let scrolling = el.scrollTop;
-      console.log(scrolling);
       if (firstScroll > 2) {
         if (scrolling === 0) {
           changeStage("-");
@@ -174,7 +174,7 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
       />
       {/* //?Background - Ending */}
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap h-screen w-full overflow-y-scroll bg-cream">
+      <div className="Page-inner-wrap w-sceeen h-screen overflow-x-hidden overflow-y-scroll bg-cream">
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-blue"
@@ -591,7 +591,7 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
               url={videoURL}
               width="100%"
               height="550px"
-              light={previewVideoURL01}
+              /* light={previewVideoURL01} */
               playing="true"
               playIcon={videoIcon()}
             />

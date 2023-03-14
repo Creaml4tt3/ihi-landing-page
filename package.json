@@ -18,6 +18,8 @@
     "react-scripts": "5.0.1",
     "react-spring": "^9.6.1",
     "react-transition-group": "^4.4.5",
+    "sass": "^1.59.2",
+    "sass-loader": "^13.2.0",
     "tailwind-scrollbar-hide": "^1.1.7",
     "web-vitals": "^2.1.4"
   },

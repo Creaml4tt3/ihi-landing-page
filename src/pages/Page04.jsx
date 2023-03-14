@@ -259,7 +259,7 @@ export default function Section03({ changeStage, scrollStage }) {
       />
       {/* //?Background - Ending */}
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-cream">
+      <div className="Page-inner-wrap z-10 h-screen w-screen overflow-x-hidden overflow-y-scroll bg-cream">
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-blue"

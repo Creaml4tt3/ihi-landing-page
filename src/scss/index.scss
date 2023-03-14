@@ -52,15 +52,25 @@ $hydro: #0f283e;
     @apply w-full;
     .Heading-text {
       @apply w-full text-center text-6xl font-semibold leading-snug;
+      @apply maxlaptop:text-5xl maxlaptop:leading-tight #{!important};
     }
     .Sub-heading-text {
       @apply w-full text-center text-5xl font-medium leading-snug;
+      @apply maxlaptop:text-4xl maxlaptop:leading-tight #{!important};
     }
     .Second-text {
       @apply text-center text-40px font-medium;
+      @apply maxlaptop:text-4xl #{!important};
     }
     .Second-sub-text {
       @apply text-center text-4xl font-medium leading-snug;
+      @apply maxlaptop:text-3xl #{!important};
+    }
+    .Second-second-text {
+      @apply maxlaptop:text-2xl #{!important};
+    }
+    .Sub-second-text {
+      @apply maxlaptop:text-4xl #{!important};
     }
   }
 
@@ -125,12 +135,15 @@ $hydro: #0f283e;
   }
 
   .Graph-inside-container {
-    background: url("../images/webp/graph-bg.webp");
-    @apply bg-auto bg-bottom bg-no-repeat;
+    //background: url("../images/webp/graph-bg.webp");
+    //@apply bg-auto bg-bottom bg-no-repeat;
     .Graph {
-      @apply w-full pb-5;
+      @apply w-fit;
       .Picture-section {
         @apply w-full;
+        img {
+          @apply h-auto max-h-[398px] maxlaptop:max-w-[90%];
+        }
       }
     }
   }
@@ -177,16 +190,21 @@ $hydro: #0f283e;
       @apply z-0 flex w-fit flex-auto items-end gap-6;
       .Text-section {
         @apply z-10 flex h-full flex-col items-start gap-4 pb-6;
+        @apply maxlaptop:gap-2;
         .Belt-text {
           @apply text-3xl font-bold text-blue;
+          @apply maxlaptop:text-2xl;
         }
         .Belt-text-bold {
           @apply text-6xl font-bold leading-none text-navy;
+          @apply maxlaptop:text-5xl;
         }
         .Belt-sub-text {
           @apply flex flex-col text-2xl font-semibold text-orange;
+          @apply maxlaptop:text-xl;
           .Belt-sub-text-bold {
             @apply text-40px font-bold;
+            @apply maxlaptop:text-4xl;
           }
         }
       }
@@ -238,9 +256,11 @@ $hydro: #0f283e;
         @apply flex w-fit flex-col gap-2;
         .Icon-show-text {
           @apply w-fit text-40px font-semibold text-blue;
+          @apply maxlaptop:text-4xl #{!important};
         }
         .Icon-show-sub-text {
           @apply w-fit text-4xl font-medium leading-snug text-orange;
+          @apply maxlaptop:text-3xl #{!important};
         }
       }
       .Icon-show {
@@ -269,15 +289,18 @@ $hydro: #0f283e;
         @apply z-10 flex flex-col items-start justify-start gap-6;
         .Upper-text {
           @apply text-2xl font-normal text-orange;
+          @apply maxlaptop:text-xl #{!important};
         }
         .Title-text {
           @apply text-6xl font-semibold leading-tight text-white;
+          @apply maxlaptop:text-5xl #{!important};
         }
         .Base-text {
           @apply text-lg font-medium;
         }
         .Description-text {
           @apply text-2xl font-normal text-white;
+          @apply maxlaptop:text-xl #{!important};
           .List-container {
             .List-text {
               @apply list-item list-inside list-disc text-base;
@@ -286,6 +309,7 @@ $hydro: #0f283e;
         }
         .Sub-description-text {
           @apply text-2xl font-normal text-orange;
+          @apply maxlaptop:text-xl #{!important};
           .Sub-list-container {
             .Sub-list-text {
               @apply list-item list-inside list-disc text-base;
@@ -301,9 +325,11 @@ $hydro: #0f283e;
       @apply flex flex-col items-start;
       .Base {
         @apply w-fit text-2xl font-medium text-white;
+        @apply maxlaptop:text-xl #{!important};
       }
       .Sub-base {
         @apply w-fit text-2xl font-medium text-orange;
+        @apply maxlaptop:text-xl #{!important};
       }
     }
     .Percent {
@@ -354,4 +380,9 @@ $hydro: #0f283e;
       }
     }
   }
+}
+
+.px-desktop {
+  @apply maxlaptop:px-laptop;
+  @apply mobile:px-mobile;
 }
