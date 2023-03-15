@@ -836,7 +836,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
         </section>
         {/* //?Page 05 */}
         <section
-          className="Page-section flex-center relative h-fit w-full flex-col px-desktop"
+          className="Page-section flex-center relative mb-25vh h-fit w-full flex-col px-desktop"
           ref={epidemicRef}
         >
           <section className="Text-section flex-center z-10 flex-col">
@@ -853,7 +853,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               </span>
             </h2>
           </section>
-          <section className="Grid-container mt-20 mb-72 grid w-full max-w-1300px grid-cols-3 gap-y-14 gap-x-20">
+          <section className="Grid-container mt-20 mb-32 grid w-full max-w-1300px grid-cols-3 gap-y-14 gap-x-20">
             <div className="Grid-content" id="Grid-01">
               <div className="Upper">
                 <span className="Upper-text">
