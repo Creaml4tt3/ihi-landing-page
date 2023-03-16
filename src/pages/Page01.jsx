@@ -191,7 +191,7 @@ export default function Section01({ changeStage, scrollStage }) {
       />
       {/* //?Background - Ending */}
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap h-screen w-full overflow-y-scroll bg-blue">
+      <div className="Page-inner-wrap h-screen w-full overflow-y-scroll">
         {/* //?Page 01 */}
         <section className="Page-section relative flex h-screen flex-col items-center justify-end px-desktop">
           <section className="Text-section z-20 flex flex-col gap-4">
