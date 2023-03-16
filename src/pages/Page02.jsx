@@ -583,7 +583,7 @@ export default function Section02({ changeStage, scrollStage }) {
                 </h3>
               </section>
               <animated.div
-                className="Column-line mx-auto mt-6 h-[120px] w-[200px] bg-orange"
+                className="Column-line z-20 mx-auto mt-6 h-[120px] w-[200px] bg-orange"
                 style={slideUp01}
               ></animated.div>
             </div>
@@ -604,12 +604,12 @@ export default function Section02({ changeStage, scrollStage }) {
                 </h3>
               </section>
               <animated.div
-                className="Column-line mx-auto mt-6 h-[215px] w-[200px] bg-orange"
+                className="Column-line z-20 mx-auto mt-6 h-[215px] w-[200px] bg-orange"
                 style={slideUp02}
               ></animated.div>
             </div>
           </div>
-          <div className="Box-container rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue">
+          <div className="Box-container z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue">
             <section className="Text-section">
               <h2 className="Second-text text-center !text-5xl !font-bold !leading-relaxed text-blue">
                 {configJSON.CONTENT.PAGE_02.SECTION_06.HEADING_01}
@@ -1006,7 +1006,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 08 */}
-        <section className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop pb-25vh">
+        <section className="Page-section relative z-20 h-fit w-full max-w-1540px flex-col px-desktop pb-25vh">
           <Lottie
             animationData={line}
             lottieRef={lineLottieRef}

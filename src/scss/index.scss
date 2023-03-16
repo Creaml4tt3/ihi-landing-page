@@ -251,7 +251,7 @@ $hydro: #0f283e;
       @apply pointer-events-none absolute top-0 h-full rounded-xl border-b-[15px] border-blue;
     }
     .Icon-show-container {
-      @apply flex h-full flex-col items-start justify-end gap-8;
+      @apply z-20 flex h-full flex-col items-start justify-end gap-8;
       .Text-section {
         @apply flex w-fit flex-col gap-2;
         .Icon-show-text {

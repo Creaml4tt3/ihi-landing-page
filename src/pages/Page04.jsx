@@ -278,7 +278,7 @@ export default function Section03({ changeStage, scrollStage }) {
         webp={page_04_bg_webp}
         normal={page_04_bg_png}
         alt="page_04_bg_png"
-        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-multiply pointer-events-none"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-0 mix-blend-multiply pointer-events-none"
         classimg="mx-auto w-full h-auto"
       />
       {/* //?Background - Ending */}
@@ -808,7 +808,7 @@ export default function Section03({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 06 */}
-        <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop pt-44">
+        <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop pt-44">
           <section className="Section-container flex-center max-w-1540px gap-24">
             <section className="Column-container h-[300vh] w-2/5 py-20vh">
               <div
@@ -820,8 +820,8 @@ export default function Section03({ changeStage, scrollStage }) {
                   webp={page_04_solution_01_webp}
                   normal={page_04_solution_01_png}
                   alt="page_04_solution_01_png"
-                  classpic="Picture-section z-10"
-                  classimg="mx-auto w-fit h-auto"
+                  classpic="Picture-section"
+                  classimg="mx-auto w-fit h-auto z-20"
                   lazy
                 />
               </div>
