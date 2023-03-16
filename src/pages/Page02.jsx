@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { UseIntersection } from "../components/UseIntersection";
 import { useSpring, animated, easings } from "@react-spring/web";
 import Lottie from "lottie-react";
@@ -49,34 +49,65 @@ import fire from "../lotties/fire.json";
 import fire_webm from "../lotties/webm/fire.webm";
 import belt_small_webm from "../lotties/webm/belt-small.webm";
 
-export default function Section02({ changeStage, pastStage, scrollStage }) {
+export default function Section02({ changeStage, scrollStage }) {
   const beltRef = useRef(null);
-  const beltIn = UseIntersection(beltRef, "0px");
+  const beltIn = UseIntersection(beltRef, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
   const howRef = useRef(null);
-  const howIn = UseIntersection(howRef, "0px");
+  const howIn = UseIntersection(howRef, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
   const columnRef = useRef(null);
-  const columnIn = UseIntersection(columnRef, "200%");
+  const columnIn = UseIntersection(columnRef, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
   const lineRef = useRef(null);
   const lineLottieRef = useRef(null);
-  const lineIn = UseIntersection(lineRef, "100%");
+  const lineIn = UseIntersection(lineRef, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
   const workRef = useRef(null);
   const workLottieRef = useRef(null);
-  const workIn = UseIntersection(workRef, "100%");
+  const workIn = UseIntersection(workRef, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
   const duration = 1500;
   const delay = 400;
   const pushUpY = 600;
   const videoURL = "https://www.youtube.com/watch?v=NUIvibOL5kI";
-  const videoURL02 = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
+  const videoURL02 = "https://www.youtube.com/watch?v=-HpnQBf7DQw";
   const previewVideoURL01 = black_webp;
   const previewVideoURL02 = black_webp;
+
+  const video_01_ref = useRef(null);
+  const video_02_ref = useRef(null);
+
+  const video_01_in = UseIntersection(video_01_ref, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
+  const video_02_in = UseIntersection(video_02_ref, "100%");
+
+  let video_01_playing = false;
+  let video_02_playing = false;
+
+  if (video_01_in) {
+    video_01_playing = true;
+  }
+  if (video_02_in) {
+    video_02_playing = true;
+  }
 
   function scrollAndCheckForNextPage(el, scroll) {
     let bodyHeight = document.body.clientHeight;
     let scrolling = el.scrollTop;
     let scrollingHeight = el.scrollHeight;
-
-    console.log(bodyHeight + scrolling);
-    console.log(scrollingHeight);
 
     if (scroll > 2) {
       if (bodyHeight + scrolling === scrollingHeight) {
@@ -588,16 +619,19 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
               </h3>
             </section>
           </div>
-          <div className="Video-container w-full max-w-1360px px-desktop pt-44 pb-48">
+          <div className="Video-container z-50 h-fit w-full max-w-1360px px-desktop pt-44 pb-48">
             <ReactPlayer
               className="React-player"
               url={videoURL}
               width="100%"
               height="550px"
-              /* light={previewVideoURL01} */
-              playing="true"
+              /* light={previewVideoURL02} */
+              playing={video_01_playing ? true : false}
+              muted
               playIcon={videoIcon()}
+              controls
             />
+            <div className="Intersection-container" ref={video_01_ref}></div>
           </div>
         </section>
         {/* //?Page 07 */}
@@ -962,17 +996,17 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
               url={videoURL02}
               width="100%"
               height="550px"
-              light={previewVideoURL02}
-              playing="true"
+              /* light={previewVideoURL02} */
+              playing={video_02_playing ? true : false}
+              muted
               playIcon={videoIcon()}
+              controls
             />
+            <div className="Intersection-container" ref={video_02_ref}></div>
           </div>
         </section>
         {/* //?Page 08 */}
-        <section
-          className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop pb-25vh"
-          ref={lineRef}
-        >
+        <section className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop pb-25vh">
           <Lottie
             animationData={line}
             lottieRef={lineLottieRef}
@@ -981,6 +1015,7 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
             autoplay={false}
             loop={false}
           />
+          <div className="Intersection-container" ref={lineRef}></div>
         </section>
         {/* //?Page 0x */}
         {/* <section className="Page-section flex h-[100vh] items-end justify-center"> */}

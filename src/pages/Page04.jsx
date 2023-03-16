@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import Lottie from "lottie-react";
+import { UseIntersection } from "../components/UseIntersection";
 import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import Picture from "../components/Picture";
 import Video from "../components/Video";
@@ -35,12 +36,14 @@ import {
   black_webp,
   icon_02_png,
   icon_02_webp,
+  video_icon_png,
+  video_icon_webp,
 } from "../components/image/Image02";
 import belt_webm from "../lotties/webm/belt.webm";
 import warehouse_01 from "../lotties/warehouse-01.json";
 import warehouse_02 from "../lotties/warehouse-02.json";
 export default function Section03({ changeStage, scrollStage }) {
-  const videoURL = "https://www.youtube.com/watch?v=rz3PCRa4FEk";
+  const videoURL = "https://www.youtube.com/watch?v=2gBzJWvE_uM (";
   const previewVideoURL01 = black_webp;
   const solution_01Ref = useRef(null);
   const solution_02Ref = useRef(null);
@@ -57,6 +60,27 @@ export default function Section03({ changeStage, scrollStage }) {
     solution_03PicRef,
   ];
   let sliders;
+
+  const videoIcon = () => {
+    return (
+      <div className="Icon-player-container flex-center">
+        <Picture
+          webp={video_icon_webp}
+          normal={video_icon_png}
+          alt="video_icon_png"
+          classpic="Picture-section"
+          classimg=""
+          lazy
+        />
+      </div>
+    );
+  };
+
+  const videoRef = useRef(null);
+  const videoIn = UseIntersection(videoRef, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
@@ -316,11 +340,19 @@ export default function Section03({ changeStage, scrollStage }) {
         {/* //?Page 03 */}
         <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop">
           <div className="Video-container w-full max-w-1360px">
-            <Video
+            <ReactPlayer
+              className="React-player"
               url={videoURL}
-              preview={previewVideoURL01}
-              className="Video"
+              width="100%"
+              height="550px"
+              /* light={previewVideoURL01} */
+              playing={videoIn ? true : false}
+              muted
+              volume={100}
+              playIcon={videoIcon()}
+              controls
             />
+            <div className="Intersection-container" ref={videoRef}></div>
           </div>
           <div className="Icon-container flex-center mt-5 gap-4">
             <div className="Icon-card" id="Icon-card-01">

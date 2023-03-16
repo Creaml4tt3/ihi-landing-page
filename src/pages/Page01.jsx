@@ -60,13 +60,15 @@ export default function Section01({ changeStage, scrollStage }) {
   const arrowDownRef = useRef(null);
   const graphLineRef = useRef(null);
   const graphLineLottieRef = useRef(null);
-  const graphContainerIn = UseIntersection(graphContainerRef, "20%");
-  const solution_01In = UseIntersectionLoop(solution_01Ref, "-20%");
-  const solution_02In = UseIntersectionLoop(solution_02Ref, "-20%");
-  const solution_03In = UseIntersectionLoop(solution_03Ref, "-20%");
-  const arrowUpIn = UseIntersection(arrowUpRef, "100%");
-  const arrowDownIn = UseIntersection(arrowDownRef, "100%");
-  const graphLineIn = UseIntersection(graphLineRef, "0px");
+  const graphContainerIn = UseIntersection(graphContainerRef, {
+    rootMargin: "20%",
+  });
+  const solution_01In = UseIntersectionLoop(solution_01Ref, "20%");
+  const solution_02In = UseIntersectionLoop(solution_02Ref, "20%");
+  const solution_03In = UseIntersectionLoop(solution_03Ref, "20%");
+  const arrowUpIn = UseIntersection(arrowUpRef, { rootMargin: "20%" });
+  const arrowDownIn = UseIntersection(arrowDownRef, { rootMargin: "20%" });
+  const graphLineIn = UseIntersection(graphLineRef, { rootMargin: "20%" });
   const solutionRefArr = [
     solution_01AnimationRef,
     solution_02AnimationRef,
@@ -310,7 +312,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 classpic="Picture-section w-full z-10"
                 classimg="w-full h-auto"
               />
-              <div className="Graph-line-container absolute right-0 bottom-12 z-50 flex w-full items-end justify-between pl-[17%]">
+              <div className="Graph-line-container absolute right-0 bottom-12 z-20 flex w-full items-end justify-between pl-[17%]">
                 <animated.div style={pushUp01} className="Graph">
                   <Picture
                     webp={graph_01_webp}
@@ -411,6 +413,10 @@ export default function Section01({ changeStage, scrollStage }) {
                 <span className="Graph-info">Hydroelectricity</span>
               </div>
             </div>
+            <div
+              className="Intersection-container"
+              ref={graphContainerRef}
+            ></div>
           </section>
           <div className="Link-container">
             <a
@@ -437,10 +443,7 @@ export default function Section01({ changeStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_01.SECTION_04.SUB_HEADING_02}
             </h2>
           </section>
-          <div
-            className="Graph-line-container relative mt-16"
-            ref={graphLineRef}
-          >
+          <div className="Graph-line-container relative mt-16">
             <Lottie
               animationData={graph}
               lottieRef={graphLineLottieRef}
@@ -449,6 +452,7 @@ export default function Section01({ changeStage, scrollStage }) {
               loop={false}
               autoplay={false}
             />
+            <div className="Intersection-container" ref={graphLineRef}></div>
             <section className="Text-section z-30">
               <span className="Text absolute left-1/2 top-[40%] -translate-x-1/2 text-4xl font-medium text-white">
                 {configJSON.CONTENT.PAGE_01.SECTION_04.TEXT_01}
@@ -478,7 +482,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 {configJSON.CONTENT.PAGE_01.SECTION_05.SUB_HEADING_01}
               </h2>
             </section>
-            <div className="Arrow mt-4" ref={arrowUpRef}>
+            <div className="Arrow mt-4">
               <animated.div style={arrowUp}>
                 <Picture
                   webp={arrow_up_webp}
@@ -491,6 +495,7 @@ export default function Section01({ changeStage, scrollStage }) {
               </animated.div>
             </div>
           </div>
+          <div className="Intersection-container" ref={arrowUpRef}></div>
           <div className="Arrow-down-container">
             <section className="Text-section z-20 flex flex-col gap-4">
               <h2 className="Heading-text text-white">
@@ -500,7 +505,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 {configJSON.CONTENT.PAGE_01.SECTION_05.SUB_HEADING_02}
               </h2>
             </section>
-            <div className="Arrow mt-7" ref={arrowDownRef}>
+            <div className="Arrow mt-7">
               <animated.div style={arrowDown}>
                 <Picture
                   webp={arrow_down_webp}
@@ -512,6 +517,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 />
               </animated.div>
             </div>
+            <div className="Intersection-container" ref={arrowDownRef}></div>
           </div>
         </section>
         {/* //?Page 06 */}
