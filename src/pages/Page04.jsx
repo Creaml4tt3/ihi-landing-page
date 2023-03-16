@@ -107,7 +107,7 @@ export default function Section03({ changeStage, scrollStage }) {
     let scrollingHeight = el.scrollHeight;
 
     if (scroll > 2) {
-      if (bodyHeight + scrolling - scrollingHeight === 15) {
+      if (bodyHeight + scrolling === scrollingHeight) {
         changeStage("+");
       }
     }
@@ -890,9 +890,9 @@ export default function Section03({ changeStage, scrollStage }) {
           </section>
         </section>
         {/* //?Page 0x */}
-        <section className="Page-section flex h-[100vh] items-end justify-center">
-          {/* //?Page Down */}
-          {/* <div
+        {/* <section className="Page-section flex h-[100vh] items-end justify-center"> */}
+        {/* //?Page Down */}
+        {/* <div
             className="Page-controller group h-52 w-screen"
             id="Page-controller-04"
           >
@@ -901,7 +901,7 @@ export default function Section03({ changeStage, scrollStage }) {
               onClick={() => changeStage("+")}
             ></button>
           </div> */}
-        </section>
+        {/* </section> */}
       </div>
     </>
   );

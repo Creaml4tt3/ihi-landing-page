@@ -310,7 +310,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 classpic="Picture-section w-full z-10"
                 classimg="w-full h-auto"
               />
-              <div className="Graph-line-container absolute right-0 bottom-12 flex w-full items-end justify-between pl-[17%]">
+              <div className="Graph-line-container absolute right-0 bottom-12 z-50 flex w-full items-end justify-between pl-[17%]">
                 <animated.div style={pushUp01} className="Graph">
                   <Picture
                     webp={graph_01_webp}

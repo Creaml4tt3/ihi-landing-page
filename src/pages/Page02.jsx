@@ -75,8 +75,11 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
     let scrolling = el.scrollTop;
     let scrollingHeight = el.scrollHeight;
 
+    console.log(bodyHeight + scrolling);
+    console.log(scrollingHeight);
+
     if (scroll > 2) {
-      if (bodyHeight + scrolling - scrollingHeight === 15) {
+      if (bodyHeight + scrolling === scrollingHeight) {
         changeStage("+");
       }
     }
@@ -967,7 +970,7 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
         </section>
         {/* //?Page 08 */}
         <section
-          className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop"
+          className="Page-section relative h-fit w-full max-w-1540px flex-col px-desktop pb-25vh"
           ref={lineRef}
         >
           <Lottie
@@ -980,9 +983,9 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
           />
         </section>
         {/* //?Page 0x */}
-        <section className="Page-section flex h-[100vh] items-end justify-center">
-          {/* //?Page Down */}
-          {/* <div
+        {/* <section className="Page-section flex h-[100vh] items-end justify-center"> */}
+        {/* //?Page Down */}
+        {/* <div
             className="Page-controller group h-52 w-screen"
             id="Page-controller-02"
           >
@@ -991,7 +994,7 @@ export default function Section02({ changeStage, pastStage, scrollStage }) {
               onClick={() => changeStage("+")}
             ></button>
           </div> */}
-        </section>
+        {/* </section> */}
       </div>
       {/* //?Main - Ending */}
     </>
