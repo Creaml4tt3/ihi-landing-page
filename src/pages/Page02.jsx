@@ -203,7 +203,7 @@ export default function Section02({ changeStage, scrollStage }) {
         webp={page_02_bg_webp}
         normal={page_02_bg_png}
         alt="page_02_bg_png"
-        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-10 mix-blend-multiply pointer-events-none"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-0 mix-blend-multiply pointer-events-none"
         classimg="mx-auto w-full h-auto"
       />
       {/* //?Background - Ending */}
@@ -281,7 +281,7 @@ export default function Section02({ changeStage, scrollStage }) {
             normal={page_02_engine_png}
             alt="page_02_engine_png"
             classpic="Picture-section h-fit"
-            classimg="mx-auto mix-blend-darken mt-8 mb-6"
+            classimg="mx-auto mt-8 mb-6 z-10"
             lazy
           />
           <div className="Link-container">
@@ -655,7 +655,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   webp={page_02_boiler_webp}
                   normal={page_02_boiler_png}
                   alt="page_02_boiler_png"
-                  classpic="Picture-section h-fit mix-blend-multiply"
+                  classpic="Picture-section h-fit"
                   classimg="z-10"
                   lazy
                 />
