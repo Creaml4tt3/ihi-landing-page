@@ -1,0 +1,400 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600&display=swap");
+
+$white: #ffffff;
+$black: #262626;
+$coal: #d9edff;
+$oil: #7cc2ff;
+$gas: #269aff;
+$renew: #0e70c6;
+$nuclear: #0d416f;
+$hydro: #0f283e;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Prompt", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img {
+    pointer-events: none;
+    @apply max-w-full;
+  }
+}
+@layer components {
+  .Page-section {
+    @apply mx-auto h-full w-full scroll-smooth;
+    @apply snap-start;
+    .section {
+      @apply snap-always;
+    }
+    .Section-container {
+      @apply w-full;
+    }
+  }
+
+  .Text-section {
+    @apply w-full;
+    .Heading-text {
+      @apply w-full text-center text-6xl font-semibold leading-snug;
+      @apply maxlaptop:text-5xl maxlaptop:leading-tight #{!important};
+    }
+    .Sub-heading-text {
+      @apply w-full text-center text-5xl font-medium leading-snug;
+      @apply maxlaptop:text-4xl maxlaptop:leading-tight #{!important};
+    }
+    .Second-text {
+      @apply text-center text-40px font-medium;
+      @apply maxlaptop:text-4xl #{!important};
+    }
+    .Second-sub-text {
+      @apply text-center text-4xl font-medium leading-snug;
+      @apply maxlaptop:text-3xl #{!important};
+    }
+    .Second-second-text {
+      @apply maxlaptop:text-2xl #{!important};
+    }
+    .Sub-second-text {
+      @apply maxlaptop:text-4xl #{!important};
+    }
+  }
+
+  .Link-container {
+    .Link {
+      @apply text-base font-medium text-white underline hover:text-orange;
+    }
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  :is(.App, .Page-inner-wrap, .scrollbar-hide)::-webkit-scrollbar {
+    @apply w-0;
+  }
+
+  pre,
+  code {
+    @apply text-sm;
+    font-family: monospace;
+  }
+
+  .shadow,
+  .Modal-container {
+    box-shadow: 0 8px 0 $white;
+    transition: box-shadow 0.1s ease-out, -webkit-transform 0.1s ease-out;
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out,
+      -webkit-transform 0.1s ease-out;
+  }
+
+  .shadow:is(:active, :focus, :hover) {
+    transform: translateY(8px);
+    box-shadow: none;
+  }
+
+  .Code-container::-webkit-scrollbar {
+    @apply h-2 w-2 bg-opacity-0;
+  }
+
+  .Code-container::-webkit-scrollbar-thumb,
+  .Code-container::-webkit-scrollbar-corner {
+    @apply rounded-full bg-orange;
+  }
+
+  :is(.Code-container, .Json):focus-visible {
+    @apply border-none outline-none;
+  }
+
+  .Modal-container {
+    animation-name: fadeout;
+    animation-duration: 1s;
+    animation-delay: 2s;
+    animation-timing-function: ease-in;
+  }
+
+  .Json {
+    word-wrap: break-word;
+  }
+
+  .Graph-inside-container {
+    //background: url("../images/webp/graph-bg.webp");
+    //@apply bg-auto bg-bottom bg-no-repeat;
+    .Graph {
+      @apply w-fit;
+      .Picture-section {
+        @apply w-full;
+        img {
+          @apply h-auto max-h-[398px] maxlaptop:max-w-[90%];
+        }
+      }
+    }
+  }
+
+  .Graph-inside-info {
+    @apply flex justify-start;
+  }
+
+  .Graph-info {
+    @apply text-xl font-medium text-white;
+  }
+
+  .Circle {
+    @apply mr-3 h-[22px] w-[22px];
+  }
+
+  #Circle-01 {
+    fill: $coal;
+  }
+  #Circle-02 {
+    fill: $oil;
+  }
+  #Circle-03 {
+    fill: $gas;
+  }
+  #Circle-04 {
+    fill: $renew;
+  }
+  #Circle-05 {
+    fill: $nuclear;
+  }
+  #Circle-06 {
+    fill: $hydro;
+  }
+
+  button,
+  #Page-01-next {
+    border-radius: 20px 0px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .Belt-container {
+    .Belt {
+      @apply z-0 flex w-fit flex-auto items-end gap-6;
+      .Text-section {
+        @apply z-10 flex h-full flex-col items-start gap-4 pb-6;
+        @apply maxlaptop:gap-2;
+        .Belt-text {
+          @apply text-3xl font-bold text-blue;
+          @apply maxlaptop:text-2xl;
+        }
+        .Belt-text-bold {
+          @apply text-6xl font-bold leading-none text-navy;
+          @apply maxlaptop:text-5xl;
+        }
+        .Belt-sub-text {
+          @apply flex flex-col text-2xl font-semibold text-orange;
+          @apply maxlaptop:text-xl;
+          .Belt-sub-text-bold {
+            @apply text-40px font-bold;
+            @apply maxlaptop:text-4xl;
+          }
+        }
+      }
+    }
+  }
+
+  .Icon-card {
+    @apply z-10 flex h-full min-h-[232px] w-full min-w-[260px] flex-col items-center justify-between gap-6 bg-blue p-6;
+    .Icon-text {
+      @apply flex w-full items-start justify-start gap-2 text-start;
+      .Icon-number {
+        @apply font-libre text-40px font-medium leading-none text-white;
+      }
+      .Icon-info {
+        @apply font-libre text-base font-semibold uppercase -tracking-[0.02em] text-white;
+      }
+    }
+    .Icon {
+    }
+  }
+
+  .Column {
+    @apply flex h-full flex-auto flex-col overflow-hidden;
+    .Text-section {
+      @apply flex-center z-10 flex-col;
+      .Second-text {
+        @apply text-40px font-semibold text-blue;
+      }
+      .Divide-text {
+        @apply text-2xl font-semibold text-blue;
+      }
+      .Second-second-text {
+        @apply text-center text-3xl font-medium text-orange;
+      }
+    }
+  }
+
+  .Flow-container {
+    @apply relative flex w-full max-w-1620px justify-start gap-20 px-desktop;
+    .Flow-left {
+      @apply pointer-events-none absolute top-0 left-0 mx-desktop h-full rounded-xl border-t-[15px] border-l-[15px] border-b-[15px] border-blue;
+    }
+    .Flow-right {
+      @apply pointer-events-none absolute top-0 h-full rounded-xl border-b-[15px] border-blue;
+    }
+    .Icon-show-container {
+      @apply z-20 flex h-full flex-col items-start justify-end gap-8;
+      .Text-section {
+        @apply flex w-fit flex-col gap-2;
+        .Icon-show-text {
+          @apply w-fit text-40px font-semibold text-blue;
+          @apply maxlaptop:text-4xl #{!important};
+        }
+        .Icon-show-sub-text {
+          @apply w-fit text-4xl font-medium leading-snug text-orange;
+          @apply maxlaptop:text-3xl #{!important};
+        }
+      }
+      .Icon-show {
+        @apply flex h-fit w-fit items-start gap-11;
+      }
+    }
+  }
+  .Icon-card {
+    @apply relative;
+    .Icon {
+      @apply absolute bottom-7 left-1/2 -translate-x-1/2;
+    }
+  }
+
+  .Column-lottie {
+    .Lottie-container {
+      .Lottie-section {
+      }
+    }
+  }
+
+  .Column-Text {
+    .Column-inside {
+      @apply flex h-full max-h-[650px] flex-col items-start justify-center;
+      .Text-section {
+        @apply z-10 flex flex-col items-start justify-start gap-6;
+        .Upper-text {
+          @apply text-2xl font-normal text-orange;
+          @apply maxlaptop:text-xl #{!important};
+        }
+        .Title-text {
+          @apply text-6xl font-semibold leading-tight text-white;
+          @apply maxlaptop:text-5xl #{!important};
+        }
+        .Base-text {
+          @apply text-lg font-medium;
+        }
+        .Description-text {
+          @apply text-2xl font-normal text-white;
+          @apply maxlaptop:text-xl #{!important};
+          .List-container {
+            .List-text {
+              @apply list-item list-inside list-disc text-base;
+            }
+          }
+        }
+        .Sub-description-text {
+          @apply text-2xl font-normal text-orange;
+          @apply maxlaptop:text-xl #{!important};
+          .Sub-list-container {
+            .Sub-list-text {
+              @apply list-item list-inside list-disc text-base;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .Graph-side-container {
+    .Text {
+      @apply flex flex-col items-start;
+      .Base {
+        @apply w-fit text-2xl font-medium text-white;
+        @apply maxlaptop:text-xl #{!important};
+      }
+      .Sub-base {
+        @apply w-fit text-2xl font-medium text-orange;
+        @apply maxlaptop:text-xl #{!important};
+      }
+    }
+    .Percent {
+      @apply text-xl font-normal text-white;
+    }
+  }
+
+  .Grid-container {
+    .Grid-content {
+      @apply flex w-full flex-col items-start justify-start gap-5 justify-self-center;
+      .Number-text {
+        @apply text-40px font-semibold text-white;
+      }
+      .Upper,
+      .Lower {
+        @apply flex flex-col;
+        .Upper-text,
+        .Lower-text {
+          @apply text-2xl font-normal text-white;
+        }
+        .Sub-upper-text,
+        .Sub-lower-text {
+          @apply text-2xl font-normal text-orange;
+        }
+      }
+    }
+  }
+
+  .Row-container {
+    .Row {
+      @apply flex gap-40;
+      .Lottie-section {
+        @apply flex-auto;
+      }
+    }
+  }
+
+  .Slide-track {
+    .Slide-container {
+      @apply flex min-w-[33.3%] flex-1 flex-col items-center justify-end gap-16;
+      .Text-section {
+        .Title-text {
+          @apply text-center text-3xl font-semibold leading-relaxed text-blue;
+        }
+        .Sub-title-text {
+          @apply text-center text-3xl font-medium leading-relaxed text-orange;
+        }
+      }
+    }
+  }
+}
+
+#Page-02,
+#Page-04 {
+  .Video-container {
+    .React-player {
+      @apply relative pt-[56.25%];
+      div {
+        @apply absolute left-0 top-0;
+      }
+    }
+
+    .px-desktop {
+      @apply maxlaptop:px-laptop;
+      @apply mobile:px-mobile;
+    }
+  }
+}
