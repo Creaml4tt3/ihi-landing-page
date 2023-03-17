@@ -215,7 +215,7 @@ export default function Section02({ changeStage, scrollStage }) {
       {/* //?Background - Ending */}
       {/* //?Main - Starting */}
       <div
-        className="Page-inner-wrap w-sceeen h-screen overflow-x-hidden overflow-y-scroll bg-cream"
+        className="Page-inner-wrap w-sceeen bg-cream h-screen overflow-x-hidden overflow-y-scroll"
         id="Page-02"
       >
         {/* //?Go to previos Page */}
@@ -224,7 +224,7 @@ export default function Section02({ changeStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh">
+        <section className="Page-section bg-cream px-desktop pb-30vh pt-40vh z-20 -mt-[100vh] h-fit w-full rounded-t-full">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text text-[90px] font-medium text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_01}
@@ -254,7 +254,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section relative h-fit w-full px-desktop pb-30vh">
+        <section className="Page-section px-desktop pb-30vh relative h-fit w-full">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text !font-bold italic text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_02.HEADING_01}
@@ -276,7 +276,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </section>
         </section>
         {/* //?Page 03 */}
-        <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop pb-40vh">
+        <section className="Page-section flex-center px-desktop pb-40vh relative h-fit w-full flex-col">
           <section className="Text-section flex-center z-10 flex-col">
             <h2 className="Heading-text text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_03.HEADING_01}
@@ -309,9 +309,9 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 04 */}
-        <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop pb-30vh">
+        <section className="Page-section flex-center px-desktop pb-30vh relative h-fit w-full flex-col">
           <div
-            className="Belt-container flex w-full max-w-1480px overflow-hidden pl-6"
+            className="Belt-container max-w-1480px flex w-full overflow-hidden pl-6"
             ref={beltRef}
           >
             <div className="Belt" id="Belt-01">
@@ -544,7 +544,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section flex-center relative h-fit w-full flex-col pb-20vh">
+        <section className="Page-section flex-center pb-20vh relative h-fit w-full flex-col">
           <animated.div className="How-container" ref={howRef} style={popUp}>
             <Picture
               webp={page_02_how_webp}
@@ -570,7 +570,7 @@ export default function Section02({ changeStage, scrollStage }) {
           />
         </section>
         {/* //?Page 06 */}
-        <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop">
+        <section className="Page-section flex-center px-desktop relative h-fit w-full flex-col">
           <section className="Text-section flex-center z-10 mb-10 flex-col">
             <h3 className="Second-text font-semibold text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_01}
@@ -626,17 +626,17 @@ export default function Section02({ changeStage, scrollStage }) {
               ></animated.div>
             </div>
           </div>
-          <div className="Box-container z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue">
+          <div className="Box-container shadow-yblue z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48">
             <section className="Text-section">
               <h2 className="Second-text text-center !text-5xl !font-bold !leading-relaxed text-blue">
                 {configJSON.CONTENT.PAGE_02.SECTION_06.HEADING_01}
               </h2>
-              <h3 className="Sub-second-text text-center text-40px font-medium text-orange">
+              <h3 className="Sub-second-text text-40px text-center font-medium text-orange">
                 {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_HEADING_01}
               </h3>
             </section>
           </div>
-          <div className="Video-container z-50 w-full max-w-1360px px-desktop pt-44 pb-48">
+          <div className="Video-container max-w-1360px px-desktop z-50 w-full pt-44 pb-48">
             <ReactPlayer
               className="React-player"
               url={videoURL}
@@ -653,8 +653,8 @@ export default function Section02({ changeStage, scrollStage }) {
         </section>
         {/* //?Page 07 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col">
-          <div className="Info-container flex-center relative h-fit w-full max-w-1360px pb-8">
-            <div className="Info flex-center w-full gap-20 px-desktop">
+          <div className="Info-container flex-center max-w-1360px relative h-fit w-full pb-8">
+            <div className="Info flex-center px-desktop w-full gap-20">
               <section className="Text-section w-1/2 flex-1">
                 <h2 className="Heading-text !text-start !font-bold !leading-snug text-blue">
                   {configJSON.CONTENT.PAGE_02.SECTION_07.HEADING_01}
@@ -767,7 +767,7 @@ export default function Section02({ changeStage, scrollStage }) {
             </div>
           </div>
           <div className="Flow-container -mt-[15px] h-[540px] flex-row-reverse">
-            <div className="Flow-right right-0 mx-desktop w-1/2 border-t-[15px] border-r-[15px]"></div>
+            <div className="Flow-right mx-desktop right-0 w-1/2 border-t-[15px] border-r-[15px]"></div>
             <div className="Icon-show-container !items-end pr-44">
               <section className="Text-section">
                 <h3 className="Icon-show-text text-end">
@@ -959,7 +959,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Icon-card-container flex-center gap-4 pb-20vh">
+          <div className="Icon-card-container flex-center pb-20vh gap-4">
             <div className="Icon-card" id="Icon-card-04">
               <div className="Icon-text">
                 <span className="Icon-number">
@@ -1007,7 +1007,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Video-container w-full max-w-1360px px-desktop pt-44 pb-48">
+          <div className="Video-container max-w-1360px px-desktop w-full pt-44 pb-48">
             <ReactPlayer
               className="React-player"
               url={videoURL02}
@@ -1023,7 +1023,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 08 */}
-        <section className="Page-section relative z-20 h-fit w-full max-w-1540px flex-col px-desktop pb-25vh">
+        <section className="Page-section max-w-1540px px-desktop pb-25vh relative z-20 h-fit w-full flex-col">
           <Lottie
             animationData={line}
             lottieRef={lineLottieRef}

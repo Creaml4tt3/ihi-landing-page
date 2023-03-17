@@ -8,6 +8,8 @@ module.exports = {
       orange: "#FF8A00",
       black: "#262626",
       lightblue: "#2799FF",
+      navy: "#002A59",
+      cream: "#FFF7F0",
     },
     screens: {
       maxlaptop: { max: "1366px" },
@@ -65,7 +67,6 @@ module.exports = {
         glow: "0px 0px 0px 8px #ffffff",
       },
     },
-    extend: {},
   },
   plugins: [],
 };
