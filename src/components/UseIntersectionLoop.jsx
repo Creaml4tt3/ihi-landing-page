@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const UseIntersectionLoop = (element, rootMargin) => {
+export const UseIntersectionLoop = (element, options) => {
   const [isVisible, setState] = useState(false);
 
   useEffect(() => {
@@ -8,13 +8,13 @@ export const UseIntersectionLoop = (element, rootMargin) => {
       ([entry]) => {
         setState(entry.isIntersecting);
       },
-      { rootMargin }
+      [options]
     );
+    const newElement = element.current;
 
-    const Element = element.current;
-    Element && observer.observe(Element);
+    element.current && observer.observe(element.current);
 
-    return () => observer.unobserve(Element);
+    return () => observer.unobserve(newElement);
   }, []);
 
   return isVisible;

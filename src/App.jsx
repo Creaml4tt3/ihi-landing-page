@@ -49,9 +49,9 @@ export default function App() {
   //? ถ้าก่อนออกไม่ได้อยู่ที่หน้าแรกจะทำการดึงหน้าที่เก็บไว้ใน localstorage
   //? เช็คว่าเนื้อหาโหลดเสร็จแล้วจึงเอาหน้าโหลดออก
   useEffect(() => {
-    if (localStorage.getItem("currentStage") > 1)
+    /*     if (localStorage.getItem("currentStage") > 1)
       setSectionStage(parseInt(localStorage.getItem("currentStage")));
-
+ */
     window.addEventListener("load", () => {
       setOnLoad(false);
       setTimeout(() => {
@@ -61,19 +61,19 @@ export default function App() {
   }, []);
 
   //? ทุกครั้งที่มีการเปลี่ยนหน้าจะทำการเก็บบันทึกเลขหน้าเอาไว้
-  useEffect(() => {
+  /*   useEffect(() => {
     localStorage.setItem("currentStage", sectionStage);
-  }, [sectionStage]);
+  }, [sectionStage]); */
 
   return (
     <>
       <main className="App h-screen w-screen bg-blue">
         {/* //?Header - Starting */}
         <header className="App-header">
-          {/* <NavDot
+          <NavDot
             changeStage={sectionStageChange}
             currentStage={sectionStage}
-          /> */}
+          />
           {/* <Nav changeStage={sectionStageChange} />
           <ButtonNav /> */}
         </header>

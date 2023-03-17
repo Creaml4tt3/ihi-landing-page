@@ -51,6 +51,9 @@ export default function Section03({ changeStage, scrollStage }) {
   const solution_01PicRef = useRef(null);
   const solution_02PicRef = useRef(null);
   const solution_03PicRef = useRef(null);
+  const solution_01TextRef = useRef(null);
+  const solution_02TextRef = useRef(null);
+  const solution_03TextRef = useRef(null);
   const solution_01In = UseIntersectionLoop(solution_01Ref, "-20%");
   const solution_02In = UseIntersectionLoop(solution_02Ref, "-20%");
   const solution_03In = UseIntersectionLoop(solution_03Ref, "-20%");
@@ -58,6 +61,11 @@ export default function Section03({ changeStage, scrollStage }) {
     solution_01PicRef,
     solution_02PicRef,
     solution_03PicRef,
+  ];
+  const solutionTextRefArr = [
+    solution_01TextRef,
+    solution_02TextRef,
+    solution_03TextRef,
   ];
   let sliders;
 
@@ -77,21 +85,21 @@ export default function Section03({ changeStage, scrollStage }) {
   };
 
   const videoRef = useRef(null);
-  const videoIn = UseIntersection(videoRef, {
+  const videoIn = UseIntersectionLoop(videoRef, {
     rootMargin: "-100%",
     threshold: 1,
   });
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
-  function changePicture(ref, state, duration) {
-    setFade(ref, state, duration);
+  function changePicture(ref, textRef, state, duration) {
+    setFade(ref, textRef, state, duration);
     setTimeout(() => {
-      changeElement(ref);
+      changeElement(ref, textRef);
     }, duration);
   }
 
-  function changeElement(ref) {
+  function changeElement(ref, textRef) {
     solutionRefArr.forEach((solution) => {
       if (solution === ref) {
         solution.current.style.display = "block";
@@ -99,9 +107,16 @@ export default function Section03({ changeStage, scrollStage }) {
         solution.current.style.display = "none";
       }
     });
+    solutionTextRefArr.forEach((solution) => {
+      if (solution === textRef) {
+        solution.current.style.display = "flex";
+      } else {
+        solution.current.style.display = "none";
+      }
+    });
   }
 
-  function setFade(ref, state, duration) {
+  function setFade(ref, textRef, state, duration) {
     if (pastSolutionState === state) {
       return;
     } else {
@@ -113,58 +128,58 @@ export default function Section03({ changeStage, scrollStage }) {
           solution.current.style.animation = "0.5s ease-out fadeout";
         }
       });
+      solutionTextRefArr.forEach((solution) => {
+        if (solution === textRef) {
+          solution.current.style.animation = "0.5s ease-in fadein";
+        } else {
+          solution.current.style.animation = "0.5s ease-out fadeout";
+        }
+      });
       setTimeout(() => {}, duration);
     }
   }
 
   if (solution_01In) {
-    changePicture(solution_01PicRef, 1, 200);
+    changePicture(solution_01PicRef, solution_01TextRef, 1, 200);
   } else if (solution_02In) {
-    changePicture(solution_02PicRef, 2, 200);
+    changePicture(solution_02PicRef, solution_02TextRef, 2, 200);
   } else if (solution_03In) {
-    changePicture(solution_03PicRef, 3, 200);
+    changePicture(solution_03PicRef, solution_03TextRef, 3, 200);
   }
 
-  function scrollAndCheckForNextPage(el, scroll) {
-    let bodyHeight = document.body.clientHeight;
-    let scrolling = el.scrollTop;
-    let scrollingHeight = el.scrollHeight;
+  function handleScroll(event, el) {
+    const isScrollingUp = event.deltaY < 0;
+    const isAtTop = el.scrollTop === 0;
+    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
 
-    if (scroll > 2) {
-      if (bodyHeight + scrolling === scrollingHeight) {
-        changeStage("+");
-      }
+    if (isScrollingUp && isAtTop) {
+      changeStage("-");
+    }
+
+    if (!isScrollingUp && isAtBottom) {
+      changeStage("+");
     }
   }
-
-  let firstScroll = 0;
 
   useEffect(() => {
     sliders = document.querySelectorAll(".Slide-container");
     const loop = horizontalLoop(sliders, {
       repeat: -1,
     });
-
     let pageWrapper = document.querySelector(".Page-inner-wrap");
-    pageWrapper.addEventListener("wheel", () => {
-      scrollAndCheckForNextPage(pageWrapper, firstScroll);
-      scrollUp(pageWrapper);
-    });
-
-    function scrollUp(el) {
-      let scrolling = el.scrollTop;
-      if (firstScroll > 2) {
-        if (scrolling === 0) {
-          changeStage("-");
-        }
-        firstScroll = 0;
-      }
-      firstScroll++;
-    }
 
     if (scrollStage === 4) {
-      pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      setTimeout(() => {
+        pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      }, 10);
     }
+
+    pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    return () => {
+      pageWrapper.removeEventListener("wheel", (e) =>
+        handleScroll(e, pageWrapper)
+      );
+    };
   }, []);
 
   function horizontalLoop(items, config) {
@@ -283,7 +298,10 @@ export default function Section03({ changeStage, scrollStage }) {
       />
       {/* //?Background - Ending */}
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap z-10 h-screen w-screen overflow-x-hidden overflow-y-scroll bg-cream">
+      <div
+        className="Page-inner-wrap z-10 h-screen w-screen overflow-x-hidden overflow-y-scroll bg-cream"
+        id="Page-04"
+      >
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-blue"
@@ -810,7 +828,7 @@ export default function Section03({ changeStage, scrollStage }) {
         {/* //?Page 06 */}
         <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop pt-44">
           <section className="Section-container flex-center max-w-1540px gap-24">
-            <section className="Column-container h-[300vh] w-2/5 py-20vh">
+            <section className="Column-container h-[300vh] w-1/2 py-20vh">
               <div
                 className="Solution-picture-container sticky top-twenty pt-36"
                 id="Picture-01"
@@ -854,70 +872,84 @@ export default function Section03({ changeStage, scrollStage }) {
                 />
               </div>
             </section>
-            <section className="Column-container h-auto w-3/5">
-              <section
-                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+            <section className="Column-container relative h-[300vh] w-1/2">
+              <div
+                className="Section-action-container pointer-events-none absolute top-0 h-screen w-full"
                 ref={solution_01Ref}
-              >
-                <h2 className="Heading-text !text-start text-blue">
-                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01.TITLE_01}
-                </h2>
-                <h2 className="Sub-heading-text !text-start text-orange">
-                  {
-                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01
-                      .SUB_TITLE_01
-                  }
-                </h2>
-              </section>
-              <section
-                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+              ></div>
+              <div
+                className="Section-action-container pointer-events-none absolute top-[100vh] h-screen w-full"
                 ref={solution_02Ref}
-              >
-                <h2 className="Heading-text !text-start text-blue">
-                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
-                  <br></br>
-                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
-                  <br></br>
-                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_03}
-                </h2>
-                <h2 className="Sub-heading-text !text-start text-orange">
-                  {
-                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
-                      .SUB_TITLE_01
-                  }
-                  <br></br>
-                  {
-                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
-                      .SUB_TITLE_02
-                  }
-                  <br></br>
-                  {
-                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
-                      .SUB_TITLE_03
-                  }
-                </h2>
-              </section>
-              <section
-                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+              ></div>
+              <div
+                className="Section-action-container pointer-events-none absolute top-[200vh] h-screen w-full"
                 ref={solution_03Ref}
-              >
-                <h2 className="Heading-text !text-start text-blue">
-                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_01}
-                  <br></br>
-                  {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_02}
-                </h2>
-                <h2 className="Sub-heading-text !text-start text-orange">
-                  {
-                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
-                      .SUB_TITLE_01
-                  }
-                  <br></br>
-                  {
-                    configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
-                      .SUB_TITLE_02
-                  }
-                </h2>
-              </section>
+              ></div>
+              <div className="All-text-section sticky top-0">
+                <section
+                  className="Text-section flex-center z-20 h-screen flex-col gap-4"
+                  ref={solution_01TextRef}
+                >
+                  <h2 className="Heading-text !text-start text-blue">
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01.TITLE_01}
+                  </h2>
+                  <h2 className="Sub-heading-text !text-start text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01
+                        .SUB_TITLE_01
+                    }
+                  </h2>
+                </section>
+                <section
+                  className="Text-section z-20 hidden h-screen flex-col items-center justify-center gap-4"
+                  ref={solution_02TextRef}
+                >
+                  <h2 className="Heading-text !text-start text-blue">
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
+                    <br></br>
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
+                    <br></br>
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_03}
+                  </h2>
+                  <h2 className="Sub-heading-text !text-start text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                        .SUB_TITLE_02
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                        .SUB_TITLE_03
+                    }
+                  </h2>
+                </section>
+                <section
+                  className="Text-section z-20 hidden h-screen flex-col items-center justify-center gap-4"
+                  ref={solution_03TextRef}
+                >
+                  <h2 className="Heading-text !text-start text-blue">
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_01}
+                    <br></br>
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_02}
+                  </h2>
+                  <h2 className="Sub-heading-text !text-start text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
+                        .SUB_TITLE_02
+                    }
+                  </h2>
+                </section>
+              </div>
             </section>
           </section>
         </section>

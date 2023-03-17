@@ -11,24 +11,29 @@ import {
 import laef_webm from "../lotties/webm/laef.webm";
 export default function Section05({ changeStage }) {
   const destroyRef = useRef(null);
-  let firstScroll = 0;
+
+  function handleScroll(event, el) {
+    const isScrollingUp = event.deltaY < 0;
+    const isAtTop = el.scrollTop === 0;
+    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+
+    if (isScrollingUp && isAtTop) {
+      changeStage("-");
+    }
+
+    if (!isScrollingUp && isAtBottom) {
+    }
+  }
 
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
-    pageWrapper.addEventListener("wheel", () => {
-      scrollUp(pageWrapper);
-    });
 
-    function scrollUp(el) {
-      let scrolling = el.scrollTop;
-      if (firstScroll > 2) {
-        if (scrolling === 0) {
-          changeStage("-");
-        }
-        firstScroll = 0;
-      }
-      firstScroll++;
-    }
+    pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    return () => {
+      pageWrapper.removeEventListener("wheel", (e) =>
+        handleScroll(e, pageWrapper)
+      );
+    };
   }, []);
 
   return (
@@ -47,7 +52,10 @@ export default function Section05({ changeStage }) {
         ref={destroyRef}
       ></div>
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-blue">
+      <div
+        className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-blue"
+        id="Page-05"
+      >
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-cream"
@@ -88,7 +96,7 @@ export default function Section05({ changeStage }) {
         <section className="Page-section relative z-10 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pt-50vh pb-25vh">
           <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 h-auto w-auto overflow-hidden rounded-t-full">
             <ReactPlayer
-              className="React-player z-20"
+              className="React-player"
               url={laef_webm}
               width="auto"
               height="auto"
@@ -140,12 +148,12 @@ export default function Section05({ changeStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section flex-center z-30 h-fit w-full bg-cream px-desktop pt-25vh pb-50vh">
+        <section className="Page-section flex-center z-50 h-fit w-full bg-cream px-desktop pt-25vh pb-50vh">
           <Picture
             webp={ihi_logo_webp}
             normal={ihi_logo_png}
             alt="ihi_logo_png"
-            classpic="Picture-section"
+            classpic="Picture-section z-50"
             classimg="mx-auto w-full h-auto"
           />
         </section>

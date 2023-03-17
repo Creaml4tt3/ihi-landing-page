@@ -56,35 +56,51 @@ export default function Section01({ changeStage, scrollStage }) {
   const solution_01AnimationRef = useRef(null);
   const solution_02AnimationRef = useRef(null);
   const solution_03AnimationRef = useRef(null);
+  const solution_01TextRef = useRef(null);
+  const solution_02TextRef = useRef(null);
+  const solution_03TextRef = useRef(null);
   const arrowUpRef = useRef(null);
   const arrowDownRef = useRef(null);
   const graphLineRef = useRef(null);
   const graphLineLottieRef = useRef(null);
-  const graphContainerIn = UseIntersection(graphContainerRef, {
+  const graphContainerIn = UseIntersectionLoop(graphContainerRef, {
     rootMargin: "20%",
   });
-  const solution_01In = UseIntersectionLoop(solution_01Ref, "20%");
-  const solution_02In = UseIntersectionLoop(solution_02Ref, "20%");
-  const solution_03In = UseIntersectionLoop(solution_03Ref, "20%");
-  const arrowUpIn = UseIntersection(arrowUpRef, { rootMargin: "20%" });
-  const arrowDownIn = UseIntersection(arrowDownRef, { rootMargin: "20%" });
-  const graphLineIn = UseIntersection(graphLineRef, { rootMargin: "20%" });
+  const solution_01In = UseIntersectionLoop(solution_01Ref, {
+    rootMargin: "20%",
+  });
+  const solution_02In = UseIntersectionLoop(solution_02Ref, {
+    rootMargin: "20%",
+  });
+  const solution_03In = UseIntersectionLoop(solution_03Ref, {
+    rootMargin: "20%",
+  });
+  const arrowUpIn = UseIntersectionLoop(arrowUpRef, { rootMargin: "20%" });
+  const arrowDownIn = UseIntersectionLoop(arrowDownRef, { rootMargin: "20%" });
+  const graphLineIn = UseIntersectionLoop(graphLineRef, { rootMargin: "20%" });
   const solutionRefArr = [
     solution_01AnimationRef,
     solution_02AnimationRef,
     solution_03AnimationRef,
   ];
+  const solutionTextRefArr = [
+    solution_01TextRef,
+    solution_02TextRef,
+    solution_03TextRef,
+  ];
+  const duration = 1000;
+  const delay = 300;
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
-  function changePicture(ref, state, duration) {
-    setFade(ref, state, duration);
+  function changePicture(ref, textRef, state, duration) {
+    setFade(ref, textRef, state, duration);
     setTimeout(() => {
-      changeElement(ref);
+      changeElement(ref, textRef);
     }, duration);
   }
 
-  function changeElement(ref) {
+  function changeElement(ref, textRef) {
     solutionRefArr.forEach((solution) => {
       if (solution === ref) {
         solution.current.style.display = "block";
@@ -92,9 +108,16 @@ export default function Section01({ changeStage, scrollStage }) {
         solution.current.style.display = "none";
       }
     });
+    solutionTextRefArr.forEach((solution) => {
+      if (solution === textRef) {
+        solution.current.style.display = "flex";
+      } else {
+        solution.current.style.display = "none";
+      }
+    });
   }
 
-  function setFade(ref, state, duration) {
+  function setFade(ref, textRef, state, duration) {
     if (pastSolutionState === state) {
       return;
     } else {
@@ -106,16 +129,23 @@ export default function Section01({ changeStage, scrollStage }) {
           solution.current.style.animation = "0.5s ease-out fadeout";
         }
       });
+      solutionTextRefArr.forEach((solution) => {
+        if (solution === textRef) {
+          solution.current.style.animation = "0.5s ease-in fadein";
+        } else {
+          solution.current.style.animation = "0.5s ease-out fadeout";
+        }
+      });
       setTimeout(() => {}, duration);
     }
   }
 
   if (solution_01In) {
-    changePicture(solution_01AnimationRef, 1, 200);
+    changePicture(solution_01AnimationRef, solution_01TextRef, 1, 200);
   } else if (solution_02In) {
-    changePicture(solution_02AnimationRef, 2, 200);
+    changePicture(solution_02AnimationRef, solution_02TextRef, 2, 200);
   } else if (solution_03In) {
-    changePicture(solution_03AnimationRef, 3, 200);
+    changePicture(solution_03AnimationRef, solution_03TextRef, 3, 200);
   }
 
   if (graphLineIn) {
@@ -123,58 +153,83 @@ export default function Section01({ changeStage, scrollStage }) {
       graphLineLottieRef.current.play();
       graphLineLottieRef.current.setSpeed(3);
     }
+  } else {
+    if (graphContainerRef.current) {
+      graphLineLottieRef.current.goToAndStop(0);
+    }
+  }
+  function handleScroll(event, el) {
+    const isScrollingUp = event.deltaY < 0;
+    const isAtTop = el.scrollTop === 0;
+    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+
+    if (isScrollingUp && isAtTop) {
+    }
+
+    if (!isScrollingUp && isAtBottom) {
+      changeStage("+");
+    }
   }
 
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
 
     if (scrollStage === 1) {
-      pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      setTimeout(() => {
+        pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      }, 10);
     }
+
+    pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    return () => {
+      pageWrapper.removeEventListener("wheel", (e) =>
+        handleScroll(e, pageWrapper)
+      );
+    };
   }, []);
 
   const pushUp01 = useSpring({
-    config: { friction: 12 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: 400, opacity: 0 },
     to: { y: graphContainerIn ? 0 : 400, opacity: graphContainerIn ? 1 : 0 },
   });
   const pushUp02 = useSpring({
-    config: { friction: 12 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: 400, opacity: 0 },
     to: { y: graphContainerIn ? 0 : 400, opacity: graphContainerIn ? 1 : 0 },
-    delay: 200,
+    delay: delay,
   });
   const pushUp03 = useSpring({
-    config: { friction: 12 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: 400, opacity: 0 },
     to: { y: graphContainerIn ? 0 : 400, opacity: graphContainerIn ? 1 : 0 },
-    delay: 400,
+    delay: delay * 2,
   });
   const pushUp04 = useSpring({
-    config: { friction: 12 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: 400, opacity: 0 },
     to: { y: graphContainerIn ? 0 : 400, opacity: graphContainerIn ? 1 : 0 },
-    delay: 600,
+    delay: delay * 3,
   });
   const pushUp05 = useSpring({
-    config: { friction: 12 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: 400, opacity: 0 },
     to: { y: graphContainerIn ? 0 : 400, opacity: graphContainerIn ? 1 : 0 },
-    delay: 800,
+    delay: delay * 4,
   });
   const pushUp06 = useSpring({
-    config: { friction: 12 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: 400, opacity: 0 },
     to: { y: graphContainerIn ? 0 : 400, opacity: graphContainerIn ? 1 : 0 },
-    delay: 1000,
+    delay: delay * 5,
   });
   const arrowUp = useSpring({
-    config: { friction: 12, delay: 700 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: 550, opacity: 0 },
     to: { y: arrowUpIn ? 0 : 550, opacity: arrowUpIn ? 1 : 0 },
   });
   const arrowDown = useSpring({
-    config: { friction: 12, delay: 1000 },
+    config: { duration: duration, easing: easings.easeInOutCubic },
     from: { y: -275, opacity: 0 },
     to: { y: arrowDownIn ? 0 : -275, opacity: arrowDownIn ? 1 : 0 },
   });
@@ -186,12 +241,15 @@ export default function Section01({ changeStage, scrollStage }) {
         webp={page_01_bg_webp}
         normal={page_01_bg_png}
         alt="page_01_bg_png"
-        classpic="Picture-section h-0 w-screen fixed bottom-0 z-0 mix-blend-overlay opacity-40"
+        classpic="Picture-section w-screen fixed bottom-0 z-0 mix-blend-overlay opacity-40"
         classimg="mx-auto w-full absolute bottom-0"
       />
       {/* //?Background - Ending */}
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap h-screen w-full overflow-y-scroll">
+      <div
+        className="Page-inner-wrap h-screen w-screen overflow-x-hidden overflow-y-scroll"
+        id="Page-01"
+      >
         {/* //?Page 01 */}
         <section className="Page-section relative flex h-screen flex-col items-center justify-end px-desktop">
           <section className="Text-section z-20 flex flex-col gap-4">
@@ -222,7 +280,7 @@ export default function Section01({ changeStage, scrollStage }) {
                   <Lottie
                     animationData={solution_01_lottie}
                     className="Lottie-section z-10 mx-auto w-full"
-                    style={{ height: 620 }}
+                    style={{ height: "620px" }}
                   />
                 </div>
                 <div
@@ -246,47 +304,61 @@ export default function Section01({ changeStage, scrollStage }) {
                   <Lottie
                     animationData={solution_03_lottie}
                     className="Lottie-section z-10 mx-auto w-full"
-                    style={{ height: 620 }}
+                    style={{ height: "620px" }}
                   />
                 </div>
               </div>
             </section>
-            <section className="Column-container h-auto w-2/5">
-              <section
-                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+            <section className="Column-container relative h-[300vh] w-2/5">
+              <div
+                className="Section-action-container pointer-events-none absolute top-0 h-screen w-full"
                 ref={solution_01Ref}
-              >
-                <h2 className="Heading-text !text-start text-white">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_01}
-                </h2>
-                <h2 className="Sub-heading-text !text-start text-orange">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_01}
-                </h2>
-              </section>
-              <section
-                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+              ></div>
+              <div
+                className="Section-action-container pointer-events-none absolute top-[100vh] h-screen w-full"
                 ref={solution_02Ref}
-              >
-                <h2 className="Heading-text !text-start text-white">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02}
-                  <br></br>
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_03}
-                </h2>
-                <h2 className="Sub-heading-text !text-start text-orange">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_02}
-                </h2>
-              </section>
-              <section
-                className="Text-section flex-center z-20 h-screen flex-col gap-4"
+              ></div>
+              <div
+                className="Section-action-container pointer-events-none absolute top-[200vh] h-screen w-full"
                 ref={solution_03Ref}
-              >
-                <h2 className="Heading-text !text-start text-white">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_04}
-                </h2>
-                <h2 className="Sub-heading-text !text-start text-orange">
-                  {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_03}
-                </h2>
-              </section>
+              ></div>
+              <div className="All-text-section sticky top-0">
+                <section
+                  className="Text-section flex-center z-20 h-screen flex-col gap-4"
+                  ref={solution_01TextRef}
+                >
+                  <h2 className="Heading-text !text-start text-white">
+                    {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_01}
+                  </h2>
+                  <h2 className="Sub-heading-text !text-start text-orange">
+                    {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_01}
+                  </h2>
+                </section>
+                <section
+                  className="Text-section flex-center z-20 hidden h-screen flex-col gap-4"
+                  ref={solution_02TextRef}
+                >
+                  <h2 className="Heading-text !text-start text-white">
+                    {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02}
+                    <br></br>
+                    {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_03}
+                  </h2>
+                  <h2 className="Sub-heading-text !text-start text-orange">
+                    {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_02}
+                  </h2>
+                </section>
+                <section
+                  className="Text-section flex-center z-20 hidden h-screen flex-col gap-4"
+                  ref={solution_03TextRef}
+                >
+                  <h2 className="Heading-text !text-start text-white">
+                    {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_04}
+                  </h2>
+                  <h2 className="Sub-heading-text !text-start text-orange">
+                    {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_03}
+                  </h2>
+                </section>
+              </div>
             </section>
           </section>
         </section>
@@ -482,7 +554,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 {configJSON.CONTENT.PAGE_01.SECTION_05.SUB_HEADING_01}
               </h2>
             </section>
-            <div className="Arrow mt-4">
+            <div className="Arrow mt-4 overflow-hidden">
               <animated.div style={arrowUp}>
                 <Picture
                   webp={arrow_up_webp}
@@ -505,7 +577,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 {configJSON.CONTENT.PAGE_01.SECTION_05.SUB_HEADING_02}
               </h2>
             </section>
-            <div className="Arrow mt-7">
+            <div className="Arrow mt-7 overflow-hidden">
               <animated.div style={arrowDown}>
                 <Picture
                   webp={arrow_down_webp}

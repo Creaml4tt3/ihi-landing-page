@@ -382,7 +382,19 @@ $hydro: #0f283e;
   }
 }
 
-.px-desktop {
-  @apply maxlaptop:px-laptop;
-  @apply mobile:px-mobile;
+#Page-02,
+#Page-04 {
+  .Video-container {
+    .React-player {
+      @apply relative pt-[56.25%];
+      div {
+        @apply absolute left-0 top-0;
+      }
+    }
+
+    .px-desktop {
+      @apply maxlaptop:px-laptop;
+      @apply mobile:px-mobile;
+    }
+  }
 }

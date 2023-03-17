@@ -4,8 +4,6 @@ module.exports = {
   theme: {
     colors: {
       blue: "#004EA2",
-      navy: "#002A59",
-      cream: "#FFF7F0",
       white: "#ffffff",
       orange: "#FF8A00",
       black: "#262626",
@@ -35,6 +33,8 @@ module.exports = {
         laptop: "40px",
         tablet: "40px",
         mobile: "30px",
+        fifty: "50vh",
+        thirtyfive: "35vh",
         twenty: "20vh",
         fifthteen: "15vh",
       },
@@ -44,6 +44,7 @@ module.exports = {
       padding: {
         "50vh": "50vh",
         "40vh": "40vh",
+        "35vh": "35vh",
         "30vh": "30vh",
         "25vh": "25vh",
         "20vh": "20vh",
@@ -64,6 +65,7 @@ module.exports = {
         glow: "0px 0px 0px 8px #ffffff",
       },
     },
+    extend: {},
   },
   plugins: [],
 };

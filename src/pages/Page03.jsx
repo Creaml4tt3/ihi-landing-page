@@ -33,8 +33,8 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
   const lineRef = useRef(null);
   const epidemicRef = useRef(null);
   const person01LottieRef = useRef(null);
-  const lineIn = UseIntersection(lineRef, "200%");
-  const epidemicIn = UseIntersection(epidemicRef, "0px");
+  const lineIn = UseIntersection(lineRef, { rootMargin: "20%" });
+  const epidemicIn = UseIntersection(epidemicRef, { rootMargin: "20%" });
   const duration = 2000;
   const counterDuration = 2.5;
   const person01Ref = useRef(null),
@@ -231,28 +231,35 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     changePicture(person05AnimationRef, 5, 200);
   }
 
-  let firstScroll = 0;
+  function handleScroll(event, el) {
+    const isScrollingUp = event.deltaY < 0;
+    const isAtTop = el.scrollTop === 0;
+    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+
+    if (isScrollingUp && isAtTop) {
+      changeStage("-");
+    }
+
+    if (!isScrollingUp && isAtBottom) {
+      changeStage("+");
+    }
+  }
 
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
-    pageWrapper.addEventListener("wheel", () => {
-      scrollUp(pageWrapper);
-    });
-
-    function scrollUp(el) {
-      let scrolling = el.scrollTop;
-      if (firstScroll > 2) {
-        if (scrolling === 0) {
-          changeStage("-");
-        }
-        firstScroll = 0;
-      }
-      firstScroll++;
-    }
 
     if (scrollStage === 3) {
-      pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      setTimeout(() => {
+        pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      }, 10);
     }
+
+    pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    return () => {
+      pageWrapper.removeEventListener("wheel", (e) =>
+        handleScroll(e, pageWrapper)
+      );
+    };
   }, []);
 
   return (
@@ -271,7 +278,10 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
         ref={destroyRef}
       ></div>
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-blue">
+      <div
+        className="Page-inner-wrap z-10 h-screen w-full overflow-y-scroll bg-blue"
+        id="Page-03"
+      >
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-cream"
@@ -684,10 +694,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_03.SUB_HEADING_01}
             </h2>
           </section>
-          <div
-            className="Graph-side-container mt-16 flex w-full max-w-1400px"
-            ref={lineRef}
-          >
+          <div className="Graph-side-container mt-16 flex w-full max-w-1400px">
             <div className="Graph-side-content flex w-[18%] flex-col">
               <div className="Text-column flex flex-col items-start justify-between gap-6 pt-2">
                 <div className="Text">
@@ -793,6 +800,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 </div>
               </div>
             </div>
+            <div className="Intersection-container" ref={lineRef}></div>
           </div>
           <div className="Link-container mt-8 flex justify-center">
             <a

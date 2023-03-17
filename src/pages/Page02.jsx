@@ -1,10 +1,12 @@
 import { useRef, useEffect, useState } from "react";
 import { UseIntersection } from "../components/UseIntersection";
+import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import { useSpring, animated, easings } from "@react-spring/web";
 import Lottie from "lottie-react";
 import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
+import gsap from "gsap";
 import {
   black_png,
   black_webp,
@@ -78,7 +80,7 @@ export default function Section02({ changeStage, scrollStage }) {
     threshold: 1,
   });
   const duration = 1500;
-  const delay = 400;
+  const delay = 1000;
   const pushUpY = 600;
   const videoURL = "https://www.youtube.com/watch?v=NUIvibOL5kI";
   const videoURL02 = "https://www.youtube.com/watch?v=-HpnQBf7DQw";
@@ -88,11 +90,11 @@ export default function Section02({ changeStage, scrollStage }) {
   const video_01_ref = useRef(null);
   const video_02_ref = useRef(null);
 
-  const video_01_in = UseIntersection(video_01_ref, {
+  const video_01_in = UseIntersectionLoop(video_01_ref, {
     rootMargin: "-100%",
     threshold: 1,
   });
-  const video_02_in = UseIntersection(video_02_ref, "100%");
+  const video_02_in = UseIntersectionLoop(video_02_ref, "100%");
 
   let video_01_playing = false;
   let video_02_playing = false;
@@ -102,18 +104,6 @@ export default function Section02({ changeStage, scrollStage }) {
   }
   if (video_02_in) {
     video_02_playing = true;
-  }
-
-  function scrollAndCheckForNextPage(el, scroll) {
-    let bodyHeight = document.body.clientHeight;
-    let scrolling = el.scrollTop;
-    let scrollingHeight = el.scrollHeight;
-
-    if (scroll > 2) {
-      if (bodyHeight + scrolling === scrollingHeight) {
-        changeStage("+");
-      }
-    }
   }
 
   const videoIcon = () => {
@@ -133,35 +123,41 @@ export default function Section02({ changeStage, scrollStage }) {
 
   if (lineIn) {
     lineLottieRef.current.play();
-    lineLottieRef.current.setSpeed(2);
+    /* lineLottieRef.current.setSpeed(2); */
   }
   if (workIn) {
     workLottieRef.current.play();
   }
 
-  let firstScroll = 0;
+  function handleScroll(event, el) {
+    const isScrollingUp = event.deltaY < 0;
+    const isAtTop = el.scrollTop === 0;
+    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+
+    if (isScrollingUp && isAtTop) {
+      changeStage("-");
+    }
+
+    if (!isScrollingUp && isAtBottom) {
+      changeStage("+");
+    }
+  }
 
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
-    pageWrapper.addEventListener("wheel", () => {
-      scrollAndCheckForNextPage(pageWrapper, firstScroll);
-      scrollUp(pageWrapper);
-    });
-
-    function scrollUp(el) {
-      let scrolling = el.scrollTop;
-      if (firstScroll > 2) {
-        if (scrolling === 0) {
-          changeStage("-");
-        }
-        firstScroll = 0;
-      }
-      firstScroll++;
-    }
 
     if (scrollStage === 2) {
-      pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      setTimeout(() => {
+        pageWrapper.scrollTop = pageWrapper.scrollHeight;
+      }, 10);
     }
+
+    pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    return () => {
+      pageWrapper.removeEventListener("wheel", (e) =>
+        handleScroll(e, pageWrapper)
+      );
+    };
   }, []);
 
   const pushUp01 = useSpring({
@@ -196,6 +192,16 @@ export default function Section02({ changeStage, scrollStage }) {
     to: { y: columnIn ? 0 : 215 },
   });
 
+  var tl = gsap.timeline();
+  tl.set(".Belt-text", { y: 200, opacity: 0 });
+  tl.set(".Belt-text-bold", { y: 200, opacity: 0 });
+  tl.set(".Belt-sub-text", { y: 200, opacity: 0 });
+  tl.set(".Belt-sub-text-bold", { y: 200, opacity: 0 });
+  tl.to(".Belt-text", { y: 0, opacity: 1, duration: 1 });
+  tl.to(".Belt-text-bold", { y: 0, opacity: 1, duration: 1 });
+  tl.to(".Belt-sub-text", { y: 0, opacity: 1, duration: 1 });
+  tl.to(".Belt-sub-text-bold", { y: 0, opacity: 1, duration: 1 });
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -208,7 +214,10 @@ export default function Section02({ changeStage, scrollStage }) {
       />
       {/* //?Background - Ending */}
       {/* //?Main - Starting */}
-      <div className="Page-inner-wrap w-sceeen h-screen overflow-x-hidden overflow-y-scroll bg-cream">
+      <div
+        className="Page-inner-wrap w-sceeen h-screen overflow-x-hidden overflow-y-scroll bg-cream"
+        id="Page-02"
+      >
         {/* //?Go to previos Page */}
         <section
           className="Prev-section h-screen w-screen cursor-pointer bg-blue"
@@ -245,7 +254,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section relative h-fit w-full px-desktop pb-50vh">
+        <section className="Page-section relative h-fit w-full px-desktop pb-30vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text !font-bold italic text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_02.HEADING_01}
@@ -281,7 +290,7 @@ export default function Section02({ changeStage, scrollStage }) {
             normal={page_02_engine_png}
             alt="page_02_engine_png"
             classpic="Picture-section h-fit"
-            classimg="mx-auto mt-8 mb-6 z-10"
+            classimg="mx-auto mt-8 mb-6 z-10 max-w-[625px]"
             lazy
           />
           <div className="Link-container">
@@ -305,15 +314,17 @@ export default function Section02({ changeStage, scrollStage }) {
             className="Belt-container flex w-full max-w-1480px overflow-hidden pl-6"
             ref={beltRef}
           >
-            <animated.div className="Belt" id="Belt-01" style={pushUp01}>
-              <Picture
-                webp={page_02_line_belt_webp}
-                normal={page_02_line_belt_png}
-                alt="page_02_line_belt_png"
-                classpic="Picture-section h-fit w-fit"
-                classimg="z-0"
-                lazy
-              />
+            <div className="Belt" id="Belt-01">
+              <animated.div className="Belt-rod" style={pushUp01}>
+                <Picture
+                  webp={page_02_line_belt_webp}
+                  normal={page_02_line_belt_png}
+                  alt="page_02_line_belt_png"
+                  classpic="Picture-section h-fit w-fit"
+                  classimg="z-0"
+                  lazy
+                />
+              </animated.div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_01}
@@ -336,16 +347,18 @@ export default function Section02({ changeStage, scrollStage }) {
                   </span>
                 </span>
               </section>
-            </animated.div>
-            <animated.div className="Belt" id="Belt-02" style={pushUp02}>
-              <Picture
-                webp={page_02_line_belt_webp}
-                normal={page_02_line_belt_png}
-                alt="page_02_line_belt_png"
-                classpic="Picture-section h-fit w-fit"
-                classimg="z-0"
-                lazy
-              />
+            </div>
+            <div className="Belt" id="Belt-02">
+              <animated.div className="Belt-rod" style={pushUp02}>
+                <Picture
+                  webp={page_02_line_belt_webp}
+                  normal={page_02_line_belt_png}
+                  alt="page_02_line_belt_png"
+                  classpic="Picture-section h-fit w-fit"
+                  classimg="z-0"
+                  lazy
+                />
+              </animated.div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_02}
@@ -363,16 +376,18 @@ export default function Section02({ changeStage, scrollStage }) {
                   </span>
                 </span>
               </section>
-            </animated.div>
-            <animated.div className="Belt" id="Belt-03" style={pushUp03}>
-              <Picture
-                webp={page_02_line_belt_webp}
-                normal={page_02_line_belt_png}
-                alt="page_02_line_belt_png"
-                classpic="Picture-section h-fit w-fit"
-                classimg="z-0"
-                lazy
-              />
+            </div>
+            <div className="Belt" id="Belt-03">
+              <animated.div className="Belt-rod" style={pushUp03}>
+                <Picture
+                  webp={page_02_line_belt_webp}
+                  normal={page_02_line_belt_png}
+                  alt="page_02_line_belt_png"
+                  classpic="Picture-section h-fit w-fit"
+                  classimg="z-0"
+                  lazy
+                />
+              </animated.div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_03}
@@ -392,16 +407,18 @@ export default function Section02({ changeStage, scrollStage }) {
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_SUB_TEXT_04}
                 </span>
               </section>
-            </animated.div>
-            <animated.div className="Belt" id="Belt-04" style={pushUp04}>
-              <Picture
-                webp={page_02_line_belt_webp}
-                normal={page_02_line_belt_png}
-                alt="page_02_line_belt_png"
-                classpic="Picture-section h-fit w-fit"
-                classimg="z-0"
-                lazy
-              />
+            </div>
+            <div className="Belt" id="Belt-04">
+              <animated.div className="Belt-rod" style={pushUp04}>
+                <Picture
+                  webp={page_02_line_belt_webp}
+                  normal={page_02_line_belt_png}
+                  alt="page_02_line_belt_png"
+                  classpic="Picture-section h-fit w-fit"
+                  classimg="z-0"
+                  lazy
+                />
+              </animated.div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_04}
@@ -424,7 +441,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_SUB_TEXT_05}
                 </span>
               </section>
-            </animated.div>
+            </div>
           </div>
           {/* <Picture
             webp={page_02_belt_webp}
@@ -619,11 +636,11 @@ export default function Section02({ changeStage, scrollStage }) {
               </h3>
             </section>
           </div>
-          <div className="Video-container z-50 h-fit w-full max-w-1360px px-desktop pt-44 pb-48">
+          <div className="Video-container z-50 w-full max-w-1360px px-desktop pt-44 pb-48">
             <ReactPlayer
               className="React-player"
               url={videoURL}
-              width="100%"
+              width="auto"
               height="550px"
               /* light={previewVideoURL02} */
               playing={video_01_playing ? true : false}
@@ -656,7 +673,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   normal={page_02_boiler_png}
                   alt="page_02_boiler_png"
                   classpic="Picture-section h-fit"
-                  classimg="z-10"
+                  classimg="z-10 max-w-[510px] pl-16 pb-10 max-h-[600px]"
                   lazy
                 />
                 <div className="Link-container flex justify-center">
