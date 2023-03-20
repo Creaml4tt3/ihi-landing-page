@@ -190,22 +190,22 @@ export default function Section01({ changeStage, scrollStage }) {
 
   if (graphContainerIn) {
     setTimeout(() => {
-      graph01Ref.current.play();
+      graph01Ref.current.goToAndPlay(0);
     }, randomMath(500, 1500));
     setTimeout(() => {
-      graph02Ref.current.play();
+      graph02Ref.current.goToAndPlay(0);
     }, randomMath(500, 1500));
     setTimeout(() => {
-      graph03Ref.current.play();
+      graph03Ref.current.goToAndPlay(0);
     }, randomMath(500, 1500));
     setTimeout(() => {
-      graph04Ref.current.play();
+      graph04Ref.current.goToAndPlay(0);
     }, randomMath(500, 1500));
     setTimeout(() => {
-      graph05Ref.current.play();
+      graph05Ref.current.goToAndPlay(0);
     }, randomMath(500, 1500));
     setTimeout(() => {
-      graph06Ref.current.play();
+      graph06Ref.current.goToAndPlay(0);
     }, randomMath(500, 1500));
   }
 
