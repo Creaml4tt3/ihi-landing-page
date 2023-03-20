@@ -828,7 +828,7 @@ export default function Section03({ changeStage, scrollStage }) {
         {/* //?Page 06 */}
         <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop pt-44">
           <section className="Section-container flex-center max-w-1540px gap-24">
-            <section className="Column-container h-[300vh] w-1/2 py-20vh">
+            <section className="Column-container h-[400vh] w-1/2 py-20vh">
               <div
                 className="Solution-picture-container sticky top-twenty pt-36"
                 id="Picture-01"
@@ -872,7 +872,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 />
               </div>
             </section>
-            <section className="Column-container relative h-[300vh] w-1/2">
+            <section className="Column-container relative h-[400vh] w-1/2">
               <div
                 className="Section-action-container pointer-events-none absolute top-0 h-screen w-full"
                 ref={solution_01Ref}

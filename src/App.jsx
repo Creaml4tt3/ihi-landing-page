@@ -58,6 +58,13 @@ export default function App() {
         setOnFinish(true);
       }, duration);
     });
+
+    return window.removeEventListener("load", () => {
+      setOnLoad(false);
+      setTimeout(() => {
+        setOnFinish(true);
+      }, duration);
+    });
   }, []);
 
   //? ทุกครั้งที่มีการเปลี่ยนหน้าจะทำการเก็บบันทึกเลขหน้าเอาไว้

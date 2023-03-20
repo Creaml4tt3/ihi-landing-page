@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useLayoutEffect } from "react";
 import { UseIntersection } from "../components/UseIntersection";
 import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import { useSpring, animated, easings } from "@react-spring/web";
@@ -53,7 +53,7 @@ import belt_small_webm from "../lotties/webm/belt-small.webm";
 
 export default function Section02({ changeStage, scrollStage }) {
   const beltRef = useRef(null);
-  const beltIn = UseIntersection(beltRef, {
+  const beltIn = UseIntersectionLoop(beltRef, {
     rootMargin: "-100%",
     threshold: 1,
   });
@@ -80,6 +80,7 @@ export default function Section02({ changeStage, scrollStage }) {
     threshold: 1,
   });
   const duration = 1500;
+  const gsapDutaion = 0.5;
   const delay = 1000;
   const pushUpY = 600;
   const videoURL = "https://www.youtube.com/watch?v=NUIvibOL5kI";
@@ -192,15 +193,68 @@ export default function Section02({ changeStage, scrollStage }) {
     to: { y: columnIn ? 0 : 215 },
   });
 
-  var tl = gsap.timeline();
-  tl.set(".Belt-text", { y: 200, opacity: 0 });
-  tl.set(".Belt-text-bold", { y: 200, opacity: 0 });
-  tl.set(".Belt-sub-text", { y: 200, opacity: 0 });
-  tl.set(".Belt-sub-text-bold", { y: 200, opacity: 0 });
-  tl.to(".Belt-text", { y: 0, opacity: 1, duration: 1 });
-  tl.to(".Belt-text-bold", { y: 0, opacity: 1, duration: 1 });
-  tl.to(".Belt-sub-text", { y: 0, opacity: 1, duration: 1 });
-  tl.to(".Belt-sub-text-bold", { y: 0, opacity: 1, duration: 1 });
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      var tl = gsap.timeline();
+      tl.set(".Belt-rod ", { y: 200, opacity: 0 });
+      tl.set(".Belt-text", { y: 200, opacity: 0 });
+      tl.set(".Belt-text-bold", { y: 200, opacity: 0 });
+      tl.set(".Belt-sub-text", { y: 200, opacity: 0 });
+      tl.to("#Belt-01 .Belt-rod", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-01 .Belt-text", { y: 0, opacity: 1, duration: gsapDutaion });
+      tl.to("#Belt-01 .Belt-text-bold", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-01 .Belt-sub-text", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-02 .Belt-rod", { y: 0, opacity: 1, duration: gsapDutaion });
+      tl.to("#Belt-02 .Belt-text", { y: 0, opacity: 1, duration: gsapDutaion });
+      tl.to("#Belt-02 .Belt-text-bold", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-02 .Belt-sub-text", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-03 .Belt-rod", { y: 0, opacity: 1, duration: gsapDutaion });
+      tl.to("#Belt-03 .Belt-text", { y: 0, opacity: 1, duration: gsapDutaion });
+      tl.to("#Belt-03 .Belt-text-bold", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-03 .Belt-sub-text", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-04 .Belt-rod", { y: 0, opacity: 1, duration: gsapDutaion });
+      tl.to("#Belt-04 .Belt-text", { y: 0, opacity: 1, duration: gsapDutaion });
+      tl.to("#Belt-04 .Belt-text-bold", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+      tl.to("#Belt-04 .Belt-sub-text", {
+        y: 0,
+        opacity: 1,
+        duration: gsapDutaion,
+      });
+    }, beltRef); // <- IMPORTANT! Scopes selector text
+    return () => ctx.revert(); // cleanup
+  }, [beltIn]); // <- empty dependency Array so it doesn't re-run on every render
 
   return (
     <>
@@ -315,7 +369,7 @@ export default function Section02({ changeStage, scrollStage }) {
             ref={beltRef}
           >
             <div className="Belt" id="Belt-01">
-              <animated.div className="Belt-rod" style={pushUp01}>
+              <div className="Belt-rod" style={pushUp01}>
                 <Picture
                   webp={page_02_line_belt_webp}
                   normal={page_02_line_belt_png}
@@ -324,7 +378,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   classimg="z-0"
                   lazy
                 />
-              </animated.div>
+              </div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_01}
@@ -349,7 +403,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </section>
             </div>
             <div className="Belt" id="Belt-02">
-              <animated.div className="Belt-rod" style={pushUp02}>
+              <div className="Belt-rod" style={pushUp02}>
                 <Picture
                   webp={page_02_line_belt_webp}
                   normal={page_02_line_belt_png}
@@ -358,7 +412,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   classimg="z-0"
                   lazy
                 />
-              </animated.div>
+              </div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_02}
@@ -378,7 +432,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </section>
             </div>
             <div className="Belt" id="Belt-03">
-              <animated.div className="Belt-rod" style={pushUp03}>
+              <div className="Belt-rod" style={pushUp03}>
                 <Picture
                   webp={page_02_line_belt_webp}
                   normal={page_02_line_belt_png}
@@ -387,7 +441,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   classimg="z-0"
                   lazy
                 />
-              </animated.div>
+              </div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_03}
@@ -409,7 +463,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </section>
             </div>
             <div className="Belt" id="Belt-04">
-              <animated.div className="Belt-rod" style={pushUp04}>
+              <div className="Belt-rod" style={pushUp04}>
                 <Picture
                   webp={page_02_line_belt_webp}
                   normal={page_02_line_belt_png}
@@ -418,7 +472,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   classimg="z-0"
                   lazy
                 />
-              </animated.div>
+              </div>
               <section className="Text-section">
                 <span className="Belt-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_TEXT_04}

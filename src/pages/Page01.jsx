@@ -44,7 +44,14 @@ import {
 } from "../components/image/Image01";
 import solution_01_lottie from "../lotties/solution-01.json";
 import solution_02_webm from "../lotties/webm/solution-02.webm";
+import solution_02_lottie from "../lotties/solution-02.json";
 import solution_03_lottie from "../lotties/solution-03.json";
+import graph_01_lottie from "../lotties/graph-01.json";
+import graph_02_lottie from "../lotties/graph-02.json";
+import graph_03_lottie from "../lotties/graph-03.json";
+import graph_04_lottie from "../lotties/graph-04.json";
+import graph_05_lottie from "../lotties/graph-05.json";
+import graph_06_lottie from "../lotties/graph-06.json";
 import graph from "../lotties/graph.json";
 
 export default function Section01({ changeStage, scrollStage }) {
@@ -59,6 +66,12 @@ export default function Section01({ changeStage, scrollStage }) {
   const solution_01TextRef = useRef(null);
   const solution_02TextRef = useRef(null);
   const solution_03TextRef = useRef(null);
+  const graph01Ref = useRef(null);
+  const graph02Ref = useRef(null);
+  const graph03Ref = useRef(null);
+  const graph04Ref = useRef(null);
+  const graph05Ref = useRef(null);
+  const graph06Ref = useRef(null);
   const arrowUpRef = useRef(null);
   const arrowDownRef = useRef(null);
   const graphLineRef = useRef(null);
@@ -171,7 +184,39 @@ export default function Section01({ changeStage, scrollStage }) {
     }
   }
 
+  function randomMath(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  if (graphContainerIn) {
+    setTimeout(() => {
+      graph01Ref.current.play();
+    }, randomMath(500, 1500));
+    setTimeout(() => {
+      graph02Ref.current.play();
+    }, randomMath(500, 1500));
+    setTimeout(() => {
+      graph03Ref.current.play();
+    }, randomMath(500, 1500));
+    setTimeout(() => {
+      graph04Ref.current.play();
+    }, randomMath(500, 1500));
+    setTimeout(() => {
+      graph05Ref.current.play();
+    }, randomMath(500, 1500));
+    setTimeout(() => {
+      graph06Ref.current.play();
+    }, randomMath(500, 1500));
+  }
+
   useEffect(() => {
+    graph01Ref.current.stop();
+    graph02Ref.current.stop();
+    graph03Ref.current.stop();
+    graph04Ref.current.stop();
+    graph05Ref.current.stop();
+    graph06Ref.current.stop();
+
     let pageWrapper = document.querySelector(".Page-inner-wrap");
 
     if (scrollStage === 1) {
@@ -234,6 +279,10 @@ export default function Section01({ changeStage, scrollStage }) {
     to: { y: arrowDownIn ? 0 : -275, opacity: arrowDownIn ? 1 : 0 },
   });
 
+  const Main = () => {
+    return;
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -271,7 +320,7 @@ export default function Section01({ changeStage, scrollStage }) {
         {/* //?Page 02 */}
         <section className="Page-section relative h-fit">
           <section className="Section-container flex-center px-desktop">
-            <section className="Column-container h-[300vh] w-3/5 py-20vh">
+            <section className="Column-container h-[400vh] w-3/5 py-20vh">
               <div
                 className="Picture-change sticky top-twenty"
                 ref={solutionRef}
@@ -287,7 +336,7 @@ export default function Section01({ changeStage, scrollStage }) {
                   className="Player-container hidden"
                   ref={solution_02AnimationRef}
                 >
-                  <ReactPlayer
+                  {/*                   <ReactPlayer
                     className="React-player"
                     url={solution_02_webm}
                     width="100%"
@@ -295,6 +344,11 @@ export default function Section01({ changeStage, scrollStage }) {
                     playing
                     loop
                     muted
+                  /> */}
+                  <Lottie
+                    animationData={solution_02_lottie}
+                    className="Lottie-section z-10 mx-auto w-full"
+                    style={{ height: "620px" }}
                   />
                 </div>
                 <div
@@ -309,7 +363,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 </div>
               </div>
             </section>
-            <section className="Column-container relative h-[300vh] w-2/5">
+            <section className="Column-container relative h-[400vh] w-2/5">
               <div
                 className="Section-action-container pointer-events-none absolute top-0 h-screen w-full"
                 ref={solution_01Ref}
@@ -384,7 +438,51 @@ export default function Section01({ changeStage, scrollStage }) {
                 classpic="Picture-section w-full z-10"
                 classimg="w-full h-auto"
               />
-              <div className="Graph-line-container absolute right-0 bottom-12 z-20 flex w-full items-end justify-between pl-[17%]">
+              <div className="Graph-line-container absolute right-0 bottom-12 z-20 flex items-end gap-[103px]">
+                <Lottie
+                  animationData={graph_01_lottie}
+                  lottieRef={graph01Ref}
+                  className="Lottie-section z-10 mx-auto w-full"
+                  style={{ height: "auto", width: "100%" }}
+                  loop={false}
+                />
+                <Lottie
+                  animationData={graph_02_lottie}
+                  lottieRef={graph02Ref}
+                  className="Lottie-section z-10 mx-auto w-full"
+                  style={{ height: "auto", width: "100%" }}
+                  loop={false}
+                />
+                <Lottie
+                  animationData={graph_03_lottie}
+                  lottieRef={graph03Ref}
+                  className="Lottie-section z-10 mx-auto w-full"
+                  style={{ height: "auto", width: "100%" }}
+                  loop={false}
+                />
+                <Lottie
+                  animationData={graph_04_lottie}
+                  lottieRef={graph04Ref}
+                  className="Lottie-section z-10 mx-auto w-full"
+                  style={{ height: "auto", width: "100%" }}
+                  loop={false}
+                />
+                <Lottie
+                  animationData={graph_05_lottie}
+                  lottieRef={graph05Ref}
+                  className="Lottie-section z-10 mx-auto w-full"
+                  style={{ height: "auto", width: "100%" }}
+                  loop={false}
+                />
+                <Lottie
+                  animationData={graph_06_lottie}
+                  lottieRef={graph06Ref}
+                  className="Lottie-section z-10 mx-auto w-full"
+                  style={{ height: "auto", width: "100%" }}
+                  loop={false}
+                />
+              </div>
+              {/* <div className="Graph-line-container absolute right-0 bottom-12 z-20 flex w-full items-end justify-between pl-[17%]">
                 <animated.div style={pushUp01} className="Graph">
                   <Picture
                     webp={graph_01_webp}
@@ -445,7 +543,7 @@ export default function Section01({ changeStage, scrollStage }) {
                     lazy
                   />
                 </animated.div>
-              </div>
+              </div> */}
             </div>
             <div className="Graph-info-container ml-[52px] mb-12 flex flex-col gap-5 maxlaptop:ml-[28px]">
               <div className="Graph-inside-info">

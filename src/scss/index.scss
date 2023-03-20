@@ -282,9 +282,9 @@ $hydro: #0f283e;
     }
   }
 
-  .Column-Text {
+  .Column-text {
     .Column-inside {
-      @apply flex h-full max-h-[650px] flex-col items-start justify-center;
+      @apply flex h-fit w-full flex-col items-start justify-center;
       .Text-section {
         @apply z-10 flex flex-col items-start justify-start gap-6;
         .Upper-text {
