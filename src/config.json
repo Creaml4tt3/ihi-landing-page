@@ -1,7 +1,7 @@
 {
   "SETTING": {
     "FIRST_SECTION": 1,
-    "LOADING_PAGE": true,
+    "LOADING_PAGE": false,
     "DURATION": 500
   },
   "CONTENT": {
