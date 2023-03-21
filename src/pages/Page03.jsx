@@ -731,7 +731,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Link-container mt-28 flex justify-center">
+          <div className="Link-container mt-14 flex justify-center">
             <a
               href={configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
               className="Link"

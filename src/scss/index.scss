@@ -192,7 +192,7 @@ $hydro: #0f283e;
         @apply z-10 flex h-full flex-col items-start gap-4 pb-6;
         @apply maxlaptop:gap-2;
         .Belt-text {
-          @apply text-3xl font-bold text-blue;
+          @apply text-3xl font-bold leading-loose text-blue;
           @apply maxlaptop:text-2xl;
         }
         .Belt-text-bold {
