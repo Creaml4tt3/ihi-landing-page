@@ -727,7 +727,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   normal={page_02_boiler_png}
                   alt="page_02_boiler_png"
                   classpic="Picture-section h-fit"
-                  classimg="z-10 max-w-[510px] pl-16 pb-10 max-h-[600px]"
+                  classimg="z-10 h-auto w-full pl-16 pb-10 -my-[20%]"
                   lazy
                 />
                 <div className="Link-container flex justify-center">

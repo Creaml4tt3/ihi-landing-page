@@ -901,7 +901,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
         {/* //?Page 04 */}
         <section className="Page-section flex-center mt-48 mb-60 h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 flex-col">
-            <h3 className="Title-text text-center text-40px text-white">
+            <h3 className="Title-text text-center text-40px font-semibold text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_04.TITLE_01}
               <br></br>
               {configJSON.CONTENT.PAGE_03.SECTION_04.TITLE_02}
