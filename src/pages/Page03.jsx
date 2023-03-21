@@ -347,7 +347,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_01}
             </h2>
           </section>
-          <div className="Column-container relative flex h-fit w-full max-w-1400px py-20vh">
+          <div className="Column-container relative flex h-fit w-full max-w-1400px pt-20vh">
             <div className="Column-text relative flex h-[calc(650px*6)] w-3/5 flex-col items-start gap-52">
               <div
                 className="Section-action-container pointer-events-none absolute top-0 h-[650px] w-full"
@@ -723,7 +723,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 >
                   <Lottie
                     animationData={person05}
-                    className="Lottie-section py-10vh z-20 mx-auto w-full"
+                    className="Lottie-section z-20 mx-auto w-full py-10vh"
                     style={{ height: "auto" }}
                     loop={true}
                   />
