@@ -77,10 +77,10 @@ export default function App() {
       <main className="App h-screen w-screen bg-blue">
         {/* //?Header - Starting */}
         <header className="App-header">
-          <NavDot
+          {/* <NavDot
             changeStage={sectionStageChange}
             currentStage={sectionStage}
-          />
+          /> */}
           {/* <Nav changeStage={sectionStageChange} />
           <ButtonNav /> */}
         </header>
