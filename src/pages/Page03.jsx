@@ -71,6 +71,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     person04TextRef,
     person05TextRef,
   ];
+  const linkColumnRef = useRef(null);
 
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
@@ -347,7 +348,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_01}
             </h2>
           </section>
-          <div className="Column-container relative flex h-fit w-full max-w-1400px pt-20vh">
+          <div className="Column-container relative flex h-fit w-full max-w-1400px pt-20vh pb-15vh">
             <div className="Column-text relative flex h-[calc(650px*6)] w-3/5 flex-col items-start gap-52">
               <div
                 className="Section-action-container pointer-events-none absolute top-0 h-[650px] w-full"
@@ -727,11 +728,27 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     style={{ height: "auto" }}
                     loop={true}
                   />
+                  <div
+                    className="Link-container absolute right-full -bottom-20 flex w-full translate-x-[25%] justify-center"
+                    ref={linkColumnRef}
+                  >
+                    <a
+                      href={configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
+                      className="Link"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="Link-container mt-14 flex justify-center">
+          {/*           <div
+            className="Link-container mt-14 flex justify-center"
+            ref={linkColumnRef}
+          >
             <a
               href={configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
               className="Link"
@@ -740,7 +757,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
             >
               {configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
             </a>
-          </div>
+          </div> */}
           <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
