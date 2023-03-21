@@ -168,7 +168,7 @@ export default function Section01({ changeStage, scrollStage }) {
     }
   } else {
     if (graphContainerRef.current) {
-      graphLineLottieRef.current.goToAndStop(0);
+      graphLineLottieRef.current.goToAndStop(30, true);
     }
   }
   function handleScroll(event, el) {
@@ -189,7 +189,7 @@ export default function Section01({ changeStage, scrollStage }) {
   }
 
   if (graphContainerIn) {
-    setTimeout(() => {
+    /* setTimeout(() => {
       graph01Ref.current.goToAndPlay(0);
     }, randomMath(500, 1500));
     setTimeout(() => {
@@ -206,7 +206,13 @@ export default function Section01({ changeStage, scrollStage }) {
     }, randomMath(500, 1500));
     setTimeout(() => {
       graph06Ref.current.goToAndPlay(0);
-    }, randomMath(500, 1500));
+    }, randomMath(500, 1500)); */
+    graph01Ref.current.goToAndPlay(0);
+    graph02Ref.current.goToAndPlay(0);
+    graph03Ref.current.goToAndPlay(0);
+    graph04Ref.current.goToAndPlay(0);
+    graph05Ref.current.goToAndPlay(0);
+    graph06Ref.current.goToAndPlay(0);
   }
 
   useEffect(() => {

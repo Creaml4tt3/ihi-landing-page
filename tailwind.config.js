@@ -51,14 +51,17 @@ module.exports = {
         "25vh": "25vh",
         "20vh": "20vh",
         "15vh": "15vh",
+        "10vh": "10vh",
       },
       margin: {
         "50vh": "50vh",
         "40vh": "40vh",
+        "35vh": "35vh",
         "30vh": "30vh",
         "25vh": "25vh",
         "20vh": "20vh",
         "15vh": "15vh",
+        "10vh": "10vh",
       },
       boxShadow: {
         yblue: "20px 20px 0px #004EA2",

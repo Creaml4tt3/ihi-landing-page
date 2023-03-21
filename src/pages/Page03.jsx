@@ -723,7 +723,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 >
                   <Lottie
                     animationData={person05}
-                    className="Lottie-section z-20 mx-auto w-full"
+                    className="Lottie-section py-10vh z-20 mx-auto w-full"
                     style={{ height: "auto" }}
                     loop={true}
                   />
