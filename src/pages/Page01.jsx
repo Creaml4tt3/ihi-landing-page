@@ -275,12 +275,12 @@ export default function Section01({ changeStage, scrollStage }) {
     delay: delay * 5,
   });
   const arrowUp = useSpring({
-    config: { duration: duration, easing: easings.easeInOutCubic },
+    config: { duration: duration * 1.5, easing: easings.easeInOutCubic },
     from: { y: 550, opacity: 0 },
     to: { y: arrowUpIn ? 0 : 550, opacity: arrowUpIn ? 1 : 0 },
   });
   const arrowDown = useSpring({
-    config: { duration: duration, easing: easings.easeInOutCubic },
+    config: { duration: duration * 1.5, easing: easings.easeInOutCubic },
     from: { y: -275, opacity: 0 },
     to: { y: arrowDownIn ? 0 : -275, opacity: arrowDownIn ? 1 : 0 },
   });
