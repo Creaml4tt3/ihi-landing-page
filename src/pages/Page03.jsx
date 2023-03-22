@@ -35,7 +35,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
   const person01LottieRef = useRef(null);
   const lineIn = UseIntersectionLoop(lineRef, { rootMargin: "20%" });
   const epidemicIn = UseIntersectionLoop(epidemicRef, { rootMargin: "20%" });
-  const duration = 2000;
+  const duration = 3000;
   const counterDuration = 2.5;
   const person01Ref = useRef(null),
     person02Ref = useRef(null),
@@ -82,19 +82,19 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     to: { x: lineIn ? "0%" : "-50%" },
   });
   const slideRight02 = useSpring({
-    config: { duration: duration * 0.5, easing: easings.easeInOutCubic },
-    to: { x: lineIn ? "0%" : "-50%" },
+    config: { duration: duration, easing: easings.easeInOutCubic },
+    to: { x: lineIn ? "0%" : "-10%" },
   });
   const slideRight03 = useSpring({
-    config: { duration: duration * 1, easing: easings.easeInOutCubic },
+    config: { duration: duration * 1.2, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
   });
   const slideRight04 = useSpring({
-    config: { duration: duration * 0.5, easing: easings.easeInOutCubic },
-    to: { x: lineIn ? "0%" : "-50%" },
+    config: { duration: duration, easing: easings.easeInOutCubic },
+    to: { x: lineIn ? "0%" : "-10%" },
   });
   const slideRight05 = useSpring({
-    config: { duration: duration * 1, easing: easings.easeInOutCubic },
+    config: { duration: duration * 1.2, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
   });
 
