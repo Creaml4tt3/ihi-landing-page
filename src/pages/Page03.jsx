@@ -4,7 +4,7 @@ import { UseIntersectionLoop } from "../components/UseIntersectionLoop";
 import { useSpring, animated, easings } from "@react-spring/web";
 import { gsap } from "gsap";
 import Lottie from "lottie-react";
-import CountUp from "react-countup";
+import CountUp, { useCountUp } from "react-countup";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import ReactPlayer from "react-player";
 import Picture from "../components/Picture";
@@ -33,8 +33,8 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
   const lineRef = useRef(null);
   const epidemicRef = useRef(null);
   const person01LottieRef = useRef(null);
-  const lineIn = UseIntersection(lineRef, { rootMargin: "20%" });
-  const epidemicIn = UseIntersection(epidemicRef, { rootMargin: "20%" });
+  const lineIn = UseIntersectionLoop(lineRef, { rootMargin: "20%" });
+  const epidemicIn = UseIntersectionLoop(epidemicRef, { rootMargin: "20%" });
   const duration = 2000;
   const counterDuration = 2.5;
   const person01Ref = useRef(null),
@@ -80,32 +80,29 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
   const slideRight01 = useSpring({
     config: { duration: duration * 1.25, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
-    delay: duration * 1,
   });
   const slideRight02 = useSpring({
     config: { duration: duration * 0.5, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
-    delay: duration * 1,
   });
   const slideRight03 = useSpring({
     config: { duration: duration * 1, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
-    delay: duration * 0.5,
   });
   const slideRight04 = useSpring({
     config: { duration: duration * 0.5, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
-    delay: duration * 0.5,
   });
   const slideRight05 = useSpring({
     config: { duration: duration * 1, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
   });
 
-  const epidemic = epidemicJSON.map((el, index) => {
+  const EpidemicListing = epidemicJSON.map((el, index) => {
     let currentID = `Epidemic-content-${index}`;
     return (
       <Epidemic
+        key={index}
         src={epidemicImport[el.src]}
         size={el.size}
         speed={el.speed}
@@ -175,7 +172,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
         src={src}
         style={{
           height: size,
-          transform: `translate(${x ? x : 0}vw,${y ? y : 0}vh) scale(0,0)`,
+          transform: `translate(${x ? x : 0}vw,${y ? y : 0}vh) scale(0)`,
           mixBlendMode: `${softLight ? "soft-light" : "lighten"}`,
           filter: `brightness(${brightness ? 0 : 1})`,
         }}
@@ -183,12 +180,6 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
         className="Epidemic-section Lottie-section absolute top-0 left-0 z-0"
       />
     );
-  }
-
-  let countStart = false;
-
-  if (epidemicIn) {
-    countStart = true;
   }
 
   function turnStrToNumber(value) {
@@ -245,9 +236,6 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
 
   if (person01In) {
     changePicture(person01AnimationRef, person01TextRef, 1, 200);
-    if (pastSolutionState !== 1) {
-      person01LottieRef.current.goToAndPlay(0);
-    }
   } else if (person02In) {
     changePicture(person02AnimationRef, person02TextRef, 2, 200);
   } else if (person03In) {
@@ -682,7 +670,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     lottieRef={person01LottieRef}
                     className="Lottie-section z-20 mx-auto w-full"
                     style={{ height: "auto" }}
-                    loop={false}
+                    loop={true}
                   />
                 </div>
                 <div
@@ -932,6 +920,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           className="Page-section flex-center relative mb-25vh h-fit w-full flex-col px-desktop"
           ref={epidemicRef}
         >
+          {EpidemicListing}
           <section className="Text-section flex-center z-10 flex-col">
             <span className="Title-text text-center text-40px font-semibold text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_05.TITLE_01}
@@ -963,7 +952,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {countStart && (
+                {epidemicIn && (
                   <CountUp
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_01.NUMBER
@@ -1004,7 +993,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {countStart && (
+                {epidemicIn && (
                   <CountUp
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_02.NUMBER
@@ -1087,7 +1076,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {countStart && (
+                {epidemicIn && (
                   <CountUp
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04.NUMBER
@@ -1157,7 +1146,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 </span>
               </div>
               <span className="Number-text">
-                {countStart && (
+                {epidemicIn && (
                   <CountUp
                     end={turnStrToNumber(
                       configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06.NUMBER
@@ -1183,7 +1172,6 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               </div>
             </div>
           </section>
-          {epidemic}
           <div className="Link-container mb-32 flex justify-center">
             <a
               href={configJSON.CONTENT.PAGE_03.SECTION_05.LINK_01}
