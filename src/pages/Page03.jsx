@@ -98,20 +98,22 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     to: { x: lineIn ? "0%" : "-50%" },
   });
 
-  const EpidemicListing = epidemicJSON.map((el, index) => {
-    let currentID = `Epidemic-content-${index}`;
-    return (
-      <Epidemic
-        key={index}
-        src={epidemicImport[el.src]}
-        size={el.size}
-        speed={el.speed}
-        y={el.y}
-        x={el.x}
-        id={currentID}
-      />
-    );
-  });
+  const EpidemicListing = () => {
+    return epidemicJSON.map((el, index) => {
+      let currentID = `Epidemic-content-${index}`;
+      return (
+        <Epidemic
+          key={index}
+          src={epidemicImport[el.src]}
+          size={el.size}
+          speed={el.speed}
+          y={el.y}
+          x={el.x}
+          id={currentID}
+        />
+      );
+    });
+  };
 
   const graphLine = [
     {
@@ -144,7 +146,8 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       for (let i = 1; i <= epidemicJSON.length; i++) {
-        gsap.to(`#Epidemic-content-${i - 1}`, {
+        var tl = gsap.timeline();
+        tl.to(`#Epidemic-content-${i - 1}`, {
           scale: "+=1",
           duration: 2,
           ease: "elastic",
@@ -916,11 +919,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section
-          className="Page-section flex-center relative mb-25vh h-fit w-full flex-col px-desktop"
-          ref={epidemicRef}
-        >
-          {EpidemicListing}
+        <section className="Page-section flex-center relative mb-25vh h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 flex-col">
             <span className="Title-text text-center text-40px font-semibold text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_05.TITLE_01}
@@ -935,7 +934,13 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               </span>
             </h2>
           </section>
-          <section className="Grid-container mt-20 mb-32 grid w-full max-w-1300px grid-cols-3 gap-y-14 gap-x-20">
+          <section
+            className="Grid-container mt-20 mb-32 grid w-full max-w-1300px grid-cols-3 gap-y-14 gap-x-20"
+            ref={epidemicRef}
+          >
+            <div className="Epidemic-container absolute top-0 left-0 h-auto w-full">
+              <EpidemicListing />
+            </div>
             <div className="Grid-content" id="Grid-01">
               <div className="Upper">
                 <span className="Upper-text">
