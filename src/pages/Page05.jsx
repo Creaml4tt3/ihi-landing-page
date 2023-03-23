@@ -43,7 +43,7 @@ export default function Section05({ changeStage }) {
         webp={page_05_bg_webp}
         normal={page_05_bg_png}
         alt="page_05_bg_png"
-        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-40 pointer-events-none"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-50 pointer-events-none"
         classimg="mx-auto w-full h-full"
       />
       {/* //?Background - Ending */}
@@ -148,12 +148,12 @@ export default function Section05({ changeStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section flex-center z-50 h-fit w-full bg-cream px-desktop pt-25vh pb-50vh">
+        <section className="Page-section flex-center z-40 h-fit w-full bg-cream px-desktop pt-25vh pb-50vh">
           <Picture
             webp={ihi_logo_webp}
             normal={ihi_logo_png}
             alt="ihi_logo_png"
-            classpic="Picture-section z-50"
+            classpic="Picture-section z-40"
             classimg="mx-auto w-full h-auto"
           />
         </section>
