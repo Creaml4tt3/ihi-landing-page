@@ -209,24 +209,22 @@ export default function Test({ changeStage }) {
 
     const tl = gsap.timeline({ repeat: -1, delay: 1 });
     tl.to(".test01", {
-      x: "+=250",
-      y: "+=100",
+      left: "+=250",
+      top: "+=100",
       rotation: -5,
       ease: "Power1.easeInOut",
       duration: 5,
     });
     tl.to(".test01", {
-      x: "-=100",
-      y: "+=200",
-      top: "+=30",
+      left: "-=100",
+      top: "+=200",
       rotation: 5,
       ease: "Power1.easeInOut",
       duration: 7,
     });
     tl.to(".test01", {
-      x: "+=500",
-      y: "+=200",
-      top: "-+20",
+      left: "+=500",
+      top: "+=200",
       rotation: -5,
       ease: "Power1.easeInOut",
       duration: 7,

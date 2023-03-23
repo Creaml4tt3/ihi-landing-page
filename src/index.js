@@ -20,7 +20,7 @@ const route = createBrowserRouter([
     element: <Config />,
     errorElement: <Error />,
   },
-  /*   {
+  /* {
     path: "/test",
     element: <Test />,
     errorElement: <Error />,
