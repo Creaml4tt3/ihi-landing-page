@@ -122,7 +122,7 @@ export default function Section05({ changeStage }) {
         </section>
         {/* //?Page 04 */}
         <section className="Page-section z-0 h-fit w-full bg-cream px-desktop pt-20vh pb-20vh">
-          <section className="Text-section flex-center z-10 flex-col gap-4">
+          <section className="Text-section flex-center z-10 flex-col gap-2">
             <h2 className="Heading-text z-30 !font-bold text-blue">
               {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}
               <br></br>
@@ -134,7 +134,7 @@ export default function Section05({ changeStage }) {
               {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_02}
             </h2>
           </section>
-          <div className="Link-container flex-center pt-10">
+          <div className="Link-container flex-center pt-8">
             <a
               href={configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
               className="Link"
@@ -148,7 +148,7 @@ export default function Section05({ changeStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section flex-center z-40 h-fit w-full bg-cream px-desktop pt-25vh pb-50vh">
+        <section className="Page-section flex-center z-40 h-fit w-full bg-cream px-desktop pb-50vh pt-[22vh]">
           <Picture
             webp={ihi_logo_webp}
             normal={ihi_logo_png}

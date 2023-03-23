@@ -44,6 +44,7 @@ module.exports = {
         "40px": ["40px", "1.375em"],
       },
       padding: {
+        "60vh": "60vh",
         "50vh": "50vh",
         "40vh": "40vh",
         "35vh": "35vh",
