@@ -58,24 +58,24 @@ export default function Section02({ changeStage, scrollStage }) {
     threshold: 1,
   });
   const howRef = useRef(null);
-  const howIn = UseIntersection(howRef, {
+  const howIn = UseIntersectionLoop(howRef, {
     rootMargin: "-100%",
     threshold: 1,
   });
   const columnRef = useRef(null);
-  const columnIn = UseIntersection(columnRef, {
+  const columnIn = UseIntersectionLoop(columnRef, {
     rootMargin: "-100%",
     threshold: 1,
   });
   const lineRef = useRef(null);
   const lineLottieRef = useRef(null);
-  const lineIn = UseIntersection(lineRef, {
+  const lineIn = UseIntersectionLoop(lineRef, {
     rootMargin: "-100%",
     threshold: 1,
   });
   const workRef = useRef(null);
   const workLottieRef = useRef(null);
-  const workIn = UseIntersection(workRef, {
+  const workIn = UseIntersectionLoop(workRef, {
     rootMargin: "-100%",
     threshold: 1,
   });
@@ -123,11 +123,11 @@ export default function Section02({ changeStage, scrollStage }) {
   };
 
   if (lineIn) {
-    lineLottieRef.current.play();
+    lineLottieRef.current.goToAndPlay(0);
     /* lineLottieRef.current.setSpeed(2); */
   }
   if (workIn) {
-    workLottieRef.current.play();
+    workLottieRef.current.goToAndPlay(0);
   }
 
   function handleScroll(event, el) {

@@ -231,9 +231,9 @@ export default function Section01({ changeStage, scrollStage }) {
       }, 10);
     }
 
-    pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
     return () => {
-      pageWrapper.removeEventListener("wheel", (e) =>
+      pageWrapper.removeEventListener("scroll", (e) =>
         handleScroll(e, pageWrapper)
       );
     };
