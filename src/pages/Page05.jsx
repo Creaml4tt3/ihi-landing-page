@@ -22,7 +22,6 @@ export default function Section05({ changeStage }) {
     }
 
     if (!isScrollingUp && isAtBottom) {
-      changeStage("+");
     }
   }
   function handleScroll(el) {
@@ -34,7 +33,6 @@ export default function Section05({ changeStage }) {
     }
 
     if (isAtBottom) {
-      changeStage("+");
     }
   }
 
