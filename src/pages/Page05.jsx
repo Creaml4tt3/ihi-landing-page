@@ -29,8 +29,12 @@ export default function Section05({ changeStage }) {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
 
     pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
     return () => {
       pageWrapper.removeEventListener("wheel", (e) =>
+        handleScroll(e, pageWrapper)
+      );
+      pageWrapper.removeEventListener("scroll", (e) =>
         handleScroll(e, pageWrapper)
       );
     };

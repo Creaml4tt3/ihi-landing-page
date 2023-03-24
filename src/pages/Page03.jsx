@@ -268,13 +268,17 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
 
     if (scrollStage === 3) {
       setTimeout(() => {
-        pageWrapper.scrollTop = pageWrapper.scrollHeight;
+        pageWrapper.scrollTop = pageWrapper.scrollHeight - 1000;
       }, 10);
     }
 
     pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
     return () => {
       pageWrapper.removeEventListener("wheel", (e) =>
+        handleScroll(e, pageWrapper)
+      );
+      pageWrapper.removeEventListener("scroll", (e) =>
         handleScroll(e, pageWrapper)
       );
     };
