@@ -130,7 +130,7 @@ export default function Section02({ changeStage, scrollStage }) {
     workLottieRef.current.goToAndPlay(0);
   }
 
-  function handleScroll(event, el) {
+  function handleWheel(event, el) {
     const isScrollingUp = event.deltaY < 0;
     const isAtTop = el.scrollTop === 0;
     const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
@@ -140,6 +140,18 @@ export default function Section02({ changeStage, scrollStage }) {
     }
 
     if (!isScrollingUp && isAtBottom) {
+      changeStage("+");
+    }
+  }
+  function handleScroll(el) {
+    const isAtTop = el.scrollTop === 0;
+    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+
+    if (isAtTop) {
+      changeStage("-");
+    }
+
+    if (isAtBottom) {
       changeStage("+");
     }
   }
@@ -153,11 +165,11 @@ export default function Section02({ changeStage, scrollStage }) {
       }, 10);
     }
 
-    pageWrapper.addEventListener("wheel", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
     pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
     return () => {
       pageWrapper.removeEventListener("wheel", (e) =>
-        handleScroll(e, pageWrapper)
+        handleWheel(e, pageWrapper)
       );
       pageWrapper.removeEventListener("scroll", (e) =>
         handleScroll(e, pageWrapper)
