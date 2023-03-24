@@ -253,6 +253,8 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     const isScrollingUp = event.deltaY < 0;
     const isAtTop = el.scrollTop === 0;
     const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+    console.log("A : " + (el.scrollTop + el.offsetHeight));
+    console.log("B : " + el.scrollHeight);
 
     if (isScrollingUp && isAtTop) {
       changeStage("-");
