@@ -7,40 +7,42 @@ import Lottie from "lottie-react";
 import Picture from "../components/Picture";
 import configJSON from "../config.json";
 import {
-  page_01_people_webp,
-  page_01_people_png,
-  page_01_bg_webp,
-  page_01_bg_png,
-  graph_01_webp,
-  graph_01_png,
-  graph_02_webp,
-  graph_02_png,
-  graph_03_webp,
-  graph_03_png,
-  graph_04_webp,
-  graph_04_png,
-  graph_05_webp,
-  graph_05_png,
-  graph_06_webp,
-  graph_06_png,
-  graph_bg_webp,
-  graph_bg_png,
-  graph_line_webp,
-  graph_line_png,
-  arrow_up_webp,
-  arrow_up_png,
-  arrow_down_webp,
   arrow_down_png,
-  graph_profit_webp,
-  graph_profit_png,
-  graph_cost_webp,
+  arrow_down_webp,
+  arrow_up_png,
+  arrow_up_webp,
+  graph_01_png,
+  graph_01_webp,
+  graph_02_png,
+  graph_02_webp,
+  graph_03_png,
+  graph_03_webp,
+  graph_04_png,
+  graph_04_webp,
+  graph_05_png,
+  graph_05_webp,
+  graph_06_png,
+  graph_06_webp,
+  graph_bg_png,
+  graph_bg_webp,
   graph_cost_png,
-  solution_01_webp,
-  solution_02_webp,
-  solution_03_webp,
+  graph_cost_webp,
+  graph_line_png,
+  graph_line_webp,
+  graph_profit_png,
+  graph_profit_webp,
+  page_01_bg_png,
+  page_01_bg_webp,
+  page_01_people_png,
+  page_01_people_webp,
+  page_01_graph_png,
+  page_01_graph_webp,
   solution_01_png,
+  solution_01_webp,
   solution_02_png,
+  solution_02_webp,
   solution_03_png,
+  solution_03_webp,
 } from "../components/image/Image01";
 import solution_01_lottie from "../lotties/solution-01.json";
 import solution_02_webm from "../lotties/webm/solution-02.webm";
@@ -107,10 +109,12 @@ export default function Section01({ changeStage, scrollStage }) {
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
   function changePicture(ref, textRef, state, duration) {
-    setFade(ref, textRef, state, duration);
-    setTimeout(() => {
-      changeElement(ref, textRef);
-    }, duration);
+    if (window.innerWidth > 1024) {
+      setFade(ref, textRef, state, duration);
+      setTimeout(() => {
+        changeElement(ref, textRef);
+      }, duration);
+    }
   }
 
   function changeElement(ref, textRef) {
@@ -174,7 +178,7 @@ export default function Section01({ changeStage, scrollStage }) {
   function handleWheel(event, el) {
     const isScrollingUp = event.deltaY < 0;
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
 
     if (isScrollingUp && isAtTop) {
     }
@@ -185,7 +189,13 @@ export default function Section01({ changeStage, scrollStage }) {
   }
   function handleScroll(el) {
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
+
+    if (window.innerWidth <= 1024) {
+      if (el.scrollTop + el.clientHeight - el.scrollHeight >= -5) {
+        changeStage("+");
+      }
+    }
 
     if (isAtTop) {
     }
@@ -238,18 +248,18 @@ export default function Section01({ changeStage, scrollStage }) {
 
     if (scrollStage === 1) {
       setTimeout(() => {
-        pageWrapper.scrollTop = pageWrapper.scrollHeight - 1000;
+        pageWrapper.scrollTop = pageWrapper.scrollHeight - 1500;
       }, 10);
     }
 
     pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
-    pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("scroll", (e) => handleScroll(pageWrapper));
     return () => {
       pageWrapper.removeEventListener("wheel", (e) =>
         handleWheel(e, pageWrapper)
       );
       pageWrapper.removeEventListener("scroll", (e) =>
-        handleScroll(e, pageWrapper)
+        handleScroll(pageWrapper)
       );
     };
   }, []);
@@ -321,8 +331,8 @@ export default function Section01({ changeStage, scrollStage }) {
         id="Page-01"
       >
         {/* //?Page 01 */}
-        <section className="Page-section relative flex h-screen flex-col items-center justify-end px-desktop">
-          <section className="Text-section z-20 flex flex-col gap-4">
+        <section className="Page-section relative flex h-screen flex-col items-center justify-end px-desktop maxtablet:justify-between">
+          <section className="Text-section z-20 flex flex-col gap-4 maxtablet:pt-40vh">
             <h1 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_01.HEADING_01}
             </h1>
@@ -335,26 +345,39 @@ export default function Section01({ changeStage, scrollStage }) {
             normal={page_01_people_png}
             alt="page_01_people_png"
             classpic="Picture-section w-full z-10"
-            classimg="mx-auto"
+            classimg="mx-auto tablet:w-[60vw]"
           />
         </section>
         {/* //?Page 02 */}
         <section className="Page-section relative h-fit">
-          <section className="Section-container flex-center px-desktop">
-            <section className="Column-container h-[400vh] w-3/5 py-20vh">
+          <section className="Section-container flex-center px-desktop maxtablet:flex-col">
+            <section className="Column-container h-[400svh] w-3/5 py-20vh maxtablet:h-fit maxtablet:w-full">
               <div
-                className="Picture-change sticky top-twenty"
+                className="Picture-change sticky top-twenty maxtablet:static"
                 ref={solutionRef}
               >
-                <div className="Lottie-container" ref={solution_01AnimationRef}>
+                <div
+                  className="Lottie-container maxtablet:!block"
+                  ref={solution_01AnimationRef}
+                >
                   <Lottie
                     animationData={solution_01_lottie}
                     className="Lottie-section z-10 mx-auto w-full"
-                    style={{ height: "620px" }}
+                    style={{
+                      height: `${window.innerWidth > 1024 ? "620px" : "60svh"}`,
+                    }}
                   />
+                  <section className="Text-section flex-center z-20 !hidden flex-col gap-4 maxtablet:!block">
+                    <h2 className="Heading-text text-white">
+                      {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_01}
+                    </h2>
+                    <h2 className="Sub-heading-text text-orange">
+                      {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_01}
+                    </h2>
+                  </section>
                 </div>
                 <div
-                  className="Player-container hidden"
+                  className="Player-container hidden maxtablet:!block"
                   ref={solution_02AnimationRef}
                 >
                   {/*                   <ReactPlayer
@@ -369,35 +392,57 @@ export default function Section01({ changeStage, scrollStage }) {
                   <Lottie
                     animationData={solution_02_lottie}
                     className="Lottie-section z-10 mx-auto w-full"
-                    style={{ height: "620px" }}
+                    style={{
+                      height: `${window.innerWidth > 1024 ? "620px" : "60svh"}`,
+                    }}
                   />
+                  <section className="Text-section flex-center z-20 !hidden flex-col gap-4 maxtablet:!block">
+                    <h2 className="Heading-text text-white">
+                      {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02}
+                      <br></br>
+                      {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_03}
+                    </h2>
+                    <h2 className="Sub-heading-text text-orange">
+                      {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_02}
+                    </h2>
+                  </section>
                 </div>
                 <div
-                  className="Lottie-container hidden"
+                  className="Lottie-container hidden maxtablet:!block"
                   ref={solution_03AnimationRef}
                 >
                   <Lottie
                     animationData={solution_03_lottie}
                     className="Lottie-section z-10 mx-auto w-full"
-                    style={{ height: "620px" }}
+                    style={{
+                      height: `${window.innerWidth > 1024 ? "620px" : "60svh"}`,
+                    }}
                   />
+                  <section className="Text-section flex-center z-20 !hidden flex-col gap-4 maxtablet:!block">
+                    <h2 className="Heading-text text-white">
+                      {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_04}
+                    </h2>
+                    <h2 className="Sub-heading-text text-orange">
+                      {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_03}
+                    </h2>
+                  </section>
                 </div>
               </div>
             </section>
-            <section className="Column-container relative h-[400vh] w-2/5">
+            <section className="Column-container relative h-[400svh] w-2/5 maxtablet:hidden">
               <div
                 className="Section-action-container pointer-events-none absolute top-0 h-screen w-full"
                 ref={solution_01Ref}
               ></div>
               <div
-                className="Section-action-container pointer-events-none absolute top-[100vh] h-screen w-full"
+                className="Section-action-container pointer-events-none absolute top-[100svh] h-screen w-full"
                 ref={solution_02Ref}
               ></div>
               <div
-                className="Section-action-container pointer-events-none absolute top-[200vh] h-screen w-full"
+                className="Section-action-container pointer-events-none absolute top-[200svh] h-screen w-full"
                 ref={solution_03Ref}
               ></div>
-              <div className="All-text-section sticky top-0">
+              <div className="All-text-section sticky top-0 maxtablet:static">
                 <section
                   className="Text-section flex-center z-20 h-screen flex-col gap-4"
                   ref={solution_01TextRef}
@@ -438,7 +483,7 @@ export default function Section01({ changeStage, scrollStage }) {
           </section>
         </section>
         {/* //?Page 03 */}
-        <section className="Page-section relative flex h-fit flex-col items-center px-desktop pt-[8%]">
+        <section className="Page-section relative flex h-fit flex-col items-center px-desktop pt-[8svh]">
           <section className="Text-section z-20 flex flex-col gap-4">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_03.HEADING_01}
@@ -448,7 +493,7 @@ export default function Section01({ changeStage, scrollStage }) {
             </h2>
           </section>
           <section
-            className="Graph-section relative mt-14 mb-10 flex w-fit items-end"
+            className="Graph-section relative mt-14 mb-10 flex w-fit items-end maxtablet:flex-col maxtablet:gap-4"
             ref={graphContainerRef}
           >
             <div className="Graph-inside-container relative z-20 flex h-full overflow-hidden">
@@ -456,50 +501,51 @@ export default function Section01({ changeStage, scrollStage }) {
                 webp={graph_bg_webp}
                 normal={graph_bg_webp}
                 alt="graph_bg_webp"
-                classpic="Picture-section w-full z-10"
+                classpic="Picture-section w-full z-10 maxtablet:hidden"
                 classimg="w-full h-auto"
               />
-              <div className="Graph-line-container absolute right-0 bottom-12 z-20 flex items-end gap-[103px]">
+              <Picture
+                webp={page_01_graph_webp}
+                normal={page_01_graph_webp}
+                alt="page_01_graph_webp"
+                classpic="Picture-section w-full z-10 hidden maxtablet:block"
+                classimg="w-full h-auto"
+              />
+              <div className="Graph-line-container absolute right-0 bottom-12 z-20 flex items-end gap-[min(5.8vw,103px)] maxlabtop:bottom-[clamp(32px,3vw,48px)] maxlabtop:gap-[clamp(66px,7vw-5.5px,103px)] maxtablet:hidden">
                 <Lottie
                   animationData={graph_01_lottie}
                   lottieRef={graph01Ref}
-                  className="Lottie-section z-10 mx-auto w-full"
-                  style={{ height: "auto", width: "100%" }}
+                  className="Lottie-section z-10 mx-auto w-full maxlabtop:w-[5vw]"
                   loop={false}
                 />
                 <Lottie
                   animationData={graph_02_lottie}
                   lottieRef={graph02Ref}
-                  className="Lottie-section z-10 mx-auto w-full"
-                  style={{ height: "auto", width: "100%" }}
+                  className="Lottie-section z-10 mx-auto w-full maxlabtop:w-[5vw]"
                   loop={false}
                 />
                 <Lottie
                   animationData={graph_03_lottie}
                   lottieRef={graph03Ref}
-                  className="Lottie-section z-10 mx-auto w-full"
-                  style={{ height: "auto", width: "100%" }}
+                  className="Lottie-section z-10 mx-auto w-full maxlabtop:w-[5vw]"
                   loop={false}
                 />
                 <Lottie
                   animationData={graph_04_lottie}
                   lottieRef={graph04Ref}
-                  className="Lottie-section z-10 mx-auto w-full"
-                  style={{ height: "auto", width: "100%" }}
+                  className="Lottie-section z-10 mx-auto w-full maxlabtop:w-[5vw]"
                   loop={false}
                 />
                 <Lottie
                   animationData={graph_05_lottie}
                   lottieRef={graph05Ref}
-                  className="Lottie-section z-10 mx-auto w-full"
-                  style={{ height: "auto", width: "100%" }}
+                  className="Lottie-section z-10 mx-auto w-full maxlabtop:w-[5vw]"
                   loop={false}
                 />
                 <Lottie
                   animationData={graph_06_lottie}
                   lottieRef={graph06Ref}
-                  className="Lottie-section z-10 mx-auto w-full"
-                  style={{ height: "auto", width: "100%" }}
+                  className="Lottie-section z-10 mx-auto w-full maxlabtop:w-[5vw]"
                   loop={false}
                 />
               </div>
@@ -566,7 +612,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 </animated.div>
               </div> */}
             </div>
-            <div className="Graph-info-container ml-[52px] mb-12 flex flex-col gap-5 maxlaptop:ml-[28px]">
+            <div className="Graph-info-container maxlaptop:ml-[28px] ml-[52px] mb-12 flex flex-col gap-5 maxlabtop:mb-2 maxtablet:ml-0 maxtablet:w-full maxtablet:flex-row maxtablet:flex-wrap maxtablet:items-center maxtablet:justify-center maxtablet:gap-2">
               <div className="Graph-inside-info">
                 <svg className="Circle" id="Circle-01">
                   <circle cx="11" cy="11" r="11" />
@@ -621,7 +667,7 @@ export default function Section01({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 04 */}
-        <section className="Page-section relative mt-56 mb-64 flex h-fit flex-col items-center px-desktop pt-[8%]">
+        <section className="Page-section relative mt-56 mb-64 flex h-fit flex-col items-center px-desktop pt-[8svh]">
           <section className="Text-section z-20 flex flex-col gap-4">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_04.HEADING_01}
@@ -634,18 +680,21 @@ export default function Section01({ changeStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_01.SECTION_04.SUB_HEADING_02}
             </h2>
           </section>
-          <div className="Graph-line-container relative mt-16">
+          <div className="Graph-line-container relative mt-16 maxlabtop:mt-4">
             <Lottie
               animationData={graph}
               lottieRef={graphLineLottieRef}
               className="Lottie-section z-10"
-              style={{ height: 680 }}
+              style={{
+                height: `${window.innerWidth > 1024 ? "680px" : "65svh"}`,
+                width: "100%",
+              }}
               loop={false}
               autoplay={false}
             />
             <div className="Intersection-container" ref={graphLineRef}></div>
             <section className="Text-section z-30">
-              <span className="Text absolute left-1/2 top-[40%] -translate-x-1/2 text-4xl font-medium text-white">
+              <span className="Text absolute left-1/2 top-[40%] -translate-x-1/2 text-4xl font-medium text-white maxlabtop:text-[clamp(0.875rem,3.25vw,1.875rem)]">
                 {configJSON.CONTENT.PAGE_01.SECTION_04.TEXT_01}
               </span>
             </section>
@@ -663,8 +712,8 @@ export default function Section01({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section relative flex h-fit items-end justify-center px-desktop">
-          <div className="Arrow-up-container">
+        <section className="Page-section relative flex h-fit items-end justify-center px-desktop maxtablet:flex-col">
+          <div className="Arrow-up-container maxtablet:w-full">
             <section className="Text-section z-20 flex flex-col gap-4">
               <h2 className="Heading-text text-white">
                 {configJSON.CONTENT.PAGE_01.SECTION_05.HEADING_01}
@@ -680,14 +729,14 @@ export default function Section01({ changeStage, scrollStage }) {
                   normal={arrow_up_png}
                   alt="arrow_up_png"
                   classpic="Picture-section w-full z-10 mt-16"
-                  classimg="mx-auto"
+                  classimg="mx-auto maxtablet:w-[40vw]"
                   lazy
                 />
               </animated.div>
             </div>
           </div>
           <div className="Intersection-container" ref={arrowUpRef}></div>
-          <div className="Arrow-down-container">
+          <div className="Arrow-down-container maxtablet:w-full">
             <section className="Text-section z-20 flex flex-col gap-4">
               <h2 className="Heading-text text-white">
                 {configJSON.CONTENT.PAGE_01.SECTION_05.HEADING_02}
@@ -703,7 +752,7 @@ export default function Section01({ changeStage, scrollStage }) {
                   normal={arrow_down_png}
                   alt="arrow_down_png"
                   classpic="Picture-section w-full z-10 mt-16"
-                  classimg="mx-auto"
+                  classimg="mx-auto maxtablet:w-[40vw]"
                   lazy
                 />
               </animated.div>
@@ -713,7 +762,7 @@ export default function Section01({ changeStage, scrollStage }) {
         </section>
         {/* //?Page 06 */}
         <section className="Page-section flex-center relative mt-56 h-fit flex-col gap-7 px-desktop">
-          <div className="Graph-section flex-center gap-16">
+          <div className="Graph-section flex-center gap-16 maxtablet:flex-col">
             <div className="Graph-container">
               <Picture
                 webp={graph_profit_webp}

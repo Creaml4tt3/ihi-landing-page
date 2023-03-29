@@ -40,13 +40,13 @@ export default function Section05({ changeStage }) {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
 
     pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
-    pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("scroll", (e) => handleScroll(pageWrapper));
     return () => {
       pageWrapper.removeEventListener("wheel", (e) =>
         handleWheel(e, pageWrapper)
       );
       pageWrapper.removeEventListener("scroll", (e) =>
-        handleScroll(e, pageWrapper)
+        handleScroll(pageWrapper)
       );
     };
   }, []);
@@ -93,7 +93,7 @@ export default function Section05({ changeStage }) {
           </section>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section z-0 mb-[100vh] h-fit w-full rounded-t-full bg-blue px-desktop pb-25vh pt-25vh">
+        <section className="Page-section z-0 h-fit w-full rounded-t-full bg-blue px-desktop pb-25vh pt-25vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <h2 className="Heading-text !font-medium text-white">
               {configJSON.CONTENT.PAGE_05.SECTION_02.HEADING_01}
@@ -107,70 +107,71 @@ export default function Section05({ changeStage }) {
             </h2>
           </section>
         </section>
-        {/* //?Page 03 */}
-        <section className="Page-section relative z-10 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pt-50vh pb-25vh">
-          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 h-auto w-auto overflow-hidden rounded-t-full">
+        {/* //?Page Wrap */}
+        <section className="Page-section-wrapper relative h-fit overflow-hidden rounded-t-full bg-cream">
+          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 maxlabtop:h-full">
             <ReactPlayer
-              className="React-player"
+              className="React-player max-h-full"
               url={laef_webm}
-              width="auto"
-              height="auto"
+              width={window.innerWidth <= 1440 ? "125vw" : "auto"}
+              height="100%"
               playing
               loop
               muted
             />
           </div>
-          <section className="Text-section flex-center z-30 flex-col gap-4">
-            <h2 className="Heading-text z-30 !font-medium text-blue">
-              {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_01}
-              <br></br>
-              {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_02}
-            </h2>
-            <h2 className="Sub-heading-text z-30 text-orange">
-              {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_01}
-              <br></br>
-              {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_02}
-              <br></br>
-              {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_03}
-            </h2>
+          {/* //?Page 03 */}
+          <section className="Page-section relative z-10 h-fit w-full overflow-y-visible px-desktop pt-50vh pb-25vh">
+            <section className="Text-section flex-center z-30 flex-col gap-4">
+              <h2 className="Heading-text z-30 !font-medium text-blue">
+                {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_01}
+                <br></br>
+                {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_02}
+              </h2>
+              <h2 className="Sub-heading-text z-30 text-orange">
+                {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_01}
+                <br></br>
+                {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_02}
+                <br></br>
+                {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_03}
+              </h2>
+            </section>
           </section>
-        </section>
-        {/* //?Page 04 */}
-        <section className="Page-section z-0 h-fit w-full bg-cream px-desktop pt-20vh pb-20vh">
-          <section className="Text-section flex-center z-10 flex-col gap-2">
-            <h2 className="Heading-text z-30 !font-bold text-blue">
-              {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}
-              <br></br>
-              {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_02}
-            </h2>
-            <h2 className="Sub-heading-text z-30 text-orange">
-              {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_01}
-              <br></br>
-              {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_02}
-            </h2>
-          </section>
-          <div className="Link-container flex-center pt-8">
-            <a
-              href={configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
-              className="Link"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span className="Link-text text-xl font-medium text-blue">
+          {/* //?Page 04 */}
+          <section className="Page-section z-0 h-fit w-full px-desktop pt-20vh pb-20vh">
+            <section className="Text-section flex-center z-10 flex-col gap-2">
+              <h2 className="Heading-text z-30 !font-bold text-blue">
+                {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}
+                <br></br>
+                {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_02}
+              </h2>
+              <h2 className="Sub-heading-text z-30 text-orange">
+                {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_01}
+                <br></br>
+                {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_02}
+              </h2>
+            </section>
+            <div className="Link-container flex-center pt-8">
+              <a
+                href={configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
+                className="Link !font-medium !text-blue"
+                target="_blank"
+                rel="noreferrer"
+              >
                 {configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
-              </span>
-            </a>
-          </div>
-        </section>
-        {/* //?Page 05 */}
-        <section className="Page-section flex-center z-40 h-fit w-full bg-cream px-desktop pb-50vh pt-[22vh]">
-          <Picture
-            webp={ihi_logo_webp}
-            normal={ihi_logo_png}
-            alt="ihi_logo_png"
-            classpic="Picture-section z-40"
-            classimg="mx-auto w-full h-auto"
-          />
+              </a>
+            </div>
+          </section>
+          {/* //?Page 05 */}
+          <section className="Page-section flex-center z-40 h-fit w-full px-desktop pb-50vh pt-[22vh]">
+            <Picture
+              webp={ihi_logo_webp}
+              normal={ihi_logo_png}
+              alt="ihi_logo_png"
+              classpic="Picture-section z-40"
+              classimg="mx-auto w-full h-auto"
+            />
+          </section>
         </section>
       </div>
     </>

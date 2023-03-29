@@ -93,10 +93,12 @@ export default function Section03({ changeStage, scrollStage }) {
   const [pastSolutionState, setPastSolutionState] = useState(1);
 
   function changePicture(ref, textRef, state, duration) {
-    setFade(ref, textRef, state, duration);
-    setTimeout(() => {
-      changeElement(ref, textRef);
-    }, duration);
+    if (window.innerWidth > 1024) {
+      setFade(ref, textRef, state, duration);
+      setTimeout(() => {
+        changeElement(ref, textRef);
+      }, duration);
+    }
   }
 
   function changeElement(ref, textRef) {
@@ -162,7 +164,13 @@ export default function Section03({ changeStage, scrollStage }) {
   }
   function handleScroll(el) {
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
+
+    if (window.innerWidth <= 1024) {
+      if (el.scrollTop + el.clientHeight - el.scrollHeight >= -5) {
+        changeStage("+");
+      }
+    }
 
     if (isAtTop) {
       changeStage("-");
@@ -182,18 +190,18 @@ export default function Section03({ changeStage, scrollStage }) {
 
     if (scrollStage === 4) {
       setTimeout(() => {
-        pageWrapper.scrollTop = pageWrapper.scrollHeight - 1000;
+        pageWrapper.scrollTop = pageWrapper.scrollHeight - 1500;
       }, 10);
     }
 
     pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
-    pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("scroll", (e) => handleScroll(pageWrapper));
     return () => {
       pageWrapper.removeEventListener("wheel", (e) =>
         handleWheel(e, pageWrapper)
       );
       pageWrapper.removeEventListener("scroll", (e) =>
-        handleScroll(e, pageWrapper)
+        handleScroll(pageWrapper)
       );
     };
   }, []);
@@ -326,12 +334,12 @@ export default function Section03({ changeStage, scrollStage }) {
         {/* //?Page 01 */}
         <section className="Page-section flex-center z-0 -mt-[100vh] h-screen w-full flex-col rounded-t-full bg-cream px-desktop">
           <section className="Text-section flex-center z-10 flex-col gap-3">
-            <span className="Title-text text-center text-40px font-semibold leading-normal text-blue">
+            <span className="Title-text text-center text-40px font-semibold leading-normal text-blue maxlabtop:text-[clamp(0.875rem,2.5vw,2rem)]">
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_01}
               <br></br>
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_02}
             </span>
-            <span className="Sub-title-text text-center text-4xl font-medium leading-normal text-orange">
+            <span className="Sub-title-text text-center text-4xl font-medium leading-normal text-orange maxlabtop:text-[clamp(0.875rem,2.5vw,2rem)]">
               {configJSON.CONTENT.PAGE_04.SECTION_01.SUB_TITLE_01}
               <br></br>
               {configJSON.CONTENT.PAGE_04.SECTION_01.SUB_TITLE_02}
@@ -378,7 +386,7 @@ export default function Section03({ changeStage, scrollStage }) {
               className="React-player"
               url={videoURL}
               width="100%"
-              height="550px"
+              height={window.innerWidth <= 1024 ? "20svh" : "550px"}
               /* light={previewVideoURL01} */
               playing={videoIn ? true : false}
               muted
@@ -388,7 +396,7 @@ export default function Section03({ changeStage, scrollStage }) {
             />
             <div className="Intersection-container" ref={videoRef}></div>
           </div>
-          <div className="Icon-container flex-center mt-5 gap-4">
+          <div className="Icon-container flex-center mt-5 gap-4 maxlabtop:flex-wrap">
             <div className="Icon-card" id="Icon-card-01">
               <div className="Icon-text">
                 <span className="Icon-number">
@@ -545,19 +553,19 @@ export default function Section03({ changeStage, scrollStage }) {
             </h2>
           </section>
           <div className="Row-container flex-center flex-col gap-fifthteen">
-            <div className="Row">
+            <div className="Row maxtablet:flex-col">
               <div className="Lottie-section">
                 <div className="Lottie-container">
                   <Lottie
                     animationData={warehouse_01}
-                    className="Lottie-section z-20 mx-auto w-full"
+                    className="Lottie-section z-20 mx-auto w-full maxtablet:max-w-[40vw]"
                     style={{ height: "auto" }}
                     loop={true}
                   />
                 </div>
               </div>
-              <section className="Text-section z-10 flex w-fit flex-auto flex-col items-start justify-center gap-4">
-                <h2 className="Heading-text !w-fit !text-start text-blue">
+              <section className="Text-section z-10 flex w-fit flex-auto flex-col items-start justify-center gap-4 maxtablet:w-full maxtablet:items-center">
+                <h2 className="Heading-text !w-fit !text-start text-blue maxtablet:!text-center">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .HEADING_01
@@ -568,7 +576,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       .HEADING_02
                   }
                 </h2>
-                <h2 className="Sub-heading-text z-10 !w-fit !text-start text-orange">
+                <h2 className="Sub-heading-text z-10 !w-fit !text-start text-orange maxtablet:!text-center">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .SUB_HEADING_01
@@ -581,9 +589,9 @@ export default function Section03({ changeStage, scrollStage }) {
                 </h2>
               </section>
             </div>
-            <div className="Row">
-              <section className="Text-section z-10 flex w-fit flex-col items-start justify-center gap-4">
-                <h2 className="Heading-text !w-fit !text-start text-blue">
+            <div className="Row maxtablet:flex-col-reverse">
+              <section className="Text-section z-10 flex w-fit flex-col items-start justify-center gap-4 maxtablet:w-full maxtablet:items-center">
+                <h2 className="Heading-text !w-fit !text-start text-blue maxtablet:!text-center">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .HEADING_01
@@ -594,7 +602,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       .HEADING_02
                   }
                 </h2>
-                <h2 className="Sub-heading-text !w-fit !text-start text-orange">
+                <h2 className="Sub-heading-text !w-fit !text-start text-orange maxtablet:!text-center">
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .SUB_HEADING_01
@@ -610,7 +618,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 <div className="Lottie-container">
                   <Lottie
                     animationData={warehouse_02}
-                    className="Lottie-section z-20 mx-auto w-full"
+                    className="Lottie-section z-20 mx-auto w-full maxtablet:max-w-[40vw]"
                     style={{ height: "auto" }}
                     loop={true}
                   />
@@ -844,9 +852,9 @@ export default function Section03({ changeStage, scrollStage }) {
         {/* //?Page 06 */}
         <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop pt-44">
           <section className="Section-container flex-center max-w-1540px gap-24">
-            <section className="Column-container h-[400vh] w-1/2 py-20vh">
+            <section className="Column-container h-[400vh] w-1/2 py-20vh maxtablet:h-fit maxtablet:w-full">
               <div
-                className="Solution-picture-container sticky top-twenty pt-36"
+                className="Solution-picture-container sticky top-twenty pt-36 maxtablet:static maxtablet:!flex maxtablet:flex-col maxtablet:gap-12"
                 id="Picture-01"
                 ref={solution_01PicRef}
               >
@@ -858,9 +866,20 @@ export default function Section03({ changeStage, scrollStage }) {
                   classimg="mx-auto w-fit h-auto z-20"
                   lazy
                 />
+                <section className="Text-section flex-center maxtablet:!block; z-20 !hidden flex-col gap-4">
+                  <h2 className="Heading-text text-center text-blue">
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01.TITLE_01}
+                  </h2>
+                  <h2 className="Sub-heading-text text-center text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01
+                        .SUB_TITLE_01
+                    }
+                  </h2>
+                </section>
               </div>
               <div
-                className="Solution-picture-container sticky top-twenty hidden pt-36"
+                className="Solution-picture-container sticky top-twenty hidden pt-36 maxtablet:static maxtablet:!flex maxtablet:flex-col maxtablet:gap-12"
                 id="Picture-02"
                 ref={solution_02PicRef}
               >
@@ -872,9 +891,34 @@ export default function Section03({ changeStage, scrollStage }) {
                   classimg="mx-auto w-fit h-auto"
                   lazy
                 />
+                <section className="Text-section z-20 hidden flex-col items-center justify-center gap-4 maxtablet:!block">
+                  <h2 className="Heading-text text-center text-blue">
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
+                    <br></br>
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
+                    <br></br>
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_03}
+                  </h2>
+                  <h2 className="Sub-heading-text text-center text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                        .SUB_TITLE_02
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
+                        .SUB_TITLE_03
+                    }
+                  </h2>
+                </section>
               </div>
               <div
-                className="Solution-picture-container sticky top-twenty hidden pt-36"
+                className="Solution-picture-container sticky top-twenty hidden pt-36 maxtablet:static maxtablet:!flex maxtablet:flex-col maxtablet:gap-12"
                 id="Picture-03"
                 ref={solution_03PicRef}
               >
@@ -886,9 +930,27 @@ export default function Section03({ changeStage, scrollStage }) {
                   classimg="mx-auto w-fit h-auto"
                   lazy
                 />
+                <section className="Text-section z-20 hidden flex-col items-center justify-center gap-4 maxtablet:!block">
+                  <h2 className="Heading-text text-center text-blue">
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_01}
+                    <br></br>
+                    {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_02}
+                  </h2>
+                  <h2 className="Sub-heading-text text-center text-orange">
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
+                        .SUB_TITLE_01
+                    }
+                    <br></br>
+                    {
+                      configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
+                        .SUB_TITLE_02
+                    }
+                  </h2>
+                </section>
               </div>
             </section>
-            <section className="Column-container relative h-[400vh] w-1/2">
+            <section className="Column-container relative h-[400vh] w-1/2 maxtablet:!hidden">
               <div
                 className="Section-action-container pointer-events-none absolute top-0 h-screen w-full"
                 ref={solution_01Ref}
@@ -901,7 +963,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 className="Section-action-container pointer-events-none absolute top-[200vh] h-screen w-full"
                 ref={solution_03Ref}
               ></div>
-              <div className="All-text-section sticky top-0">
+              <div className="All-text-section sticky top-0 maxtablet:static">
                 <section
                   className="Text-section flex-center z-20 h-screen flex-col gap-4"
                   ref={solution_01TextRef}

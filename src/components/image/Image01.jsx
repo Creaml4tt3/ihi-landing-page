@@ -26,6 +26,8 @@ import page_01_bg_png from "../../images/png/page-01-bg.png";
 import page_01_bg_webp from "../../images/webp/page-01-bg.webp";
 import page_01_people_png from "../../images/png/page-01-people.png";
 import page_01_people_webp from "../../images/webp/page-01-people.webp";
+import page_01_graph_png from "../../images/png/page-01-graph.png";
+import page_01_graph_webp from "../../images/webp/page-01-graph.webp";
 import solution_01_png from "../../images/png/solution-01.png";
 import solution_01_webp from "../../images/webp/solution-01.webp";
 import solution_02_png from "../../images/png/solution-02.png";
@@ -62,6 +64,8 @@ export {
   page_01_bg_webp,
   page_01_people_png,
   page_01_people_webp,
+  page_01_graph_png,
+  page_01_graph_webp,
   solution_01_png,
   solution_01_webp,
   solution_02_png,

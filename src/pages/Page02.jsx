@@ -22,6 +22,8 @@ import {
   icon_line_webp,
   page_02_belt_png,
   page_02_belt_webp,
+  page_02_belt_text_png,
+  page_02_belt_text_webp,
   page_02_bg_png,
   page_02_bg_webp,
   page_02_boiler_png,
@@ -145,7 +147,13 @@ export default function Section02({ changeStage, scrollStage }) {
   }
   function handleScroll(el) {
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
+
+    if (window.innerWidth <= 1024) {
+      if (el.scrollTop + el.clientHeight - el.scrollHeight >= -5) {
+        changeStage("+");
+      }
+    }
 
     if (isAtTop) {
       changeStage("-");
@@ -161,18 +169,18 @@ export default function Section02({ changeStage, scrollStage }) {
 
     if (scrollStage === 2) {
       setTimeout(() => {
-        pageWrapper.scrollTop = pageWrapper.scrollHeight - 1000;
+        pageWrapper.scrollTop = pageWrapper.scrollHeight - 1500;
       }, 10);
     }
 
     pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
-    pageWrapper.addEventListener("scroll", (e) => handleScroll(e, pageWrapper));
+    pageWrapper.addEventListener("scroll", (e) => handleScroll(pageWrapper));
     return () => {
       pageWrapper.removeEventListener("wheel", (e) =>
         handleWheel(e, pageWrapper)
       );
       pageWrapper.removeEventListener("scroll", (e) =>
-        handleScroll(e, pageWrapper)
+        handleScroll(pageWrapper)
       );
     };
   }, []);
@@ -360,7 +368,7 @@ export default function Section02({ changeStage, scrollStage }) {
             normal={page_02_engine_png}
             alt="page_02_engine_png"
             classpic="Picture-section h-fit"
-            classimg="mx-auto mt-8 mb-6 z-10 max-w-[625px]"
+            classimg="mx-auto mt-8 mb-6 z-10 max-w-[625px] w-full"
             lazy
           />
           <div className="Link-container">
@@ -381,7 +389,7 @@ export default function Section02({ changeStage, scrollStage }) {
         {/* //?Page 04 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop pb-30vh">
           <div
-            className="Belt-container flex w-full max-w-1480px overflow-hidden pl-6"
+            className="Belt-container flex w-full max-w-1480px overflow-hidden pl-6 maxtablet:hidden"
             ref={beltRef}
           >
             <div className="Belt" id="Belt-01">
@@ -521,6 +529,14 @@ export default function Section02({ changeStage, scrollStage }) {
             classimg="mx-auto"
             lazy
           /> */}
+          <Picture
+            webp={page_02_belt_text_webp}
+            normal={page_02_belt_text_png}
+            alt="page_02_belt_text_png"
+            classpic="Picture-section h-fit z-10 hidden maxtablet:!block"
+            classimg="mx-auto px-4"
+            lazy
+          />
           <div className="Player-container z-10 -my-3">
             <ReactPlayer
               className="React-player"
@@ -621,7 +637,7 @@ export default function Section02({ changeStage, scrollStage }) {
               normal={page_02_how_png}
               alt="page_02_how_png"
               classpic="Picture-section h-fit"
-              classimg="mx-auto z-10"
+              classimg="mx-auto z-10 maxlabtop:w-[25vw]"
               lazy
             />
           </animated.div>
@@ -650,7 +666,7 @@ export default function Section02({ changeStage, scrollStage }) {
             </h3>
           </section>
           <div
-            className="Column-container flex items-end justify-center"
+            className="Column-container maxtablet: flex items-end justify-center"
             ref={columnRef}
           >
             <div className="Column">
@@ -670,7 +686,7 @@ export default function Section02({ changeStage, scrollStage }) {
                 </h3>
               </section>
               <animated.div
-                className="Column-line z-20 mx-auto mt-6 h-[120px] w-[200px] bg-orange"
+                className="Column-line z-20 mx-auto mt-6 h-[120px] w-[200px] bg-orange maxtablet:h-[12svh] maxtablet:w-[20vw]"
                 style={slideUp01}
               ></animated.div>
             </div>
@@ -691,12 +707,12 @@ export default function Section02({ changeStage, scrollStage }) {
                 </h3>
               </section>
               <animated.div
-                className="Column-line z-20 mx-auto mt-6 h-[215px] w-[200px] bg-orange"
+                className="Column-line z-20 mx-auto mt-6 h-[215px] w-[200px] bg-orange maxtablet:h-[20svh] maxtablet:w-[20vw]"
                 style={slideUp02}
               ></animated.div>
             </div>
           </div>
-          <div className="Box-container z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue">
+          <div className="Box-container z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue maxtablet:w-full maxtablet:px-4">
             <section className="Text-section">
               <h2 className="Second-text text-center !text-5xl !font-bold !leading-relaxed text-blue">
                 {configJSON.CONTENT.PAGE_02.SECTION_06.HEADING_01}
@@ -711,7 +727,7 @@ export default function Section02({ changeStage, scrollStage }) {
               className="React-player"
               url={videoURL}
               width="auto"
-              height="550px"
+              height={window.innerWidth <= 1024 ? "20svh" : "550px"}
               /* light={previewVideoURL02} */
               playing={video_01_playing ? true : false}
               muted
@@ -767,9 +783,9 @@ export default function Section02({ changeStage, scrollStage }) {
               <div className="Flow-up ml-[7.5px] h-64 w-[15px] -translate-x-1/2 rounded-xl bg-blue"></div>
             </div>
           </div>
-          <div className="Flow-container h-[500px]">
-            <div className="Flow-left w-[calc(50%-60px)]"></div>
-            <div className="Icon-show-container pl-44">
+          <div className="Flow-container h-[500px] maxtablet:h-[60svh]">
+            <div className="Flow-left w-[calc(50%-60px)] maxlabtop:w-[calc(50%-40px)] maxtablet:w-[calc(50%-30px)]"></div>
+            <div className="Icon-show-container pl-44 maxlabtop:pl-[10vw]">
               <section className="Text-section">
                 <h3 className="Icon-show-text">
                   {
@@ -836,9 +852,9 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Flow-container -mt-[15px] h-[540px] flex-row-reverse">
-            <div className="Flow-right right-0 mx-desktop w-1/2 border-t-[15px] border-r-[15px]"></div>
-            <div className="Icon-show-container !items-end pr-44">
+          <div className="Flow-container -mt-[15px] h-[540px] flex-row-reverse maxtablet:h-[60svh]">
+            <div className="Flow-right maxtablet:mx-mobile; right-0 mx-desktop w-1/2 border-t-[15px] border-r-[15px] maxlabtop:mx-laptop"></div>
+            <div className="Icon-show-container !items-end pr-44 maxlabtop:pr-[10vw]">
               <section className="Text-section">
                 <h3 className="Icon-show-text text-end">
                   {
@@ -925,10 +941,10 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Flow-container -mt-[15px] mb-16 h-[640px]">
+          <div className="Flow-container -mt-[15px] mb-16 h-[640px] maxtablet:h-[70svh]">
             <div className="Flow-left w-1/2"></div>
             <div className="Flow-right -right-1/2 w-full"></div>
-            <div className="Icon-show-container pl-44">
+            <div className="Icon-show-container pl-44 maxlabtop:pl-[10vw]">
               <section className="Text-section">
                 <h3 className="Icon-show-text">
                   {
@@ -1082,7 +1098,7 @@ export default function Section02({ changeStage, scrollStage }) {
               className="React-player"
               url={videoURL02}
               width="100%"
-              height="550px"
+              height={window.innerWidth <= 1024 ? "20svh" : "550px"}
               /* light={previewVideoURL02} */
               playing={video_02_playing ? true : false}
               muted

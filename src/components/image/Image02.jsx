@@ -6,6 +6,8 @@ import page_02_people_png from "../../images/png/page-02-people.png";
 import page_02_people_webp from "../../images/webp/page-02-people.webp";
 import page_02_belt_png from "../../images/png/page-02-belt.png";
 import page_02_belt_webp from "../../images/webp/page-02-belt.webp";
+import page_02_belt_text_png from "../../images/png/page-02-belt-text.png";
+import page_02_belt_text_webp from "../../images/webp/page-02-belt-text.webp";
 import page_02_line_belt_png from "../../images/png/page-02-line-belt.png";
 import page_02_line_belt_webp from "../../images/webp/page-02-line-belt.webp";
 import icon_01_png from "../../images/png/icon-01.png";
@@ -44,6 +46,8 @@ export {
   icon_line_webp,
   page_02_belt_png,
   page_02_belt_webp,
+  page_02_belt_text_png,
+  page_02_belt_text_webp,
   page_02_bg_png,
   page_02_bg_webp,
   page_02_boiler_png,
