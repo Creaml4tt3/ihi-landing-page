@@ -16,8 +16,8 @@ module.exports = {
       labtop: { max: "1440px", min: "1025px" },
       minlabtop: { min: "1025px" },
       maxtablet: { max: "1024px" },
-      tablet: { max: "1024px", min: "426px" },
-      mobile: { max: "425px" },
+      tablet: { max: "1024px", min: "768px" },
+      mobile: { max: "767px" },
     },
     fontFamily: {
       libre: ["Libre Franklin", "sans-serif"],
