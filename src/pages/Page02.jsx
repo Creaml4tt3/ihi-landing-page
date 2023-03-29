@@ -280,6 +280,12 @@ export default function Section02({ changeStage, scrollStage }) {
     return () => ctx.revert(); // cleanup
   }, [beltIn]); // <- empty dependency Array so it doesn't re-run on every render
 
+  const Br = () => {
+    if (window.innerWidth > 1024) {
+      return <br></br>;
+    }
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -309,14 +315,14 @@ export default function Section02({ changeStage, scrollStage }) {
             </span>
             <h1 className="Heading-text text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_03}
             </h1>
             <h2 className="Sub-heading-text z-10 text-orange">
               {configJSON.CONTENT.PAGE_02.SECTION_01.SUB_HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_01.SUB_HEADING_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_01.SUB_HEADING_03}
             </h2>
           </section>
@@ -339,16 +345,16 @@ export default function Section02({ changeStage, scrollStage }) {
             </span>
             <h3 className="Second-text text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_02.TEXT_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_02.TEXT_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_02.TEXT_03}
             </h3>
             <h3 className="Second-sub-text text-orange">
               {configJSON.CONTENT.PAGE_02.SECTION_02.SUB_TEXT_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_02.SUB_TEXT_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_02.SUB_TEXT_03}
             </h3>
           </section>
@@ -417,7 +423,7 @@ export default function Section02({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_02
@@ -480,7 +486,7 @@ export default function Section02({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_04
                     }
-                    <br></br>
+                    <Br />
                   </span>
                   {configJSON.CONTENT.PAGE_02.SECTION_04.BELT_SUB_TEXT_04}
                 </span>
@@ -510,7 +516,7 @@ export default function Section02({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_05
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_02.SECTION_04
                         .BELT_SUB_TEXT_BOLD_06
@@ -537,7 +543,7 @@ export default function Section02({ changeStage, scrollStage }) {
             classimg="mx-auto px-4"
             lazy
           />
-          <div className="Player-container z-10 -my-3">
+          <div className="Player-container z-10 -my-3 mobile:-my-1">
             <ReactPlayer
               className="React-player"
               url={belt_small_webm}
@@ -550,11 +556,11 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
           <div className="Development relative py-20">
             <section className="Text-section flex-center">
-              <span className="Heading-text z-10 rounded-3xl bg-orange px-20 py-2 font-bold text-white">
+              <span className="Heading-text z-10 rounded-3xl bg-orange px-20 py-2 font-bold text-white mobile:px-4">
                 {configJSON.CONTENT.PAGE_02.SECTION_04.LARGE_TEXT_01}
               </span>
             </section>
-            <div className="Development-stripe absolute -top-2 left-1/2 z-0 h-[calc(100%+16px)] w-5 -translate-x-1/2 bg-blue"></div>
+            <div className="Development-stripe absolute -top-2 left-1/2 z-0 h-[calc(100%+16px)] w-5 -translate-x-1/2 bg-blue mobile:hidden"></div>
           </div>
           <div className="Icon-container flex-center gap-5">
             <div className="Icon-card" id="Icon-card-01">
@@ -564,9 +570,9 @@ export default function Section02({ changeStage, scrollStage }) {
                 </span>
                 <span className="Icon-info">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_01}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_02}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_03}
                 </span>
               </div>
@@ -588,9 +594,9 @@ export default function Section02({ changeStage, scrollStage }) {
                 </span>
                 <span className="Icon-info">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_04}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_05}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_06}
                 </span>
               </div>
@@ -612,7 +618,7 @@ export default function Section02({ changeStage, scrollStage }) {
                 </span>
                 <span className="Icon-info">
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_07}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_04.ICON_TEXT_08}
                 </span>
               </div>
@@ -673,7 +679,7 @@ export default function Section02({ changeStage, scrollStage }) {
               <section className="Text-section">
                 <h3 className="Second-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_02}
-                  <br></br>
+                  <Br />
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_03}
                 </h3>
                 <h4 className="Divide-text">
@@ -681,12 +687,12 @@ export default function Section02({ changeStage, scrollStage }) {
                 </h4>
                 <h3 className="Second-second-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_02}
-                  <br></br>
+                  <Br />
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_03}
                 </h3>
               </section>
               <animated.div
-                className="Column-line z-20 mx-auto mt-6 h-[120px] w-[200px] bg-orange maxtablet:h-[12svh] maxtablet:w-[20vw]"
+                className="Column-line z-20 mx-auto mt-6 h-[120px] w-[200px] bg-orange maxtablet:h-[12vh] maxtablet:w-[20vw]"
                 style={slideUp01}
               ></animated.div>
             </div>
@@ -694,7 +700,7 @@ export default function Section02({ changeStage, scrollStage }) {
               <section className="Text-section">
                 <h3 className="Second-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_04}
-                  <br></br>
+                  <Br />
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_05}
                 </h3>
                 <h4 className="Divide-text">
@@ -702,12 +708,12 @@ export default function Section02({ changeStage, scrollStage }) {
                 </h4>
                 <h3 className="Second-second-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_04}
-                  <br></br>
+                  <Br />
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_05}
                 </h3>
               </section>
               <animated.div
-                className="Column-line z-20 mx-auto mt-6 h-[215px] w-[200px] bg-orange maxtablet:h-[20svh] maxtablet:w-[20vw]"
+                className="Column-line z-20 mx-auto mt-6 h-[215px] w-[200px] bg-orange maxtablet:h-[20vh] maxtablet:w-[20vw]"
                 style={slideUp02}
               ></animated.div>
             </div>
@@ -727,7 +733,7 @@ export default function Section02({ changeStage, scrollStage }) {
               className="React-player"
               url={videoURL}
               width="auto"
-              height={window.innerWidth <= 1024 ? "20svh" : "550px"}
+              height={window.innerWidth <= 1024 ? "20vh" : "550px"}
               /* light={previewVideoURL02} */
               playing={video_01_playing ? true : false}
               muted
@@ -739,17 +745,17 @@ export default function Section02({ changeStage, scrollStage }) {
         </section>
         {/* //?Page 07 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col">
-          <div className="Info-container flex-center relative h-fit w-full max-w-1360px pb-8">
-            <div className="Info flex-center w-full gap-20 px-desktop">
-              <section className="Text-section w-1/2 flex-1">
-                <h2 className="Heading-text !text-start !font-bold !leading-snug text-blue">
+          <div className="Info-container flex-center relative h-fit w-full max-w-1360px pb-8 maxtablet:-m-3 maxtablet:flex-col maxtablet:pb-0">
+            <div className="Info flex-center w-full gap-20 px-desktop maxtablet:flex-col">
+              <section className="Text-section w-1/2 flex-1 maxtablet:w-full">
+                <h2 className="Heading-text !text-start !font-bold !leading-snug text-blue maxtablet:!text-center">
                   {configJSON.CONTENT.PAGE_02.SECTION_07.HEADING_01}
-                  <br></br>
+                  <Br />
                   {configJSON.CONTENT.PAGE_02.SECTION_07.HEADING_02}
                 </h2>
-                <h3 className="Sub-heading-text !text-start text-orange">
+                <h3 className="Sub-heading-text !text-start text-orange maxtablet:!text-center">
                   {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_01}
-                  <br></br>
+                  <Br />
                   {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_02}
                 </h3>
               </section>
@@ -759,7 +765,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   normal={page_02_boiler_png}
                   alt="page_02_boiler_png"
                   classpic="Picture-section h-fit"
-                  classimg="z-10 h-auto w-full pl-16 pb-10 -my-[20%]"
+                  classimg="z-10 h-auto w-full pl-16 pb-10 -my-[20%] maxtablet:pl-0 maxtablet:-mt-[35%]"
                   lazy
                 />
                 <div className="Link-container flex justify-center">
@@ -778,14 +784,14 @@ export default function Section02({ changeStage, scrollStage }) {
                 </div>
               </div>
             </div>
-            <div className="Flow-element pointer-events-none absolute -bottom-[15px] flex h-fit w-full flex-col items-center justify-center">
-              <div className="Flow-cirle -mb-[15px] mr-[7.5px] h-20 w-20 rounded-full border-[15px] border-blue"></div>
-              <div className="Flow-up ml-[7.5px] h-64 w-[15px] -translate-x-1/2 rounded-xl bg-blue"></div>
+            <div className="Flow-element pointer-events-none absolute -bottom-[15px] flex h-fit w-full flex-col items-center justify-center maxtablet:static maxtablet:pt-12">
+              <div className="Flow-cirle -mb-[15px] mr-[7.5px] h-20 w-20 rounded-full border-[15px] border-blue maxtablet:border-8"></div>
+              <div className="Flow-up ml-[7.5px] h-64 w-[15px] -translate-x-1/2 rounded-xl bg-blue maxtablet:mt-2 maxtablet:mb-1 maxtablet:ml-0 maxtablet:h-32 maxtablet:w-2"></div>
             </div>
           </div>
-          <div className="Flow-container h-[500px] maxtablet:h-[60svh]">
+          <div className="Flow-container h-[500px] maxtablet:h-[60vh]">
             <div className="Flow-left w-[calc(50%-60px)] maxlabtop:w-[calc(50%-40px)] maxtablet:w-[calc(50%-30px)]"></div>
-            <div className="Icon-show-container pl-44 maxlabtop:pl-[10vw]">
+            <div className="Icon-show-container pl-44 maxlabtop:pl-[10vw] maxtablet:pl-0">
               <section className="Text-section">
                 <h3 className="Icon-show-text">
                   {
@@ -818,6 +824,14 @@ export default function Section02({ changeStage, scrollStage }) {
                 />
               </div>
             </div>
+            <Picture
+              webp={icon_line_small_webp}
+              normal={icon_line_small_png}
+              alt="icon_line_small_png"
+              classpic="Picture-section h-fit hidden maxtablet:!block rotate-90 absolute left-28 bottom-1/2 translate-y-1/2"
+              classimg="mx-auto z-10"
+              lazy
+            />
             <div className="Icon-show-container">
               <section className="Text-section">
                 <h3 className="Icon-show-text">
@@ -852,16 +866,16 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Flow-container -mt-[15px] h-[540px] flex-row-reverse maxtablet:h-[60svh]">
-            <div className="Flow-right maxtablet:mx-mobile; right-0 mx-desktop w-1/2 border-t-[15px] border-r-[15px] maxlabtop:mx-laptop"></div>
-            <div className="Icon-show-container !items-end pr-44 maxlabtop:pr-[10vw]">
+          <div className="Flow-container -mt-[15px] h-[540px] flex-row-reverse maxtablet:-mt-2 maxtablet:h-[60vh]">
+            <div className="Flow-right right-0 mx-desktop w-1/2 border-t-[15px] border-r-[15px] maxlabtop:mx-laptop maxtablet:mx-mobile maxtablet:border-r-8 maxtablet:border-t-8"></div>
+            <div className="Icon-show-container !items-end pr-44 maxlabtop:pr-[10vw] maxtablet:pr-0">
               <section className="Text-section">
                 <h3 className="Icon-show-text text-end">
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
                       .ICON_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
                       .ICON_HEADING_02
@@ -872,7 +886,7 @@ export default function Section02({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
                       .ICON_SUB_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_03
                       .ICON_SUB_HEADING_02
@@ -904,7 +918,7 @@ export default function Section02({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
                       .ICON_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
                       .ICON_HEADING_02
@@ -915,13 +929,21 @@ export default function Section02({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
                       .ICON_SUB_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_04
                       .ICON_SUB_HEADING_02
                   }
                 </h3>
               </section>
+              <Picture
+                webp={icon_line_small_webp}
+                normal={icon_line_small_png}
+                alt="icon_line_small_png"
+                classpic="Picture-section h-fit hidden maxtablet:!block -rotate-90 absolute right-28 bottom-[47%] translate-y-1/2"
+                classimg="mx-auto z-10"
+                lazy
+              />
               <div className="Icon-show !flex-row-reverse">
                 <Picture
                   webp={icon_line_small_webp}
@@ -941,17 +963,17 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Flow-container -mt-[15px] mb-16 h-[640px] maxtablet:h-[70svh]">
+          <div className="Flow-container -mt-[15px] mb-16 h-[640px] maxtablet:-mt-2 maxtablet:h-[70vh]">
             <div className="Flow-left w-1/2"></div>
             <div className="Flow-right -right-1/2 w-full"></div>
-            <div className="Icon-show-container pl-44 maxlabtop:pl-[10vw]">
+            <div className="Icon-show-container pl-44 maxlabtop:pl-[10vw] maxtablet:pl-0">
               <section className="Text-section">
                 <h3 className="Icon-show-text">
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_HEADING_02
@@ -962,7 +984,7 @@ export default function Section02({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_SUB_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_05
                       .ICON_SUB_HEADING_02
@@ -994,12 +1016,12 @@ export default function Section02({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_02
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_03
@@ -1010,13 +1032,21 @@ export default function Section02({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_SUB_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_SUB_HEADING_02
                   }
                 </h3>
               </section>
+              <Picture
+                webp={icon_line_small_webp}
+                normal={icon_line_small_png}
+                alt="icon_line_small_png"
+                classpic="Picture-section h-fit hidden maxtablet:!block rotate-90 absolute left-28 bottom-[52%] translate-y-1/2"
+                classimg="mx-auto z-10"
+                lazy
+              />
               <div className="Icon-show">
                 <Picture
                   webp={icon_line_small_webp}
@@ -1053,9 +1083,9 @@ export default function Section02({ changeStage, scrollStage }) {
                 </span>
                 <span className="Icon-info">
                   {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_09}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_10}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_11}
                 </span>
               </div>
@@ -1077,7 +1107,7 @@ export default function Section02({ changeStage, scrollStage }) {
                 </span>
                 <span className="Icon-info">
                   {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_12}
-                  <br></br>
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_07.ICON_TEXT_13}
                 </span>
               </div>
@@ -1093,12 +1123,12 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Video-container w-full max-w-1360px px-desktop pt-44 pb-48">
+          <div className="Video-container w-full max-w-1360px !px-desktop pt-44 pb-48 maxlabtop:!px-laptop maxtablet:!px-mobile">
             <ReactPlayer
               className="React-player"
               url={videoURL02}
               width="100%"
-              height={window.innerWidth <= 1024 ? "20svh" : "550px"}
+              height={window.innerWidth <= 1024 ? "20vh" : "550px"}
               /* light={previewVideoURL02} */
               playing={video_02_playing ? true : false}
               muted

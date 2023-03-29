@@ -31,9 +31,13 @@ import help from "../lotties/help.json";
 export default function Section03({ changeStage, pastStage, scrollStage }) {
   const destroyRef = useRef(null);
   const lineRef = useRef(null);
+  const lineMobileRef = useRef(null);
   const epidemicRef = useRef(null);
   const person01LottieRef = useRef(null);
   const lineIn = UseIntersectionLoop(lineRef, { rootMargin: "20%" });
+  const lineMobileIn = UseIntersectionLoop(lineMobileRef, {
+    rootMargin: "20%",
+  });
   const epidemicIn = UseIntersectionLoop(epidemicRef, { rootMargin: "20%" });
   const duration = 3000;
   const counterDuration = 2.5;
@@ -97,6 +101,26 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     config: { duration: duration * 1.2, easing: easings.easeInOutCubic },
     to: { x: lineIn ? "0%" : "-50%" },
   });
+  const slideMobile01 = useSpring({
+    config: { duration: duration * 1.25, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "100%" },
+  });
+  const slideMobile02 = useSpring({
+    config: { duration: duration, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "100%" },
+  });
+  const slideMobile03 = useSpring({
+    config: { duration: duration * 1.2, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "100%" },
+  });
+  const slideMobile04 = useSpring({
+    config: { duration: duration, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "100%" },
+  });
+  const slideMobile05 = useSpring({
+    config: { duration: duration * 1.2, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "100%" },
+  });
 
   const EpidemicListing = () => {
     return epidemicJSON.map((el, index) => {
@@ -140,6 +164,33 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
       id: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_05,
       width: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_05,
       animation: slideRight05,
+    },
+  ];
+  const graphLineMobile = [
+    {
+      id: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_01,
+      width: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_01,
+      animation: slideMobile01,
+    },
+    {
+      id: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_02,
+      width: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_02,
+      animation: slideMobile02,
+    },
+    {
+      id: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_03,
+      width: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_03,
+      animation: slideMobile03,
+    },
+    {
+      id: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_04,
+      width: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_04,
+      animation: slideMobile04,
+    },
+    {
+      id: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_05,
+      width: configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.LINE_05,
+      animation: slideMobile05,
     },
   ];
 
@@ -304,6 +355,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     };
   }, []);
 
+  const Br = () => {
+    if (window.innerWidth > 1024) {
+      return <br></br>;
+    }
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -341,14 +398,14 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
             />
             <h1 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_01.HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_01.HEADING_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_01.HEADING_03}
             </h1>
             <h2 className="Sub-heading-text z-10 !text-[45px] text-orange">
               {configJSON.CONTENT.PAGE_03.SECTION_01.SUB_HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_01.SUB_HEADING_02}
             </h2>
           </section>
@@ -403,7 +460,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .TITLE_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .TITLE_TEXT_02
@@ -414,12 +471,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .DESCRIPTION_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .DESCRIPTION_TEXT_02
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .DESCRIPTION_TEXT_03
@@ -430,12 +487,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .SUB_DESCRIPTION_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .SUB_DESCRIPTION_TEXT_02
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
                           .SUB_DESCRIPTION_TEXT_03
@@ -460,7 +517,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
                           .TITLE_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
                           .TITLE_TEXT_02
@@ -471,7 +528,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
                           .DESCRIPTION_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
                           .DESCRIPTION_TEXT_02
@@ -482,12 +539,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
                           .SUB_DESCRIPTION_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
                           .SUB_DESCRIPTION_TEXT_02
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
                           .SUB_DESCRIPTION_TEXT_03
@@ -512,7 +569,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_03
                           .TITLE_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_03
                           .TITLE_TEXT_02
@@ -593,7 +650,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_04
                           .TITLE_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_04
                           .TITLE_TEXT_02
@@ -658,12 +715,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
                           .TITLE_TEXT_01
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
                           .TITLE_TEXT_02
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
                           .TITLE_TEXT_03
@@ -674,12 +731,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
                           .TITLE_TEXT_04
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
                           .TITLE_TEXT_05
                       }
-                      <br></br>
+                      <Br />
                       {
                         configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
                           .TITLE_TEXT_06
@@ -698,7 +755,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                   <Lottie
                     animationData={person01}
                     lottieRef={person01LottieRef}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[30vw]"
+                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[40vw]"
                     style={{ height: "auto" }}
                     loop={true}
                   />
@@ -718,7 +775,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.TITLE_TEXT_02
@@ -729,12 +786,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.DESCRIPTION_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.DESCRIPTION_TEXT_02
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.DESCRIPTION_TEXT_03
@@ -745,12 +802,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.SUB_DESCRIPTION_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.SUB_DESCRIPTION_TEXT_02
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.SUB_DESCRIPTION_TEXT_03
@@ -765,7 +822,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 >
                   <Lottie
                     animationData={person02}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[20vw]"
+                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[30vw]"
                     style={{ height: "auto" }}
                     loop={true}
                   />
@@ -785,7 +842,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.TITLE_TEXT_02
@@ -796,7 +853,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.DESCRIPTION_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.DESCRIPTION_TEXT_02
@@ -807,12 +864,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.SUB_DESCRIPTION_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.SUB_DESCRIPTION_TEXT_02
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.SUB_DESCRIPTION_TEXT_03
@@ -827,7 +884,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 >
                   <Lottie
                     animationData={person03}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[20vw]"
+                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[30vw]"
                     style={{ height: "auto" }}
                     loop={true}
                   />
@@ -847,7 +904,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_03.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_03.TITLE_TEXT_02
@@ -918,7 +975,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 >
                   <Lottie
                     animationData={person04}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[40vw]"
+                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[50vw]"
                     style={{ height: "auto" }}
                     loop={true}
                   />
@@ -938,7 +995,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_04.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_04.TITLE_TEXT_02
@@ -993,7 +1050,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 >
                   <Lottie
                     animationData={person05}
-                    className="Lottie-section z-20 mx-auto w-full py-10vh maxtablet:!w-[40vw]"
+                    className="Lottie-section z-20 mx-auto w-full py-10vh maxtablet:!w-[50vw]"
                     style={{ height: "auto" }}
                     loop={true}
                   />
@@ -1013,12 +1070,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_02
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_03
@@ -1029,12 +1086,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_04
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_05
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_06
@@ -1043,7 +1100,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     </section>
                   </div>
                   <div
-                    className="Link-container absolute right-full -bottom-20 flex w-full translate-x-[25%] justify-center maxlabtop:-bottom-[15svh] maxtablet:static maxtablet:mt-10 maxtablet:translate-x-0"
+                    className="Link-container absolute right-full -bottom-20 flex w-full translate-x-[25%] justify-center maxlabtop:-bottom-[15vh] maxtablet:static maxtablet:mt-10 maxtablet:translate-x-0"
                     ref={linkColumnRef}
                   >
                     <a
@@ -1075,7 +1132,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_03}
             </h2>
             <h2 className="Sub-heading-text z-10 text-[45px] text-orange">
@@ -1093,9 +1150,9 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_03.SUB_HEADING_01}
             </h2>
           </section>
-          <div className="Graph-side-container mt-16 flex w-full max-w-1400px">
-            <div className="Graph-side-content flex w-[18%] flex-col maxlabtop:w-1/5">
-              <div className="Text-column flex flex-col items-start justify-between gap-6 pt-2 maxlabtop:gap-3 maxlabtop:pt-0">
+          <div className="Graph-side-container mt-16 flex w-full max-w-1400px mobile:flex-col-reverse">
+            <div className="Graph-side-content relative flex w-[18%] flex-col maxlabtop:w-1/5 mobile:mt-8 mobile:w-full mobile:overflow-hidden">
+              <div className="Text-column rel flex flex-col items-start justify-between gap-6 pt-2 maxlabtop:gap-3 maxlabtop:pt-0 mobile:pt-1">
                 <div className="Text">
                   <span className="Base">
                     {configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.TEXT_01}
@@ -1136,13 +1193,38 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     {configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.SUB_TEXT_05}
                   </span>
                 </div>
+                <div
+                  className="Graph-mobile-container absolute right-0 top-0 hidden h-full w-full flex-col items-end gap-11 pt-4 mobile:!flex"
+                  ref={lineMobileRef}
+                >
+                  {window.innerWidth <= 425 &&
+                    graphLineMobile &&
+                    graphLineMobile.map((line) => {
+                      return (
+                        <animated.div
+                          className="Line-container flex w-full items-center justify-end gap-3"
+                          key={line.id}
+                          style={line.animation}
+                        >
+                          <div className="Line-Text al text-base font-semibold text-orange">
+                            {line.id}
+                          </div>
+                          <div
+                            className="Line h-16 bg-orange maxlabtop:h-12 maxtablet:h-10 mobile:h-8"
+                            style={{ width: line.width + "%" }}
+                          ></div>
+                        </animated.div>
+                      );
+                    })}
+                </div>
               </div>
             </div>
-            <div className="Graph-side-content relative w-[82%]">
+            <div className="Graph-side-content relative w-[82%] mobile:w-full">
               <div className="Graph-side flex flex-col items-end gap-9 text-3xl font-semibold maxlabtop:gap-6 maxtablet:gap-4">
-                <div className="Graph-column-container absolute top-0 left-0 z-20 w-full flex-col">
-                  <div className="Graph-column flex flex-col gap-6 overflow-hidden maxtablet:gap-10">
-                    {graphLine &&
+                <div className="Graph-column-container absolute top-0 left-0 z-20 w-full flex-col mobile:static mobile:right-0">
+                  <div className="Graph-column flex flex-col gap-6 overflow-hidden maxtablet:gap-10 mobile:h-[30vh] mobile:justify-between">
+                    {window.innerWidth > 425 &&
+                      graphLine &&
                       graphLine.map((line) => {
                         return (
                           <animated.div
@@ -1162,7 +1244,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                       })}
                   </div>
                 </div>
-                <div className="Title-column flex flex-col items-end text-3xl font-semibold maxlabtop:text-[clamp(0.875rem,2.25vw,1.875rem)]">
+                <div className="Title-column flex flex-col items-end text-3xl font-semibold maxlabtop:text-[clamp(1.275rem,2.25vw,1.875rem)] mobile:w-full mobile:items-center">
                   <span className="Title text-white">
                     {configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.HEADING_01}
                   </span>
@@ -1177,7 +1259,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                   classpic="Picture-section z-10"
                   classimg="mx-auto w-full h-auto"
                 />
-                <div className="Measure-container flex w-full justify-between">
+                <div className="Measure-container flex w-full justify-between mobile:hidden">
                   <span className="Percent">
                     {configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.PERCENT_01}
                   </span>
@@ -1217,16 +1299,16 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           <section className="Text-section flex-center z-10 flex-col">
             <h3 className="Title-text text-center text-40px font-semibold text-white maxlabtop:text-[clamp(0.875rem,2.25vw,1.875rem)]">
               {configJSON.CONTENT.PAGE_03.SECTION_04.TITLE_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_04.TITLE_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_04.TITLE_03}
             </h3>
             <span className="Sub-title-text z-10 text-center text-[30px] text-orange maxlabtop:text-[clamp(0.875rem,2.25vw,1.875rem)]">
               {configJSON.CONTENT.PAGE_03.SECTION_04.SUB_TITLE_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_04.SUB_TITLE_02}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_04.SUB_TITLE_03}
             </span>
           </section>
@@ -1258,7 +1340,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
             </h2>
           </section>
           <section
-            className="Grid-container mt-20 mb-32 grid w-full max-w-1300px grid-cols-3 gap-y-14 gap-x-20"
+            className="Grid-container mt-20 mb-32 grid w-full max-w-1300px grid-cols-3 gap-y-14 gap-x-20 maxtablet:grid-cols-2 mobile:grid-cols-1"
             ref={epidemicRef}
           >
             <div className="Epidemic-container absolute top-0 left-0 h-auto w-full">
@@ -1396,7 +1478,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04
                       .SUB_UPPER_TEXT_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_04
                       .SUB_UPPER_TEXT_02
@@ -1428,7 +1510,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
                       .SUB_UPPER_TEXT_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
                       .SUB_UPPER_TEXT_02
@@ -1466,7 +1548,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06
                       .SUB_UPPER_TEXT_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_06
                       .SUB_UPPER_TEXT_02
@@ -1516,12 +1598,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           <section className="Text-section flex-center z-10 flex-col">
             <h2 className="Heading-text text-center text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_06.HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_06.HEADING_02}
             </h2>
             <h2 className="Sub-heading-text z-10 text-center  text-orange">
               {configJSON.CONTENT.PAGE_03.SECTION_06.SUB_HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_06.SUB_HEADING_02}
             </h2>
           </section>

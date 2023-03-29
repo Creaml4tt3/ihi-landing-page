@@ -51,6 +51,12 @@ export default function Section05({ changeStage }) {
     };
   }, []);
 
+  const Br = () => {
+    if (window.innerWidth > 1024) {
+      return <br></br>;
+    }
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -58,8 +64,8 @@ export default function Section05({ changeStage }) {
         webp={page_05_bg_webp}
         normal={page_05_bg_png}
         alt="page_05_bg_png"
-        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-50 pointer-events-none"
-        classimg="mx-auto w-full h-full"
+        classpic="Picture-section w-screen fixed bottom-0 left-0 z-50 pointer-events-none"
+        classimg="mx-auto w-full h-auto"
       />
       {/* //?Background - Ending */}
       <div
@@ -77,7 +83,7 @@ export default function Section05({ changeStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-0 -mt-[100vh] h-[100vh] w-full rounded-t-full bg-blue px-desktop pb-30vh pt-30vh">
+        <section className="Page-section z-0 -mt-[100vh] h-[100vh] w-full rounded-t-full bg-blue px-desktop pb-30vh pt-30vh mobile:h-fit">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <h1 className="Heading-text !text-[80px] !font-medium text-white">
               {configJSON.CONTENT.PAGE_05.SECTION_01.SUPER_HEADING_01}
@@ -87,22 +93,22 @@ export default function Section05({ changeStage }) {
             </h2>
             <h2 className="Sub-heading-text z-10 text-orange">
               {configJSON.CONTENT.PAGE_05.SECTION_01.SUB_HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_05.SECTION_01.SUB_HEADING_02}
             </h2>
           </section>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section z-0 h-fit w-full rounded-t-full bg-blue px-desktop pb-25vh pt-25vh">
+        <section className="Page-section z-0 h-fit w-full bg-blue px-desktop pb-25vh pt-25vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <h2 className="Heading-text !font-medium text-white">
               {configJSON.CONTENT.PAGE_05.SECTION_02.HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_05.SECTION_02.HEADING_02}
             </h2>
             <h2 className="Sub-heading-text z-10 text-orange">
               {configJSON.CONTENT.PAGE_05.SECTION_02.SUB_HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_05.SECTION_02.SUB_HEADING_02}
             </h2>
           </section>
@@ -121,18 +127,18 @@ export default function Section05({ changeStage }) {
             />
           </div>
           {/* //?Page 03 */}
-          <section className="Page-section relative z-10 h-fit w-full overflow-y-visible px-desktop pt-50vh pb-25vh">
+          <section className="Page-section relative z-10 h-fit w-full overflow-y-visible px-desktop pt-50vh pb-25vh mobile:pt-25vh">
             <section className="Text-section flex-center z-30 flex-col gap-4">
               <h2 className="Heading-text z-30 !font-medium text-blue">
                 {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_01}
-                <br></br>
+                <Br />
                 {configJSON.CONTENT.PAGE_05.SECTION_03.HEADING_02}
               </h2>
               <h2 className="Sub-heading-text z-30 text-orange">
                 {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_01}
-                <br></br>
+                <Br />
                 {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_02}
-                <br></br>
+                <Br />
                 {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_03}
               </h2>
             </section>
@@ -142,12 +148,12 @@ export default function Section05({ changeStage }) {
             <section className="Text-section flex-center z-10 flex-col gap-2">
               <h2 className="Heading-text z-30 !font-bold text-blue">
                 {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}
-                <br></br>
+                <Br />
                 {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_02}
               </h2>
               <h2 className="Sub-heading-text z-30 text-orange">
                 {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_01}
-                <br></br>
+                <Br />
                 {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_02}
               </h2>
             </section>
@@ -169,7 +175,7 @@ export default function Section05({ changeStage }) {
               normal={ihi_logo_png}
               alt="ihi_logo_png"
               classpic="Picture-section z-40"
-              classimg="mx-auto w-full h-auto"
+              classimg="mx-auto w-full h-auto max-w-[40vw]"
             />
           </section>
         </section>

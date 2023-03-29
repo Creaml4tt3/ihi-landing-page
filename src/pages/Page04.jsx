@@ -310,6 +310,12 @@ export default function Section03({ changeStage, scrollStage }) {
     return tl;
   }
 
+  const Br = () => {
+    if (window.innerWidth > 1024) {
+      return <br></br>;
+    }
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -336,12 +342,12 @@ export default function Section03({ changeStage, scrollStage }) {
           <section className="Text-section flex-center z-10 flex-col gap-3">
             <span className="Title-text text-center text-40px font-semibold leading-normal text-blue maxlabtop:text-[clamp(0.875rem,2.5vw,2rem)]">
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_02}
             </span>
             <span className="Sub-title-text text-center text-4xl font-medium leading-normal text-orange maxlabtop:text-[clamp(0.875rem,2.5vw,2rem)]">
               {configJSON.CONTENT.PAGE_04.SECTION_01.SUB_TITLE_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_04.SECTION_01.SUB_TITLE_02}
             </span>
           </section>
@@ -386,7 +392,7 @@ export default function Section03({ changeStage, scrollStage }) {
               className="React-player"
               url={videoURL}
               width="100%"
-              height={window.innerWidth <= 1024 ? "20svh" : "550px"}
+              height={window.innerWidth <= 1024 ? "20vh" : "550px"}
               /* light={previewVideoURL01} */
               playing={videoIn ? true : false}
               muted
@@ -410,7 +416,7 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_01
                       .ICON_TEXT_01
                   }
-                  <br></br>
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_01
                       .ICON_TEXT_02
@@ -441,12 +447,12 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_02
                       .ICON_TEXT_01
                   }
-                  <br></br>
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_02
                       .ICON_TEXT_02
                   }
-                  <br></br>
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_02
                       .ICON_TEXT_03
@@ -477,12 +483,12 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_03
                       .ICON_TEXT_01
                   }
-                  <br></br>
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_03
                       .ICON_TEXT_02
                   }
-                  <br></br>
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_03
                       .ICON_TEXT_03
@@ -513,12 +519,12 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_04
                       .ICON_TEXT_01
                   }
-                  <br></br>
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_04
                       .ICON_TEXT_02
                   }
-                  <br></br>
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_03.ICON_CARD.ICON_04
                       .ICON_TEXT_03
@@ -543,12 +549,12 @@ export default function Section03({ changeStage, scrollStage }) {
           <section className="Text-section flex-center z-10 flex-col py-25vh">
             <h2 className="Heading-text text-center text-blue">
               {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_02}
             </h2>
             <h2 className="Sub-heading-text text-center text-orange">
               {configJSON.CONTENT.PAGE_04.SECTION_04.SUB_HEADING_01}
-              <br></br>
+              <Br />
               {configJSON.CONTENT.PAGE_04.SECTION_04.SUB_HEADING_02}
             </h2>
           </section>
@@ -570,7 +576,7 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .HEADING_02
@@ -581,7 +587,7 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .SUB_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .SUB_HEADING_02
@@ -596,7 +602,7 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .HEADING_02
@@ -607,7 +613,7 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .SUB_HEADING_01
                   }
-                  <br></br>
+                  <Br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_02
                       .SUB_HEADING_02
@@ -659,7 +665,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_02
@@ -670,7 +676,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .SUB_TITLE_02
@@ -693,7 +699,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_02
@@ -704,7 +710,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .SUB_TITLE_02
@@ -733,7 +739,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
                         .SUB_TITLE_02
@@ -756,7 +762,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_02
@@ -767,7 +773,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .SUB_TITLE_02
@@ -790,7 +796,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_02
@@ -801,7 +807,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .SUB_TITLE_02
@@ -830,7 +836,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_03
                         .SUB_TITLE_02
@@ -866,7 +872,7 @@ export default function Section03({ changeStage, scrollStage }) {
                   classimg="mx-auto w-fit h-auto z-20"
                   lazy
                 />
-                <section className="Text-section flex-center maxtablet:!block; z-20 !hidden flex-col gap-4">
+                <section className="Text-section flex-center z-20 !hidden flex-col gap-4 maxtablet:!flex">
                   <h2 className="Heading-text text-center text-blue">
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_01.TITLE_01}
                   </h2>
@@ -891,12 +897,12 @@ export default function Section03({ changeStage, scrollStage }) {
                   classimg="mx-auto w-fit h-auto"
                   lazy
                 />
-                <section className="Text-section z-20 hidden flex-col items-center justify-center gap-4 maxtablet:!block">
+                <section className="Text-section z-20 hidden flex-col items-center justify-center gap-4 maxtablet:!flex">
                   <h2 className="Heading-text text-center text-blue">
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
-                    <br></br>
+                    <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
-                    <br></br>
+                    <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_03}
                   </h2>
                   <h2 className="Sub-heading-text text-center text-orange">
@@ -904,12 +910,12 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
                         .SUB_TITLE_02
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
                         .SUB_TITLE_03
@@ -918,7 +924,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 </section>
               </div>
               <div
-                className="Solution-picture-container sticky top-twenty hidden pt-36 maxtablet:static maxtablet:!flex maxtablet:flex-col maxtablet:gap-12"
+                className="Solution-picture-container sticky top-twenty hidden pt-36 maxtablet:static maxtablet:!flex maxtablet:flex-col maxtablet:gap-12 mobile:mx-auto mobile:max-w-[60vw]"
                 id="Picture-03"
                 ref={solution_03PicRef}
               >
@@ -933,7 +939,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 <section className="Text-section z-20 hidden flex-col items-center justify-center gap-4 maxtablet:!block">
                   <h2 className="Heading-text text-center text-blue">
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_01}
-                    <br></br>
+                    <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_02}
                   </h2>
                   <h2 className="Sub-heading-text text-center text-orange">
@@ -941,7 +947,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
                         .SUB_TITLE_02
@@ -984,9 +990,9 @@ export default function Section03({ changeStage, scrollStage }) {
                 >
                   <h2 className="Heading-text !text-start text-blue">
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
-                    <br></br>
+                    <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
-                    <br></br>
+                    <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_03}
                   </h2>
                   <h2 className="Sub-heading-text !text-start text-orange">
@@ -994,12 +1000,12 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
                         .SUB_TITLE_02
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02
                         .SUB_TITLE_03
@@ -1012,7 +1018,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 >
                   <h2 className="Heading-text !text-start text-blue">
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_01}
-                    <br></br>
+                    <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_02}
                   </h2>
                   <h2 className="Sub-heading-text !text-start text-orange">
@@ -1020,7 +1026,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
                         .SUB_TITLE_01
                     }
-                    <br></br>
+                    <Br />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03
                         .SUB_TITLE_02
