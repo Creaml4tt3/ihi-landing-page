@@ -52,8 +52,8 @@ import steaming from "../lotties/steaming.json";
 import fire from "../lotties/fire.json";
 /* import fire_webm from "../lotties/webm/fire.webm";
 import belt_small_webm from "../lotties/webm/belt-small.webm"; */
-import fire_webm from "../lotties/hevc/fire.mp4";
-import belt_small_webm from "../lotties/hevc/belt-small.mp4";
+import fire_webm from "../lotties/webm/fire.webm";
+import belt_small_webm from "../lotties/webm/belt-small.webm";
 
 export default function Section02({ changeStage, scrollStage }) {
   const beltRef = useRef(null);
