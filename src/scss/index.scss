@@ -297,6 +297,14 @@ $hydro: #0f283e;
           @apply maxtablet:hidden;
         }
       }
+      .Icon-lottie {
+        @apply mobile:h-32;
+      }
+      .React-player {
+        video {
+          @apply mobile:h-32 #{!important};
+        }
+      }
     }
   }
   .Icon-card {
