@@ -39,8 +39,8 @@ import {
   video_icon_png,
   video_icon_webp,
 } from "../components/image/Image02";
-/* import belt_webm from "../lotties/webm/belt.webm"; */
-import belt_webm from "../lotties/hevc/belt.mp4";
+import belt_webm from "../lotties/webm/belt.webm";
+import belt_hevc from "../lotties/hevc/belt.mp4";
 import warehouse_01 from "../lotties/warehouse-01.json";
 import warehouse_02 from "../lotties/warehouse-02.json";
 export default function Section03({ changeStage, scrollStage }) {
@@ -637,7 +637,7 @@ export default function Section03({ changeStage, scrollStage }) {
         {/* //?Page 05 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop pt-25vh">
           <div className="Player-container absolute left-0 -bottom-[5vw] z-20 w-full scale-x-[-1]">
-            <ReactPlayer
+            {/*             <ReactPlayer
               className="React-player"
               url={belt_webm}
               width="100%"
@@ -645,7 +645,11 @@ export default function Section03({ changeStage, scrollStage }) {
               playing
               loop
               muted
-            />
+            /> */}
+            <video width="100%" height="auto" loop muted autoPlay>
+              <source src={belt_webm} type="video/webm"></source>
+              <source src={belt_hevc} type="video/mp4"></source>
+            </video>
           </div>
           <div className="Convenient-container relative flex h-fit w-full max-w-1360px flex-col justify-center gap-[60px]">
             <div className="Line-place pointer-events-none absolute left-0 top-0 h-full w-1/3 border-t-8 border-l-8 border-blue"></div>
@@ -1051,6 +1055,10 @@ export default function Section03({ changeStage, scrollStage }) {
             ></button>
           </div> */}
         {/* </section> */}
+        {/* //?Section Tablet & Mobile */}
+        {window.innerWidth <= 1024 && (
+          <section className="Hold-scroll-section h-[20vh]"></section>
+        )}
       </div>
     </>
   );

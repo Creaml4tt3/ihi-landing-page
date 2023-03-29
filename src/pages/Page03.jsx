@@ -124,7 +124,6 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
 
   const EpidemicListing = () => {
     return epidemicJSON.map((el, index) => {
-      let currentID = `Epidemic-content-${index}`;
       return (
         <Epidemic
           key={index}
@@ -133,7 +132,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           speed={el.speed}
           y={el.y}
           x={el.x}
-          id={currentID}
+          id={`Epidemic-content-${index}`}
         />
       );
     });
@@ -194,7 +193,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     },
   ];
 
-  useLayoutEffect(() => {
+  /*   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       for (let i = 1; i <= epidemicJSON.length; i++) {
         var tl = gsap.timeline();
@@ -208,7 +207,21 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     }, epidemicRef);
 
     return () => ctx.revert();
-  }, [epidemicIn]);
+  }, [epidemicIn]); */
+
+  if (epidemicIn) {
+    setTimeout(() => {
+      for (let i = 1; i <= epidemicJSON.length; i++) {
+        var tl = gsap.timeline();
+        tl.to(`#Epidemic-content-${i - 1}`, {
+          scale: "+=1",
+          duration: 2,
+          ease: "elastic",
+          delay: 0.4 * i,
+        });
+      }
+    }, 1000);
+  }
 
   function Epidemic({ src, size, speed, y, x, id }) {
     let softLight = false;
@@ -231,7 +244,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           filter: `brightness(${brightness ? 0 : 1})`,
         }}
         id={id}
-        className="Epidemic-section Lottie-section absolute top-0 left-0 z-0 maxlabtop:max-w-[10vw]"
+        className="Epidemic-section Lottie-section absolute top-0 left-0 z-0 maxlabtop:w-[10vw] maxlabtop:max-w-[10vw]"
       />
     );
   }
@@ -387,14 +400,14 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh">
+        <section className="Page-section z-20 -mt-[100vh] h-fit min-h-screen w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <Lottie
               animationData={help}
               loop
               autoPlay
               height={"auto"}
-              className="Lottie z-20"
+              className="Lottie z-20 maxtablet:w-[50vw]"
             />
             <h1 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_01.HEADING_01}
@@ -1150,9 +1163,9 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_03.SUB_HEADING_01}
             </h2>
           </section>
-          <div className="Graph-side-container mt-16 flex w-full max-w-1400px mobile:flex-col-reverse">
-            <div className="Graph-side-content relative flex w-[18%] flex-col maxlabtop:w-1/5 mobile:mt-8 mobile:w-full mobile:overflow-hidden">
-              <div className="Text-column rel flex flex-col items-start justify-between gap-6 pt-2 maxlabtop:gap-3 maxlabtop:pt-0 mobile:pt-1">
+          <div className="Graph-side-container mt-16 flex w-full max-w-1400px maxtablet:flex-col-reverse">
+            <div className="Graph-side-content relative flex w-[18%] flex-col maxlabtop:w-1/5 maxtablet:mt-8 maxtablet:w-full maxtablet:overflow-hidden">
+              <div className="Text-column rel flex flex-col items-start justify-between gap-6 pt-2 maxlabtop:gap-3 maxlabtop:pt-0 maxtablet:pt-1">
                 <div className="Text">
                   <span className="Base">
                     {configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.TEXT_01}
@@ -1194,10 +1207,10 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                   </span>
                 </div>
                 <div
-                  className="Graph-mobile-container absolute right-0 top-0 hidden h-full w-full flex-col items-end gap-11 pt-4 mobile:!flex"
+                  className="Graph-mobile-container absolute right-0 top-0 hidden h-full w-full flex-col items-end gap-11 pt-4 maxtablet:!flex"
                   ref={lineMobileRef}
                 >
-                  {window.innerWidth <= 425 &&
+                  {window.innerWidth <= 1024 &&
                     graphLineMobile &&
                     graphLineMobile.map((line) => {
                       return (
@@ -1219,11 +1232,11 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 </div>
               </div>
             </div>
-            <div className="Graph-side-content relative w-[82%] mobile:w-full">
+            <div className="Graph-side-content relative w-[82%] maxtablet:w-full">
               <div className="Graph-side flex flex-col items-end gap-9 text-3xl font-semibold maxlabtop:gap-6 maxtablet:gap-4">
-                <div className="Graph-column-container absolute top-0 left-0 z-20 w-full flex-col mobile:static mobile:right-0">
-                  <div className="Graph-column flex flex-col gap-6 overflow-hidden maxtablet:gap-10 mobile:h-[30vh] mobile:justify-between">
-                    {window.innerWidth > 425 &&
+                <div className="Graph-column-container absolute top-0 left-0 z-20 w-full flex-col maxtablet:static maxtablet:right-0">
+                  <div className="Graph-column flex flex-col gap-6 overflow-hidden maxtablet:h-[30vh] maxtablet:justify-between maxtablet:gap-10">
+                    {window.innerWidth > 1024 &&
                       graphLine &&
                       graphLine.map((line) => {
                         return (
@@ -1244,7 +1257,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                       })}
                   </div>
                 </div>
-                <div className="Title-column flex flex-col items-end text-3xl font-semibold maxlabtop:text-[clamp(1.275rem,2.25vw,1.875rem)] mobile:w-full mobile:items-center">
+                <div className="Title-column flex flex-col items-end text-3xl font-semibold maxlabtop:text-[clamp(1.275rem,2.25vw,1.875rem)] maxtablet:w-full maxtablet:items-center">
                   <span className="Title text-white">
                     {configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.HEADING_01}
                   </span>
@@ -1259,7 +1272,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                   classpic="Picture-section z-10"
                   classimg="mx-auto w-full h-auto"
                 />
-                <div className="Measure-container flex w-full justify-between mobile:hidden">
+                <div className="Measure-container flex w-full justify-between maxtablet:hidden">
                   <span className="Percent">
                     {configJSON.CONTENT.PAGE_03.SECTION_03.GRAPH.PERCENT_01}
                   </span>
@@ -1448,7 +1461,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 loop
                 autoPlay
                 height={45}
-                className="Icon-lottie"
+                className="Icon-lottie maxtablet:w-[20w]"
               />
               <div className="Lower">
                 <span className="Lower-text ">
@@ -1620,6 +1633,10 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
             </span>
           </button>
         </div>
+        {/* //?Section Tablet & Mobile */}
+        {window.innerWidth <= 1024 && (
+          <section className="Hold-scroll-section h-[20vh]"></section>
+        )}
       </div>
     </>
   );

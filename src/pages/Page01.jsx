@@ -815,6 +815,10 @@ export default function Section01({ changeStage, scrollStage }) {
             </span>
           </button>
         </div>
+        {/* //?Section Tablet & Mobile */}
+        {window.innerWidth <= 1024 && (
+          <section className="Hold-scroll-section h-[20vh]"></section>
+        )}
       </div>
       {/* //?Main - Ending */}
     </>

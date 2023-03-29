@@ -50,10 +50,10 @@ import gear from "../lotties/gear.json";
 import minimize from "../lotties/minimize.json";
 import steaming from "../lotties/steaming.json";
 import fire from "../lotties/fire.json";
-/* import fire_webm from "../lotties/webm/fire.webm";
-import belt_small_webm from "../lotties/webm/belt-small.webm"; */
 import fire_webm from "../lotties/webm/fire.webm";
+import fire_hevc from "../lotties/hevc/fire.mp4";
 import belt_small_webm from "../lotties/webm/belt-small.webm";
+import belt_small_hevc from "../lotties/hevc/belt-small.mp4";
 
 export default function Section02({ changeStage, scrollStage }) {
   const beltRef = useRef(null);
@@ -328,7 +328,10 @@ export default function Section02({ changeStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_02.SECTION_01.SUB_HEADING_03}
             </h2>
           </section>
-          <div className="Work-container mx-auto h-fit w-fit" ref={workRef}>
+          <div
+            className="Work-container mx-auto h-fit w-fit maxtablet:w-full"
+            ref={workRef}
+          >
             <Lottie
               animationData={working}
               lottieRef={workLottieRef}
@@ -546,7 +549,11 @@ export default function Section02({ changeStage, scrollStage }) {
             lazy
           />
           <div className="Player-container z-10 -my-3 mobile:-my-1">
-            <ReactPlayer
+            <video width="100%" height="auto" loop muted autoPlay>
+              <source src={belt_small_webm} type="video/webm"></source>
+              <source src={belt_small_hevc} type="video/mp4"></source>
+            </video>
+            {/* <ReactPlayer
               className="React-player"
               url={belt_small_webm}
               width="100%"
@@ -554,7 +561,7 @@ export default function Section02({ changeStage, scrollStage }) {
               playing
               loop
               muted
-            />
+            /> */}
           </div>
           <div className="Development relative py-20">
             <section className="Text-section flex-center">
@@ -730,7 +737,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </h3>
             </section>
           </div>
-          <div className="Video-container z-50 w-full max-w-1360px px-desktop pt-44 pb-48">
+          <div className="Video-container z-50 w-full max-w-1360px px-desktop pt-44 pb-48 maxtablet:!px-0">
             <ReactPlayer
               className="React-player"
               url={videoURL}
@@ -1065,7 +1072,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   height={150}
                   className="Icon-lottie"
                 /> */}
-                <ReactPlayer
+                {/*                <ReactPlayer
                   className="React-player"
                   url={fire_webm}
                   width="auto"
@@ -1073,7 +1080,18 @@ export default function Section02({ changeStage, scrollStage }) {
                   playing
                   loop
                   muted
-                />
+                /> */}
+                <video
+                  className="Video-lottie-container"
+                  width="100%"
+                  height="150px"
+                  loop
+                  muted
+                  autoPlay
+                >
+                  <source src={fire_webm} type="video/webm"></source>
+                  <source src={fire_hevc} type="video/mp4"></source>
+                </video>
               </div>
             </div>
           </div>
@@ -1125,7 +1143,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Video-container w-full max-w-1360px !px-desktop pt-44 pb-48 maxlabtop:!px-laptop maxtablet:!px-mobile">
+          <div className="Video-container w-full max-w-1360px !px-desktop pt-44 pb-48 maxlabtop:!px-laptop maxtablet:!px-mobile mobile:px-0">
             <ReactPlayer
               className="React-player"
               url={videoURL02}
@@ -1165,6 +1183,10 @@ export default function Section02({ changeStage, scrollStage }) {
             ></button>
           </div> */}
         {/* </section> */}
+        {/* //?Section Tablet & Mobile */}
+        {window.innerWidth <= 1024 && (
+          <section className="Hold-scroll-section h-[20vh]"></section>
+        )}
       </div>
       {/* //?Main - Ending */}
     </>

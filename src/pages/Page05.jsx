@@ -8,8 +8,8 @@ import {
   page_05_bg_webp,
   page_05_bg_png,
 } from "../components/image/Image05.jsx";
-/* import laef_webm from "../lotties/webm/laef.webm"; */
-import laef_webm from "../lotties/hevc/leaf.mp4";
+import laef_webm from "../lotties/webm/laef.webm";
+import laef_hevc from "../lotties/hevc/leaf.mp4";
 export default function Section05({ changeStage }) {
   const destroyRef = useRef(null);
 
@@ -117,7 +117,7 @@ export default function Section05({ changeStage }) {
         {/* //?Page Wrap */}
         <section className="Page-section-wrapper relative h-fit overflow-hidden rounded-t-full bg-cream">
           <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 maxlabtop:h-full">
-            <ReactPlayer
+            {/* <ReactPlayer
               className="React-player max-h-full"
               url={laef_webm}
               width={window.innerWidth <= 1440 ? "125vw" : "auto"}
@@ -125,7 +125,11 @@ export default function Section05({ changeStage }) {
               playing
               loop
               muted
-            />
+            /> */}
+            <video width="100%" height="auto" loop muted autoPlay>
+              <source src={laef_webm} type="video/webm"></source>
+              <source src={laef_hevc} type="video/mp4"></source>
+            </video>
           </div>
           {/* //?Page 03 */}
           <section className="Page-section relative z-10 h-fit w-full overflow-y-visible px-desktop pt-50vh pb-25vh mobile:pt-25vh">
