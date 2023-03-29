@@ -39,7 +39,8 @@ import {
   video_icon_png,
   video_icon_webp,
 } from "../components/image/Image02";
-import belt_webm from "../lotties/webm/belt.webm";
+/* import belt_webm from "../lotties/webm/belt.webm"; */
+import belt_webm from "../lotties/hevc/belt.mp4";
 import warehouse_01 from "../lotties/warehouse-01.json";
 import warehouse_02 from "../lotties/warehouse-02.json";
 export default function Section03({ changeStage, scrollStage }) {

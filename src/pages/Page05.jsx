@@ -8,7 +8,8 @@ import {
   page_05_bg_webp,
   page_05_bg_png,
 } from "../components/image/Image05.jsx";
-import laef_webm from "../lotties/webm/laef.webm";
+/* import laef_webm from "../lotties/webm/laef.webm"; */
+import laef_webm from "../lotties/hevc/leaf.mp4";
 export default function Section05({ changeStage }) {
   const destroyRef = useRef(null);
 
