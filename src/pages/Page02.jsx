@@ -549,7 +549,14 @@ export default function Section02({ changeStage, scrollStage }) {
             lazy
           />
           <div className="Player-container z-10 -my-3 mobile:-my-1">
-            <video width="100%" height="auto" loop muted autoPlay>
+            <video
+              width="100%"
+              height="auto"
+              loop
+              muted
+              autoPlay
+              onLoad={() => this.play()}
+            >
               <source src={belt_small_webm} type="video/webm"></source>
               <source src={belt_small_hevc} type="video/mp4"></source>
             </video>
@@ -1084,10 +1091,11 @@ export default function Section02({ changeStage, scrollStage }) {
                 <video
                   className="Video-lottie-container"
                   width="100%"
-                  height="150px"
+                  height={150}
                   loop
                   muted
                   autoPlay
+                  onLoad={() => this.play()}
                 >
                   <source src={fire_webm} type="video/webm"></source>
                   <source src={fire_hevc} type="video/mp4"></source>

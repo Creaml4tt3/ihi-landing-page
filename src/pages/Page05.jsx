@@ -126,7 +126,14 @@ export default function Section05({ changeStage }) {
               loop
               muted
             /> */}
-            <video width="100%" height="auto" loop muted autoPlay>
+            <video
+              width="100%"
+              height="auto"
+              loop
+              muted
+              autoPlay
+              onLoad={() => this.play()}
+            >
               <source src={laef_webm} type="video/webm"></source>
               <source src={laef_hevc} type="video/mp4"></source>
             </video>

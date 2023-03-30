@@ -646,7 +646,14 @@ export default function Section03({ changeStage, scrollStage }) {
               loop
               muted
             /> */}
-            <video width="100%" height="auto" loop muted autoPlay>
+            <video
+              width="100%"
+              height="auto"
+              loop
+              muted
+              autoPlay
+              onLoad={() => this.play()}
+            >
               <source src={belt_webm} type="video/webm"></source>
               <source src={belt_hevc} type="video/mp4"></source>
             </video>

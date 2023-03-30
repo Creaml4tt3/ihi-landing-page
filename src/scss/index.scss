@@ -308,6 +308,7 @@ $hydro: #0f283e;
         @apply mobile:h-32;
       }
       .Video-lottie-container {
+        @apply max-w-[150px];
         @apply mobile:h-32 #{!important};
       }
     }
