@@ -317,6 +317,46 @@ export default function Section03({ changeStage, scrollStage }) {
     }
   };
 
+  const Belt = () => {
+    if (window.innerWidth > 1024) {
+      if (navigator.userAgent.match(/chrome|chromium|crios/i)) {
+        console.log("match safari");
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={belt_webm} type="video/webm"></source>
+          </video>
+        );
+      } else if (navigator.userAgent.match(/safari/i)) {
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={belt_hevc} type="video/mp4"></source>
+          </video>
+        );
+      } else {
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={belt_webm} type="video/webm"></source>
+          </video>
+        );
+      }
+    } else {
+      return (
+        <video
+          width="100%"
+          height="auto"
+          loop
+          muted
+          autoPlay
+          onLoad={() => this.play()}
+          playsInline
+        >
+          <source src={belt_webm} type="video/webm"></source>
+          <source src={belt_hevc} type="video/mp4"></source>
+        </video>
+      );
+    }
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -646,32 +686,7 @@ export default function Section03({ changeStage, scrollStage }) {
               loop
               muted
             /> */}
-            {navigator.userAgent.match(/safari/i) &&
-            window.innerWidth > 1024 ? (
-              <video width="100%" height="auto" loop muted autoPlay>
-                <source src={belt_hevc} type="video/mp4"></source>
-              </video>
-            ) : window.innerWidth > 1024 ? (
-              <video width="100%" height="auto" loop muted autoPlay>
-                <source src={belt_webm} type="video/webm"></source>
-              </video>
-            ) : (
-              <></>
-            )}
-            {window.innerWidth <= 1024 && (
-              <video
-                width="100%"
-                height="auto"
-                loop
-                muted
-                autoPlay
-                onLoad={() => this.play()}
-                playsInline
-              >
-                <source src={belt_webm} type="video/webm"></source>
-                <source src={belt_hevc} type="video/mp4"></source>
-              </video>
-            )}
+            <Belt />
           </div>
           <div className="Convenient-container relative flex h-fit w-full max-w-1360px flex-col justify-center gap-[60px]">
             <div className="Line-place pointer-events-none absolute left-0 top-0 h-full w-1/3 border-t-8 border-l-8 border-blue"></div>

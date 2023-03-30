@@ -58,6 +58,46 @@ export default function Section05({ changeStage }) {
     }
   };
 
+  const Leaf = () => {
+    if (window.innerWidth > 1024) {
+      if (navigator.userAgent.match(/chrome|chromium|crios/i)) {
+        console.log("match safari");
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={laef_webm} type="video/webm"></source>
+          </video>
+        );
+      } else if (navigator.userAgent.match(/safari/i)) {
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={laef_hevc} type="video/mp4"></source>
+          </video>
+        );
+      } else {
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={laef_webm} type="video/webm"></source>
+          </video>
+        );
+      }
+    } else {
+      return (
+        <video
+          width="100%"
+          height="auto"
+          loop
+          muted
+          autoPlay
+          onLoad={() => this.play()}
+          playsInline
+        >
+          <source src={laef_webm} type="video/webm"></source>
+          <source src={laef_hevc} type="video/mp4"></source>
+        </video>
+      );
+    }
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -126,32 +166,7 @@ export default function Section05({ changeStage }) {
               loop
               muted
             /> */}
-            {navigator.userAgent.match(/safari/i) &&
-            window.innerWidth > 1024 ? (
-              <video width="100%" height="auto" loop muted autoPlay>
-                <source src={laef_hevc} type="video/mp4"></source>
-              </video>
-            ) : window.innerWidth > 1024 ? (
-              <video width="100%" height="auto" loop muted autoPlay>
-                <source src={laef_webm} type="video/webm"></source>
-              </video>
-            ) : (
-              <></>
-            )}
-            {window.innerWidth <= 1024 && (
-              <video
-                width="100%"
-                height="auto"
-                loop
-                muted
-                autoPlay
-                onLoad={() => this.play()}
-                playsInline
-              >
-                <source src={laef_webm} type="video/webm"></source>
-                <source src={laef_hevc} type="video/mp4"></source>
-              </video>
-            )}
+            <Leaf />
           </div>
           {/* //?Page 03 */}
           <section className="Page-section relative z-10 h-fit w-full overflow-y-visible px-desktop pt-50vh pb-25vh mobile:pt-25vh">

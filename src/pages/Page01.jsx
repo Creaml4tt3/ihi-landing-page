@@ -191,7 +191,7 @@ export default function Section01({ changeStage, scrollStage }) {
     const isAtTop = el.scrollTop === 0;
     const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
 
-    if (window.innerWidth <= 1024) {
+    if (window.innerWidth <= 1440) {
       if (el.scrollTop + el.clientHeight - el.scrollHeight >= -5) {
         changeStage("+");
       }

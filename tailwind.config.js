@@ -33,7 +33,7 @@ module.exports = {
       },
       spacing: {
         desktop: "60px",
-        laptop: "40px",
+        laptop: "50px",
         tablet: "40px",
         mobile: "30px",
         fifty: "50vh",

@@ -288,6 +288,46 @@ export default function Section02({ changeStage, scrollStage }) {
     }
   };
 
+  const Belt_small = () => {
+    if (window.innerWidth > 1024) {
+      if (navigator.userAgent.match(/chrome|chromium|crios/i)) {
+        console.log("match safari");
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={belt_small_webm} type="video/webm"></source>
+          </video>
+        );
+      } else if (navigator.userAgent.match(/safari/i)) {
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={belt_small_hevc} type="video/mp4"></source>
+          </video>
+        );
+      } else {
+        return (
+          <video width="100%" height="auto" loop muted autoPlay>
+            <source src={belt_small_webm} type="video/webm"></source>
+          </video>
+        );
+      }
+    } else {
+      return (
+        <video
+          width="100%"
+          height="auto"
+          loop
+          muted
+          autoPlay
+          onLoad={() => this.play()}
+          playsInline
+        >
+          <source src={belt_small_webm} type="video/webm"></source>
+          <source src={belt_small_hevc} type="video/mp4"></source>
+        </video>
+      );
+    }
+  };
+
   return (
     <>
       {/* //?Background - Starting */}
@@ -549,7 +589,7 @@ export default function Section02({ changeStage, scrollStage }) {
             lazy
           />
           <div className="Player-container z-10 -my-3 mobile:-my-1">
-            {navigator.userAgent.match(/safari/i) &&
+            {/*  {navigator.userAgent.match(/safari/i) &&
             window.innerWidth > 1024 ? (
               <video width="100%" height="auto" loop muted autoPlay>
                 <source src={belt_small_hevc} type="video/mp4"></source>
@@ -574,7 +614,8 @@ export default function Section02({ changeStage, scrollStage }) {
                 <source src={belt_small_webm} type="video/webm"></source>
                 <source src={belt_small_hevc} type="video/mp4"></source>
               </video>
-            )}
+            )} */}
+            <Belt_small />
           </div>
           <div className="Development relative py-20">
             <section className="Text-section flex-center">
