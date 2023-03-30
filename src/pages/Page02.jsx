@@ -549,11 +549,19 @@ export default function Section02({ changeStage, scrollStage }) {
             lazy
           />
           <div className="Player-container z-10 -my-3 mobile:-my-1">
-            {window.innerWidth > 1024 ? (
+            {navigator.userAgent.match(/safari/i) &&
+            window.innerWidth > 1024 ? (
               <video width="100%" height="auto" loop muted autoPlay>
                 <source src={belt_small_hevc} type="video/mp4"></source>
               </video>
+            ) : window.innerWidth > 1024 ? (
+              <video width="100%" height="auto" loop muted autoPlay>
+                <source src={belt_small_webm} type="video/webm"></source>
+              </video>
             ) : (
+              <></>
+            )}
+            {window.innerWidth <= 1024 && (
               <video
                 width="100%"
                 height="auto"

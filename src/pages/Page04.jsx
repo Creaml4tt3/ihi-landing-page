@@ -646,19 +646,19 @@ export default function Section03({ changeStage, scrollStage }) {
               loop
               muted
             /> */}
-            {window.innerWidth > 1024 ? (
-              <video
-                width="100%"
-                height="auto"
-                loop
-                muted
-                autoPlay
-                onLoad={() => this.play()}
-                playsInline
-              >
+            {navigator.userAgent.match(/safari/i) &&
+            window.innerWidth > 1024 ? (
+              <video width="100%" height="auto" loop muted autoPlay>
                 <source src={belt_hevc} type="video/mp4"></source>
               </video>
+            ) : window.innerWidth > 1024 ? (
+              <video width="100%" height="auto" loop muted autoPlay>
+                <source src={belt_webm} type="video/webm"></source>
+              </video>
             ) : (
+              <></>
+            )}
+            {window.innerWidth <= 1024 && (
               <video
                 width="100%"
                 height="auto"
