@@ -133,6 +133,7 @@ export default function Section05({ changeStage }) {
               muted
               autoPlay
               onLoad={() => this.play()}
+              playsInline
             >
               <source src={laef_webm} type="video/webm"></source>
               <source src={laef_hevc} type="video/mp4"></source>

@@ -556,6 +556,7 @@ export default function Section02({ changeStage, scrollStage }) {
               muted
               autoPlay
               onLoad={() => this.play()}
+              playsInline
             >
               <source src={belt_small_webm} type="video/webm"></source>
               <source src={belt_small_hevc} type="video/mp4"></source>
@@ -1096,6 +1097,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   muted
                   autoPlay
                   onLoad={() => this.play()}
+                  playsInline
                 >
                   <source src={fire_webm} type="video/webm"></source>
                   <source src={fire_hevc} type="video/mp4"></source>
