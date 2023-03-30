@@ -116,7 +116,7 @@ export default function Section05({ changeStage }) {
         </section>
         {/* //?Page Wrap */}
         <section className="Page-section-wrapper relative h-fit overflow-hidden rounded-t-full bg-cream">
-          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 maxlabtop:h-full">
+          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 maxlabtop:h-full mobile:bottom-0 mobile:top-auto">
             {/* <ReactPlayer
               className="React-player max-h-full"
               url={laef_webm}
@@ -126,18 +126,32 @@ export default function Section05({ changeStage }) {
               loop
               muted
             /> */}
-            <video
-              width="100%"
-              height="auto"
-              loop
-              muted
-              autoPlay
-              onLoad={() => this.play()}
-              playsInline
-            >
-              <source src={laef_webm} type="video/webm"></source>
-              <source src={laef_hevc} type="video/mp4"></source>
-            </video>
+            {window.innerWidth > 1024 ? (
+              <video
+                width="100%"
+                height="auto"
+                loop
+                muted
+                autoPlay
+                onLoad={() => this.play()}
+                playsInline
+              >
+                <source src={laef_hevc} type="video/mp4"></source>
+              </video>
+            ) : (
+              <video
+                width="100%"
+                height="auto"
+                loop
+                muted
+                autoPlay
+                onLoad={() => this.play()}
+                playsInline
+              >
+                <source src={laef_webm} type="video/webm"></source>
+                <source src={laef_hevc} type="video/mp4"></source>
+              </video>
+            )}
           </div>
           {/* //?Page 03 */}
           <section className="Page-section relative z-10 h-fit w-full overflow-y-visible px-desktop pt-50vh pb-25vh mobile:pt-25vh">

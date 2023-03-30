@@ -549,18 +549,24 @@ export default function Section02({ changeStage, scrollStage }) {
             lazy
           />
           <div className="Player-container z-10 -my-3 mobile:-my-1">
-            <video
-              width="100%"
-              height="auto"
-              loop
-              muted
-              autoPlay
-              onLoad={() => this.play()}
-              playsInline
-            >
-              <source src={belt_small_webm} type="video/webm"></source>
-              <source src={belt_small_hevc} type="video/mp4"></source>
-            </video>
+            {window.innerWidth > 1024 ? (
+              <video width="100%" height="auto" loop muted autoPlay>
+                <source src={belt_small_hevc} type="video/mp4"></source>
+              </video>
+            ) : (
+              <video
+                width="100%"
+                height="auto"
+                loop
+                muted
+                autoPlay
+                onLoad={() => this.play()}
+                playsInline
+              >
+                <source src={belt_small_webm} type="video/webm"></source>
+                <source src={belt_small_hevc} type="video/mp4"></source>
+              </video>
+            )}
             {/* <ReactPlayer
               className="React-player"
               url={belt_small_webm}
@@ -1089,19 +1095,34 @@ export default function Section02({ changeStage, scrollStage }) {
                   loop
                   muted
                 /> */}
-                <video
-                  className="Video-lottie-container"
-                  width="100%"
-                  height={150}
-                  loop
-                  muted
-                  autoPlay
-                  onLoad={() => this.play()}
-                  playsInline
-                >
-                  <source src={fire_webm} type="video/webm"></source>
-                  <source src={fire_hevc} type="video/mp4"></source>
-                </video>
+                {window.innerWidth > 1024 ? (
+                  <video
+                    className="Video-lottie-container"
+                    width="100%"
+                    height="150px"
+                    loop
+                    muted
+                    autoPlay
+                    onLoad={() => this.play()}
+                    playsInline
+                  >
+                    <source src={fire_hevc} type="video/mp4"></source>
+                  </video>
+                ) : (
+                  <video
+                    className="Video-lottie-container"
+                    width="100%"
+                    height="150px"
+                    loop
+                    muted
+                    autoPlay
+                    onLoad={() => this.play()}
+                    playsInline
+                  >
+                    <source src={fire_webm} type="video/webm"></source>
+                    <source src={fire_hevc} type="video/mp4"></source>
+                  </video>
+                )}
               </div>
             </div>
           </div>
