@@ -304,6 +304,7 @@ $hydro: #0f283e;
         }
       }
       .Icon-lottie {
+        @apply max-w-[150px];
         @apply maxtablet:w-fit;
         @apply mobile:h-32;
       }
