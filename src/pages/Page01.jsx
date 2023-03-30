@@ -237,6 +237,10 @@ export default function Section01({ changeStage, scrollStage }) {
   }
 
   useEffect(() => {
+    alert(navigator.userAgent);
+    if (navigator.userAgent) {
+      console.log(navigator.userAgent);
+    }
     graph01Ref.current.stop();
     graph02Ref.current.stop();
     graph03Ref.current.stop();

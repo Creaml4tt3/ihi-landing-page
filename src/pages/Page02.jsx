@@ -567,15 +567,6 @@ export default function Section02({ changeStage, scrollStage }) {
                 <source src={belt_small_hevc} type="video/mp4"></source>
               </video>
             )}
-            {/* <ReactPlayer
-              className="React-player"
-              url={belt_small_webm}
-              width="100%"
-              height="auto"
-              playing
-              loop
-              muted
-            /> */}
           </div>
           <div className="Development relative py-20">
             <section className="Text-section flex-center">
@@ -1079,13 +1070,13 @@ export default function Section02({ changeStage, scrollStage }) {
                   classimg="mx-auto z-10"
                   lazy
                 />
-                {/* <Lottie
+                <Lottie
                   animationData={fire}
                   loop
                   autoPlay
                   height={150}
                   className="Icon-lottie"
-                /> */}
+                />
                 {/*                <ReactPlayer
                   className="React-player"
                   url={fire_webm}
@@ -1095,7 +1086,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   loop
                   muted
                 /> */}
-                {window.innerWidth > 1024 ? (
+                {/*  {window.innerWidth > 1024 ? (
                   <video
                     className="Video-lottie-container"
                     width="100%"
@@ -1122,7 +1113,7 @@ export default function Section02({ changeStage, scrollStage }) {
                     <source src={fire_webm} type="video/webm"></source>
                     <source src={fire_hevc} type="video/mp4"></source>
                   </video>
-                )}
+                )} */}
               </div>
             </div>
           </div>
