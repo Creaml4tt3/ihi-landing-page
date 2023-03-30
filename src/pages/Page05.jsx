@@ -61,7 +61,6 @@ export default function Section05({ changeStage }) {
   const Leaf = () => {
     if (window.innerWidth > 1024) {
       if (navigator.userAgent.match(/chrome|chromium|crios/i)) {
-        console.log("match safari");
         return (
           <video width="100%" height="auto" loop muted autoPlay>
             <source src={laef_webm} type="video/webm"></source>
@@ -156,7 +155,7 @@ export default function Section05({ changeStage }) {
         </section>
         {/* //?Page Wrap */}
         <section className="Page-section-wrapper relative h-fit overflow-hidden rounded-t-full bg-cream">
-          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 maxlabtop:h-full mobile:bottom-[15%] mobile:top-auto mobile:h-auto">
+          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 maxlabtop:bottom-0 maxlabtop:top-auto maxtablet:h-auto mobile:bottom-[15%]">
             {/* <ReactPlayer
               className="React-player max-h-full"
               url={laef_webm}

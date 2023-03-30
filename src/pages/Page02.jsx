@@ -291,7 +291,6 @@ export default function Section02({ changeStage, scrollStage }) {
   const Belt_small = () => {
     if (window.innerWidth > 1024) {
       if (navigator.userAgent.match(/chrome|chromium|crios/i)) {
-        console.log("match safari");
         return (
           <video width="100%" height="auto" loop muted autoPlay>
             <source src={belt_small_webm} type="video/webm"></source>
