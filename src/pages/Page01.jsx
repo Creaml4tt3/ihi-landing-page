@@ -690,7 +690,7 @@ export default function Section01({ changeStage, scrollStage }) {
               className="Lottie-section z-10"
               style={{
                 height: `${
-                  window.innerWidth <= 425
+                  window.innerWidth <= 768
                     ? "30vh"
                     : window.innerWidth > 1024
                     ? "680px"
