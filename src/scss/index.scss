@@ -246,7 +246,7 @@ $hydro: #0f283e;
       }
     }
     .Icon {
-      @apply maxtablet:max-w-[10vw];
+      @apply maxtablet:max-w-[10vw] mobile:max-w-[20vw];
     }
   }
 
@@ -321,7 +321,7 @@ $hydro: #0f283e;
   .Icon-card {
     @apply relative;
     .Icon {
-      @apply absolute bottom-7 left-1/2 -translate-x-1/2;
+      @apply absolute bottom-7 left-1/2 -translate-x-1/2 mobile:bottom-4;
     }
   }
 
