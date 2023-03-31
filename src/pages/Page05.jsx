@@ -138,7 +138,7 @@ export default function Section05({ changeStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-0 -mt-[100vh] h-[100vh] w-full rounded-t-full bg-blue px-desktop pb-30vh pt-30vh mobile:h-fit">
+        <section className="Page-section z-0 -mt-[100vh] h-[100vh] w-full rounded-t-full bg-blue px-desktop pb-30vh pt-30vh mobile:h-fit mobile:pt-[20vh] mobile:pb-[15vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <h1 className="Heading-text !text-[80px] !font-medium text-white">
               {configJSON.CONTENT.PAGE_05.SECTION_01.SUPER_HEADING_01}
@@ -154,7 +154,7 @@ export default function Section05({ changeStage }) {
           </section>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section z-0 h-fit w-full bg-blue px-desktop pb-25vh pt-25vh">
+        <section className="Page-section z-0 h-fit w-full bg-blue px-desktop pb-25vh pt-25vh mobile:pb-[15vh] mobile:pt-[10vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <h2 className="Heading-text !font-medium text-white">
               {configJSON.CONTENT.PAGE_05.SECTION_02.HEADING_01}
@@ -200,7 +200,7 @@ export default function Section05({ changeStage }) {
             </section>
           </section>
           {/* //?Page 04 */}
-          <section className="Page-section z-0 h-fit w-full px-desktop pt-20vh pb-20vh">
+          <section className="Page-section z-0 h-fit w-full px-desktop pt-20vh pb-20vh mobile:pt-0">
             <section className="Text-section flex-center z-10 flex-col gap-2">
               <h2 className="Heading-text z-30 !font-bold text-blue">
                 {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}

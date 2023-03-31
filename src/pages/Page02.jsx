@@ -349,7 +349,7 @@ export default function Section02({ changeStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh mobile:pt-[20vh]">
+        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh mobile:pt-[20vh] mobile:pb-[15vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text text-[90px] font-medium text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_01}
@@ -382,7 +382,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section relative h-fit w-full px-desktop pb-30vh">
+        <section className="Page-section relative h-fit w-full px-desktop pb-30vh mobile:bg-cream mobile:pb-[15vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span
               className="Heading-text !font-bold italic text-blue"
@@ -407,7 +407,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </section>
         </section>
         {/* //?Page 03 */}
-        <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop pb-40vh">
+        <section className="Page-section flex-center pb-40v relative h-fit w-full flex-col px-desktop mobile:pb-[15vh]">
           <section className="Text-section flex-center z-10 flex-col">
             <h2 className="Heading-text text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_03.HEADING_01}
@@ -627,7 +627,7 @@ export default function Section02({ changeStage, scrollStage }) {
             </section>
             <div className="Development-stripe absolute -top-2 left-1/2 z-0 h-[calc(100%+16px)] w-5 -translate-x-1/2 bg-blue mobile:w-2"></div>
           </div>
-          <div className="Icon-container flex-center gap-5">
+          <div className="Icon-container flex-center gap-5 mobile:flex-col">
             <div className="Icon-card" id="Icon-card-01">
               <div className="Icon-text">
                 <span className="Icon-number">
@@ -1216,7 +1216,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Video-container w-full max-w-1360px !px-desktop pt-44 pb-48 maxlabtop:!px-laptop maxtablet:!px-mobile mobile:px-0">
+          <div className="Video-container w-full max-w-1360px !px-desktop pt-44 pb-48 maxlabtop:!px-laptop maxtablet:!px-mobile mobile:px-0 mobile:py-0">
             <ReactPlayer
               className="React-player"
               url={videoURL02}

@@ -669,7 +669,7 @@ export default function Section01({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 04 */}
-        <section className="Page-section relative mt-56 mb-64 flex h-fit flex-col items-center px-desktop pt-[8vh] mobile:mt-20">
+        <section className="Page-section relative mt-56 mb-64 flex h-fit flex-col items-center px-desktop pt-[8vh] mobile:mt-20 mobile:mb-40">
           <section className="Text-section z-20 flex flex-col gap-4">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_04.HEADING_01}

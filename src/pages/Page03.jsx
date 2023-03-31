@@ -400,7 +400,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-20 -mt-[100vh] h-fit min-h-screen w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh">
+        <section className="Page-section z-20 -mt-[100vh] h-fit min-h-screen w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh mobile:min-h-0 mobile:py-[15vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <Lottie
               animationData={help}
@@ -424,7 +424,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           </section>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop">
+        <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop mobile:bg-blue">
           <section className="Text-section flex-center z-10 flex-col ">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_01}
@@ -433,7 +433,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_01}
             </h2>
           </section>
-          <div className="Column-container relative flex h-fit w-full max-w-1400px pt-20vh pb-15vh maxtablet:flex-col">
+          <div className="Column-container relative flex h-fit w-full max-w-1400px pt-20vh pb-15vh maxtablet:flex-col mobile:py-[10vh]">
             <div className="Column-text relative flex h-[calc(650px*6)] w-3/5 flex-col items-start gap-52 maxtablet:hidden">
               <div
                 className="Section-action-container pointer-events-none absolute top-0 h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
@@ -1142,7 +1142,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
             </a>
           </div> */}
-          <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col">
+          <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col mobile:mt-16 mobile:mb-44">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
               <Br />
@@ -1155,7 +1155,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
         </section>
         {/* //?Page 03 */}
         <section className="Page-section flex-center h-fit w-full flex-col px-desktop">
-          <section className="Text-section flex-center z-10 flex-col">
+          <section className="Text-section flex-center z-10 flex-col mobile:pb-[15vh]">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_03.HEADING_01}
             </h2>
@@ -1234,7 +1234,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
             </div>
             <div className="Graph-side-content relative w-[82%] maxtablet:w-full">
               <div className="Graph-side flex flex-col items-end gap-9 text-3xl font-semibold maxlabtop:gap-6 maxtablet:gap-4">
-                <div className="Graph-column-container absolute top-0 left-0 z-20 w-full flex-col maxtablet:static maxtablet:right-0">
+                <div className="Graph-column-container absolute top-0 left-0 z-20 w-full flex-col maxtablet:static maxtablet:right-0 maxtablet:hidden">
                   <div className="Graph-column flex flex-col gap-6 overflow-hidden maxtablet:h-[30vh] maxtablet:justify-between maxtablet:gap-10">
                     {window.innerWidth > 1024 &&
                       graphLine &&
@@ -1308,7 +1308,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 04 */}
-        <section className="Page-section flex-center mt-48 mb-60 h-fit w-full flex-col px-desktop">
+        <section className="Page-section flex-center mt-48 mb-60 h-fit w-full flex-col px-desktop mobile:my-[15vh]">
           <section className="Text-section flex-center z-10 flex-col">
             <h3 className="Title-text text-center text-40px font-semibold text-white maxlabtop:text-[clamp(0.875rem,2.25vw,1.875rem)]">
               {configJSON.CONTENT.PAGE_03.SECTION_04.TITLE_01}
@@ -1337,7 +1337,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 05 */}
-        <section className="Page-section flex-center relative mb-25vh h-fit w-full flex-col px-desktop">
+        <section className="Page-section flex-center relative mb-25vh h-fit w-full flex-col px-desktop mobile:mb-[5vh]">
           <section className="Text-section flex-center z-10 flex-col">
             <span className="Title-text text-center text-40px font-semibold text-white maxlabtop:text-[clamp(0.875rem,2.25vw,1.875rem)]">
               {configJSON.CONTENT.PAGE_03.SECTION_05.TITLE_01}

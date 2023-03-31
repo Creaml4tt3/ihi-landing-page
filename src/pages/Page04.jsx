@@ -378,7 +378,7 @@ export default function Section03({ changeStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section flex-center z-0 -mt-[100vh] h-screen w-full flex-col rounded-t-full bg-cream px-desktop">
+        <section className="Page-section flex-center z-0 -mt-[100vh] h-screen w-full flex-col rounded-t-full bg-cream px-desktop mobile:h-fit mobile:py-[15vh]">
           <section className="Text-section flex-center z-10 flex-col gap-3">
             <span className="Title-text text-center text-40px font-semibold leading-normal text-blue maxlabtop:text-[clamp(0.875rem,2.5vw,2rem)]">
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_01}
@@ -897,9 +897,9 @@ export default function Section03({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 06 */}
-        <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop pt-44">
+        <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop pt-44 mobile:pt-20">
           <section className="Section-container flex-center max-w-1540px gap-24">
-            <section className="Column-container h-[400vh] w-1/2 py-20vh maxtablet:h-fit maxtablet:w-full">
+            <section className="Column-container h-[400vh] w-1/2 py-20vh maxtablet:h-fit maxtablet:w-full mobile:pt-0 mobile:pb-[20vh]">
               <div
                 className="Solution-picture-container sticky top-twenty pt-36 maxtablet:static maxtablet:!flex maxtablet:flex-col maxtablet:gap-12"
                 id="Picture-01"
