@@ -62,13 +62,27 @@ export default function Section05({ changeStage }) {
     if (window.innerWidth > 1024) {
       if (navigator.userAgent.match(/chrome|chromium|crios/i)) {
         return (
-          <video width="100%" height="auto" loop muted autoPlay>
+          <video
+            width="100%"
+            height="auto"
+            loop
+            muted
+            autoPlay
+            className="scale-[1.35]"
+          >
             <source src={laef_webm} type="video/webm"></source>
           </video>
         );
       } else if (navigator.userAgent.match(/safari/i)) {
         return (
-          <video width="100%" height="auto" loop muted autoPlay>
+          <video
+            width="100%"
+            height="auto"
+            loop
+            muted
+            autoPlay
+            className="scale-[1.35]"
+          >
             <source src={laef_hevc} type="video/mp4"></source>
           </video>
         );
@@ -87,6 +101,7 @@ export default function Section05({ changeStage }) {
           loop
           muted
           autoPlay
+          className="scale-[1.2]"
           onLoad={() => this.play()}
           playsInline
         >
@@ -155,7 +170,7 @@ export default function Section05({ changeStage }) {
         </section>
         {/* //?Page Wrap */}
         <section className="Page-section-wrapper relative h-fit overflow-hidden rounded-t-full bg-cream">
-          <div className="Laef-container pointer-events-none absolute left-0 top-0 z-20 maxlabtop:bottom-0 maxlabtop:top-auto maxtablet:h-auto mobile:bottom-[15%]">
+          <div className="Laef-container pointer-events-none absolute left-0 bottom-0 z-20 maxlabtop:top-auto maxtablet:h-auto mobile:bottom-[15%]">
             {/* <ReactPlayer
               className="React-player max-h-full"
               url={laef_webm}

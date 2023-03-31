@@ -788,7 +788,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.TITLE_TEXT_01
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.TITLE_TEXT_02
@@ -855,7 +855,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.TITLE_TEXT_01
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.TITLE_TEXT_02
@@ -917,7 +917,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_03.TITLE_TEXT_01
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_03.TITLE_TEXT_02
@@ -1008,7 +1008,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_04.TITLE_TEXT_01
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_04.TITLE_TEXT_02
@@ -1083,12 +1083,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_01
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_02
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_03
@@ -1099,12 +1099,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_04
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_05
                         }
-                        <Br />
+                        <br></br>
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_06

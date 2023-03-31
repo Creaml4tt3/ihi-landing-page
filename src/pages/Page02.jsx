@@ -334,7 +334,7 @@ export default function Section02({ changeStage, scrollStage }) {
         webp={page_02_bg_webp}
         normal={page_02_bg_png}
         alt="page_02_bg_png"
-        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-0 mix-blend-multiply pointer-events-none"
+        classpic="Picture-section h-screen w-screen fixed bottom-0 left-0 z-0 mix-blend-multiply pointer-events-none mobile:h-fit mobile:bottom-auto mobile:top-[10vh]"
         classimg="mx-auto w-full h-auto"
       />
       {/* //?Background - Ending */}
@@ -349,7 +349,7 @@ export default function Section02({ changeStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh">
+        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh mobile:pt-[20vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text text-[90px] font-medium text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_01}
@@ -374,7 +374,7 @@ export default function Section02({ changeStage, scrollStage }) {
             <Lottie
               animationData={working}
               lottieRef={workLottieRef}
-              className="Lottie-section -mt-12"
+              className="Lottie-section -mt-12 mobile:mt-0"
               style={{ height: "100%", width: "100%" }}
               autoplay={false}
               loop={false}
@@ -384,7 +384,10 @@ export default function Section02({ changeStage, scrollStage }) {
         {/* //?Page 02 */}
         <section className="Page-section relative h-fit w-full px-desktop pb-30vh">
           <section className="Text-section flex-center z-10 flex-col gap-4">
-            <span className="Heading-text !font-bold italic text-blue">
+            <span
+              className="Heading-text !font-bold italic text-blue"
+              id="Heading-text-turbo"
+            >
               {configJSON.CONTENT.PAGE_02.SECTION_02.HEADING_01}
             </span>
             <h3 className="Second-text text-blue">
@@ -622,7 +625,7 @@ export default function Section02({ changeStage, scrollStage }) {
                 {configJSON.CONTENT.PAGE_02.SECTION_04.LARGE_TEXT_01}
               </span>
             </section>
-            <div className="Development-stripe absolute -top-2 left-1/2 z-0 h-[calc(100%+16px)] w-5 -translate-x-1/2 bg-blue mobile:hidden"></div>
+            <div className="Development-stripe absolute -top-2 left-1/2 z-0 h-[calc(100%+16px)] w-5 -translate-x-1/2 bg-blue mobile:w-2"></div>
           </div>
           <div className="Icon-container flex-center gap-5">
             <div className="Icon-card" id="Icon-card-01">
@@ -709,7 +712,7 @@ export default function Section02({ changeStage, scrollStage }) {
               lazy
             />
           </animated.div>
-          <section className="Text-section flex-center z-10 flex-col">
+          <section className="Text-section flex-center z-10 flex-col px-desktop">
             <h2 className="Heading-text text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_05.HEADING_01}
             </h2>
@@ -741,7 +744,7 @@ export default function Section02({ changeStage, scrollStage }) {
               <section className="Text-section">
                 <h3 className="Second-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_02}
-                  <Br />
+                  <br />
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_03}
                 </h3>
                 <h4 className="Divide-text">
@@ -762,7 +765,7 @@ export default function Section02({ changeStage, scrollStage }) {
               <section className="Text-section">
                 <h3 className="Second-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_04}
-                  <Br />
+                  <br></br>
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_05}
                 </h3>
                 <h4 className="Divide-text">
@@ -780,7 +783,7 @@ export default function Section02({ changeStage, scrollStage }) {
               ></animated.div>
             </div>
           </div>
-          <div className="Box-container z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue maxtablet:w-full maxtablet:px-4">
+          <div className="Box-container z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue maxtablet:w-full maxtablet:px-4 mobile:px-2">
             <section className="Text-section">
               <h2 className="Second-text text-center !text-5xl !font-bold !leading-relaxed text-blue">
                 {configJSON.CONTENT.PAGE_02.SECTION_06.HEADING_01}
@@ -817,7 +820,7 @@ export default function Section02({ changeStage, scrollStage }) {
                 </h2>
                 <h3 className="Sub-heading-text !text-start text-orange maxtablet:!text-center">
                   {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_01}
-                  <Br />
+                  <br></br>
                   {configJSON.CONTENT.PAGE_02.SECTION_07.SUB_HEADING_02}
                 </h3>
               </section>
@@ -847,7 +850,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
             <div className="Flow-element pointer-events-none absolute -bottom-[15px] flex h-fit w-full flex-col items-center justify-center maxtablet:static maxtablet:pt-12">
-              <div className="Flow-cirle -mb-[15px] mr-[7.5px] h-20 w-20 rounded-full border-[15px] border-blue maxtablet:border-8"></div>
+              <div className="Flow-circle -mb-[15px] mr-[7.5px] h-20 w-20 rounded-full border-[15px] border-blue maxtablet:border-8 mobile:h-14 mobile:w-14"></div>
               <div className="Flow-up ml-[7.5px] h-64 w-[15px] -translate-x-1/2 rounded-xl bg-blue maxtablet:mt-2 maxtablet:mb-1 maxtablet:ml-0 maxtablet:h-32 maxtablet:w-2"></div>
             </div>
           </div>

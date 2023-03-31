@@ -232,7 +232,7 @@ $hydro: #0f283e;
     @apply maxlabtop:w-auto;
     @apply maxtablet:min-h-0 maxtablet:min-w-0 maxtablet:p-[clamp(12px,2vw,20px)];
     @apply maxtablet:h-[clamp(160px,20vh,300px)] maxtablet:w-[25vw];
-    @apply mobile:h-[150px] mobile:w-[35vw];
+    @apply mobile:h-[140px] mobile:w-[35vw];
     .Icon-text {
       @apply flex w-full items-start justify-start gap-2 text-start;
       .Icon-number {
@@ -242,6 +242,7 @@ $hydro: #0f283e;
       .Icon-info {
         @apply font-libre text-base font-semibold uppercase -tracking-[0.02em] text-white;
         @apply maxtablet:text-[clamp(0.625rem,1.75vw,0.875rem)];
+        @apply mobile:leading-snug;
       }
     }
     .Icon {
@@ -255,12 +256,15 @@ $hydro: #0f283e;
       @apply flex-center z-10 flex-col;
       .Second-text {
         @apply text-40px font-semibold text-blue;
+        @apply maxlabtop:text-[clamp(0.825rem,2vw,1.875rem)] #{!important};
       }
       .Divide-text {
         @apply text-2xl font-semibold text-blue;
+        @apply mobile:text-[clamp(1.075rem,2.5vw,1.875rem)] #{!important};
       }
       .Second-second-text {
         @apply text-center text-3xl font-medium text-orange;
+        @apply maxlabtop:text-[clamp(0.825rem,2vw,1.875rem)] #{!important};
       }
     }
   }
@@ -469,4 +473,8 @@ $hydro: #0f283e;
       }
     }
   }
+}
+
+#Heading-text-turbo {
+  @apply mobile:text-[clamp(1rem,4.5vw,3rem)] #{!important};
 }

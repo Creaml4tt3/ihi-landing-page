@@ -362,13 +362,6 @@ export default function Section01({ changeStage, scrollStage }) {
                   className="Lottie-container maxtablet:!block"
                   ref={solution_01AnimationRef}
                 >
-                  <Lottie
-                    animationData={solution_01_lottie}
-                    className="Lottie-section z-10 mx-auto w-full"
-                    style={{
-                      height: `${window.innerWidth > 1024 ? "620px" : "60vh"}`,
-                    }}
-                  />
                   <section className="Text-section flex-center z-20 !hidden flex-col gap-4 maxtablet:!block">
                     <h2 className="Heading-text text-white">
                       {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_01}
@@ -377,6 +370,13 @@ export default function Section01({ changeStage, scrollStage }) {
                       {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_01}
                     </h2>
                   </section>
+                  <Lottie
+                    animationData={solution_01_lottie}
+                    className="Lottie-section z-10 mx-auto w-full"
+                    style={{
+                      height: `${window.innerWidth > 1024 ? "620px" : "60vh"}`,
+                    }}
+                  />
                 </div>
                 <div
                   className="Player-container hidden maxtablet:!block"
@@ -391,13 +391,6 @@ export default function Section01({ changeStage, scrollStage }) {
                     loop
                     muted
                   /> */}
-                  <Lottie
-                    animationData={solution_02_lottie}
-                    className="Lottie-section z-10 mx-auto w-full"
-                    style={{
-                      height: `${window.innerWidth > 1024 ? "620px" : "60vh"}`,
-                    }}
-                  />
                   <section className="Text-section flex-center z-20 !hidden flex-col gap-4 maxtablet:!block">
                     <h2 className="Heading-text text-white">
                       {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_02}
@@ -408,18 +401,18 @@ export default function Section01({ changeStage, scrollStage }) {
                       {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_02}
                     </h2>
                   </section>
-                </div>
-                <div
-                  className="Lottie-container hidden maxtablet:!block"
-                  ref={solution_03AnimationRef}
-                >
                   <Lottie
-                    animationData={solution_03_lottie}
+                    animationData={solution_02_lottie}
                     className="Lottie-section z-10 mx-auto w-full"
                     style={{
                       height: `${window.innerWidth > 1024 ? "620px" : "60vh"}`,
                     }}
                   />
+                </div>
+                <div
+                  className="Lottie-container hidden maxtablet:!block"
+                  ref={solution_03AnimationRef}
+                >
                   <section className="Text-section flex-center z-20 !hidden flex-col gap-4 maxtablet:!block">
                     <h2 className="Heading-text text-white">
                       {configJSON.CONTENT.PAGE_01.SECTION_02.HEADING_04}
@@ -428,6 +421,13 @@ export default function Section01({ changeStage, scrollStage }) {
                       {configJSON.CONTENT.PAGE_01.SECTION_02.SUB_HEADING_03}
                     </h2>
                   </section>
+                  <Lottie
+                    animationData={solution_03_lottie}
+                    className="Lottie-section z-10 mx-auto w-full"
+                    style={{
+                      height: `${window.innerWidth > 1024 ? "620px" : "60vh"}`,
+                    }}
+                  />
                 </div>
               </div>
             </section>
@@ -669,7 +669,7 @@ export default function Section01({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 04 */}
-        <section className="Page-section relative mt-56 mb-64 flex h-fit flex-col items-center px-desktop pt-[8vh]">
+        <section className="Page-section relative mt-56 mb-64 flex h-fit flex-col items-center px-desktop pt-[8vh] mobile:mt-20">
           <section className="Text-section z-20 flex flex-col gap-4">
             <h2 className="Heading-text text-white">
               {configJSON.CONTENT.PAGE_01.SECTION_04.HEADING_01}
@@ -745,7 +745,7 @@ export default function Section01({ changeStage, scrollStage }) {
           </div>
           <div className="Intersection-container" ref={arrowUpRef}></div>
           <div className="Arrow-down-container maxtablet:w-full">
-            <section className="Text-section z-20 flex flex-col gap-4">
+            <section className="Text-section z-20 flex flex-col gap-4 mobile:mt-8">
               <h2 className="Heading-text text-white">
                 {configJSON.CONTENT.PAGE_01.SECTION_05.HEADING_02}
               </h2>
@@ -769,7 +769,7 @@ export default function Section01({ changeStage, scrollStage }) {
           </div>
         </section>
         {/* //?Page 06 */}
-        <section className="Page-section flex-center relative mt-56 h-fit flex-col gap-7 px-desktop">
+        <section className="Page-section flex-center relative mt-56 h-fit flex-col gap-7 px-desktop mobile:mt-20">
           <div className="Graph-section flex-center gap-16 maxtablet:flex-col">
             <div className="Graph-container">
               <Picture

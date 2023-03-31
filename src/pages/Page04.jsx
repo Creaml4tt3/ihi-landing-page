@@ -688,8 +688,8 @@ export default function Section03({ changeStage, scrollStage }) {
             <Belt />
           </div>
           <div className="Convenient-container relative flex h-fit w-full max-w-1360px flex-col justify-center gap-[60px]">
-            <div className="Line-place pointer-events-none absolute left-0 top-0 h-full w-1/3 border-t-8 border-l-8 border-blue"></div>
-            <section className="Text-section flex-center z-10 -mt-20 w-full flex-col">
+            <div className="Line-place pointer-events-none absolute left-0 top-0 h-full w-1/3 border-t-8 border-l-8 border-blue mobile:w-[25%]"></div>
+            <section className="Text-section flex-center z-10 -mt-20 w-full flex-col mobile:-mt-6">
               <h2 className="Heading-text !w-fit text-blue">
                 {configJSON.CONTENT.PAGE_04.SECTION_05.HEADING_01}
               </h2>
@@ -697,7 +697,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 {configJSON.CONTENT.PAGE_04.SECTION_05.SUB_HEADING_01}
               </h2>
             </section>
-            <div className="Line-place pointer-events-none absolute right-0 top-0 h-full w-1/3 border-t-8 border-r-8 border-blue"></div>
+            <div className="Line-place pointer-events-none absolute right-0 top-0 h-full w-1/3 border-t-8 border-r-8 border-blue mobile:w-[25%]"></div>
             <div className="Slide-track z-50 flex w-full max-w-1360px -translate-x-[32%] justify-between px-10">
               <div className="Slide-container" id="Slide-01">
                 <section className="Text-section flex-center z-10 w-fit flex-col">
