@@ -64,12 +64,14 @@ export default function Section02({ changeStage, scrollStage }) {
   const howRef = useRef(null);
   const howIn = UseIntersectionLoop(howRef, {
     rootMargin: "-100%",
-    threshold: 1,
   });
-  const columnRef = useRef(null);
-  const columnIn = UseIntersectionLoop(columnRef, {
+  const columnRef01 = useRef(null);
+  const columnRef02 = useRef(null);
+  const columnIn01 = UseIntersectionLoop(columnRef01, {
     rootMargin: "-100%",
-    threshold: 1,
+  });
+  const columnIn02 = UseIntersectionLoop(columnRef02, {
+    rootMargin: "-100%",
   });
   const lineRef = useRef(null);
   const lineLottieRef = useRef(null);
@@ -103,20 +105,6 @@ export default function Section02({ changeStage, scrollStage }) {
     rootMargin: "-100%",
     threshold: 1,
   });
-
-  /*   let video_01_playing = false;
-  let video_02_playing = false;
-
-  if (video_01_in) {
-    video_01_playing = true;
-  } else {
-    video_01_playing = false;
-  }
-  if (video_02_in) {
-    video_02_playing = true;
-  } else {
-    video_02_playing = false;
-  } */
 
   const videoIcon = () => {
     return (
@@ -219,11 +207,11 @@ export default function Section02({ changeStage, scrollStage }) {
   });
   const slideUp01 = useSpring({
     config: { duration: duration, easing: easings.easeInOutQuint },
-    to: { y: columnIn ? 0 : 120 },
+    to: { y: columnIn01 ? 0 : 120 },
   });
   const slideUp02 = useSpring({
     config: { duration: duration * 1.5, easing: easings.easeInOutQuint },
-    to: { y: columnIn ? 0 : 215 },
+    to: { y: columnIn02 ? 0 : 215 },
   });
 
   useLayoutEffect(() => {
@@ -598,19 +586,21 @@ export default function Section02({ changeStage, scrollStage }) {
             lazy
           />
           <div className="Player-container z-10 -my-3 mobile:-my-1">
-            {/*  {navigator.userAgent.match(/safari/i) &&
-            window.innerWidth > 1024 ? (
-              <video width="100%" height="auto" loop muted autoPlay>
-                <source src={belt_small_hevc} type="video/mp4"></source>
-              </video>
-            ) : window.innerWidth > 1024 ? (
-              <video width="100%" height="auto" loop muted autoPlay>
-                <source src={belt_small_webm} type="video/webm"></source>
-              </video>
+            {window.innerWidth > 1024 ? (
+              navigator.userAgent.match(/chrome|chromium|crios/i) ? (
+                <video width="100%" height="auto" loop muted autoPlay>
+                  <source src={belt_small_webm} type="video/webm"></source>
+                </video>
+              ) : navigator.userAgent.match(/safari/i) ? (
+                <video width="100%" height="auto" loop muted autoPlay>
+                  <source src={belt_small_hevc} type="video/mp4"></source>
+                </video>
+              ) : (
+                <video width="100%" height="auto" loop muted autoPlay>
+                  <source src={belt_small_webm} type="video/webm"></source>
+                </video>
+              )
             ) : (
-              <></>
-            )}
-            {window.innerWidth <= 1024 && (
               <video
                 width="100%"
                 height="auto"
@@ -623,8 +613,8 @@ export default function Section02({ changeStage, scrollStage }) {
                 <source src={belt_small_webm} type="video/webm"></source>
                 <source src={belt_small_hevc} type="video/mp4"></source>
               </video>
-            )} */}
-            <Belt_small />
+            )}
+            {/* <Belt_small /> */}
           </div>
           <div className="Development relative py-20">
             <section className="Text-section flex-center">
@@ -709,14 +699,15 @@ export default function Section02({ changeStage, scrollStage }) {
         </section>
         {/* //?Page 05 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col pb-20vh">
-          <animated.div className="How-container" ref={howRef} style={popUp}>
+          <div className="Intersection-container" ref={howRef}></div>
+          <animated.div className="How-container-animation" style={popUp}>
             <Picture
               webp={page_02_how_webp}
               normal={page_02_how_png}
               alt="page_02_how_png"
               classpic="Picture-section h-fit"
               classimg="mx-auto z-10 maxlabtop:w-[25vw]"
-              lazy
+              lazy="true"
             />
           </animated.div>
           <section className="Text-section flex-center z-10 flex-col px-desktop">
@@ -730,7 +721,7 @@ export default function Section02({ changeStage, scrollStage }) {
           <Lottie
             animationData={smoke}
             className="Lottie-section z-10"
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: "auto", width: "100%" }}
           />
         </section>
         {/* //?Page 06 */}
@@ -743,10 +734,7 @@ export default function Section02({ changeStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_01}
             </h3>
           </section>
-          <div
-            className="Column-container maxtablet: flex items-end justify-center"
-            ref={columnRef}
-          >
+          <div className="Column-container maxtablet: flex items-end justify-center">
             <div className="Column">
               <section className="Text-section">
                 <h3 className="Second-text">
@@ -763,10 +751,13 @@ export default function Section02({ changeStage, scrollStage }) {
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_03}
                 </h3>
               </section>
-              <animated.div
-                className="Column-line z-20 mx-auto mt-6 h-[120px] w-[200px] bg-orange maxtablet:h-[12vh] maxtablet:w-[20vw]"
-                style={slideUp01}
-              ></animated.div>
+              <div className="Column-line-container mx-auto mt-6 h-[120px] w-[200px] maxtablet:h-[12vh] maxtablet:w-[20vw]">
+                <animated.div
+                  className="Column-line z-20 h-full w-full bg-orange"
+                  style={slideUp01}
+                ></animated.div>
+                <div className="Intersection-continaer" ref={columnRef01}></div>
+              </div>
             </div>
             <div className="Column">
               <section className="Text-section">
@@ -784,10 +775,13 @@ export default function Section02({ changeStage, scrollStage }) {
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_05}
                 </h3>
               </section>
-              <animated.div
-                className="Column-line z-20 mx-auto mt-6 h-[215px] w-[200px] bg-orange maxtablet:h-[20vh] maxtablet:w-[20vw]"
-                style={slideUp02}
-              ></animated.div>
+              <div className="Column-line-container mx-auto mt-6 h-[215px] w-[200px] maxtablet:h-[20vh] maxtablet:w-[20vw]">
+                <animated.div
+                  className="Column-line z-20 h-full w-full bg-orange"
+                  style={slideUp02}
+                ></animated.div>
+                <div className="Intersection-continaer" ref={columnRef02}></div>
+              </div>
             </div>
           </div>
           <div className="Box-container z-20 rounded-full border-[3px] border-dashed border-blue bg-white py-3 px-48 shadow-yblue maxtablet:w-full maxtablet:px-4 mobile:px-2">
@@ -812,6 +806,7 @@ export default function Section02({ changeStage, scrollStage }) {
               muted
               playIcon={videoIcon()}
               controls
+              lazy="true"
             />
             <div className="Intersection-container" ref={video_01_ref}></div>
           </div>
@@ -839,7 +834,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   alt="page_02_boiler_png"
                   classpic="Picture-section h-fit"
                   classimg="z-10 h-auto w-full pl-16 pb-10 -my-[20%] maxtablet:pl-0 maxtablet:-mt-[35%]"
-                  lazy
+                  lazy="true"
                 />
                 <div className="Link-container flex justify-center">
                   <a
@@ -1236,6 +1231,7 @@ export default function Section02({ changeStage, scrollStage }) {
               playIcon={videoIcon()}
               playsinline
               controls
+              lazy
             />
             <div className="Intersection-container" ref={video_02_ref}></div>
           </div>
