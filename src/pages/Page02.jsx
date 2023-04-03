@@ -99,17 +99,24 @@ export default function Section02({ changeStage, scrollStage }) {
     rootMargin: "-100%",
     threshold: 1,
   });
-  const video_02_in = UseIntersectionLoop(video_02_ref, "100%");
+  const video_02_in = UseIntersectionLoop(video_02_ref, {
+    rootMargin: "-100%",
+    threshold: 1,
+  });
 
-  let video_01_playing = false;
+  /*   let video_01_playing = false;
   let video_02_playing = false;
 
   if (video_01_in) {
     video_01_playing = true;
+  } else {
+    video_01_playing = false;
   }
   if (video_02_in) {
     video_02_playing = true;
-  }
+  } else {
+    video_02_playing = false;
+  } */
 
   const videoIcon = () => {
     return (
@@ -800,7 +807,8 @@ export default function Section02({ changeStage, scrollStage }) {
               width="auto"
               height={window.innerWidth <= 1024 ? "20vh" : "550px"}
               /* light={previewVideoURL02} */
-              playing={video_01_playing ? true : false}
+              playing={video_01_in ? true : false}
+              playsinline
               muted
               playIcon={videoIcon()}
               controls
@@ -1223,9 +1231,10 @@ export default function Section02({ changeStage, scrollStage }) {
               width="100%"
               height={window.innerWidth <= 1024 ? "20vh" : "550px"}
               /* light={previewVideoURL02} */
-              playing={video_02_playing ? true : false}
+              playing={video_02_in ? true : false}
               muted
               playIcon={videoIcon()}
+              playsinline
               controls
             />
             <div className="Intersection-container" ref={video_02_ref}></div>

@@ -102,24 +102,24 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     to: { x: lineIn ? "0%" : "-50%" },
   });
   const slideMobile01 = useSpring({
-    config: { duration: duration * 1.25, easing: easings.easeInOutCubic },
-    to: { x: lineMobileIn ? "0%" : "100%" },
+    config: { duration: duration * 0.5, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "50%" },
   });
   const slideMobile02 = useSpring({
-    config: { duration: duration, easing: easings.easeInOutCubic },
-    to: { x: lineMobileIn ? "0%" : "100%" },
+    config: { duration: duration * 0.25, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "50%" },
   });
   const slideMobile03 = useSpring({
-    config: { duration: duration * 1.2, easing: easings.easeInOutCubic },
-    to: { x: lineMobileIn ? "0%" : "100%" },
+    config: { duration: duration * 0.5, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "50%" },
   });
   const slideMobile04 = useSpring({
-    config: { duration: duration, easing: easings.easeInOutCubic },
-    to: { x: lineMobileIn ? "0%" : "100%" },
+    config: { duration: duration * 0.25, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "50%" },
   });
   const slideMobile05 = useSpring({
-    config: { duration: duration * 1.2, easing: easings.easeInOutCubic },
-    to: { x: lineMobileIn ? "0%" : "100%" },
+    config: { duration: duration * 0.5, easing: easings.easeInOutCubic },
+    to: { x: lineMobileIn ? "0%" : "50%" },
   });
 
   const EpidemicListing = () => {
