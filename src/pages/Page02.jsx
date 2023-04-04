@@ -346,7 +346,7 @@ export default function Section02({ changeStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh mobile:pt-[20vh] mobile:pb-[15vh]">
+        <section className="Page-section z-20 -mt-[100vh] h-fit w-full rounded-t-full bg-cream px-desktop pb-30vh pt-40vh mobile:pt-[20vh] mobile:pb-[20vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <span className="Heading-text text-[90px] font-medium text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_01}

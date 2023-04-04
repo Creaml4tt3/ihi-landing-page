@@ -402,7 +402,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-20 -mt-[100vh] h-fit min-h-screen w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh mobile:min-h-0 mobile:py-[15vh]">
+        <section className="Page-section z-20 -mt-[100vh] h-fit min-h-screen w-full rounded-t-full bg-blue px-desktop pb-30vh pt-25vh mobile:min-h-0 mobile:pt-[15vh] mobile:pb-[20vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <Lottie
               animationData={help}
