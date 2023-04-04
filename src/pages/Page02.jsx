@@ -1225,7 +1225,7 @@ export default function Section02({ changeStage, scrollStage }) {
               </div>
             </div>
           </div>
-          <div className="Video-container w-full max-w-1360px !px-desktop pt-44 pb-48 maxlabtop:!px-laptop maxtablet:!px-mobile mobile:px-0 mobile:py-0">
+          <div className="Video-container w-full max-w-1360px !px-desktop pt-44 pb-48 maxlabtop:!px-laptop maxtablet:!px-mobile mobile:px-0 mobile:py-0 mobile:pb-24">
             <ReactPlayer
               className="React-player"
               url={videoURL02}
@@ -1244,15 +1244,15 @@ export default function Section02({ changeStage, scrollStage }) {
         </section>
         {/* //?Page 08 */}
         <section className="Page-section relative z-20 h-fit w-full max-w-1540px flex-col px-desktop pb-25vh">
+          <div className="Intersection-container" ref={lineRef}></div>
           <Lottie
             animationData={line}
             lottieRef={lineLottieRef}
             className="Lottie-section z-10"
-            style={{ height: 560 }}
+            style={{ height: window.innerWidth > 1024 ? 560 : "auto" }}
             autoplay={false}
             loop={false}
           />
-          <div className="Intersection-container" ref={lineRef}></div>
         </section>
         {/* //?Page 0x */}
         {/* <section className="Page-section flex h-[100vh] items-end justify-center"> */}

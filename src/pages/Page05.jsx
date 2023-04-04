@@ -140,7 +140,7 @@ export default function Section05({ changeStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section z-0 -mt-[100vh] h-[100vh] w-full rounded-t-full bg-blue px-desktop pb-30vh pt-30vh mobile:h-fit mobile:pt-[20vh] mobile:pb-[15vh]">
+        <section className="Page-section z-0 -mt-[100vh] h-[100vh] w-full rounded-t-full bg-blue px-desktop pb-30vh pt-30vh mobile:h-fit mobile:pt-[20vh] mobile:pb-[20vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <h1 className="Heading-text !text-[80px] !font-medium text-white">
               {configJSON.CONTENT.PAGE_05.SECTION_01.SUPER_HEADING_01}

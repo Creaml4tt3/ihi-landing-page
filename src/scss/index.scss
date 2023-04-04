@@ -232,12 +232,12 @@ $hydro: #0f283e;
     @apply maxlabtop:w-auto;
     @apply maxtablet:min-h-0 maxtablet:min-w-0 maxtablet:p-[clamp(12px,2vw,20px)];
     @apply maxtablet:h-[clamp(160px,20vh,300px)] maxtablet:w-[25vw];
-    @apply mobile:h-[140px] mobile:w-[35vw];
+    @apply mobile:h-[140px] mobile:w-[37vw];
     .Icon-text {
       @apply flex w-full items-start justify-start gap-2 text-start;
       .Icon-number {
         @apply font-libre text-40px font-medium leading-none text-white;
-        @apply maxlabtop:text-[clamp(0.875rem,2.25vw,1.875rem)];
+        @apply maxlabtop:text-[clamp(1rem,6vw,2rem)];
       }
       .Icon-info {
         @apply font-libre text-base font-semibold uppercase -tracking-[0.02em] text-white;
