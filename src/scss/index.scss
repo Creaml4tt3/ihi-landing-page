@@ -68,7 +68,7 @@ $hydro: #0f283e;
     @apply w-full;
     .Heading-text {
       @apply w-full text-center text-6xl font-semibold leading-snug;
-      @apply maxlabtop:text-[clamp(1.5rem,3.75vw,2.75rem)] maxlabtop:leading-tight #{!important};
+      @apply maxlabtop:text-[clamp(1.375rem,3.75vw,2.75rem)] maxlabtop:leading-tight #{!important};
     }
     .Sub-heading-text {
       @apply w-full text-center text-5xl font-medium leading-snug;
@@ -424,9 +424,6 @@ $hydro: #0f283e;
           @apply text-2xl font-normal text-orange;
           @apply maxlabtop:text-[clamp(1rem,1.875vw,1.25rem)] #{!important};
           @apply mobile:text-center;
-        }
-        #Grid-sub-upper-text-05 {
-          @apply mobile:text-[clamp(1rem,4.75vw,1.25rem)]  #{!important};
         }
       }
     }
