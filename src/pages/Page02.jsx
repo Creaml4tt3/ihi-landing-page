@@ -648,7 +648,7 @@ export default function Section02({ changeStage, scrollStage }) {
                   normal={icon_01_png}
                   alt="icon_01_png"
                   classpic="Picture-section h-fit"
-                  classimg="mx-auto z-10"
+                  classimg="mx-auto z-10 mobile:w-[75%]"
                   lazy
                 />
               </div>
