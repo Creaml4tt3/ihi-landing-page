@@ -373,6 +373,8 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
   const Br = () => {
     if (window.innerWidth > 1024) {
       return <br></br>;
+    } else {
+      return " ";
     }
   };
 
@@ -1525,7 +1527,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
                       .SUB_UPPER_TEXT_01
                   }
-                  <Br />
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_03.SECTION_05.GRID.GIRD_05
                       .SUB_UPPER_TEXT_02

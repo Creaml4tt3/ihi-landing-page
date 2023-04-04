@@ -57,6 +57,8 @@ export default function Section05({ changeStage }) {
   const Br = () => {
     if (window.innerWidth > 1024) {
       return <br></br>;
+    } else {
+      return " ";
     }
   };
 
