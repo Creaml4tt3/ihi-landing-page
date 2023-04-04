@@ -168,6 +168,8 @@ export default function Section02({ changeStage, scrollStage }) {
       setTimeout(() => {
         pageWrapper.scrollTop = pageWrapper.scrollHeight - 1500;
       }, 10);
+    } else {
+      pageWrapper.scrollTop = 10;
     }
 
     pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
@@ -751,12 +753,14 @@ export default function Section02({ changeStage, scrollStage }) {
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_03}
                 </h3>
               </section>
-              <div className="Column-line-container mx-auto mt-6 h-[120px] w-[200px] maxtablet:h-[12vh] maxtablet:w-[20vw]">
+              <div
+                className="Column-line-container mx-auto mt-6 h-[120px] w-[200px] maxtablet:h-[12vh] maxtablet:w-[20vw]"
+                ref={columnRef01}
+              >
                 <animated.div
                   className="Column-line z-20 h-full w-full bg-orange"
                   style={slideUp01}
                 ></animated.div>
-                <div className="Intersection-continaer" ref={columnRef01}></div>
               </div>
             </div>
             <div className="Column">
@@ -775,12 +779,14 @@ export default function Section02({ changeStage, scrollStage }) {
                   {configJSON.CONTENT.PAGE_02.SECTION_06.SUB_TEXT_05}
                 </h3>
               </section>
-              <div className="Column-line-container mx-auto mt-6 h-[215px] w-[200px] maxtablet:h-[20vh] maxtablet:w-[20vw]">
+              <div
+                className="Column-line-container mx-auto mt-6 h-[215px] w-[200px] maxtablet:h-[20vh] maxtablet:w-[20vw]"
+                ref={columnRef02}
+              >
                 <animated.div
                   className="Column-line z-20 h-full w-full bg-orange"
                   style={slideUp02}
                 ></animated.div>
-                <div className="Intersection-continaer" ref={columnRef02}></div>
               </div>
             </div>
           </div>
@@ -1263,7 +1269,7 @@ export default function Section02({ changeStage, scrollStage }) {
         {/* </section> */}
         {/* //?Section Tablet & Mobile */}
         {window.innerWidth <= 1024 && (
-          <section className="Hold-scroll-section h-[20vh]"></section>
+          <section className="Hold-scroll-section h-[50vh]"></section>
         )}
       </div>
       {/* //?Main - Ending */}

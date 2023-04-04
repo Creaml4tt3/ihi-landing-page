@@ -40,6 +40,8 @@ export default function Section05({ changeStage }) {
   useEffect(() => {
     let pageWrapper = document.querySelector(".Page-inner-wrap");
 
+    pageWrapper.scrollTop = 10;
+
     pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
     pageWrapper.addEventListener("scroll", (e) => handleScroll(pageWrapper));
     return () => {
@@ -154,7 +156,7 @@ export default function Section05({ changeStage }) {
           </section>
         </section>
         {/* //?Page 02 */}
-        <section className="Page-section z-0 h-fit w-full bg-blue px-desktop pb-25vh pt-25vh mobile:pb-[15vh] mobile:pt-[10vh]">
+        <section className="Page-section z-0 h-fit w-full bg-blue px-desktop pb-25vh pt-25vh mobile:pt-[10vh]">
           <section className="Text-section flex-center z-10 flex-col gap-4">
             <h2 className="Heading-text !font-medium text-white">
               {configJSON.CONTENT.PAGE_05.SECTION_02.HEADING_01}
@@ -170,7 +172,7 @@ export default function Section05({ changeStage }) {
         </section>
         {/* //?Page Wrap */}
         <section className="Page-section-wrapper relative h-fit overflow-hidden rounded-t-full bg-cream">
-          <div className="Laef-container pointer-events-none absolute left-0 bottom-0 z-20 maxlabtop:top-auto maxtablet:h-auto mobile:bottom-[15%]">
+          <div className="Laef-container pointer-events-none absolute left-0 bottom-0 z-20 maxlabtop:top-auto maxtablet:h-auto mobile:bottom-[15%] ">
             {/* <ReactPlayer
               className="React-player max-h-full"
               url={laef_webm}

@@ -354,6 +354,8 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
       setTimeout(() => {
         pageWrapper.scrollTop = pageWrapper.scrollHeight - 1500;
       }, 10);
+    } else {
+      pageWrapper.scrollTop = 10;
     }
 
     pageWrapper.addEventListener("wheel", (e) => handleWheel(e, pageWrapper));
