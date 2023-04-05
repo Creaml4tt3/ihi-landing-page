@@ -257,11 +257,11 @@ $hydro: #0f283e;
       @apply flex-center z-10 flex-col;
       .Second-text {
         @apply text-40px font-semibold text-blue;
-        @apply maxlabtop:text-[clamp(0.65rem,2vw,1.875rem)] #{!important};
+        @apply maxlabtop:text-[clamp(0.9rem,2vw,1.875rem)] #{!important};
       }
       .Divide-text {
         @apply text-2xl font-semibold text-blue;
-        @apply mobile:text-[clamp(0.7rem,2vw,1.875rem)] #{!important};
+        @apply mobile:text-[clamp(0.6rem,2vw,1.875rem)] #{!important};
       }
       .Second-second-text {
         @apply text-center text-3xl font-medium text-orange;
@@ -485,7 +485,7 @@ $hydro: #0f283e;
 }
 
 #Special-heading-02 {
-  @apply mobile:text-[clamp(1.345rem,3.75vw,2.75rem)] #{!important};
+  @apply mobile:text-[clamp(1.31rem,3.5vw,2.75rem)] #{!important};
 }
 
 #Special-heading-03 {

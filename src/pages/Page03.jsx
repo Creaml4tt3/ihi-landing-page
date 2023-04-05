@@ -370,11 +370,13 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
     };
   }, []);
 
-  const Br = () => {
+  const Br = ({ isNonActive }) => {
     if (window.innerWidth > 1024) {
       return <br></br>;
     } else {
-      return " ";
+      if (!isNonActive) {
+        return " ";
+      }
     }
   };
 
@@ -802,7 +804,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                             configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                               .TEXT_01.DESCRIPTION_TEXT_01
                           }
-                          <Br />
+                          <Br isNonActive />
                           {
                             configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                               .TEXT_01.DESCRIPTION_TEXT_02
@@ -1148,7 +1150,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
             <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col mobile:mt-16 mobile:mb-44">
               <h2 className="Heading-text text-white" id="Special-heading-01">
                 {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
-                <Br />
+                <br />
                 {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_03}
               </h2>
               <h2 className="Sub-heading-text z-10 text-[45px] text-orange">

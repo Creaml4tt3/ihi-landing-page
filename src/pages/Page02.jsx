@@ -279,11 +279,13 @@ export default function Section02({ changeStage, scrollStage }) {
     return () => ctx.revert(); // cleanup
   }, [beltIn]); // <- empty dependency Array so it doesn't re-run on every render
 
-  const Br = () => {
+  const Br = ({ isNonActive }) => {
     if (window.innerWidth > 1024) {
       return <br></br>;
     } else {
-      return " ";
+      if (!isNonActive) {
+        return " ";
+      }
     }
   };
 
@@ -391,7 +393,7 @@ export default function Section02({ changeStage, scrollStage }) {
             </span>
             <h3 className="Second-text text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_02.TEXT_01}
-              <Br />
+              <Br isNonActive />
               {configJSON.CONTENT.PAGE_02.SECTION_02.TEXT_02}
               <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_02.TEXT_03}
@@ -746,7 +748,7 @@ export default function Section02({ changeStage, scrollStage }) {
               <section className="Text-section">
                 <h3 className="Second-text">
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_02}
-                  <br />
+                  <Br />
                   {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_03}
                 </h3>
                 <h4 className="Divide-text">
