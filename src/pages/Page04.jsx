@@ -943,7 +943,10 @@ export default function Section03({ changeStage, scrollStage }) {
                   lazy
                 />
                 <section className="Text-section z-20 hidden flex-col items-center justify-center gap-4 maxtablet:!flex">
-                  <h2 className="Heading-text text-center text-blue">
+                  <h2
+                    className="Heading-text text-center text-blue"
+                    id="Special-heading-02"
+                  >
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
                     <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
@@ -984,7 +987,7 @@ export default function Section03({ changeStage, scrollStage }) {
                 <section className="Text-section z-20 hidden flex-col items-center justify-center gap-4 maxtablet:!block">
                   <h2 className="Heading-text text-center text-blue">
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_01}
-                    <Br />
+                    <br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_03.TITLE_02}
                   </h2>
                   <h2 className="Sub-heading-text text-center text-orange">

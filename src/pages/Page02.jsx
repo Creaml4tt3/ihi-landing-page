@@ -731,7 +731,10 @@ export default function Section02({ changeStage, scrollStage }) {
         {/* //?Page 06 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 mb-10 flex-col">
-            <h3 className="Second-text font-semibold text-blue">
+            <h3
+              className="Second-text font-semibold text-blue"
+              id="Special-heading-03"
+            >
               {configJSON.CONTENT.PAGE_02.SECTION_06.TEXT_01}
             </h3>
             <h3 className="Second-sub-text font-medium text-orange">
@@ -1092,12 +1095,12 @@ export default function Section02({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_01
                   }
-                  <Br />
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_02
                   }
-                  <Br />
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_02.SECTION_07.ICON_SHOW.ICON_06
                       .ICON_HEADING_03

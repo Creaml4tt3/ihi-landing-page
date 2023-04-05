@@ -261,7 +261,7 @@ $hydro: #0f283e;
       }
       .Divide-text {
         @apply text-2xl font-semibold text-blue;
-        @apply mobile:text-[clamp(0.875rem,2.5vw,1.875rem)] #{!important};
+        @apply mobile:text-[clamp(0.7rem,2vw,1.875rem)] #{!important};
       }
       .Second-second-text {
         @apply text-center text-3xl font-medium text-orange;
@@ -478,4 +478,24 @@ $hydro: #0f283e;
 
 #Heading-text-turbo {
   @apply mobile:text-[clamp(1rem,4.5vw,3rem)] #{!important};
+}
+
+#Special-heading-01 {
+  @apply mobile:text-[clamp(1.345rem,3.75vw,2.75rem)] #{!important};
+}
+
+#Special-heading-02 {
+  @apply mobile:text-[clamp(1.345rem,3.75vw,2.75rem)] #{!important};
+}
+
+#Special-heading-03 {
+  @apply mobile:text-[clamp(1.35rem,3vw,2rem)] #{!important};
+}
+
+#Special-heading-04 {
+  @apply mobile:text-[clamp(1.3rem,3.75vw,2.75rem)] mobile:leading-normal #{!important};
+}
+
+#Special-heading-05 {
+  @apply mobile:text-[clamp(1.5rem,3.75vw,2.75rem)] #{!important};
 }

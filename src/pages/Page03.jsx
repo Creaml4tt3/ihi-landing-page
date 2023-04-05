@@ -1147,7 +1147,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
             </a>
           </div> */}
           <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col mobile:mt-16 mobile:mb-44">
-            <h2 className="Heading-text text-white">
+            <h2 className="Heading-text text-white" id="Special-heading-01">
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
               <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_03}
