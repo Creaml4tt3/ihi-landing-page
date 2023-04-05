@@ -591,7 +591,10 @@ export default function Section03({ changeStage, scrollStage }) {
         {/* //?Page 04 */}
         <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 flex-col py-25vh">
-            <h2 className="Heading-text text-center text-blue">
+            <h2
+              className="Heading-text text-center text-blue"
+              id="Special-heading-08"
+            >
               {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_01}
               <Br />
               {configJSON.CONTENT.PAGE_04.SECTION_04.HEADING_02}
@@ -620,7 +623,7 @@ export default function Section03({ changeStage, scrollStage }) {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .HEADING_01
                   }
-                  <Br />
+                  <br />
                   {
                     configJSON.CONTENT.PAGE_04.SECTION_04.ROW_CONTAINER.ROW_01
                       .HEADING_02

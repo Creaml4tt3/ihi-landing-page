@@ -208,40 +208,40 @@ export default function Section05({ changeStage }) {
                 {configJSON.CONTENT.PAGE_05.SECTION_03.SUB_HEADING_03}
               </h2>
             </section>
-          </section>
-          {/* //?Page 04 */}
-          <section className="Page-section z-0 h-fit w-full bg-cream px-desktop pt-20vh pb-20vh mobile:pt-0">
-            <section className="Text-section flex-center z-10 flex-col gap-2">
-              <h2 className="Heading-text z-30 !font-bold text-blue">
-                {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}
-                <Br />
-                {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_02}
-              </h2>
-              <h2 className="Sub-heading-text z-30 text-orange">
-                {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_01}
-                <Br />
-                {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_02}
-              </h2>
-            </section>
-            <div className="Link-container flex-center pt-8">
-              <a
-                href={configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
-                className="Link !font-medium !text-blue"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
-              </a>
-            </div>
-            {/* //?Page 05 */}
-            <section className="Page-section flex-center z-40 h-fit w-full bg-cream px-desktop pb-[30vh] pt-[50vh]">
-              <Picture
-                webp={ihi_logo_webp}
-                normal={ihi_logo_png}
-                alt="ihi_logo_png"
-                classpic="Picture-section z-40"
-                classimg="mx-auto w-full h-auto max-w-[40vw]"
-              />
+            {/* //?Page 04 */}
+            <section className="Page-section z-0 h-fit w-full bg-cream pt-25vh pb-20vh mobile:pb-0">
+              <section className="Text-section flex-center z-10 flex-col gap-2">
+                <h2 className="Heading-text z-30 !font-bold text-blue">
+                  {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_01}
+                  <Br />
+                  {configJSON.CONTENT.PAGE_05.SECTION_04.HEADING_02}
+                </h2>
+                <h2 className="Sub-heading-text z-30 text-orange">
+                  {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_01}
+                  <Br />
+                  {configJSON.CONTENT.PAGE_05.SECTION_04.SUB_HEADING_02}
+                </h2>
+              </section>
+              <div className="Link-container flex-center pt-8">
+                <a
+                  href={configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
+                  className="Link !font-medium !text-blue"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {configJSON.CONTENT.PAGE_05.SECTION_04.LINK_01}
+                </a>
+              </div>
+              {/* //?Page 05 */}
+              <section className="Page-section flex-center z-40 h-fit w-full bg-cream pb-[25vh] pt-[50vh]">
+                <Picture
+                  webp={ihi_logo_webp}
+                  normal={ihi_logo_png}
+                  alt="ihi_logo_png"
+                  classpic="Picture-section z-40"
+                  classimg="mx-auto w-full h-auto max-w-[40vw]"
+                />
+              </section>
             </section>
           </section>
         </section>

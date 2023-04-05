@@ -353,7 +353,7 @@ export default function Section02({ changeStage, scrollStage }) {
             <span className="Heading-text text-[90px] font-medium text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_01}
             </span>
-            <h1 className="Heading-text text-blue">
+            <h1 className="Heading-text text-blue" id="Special-heading-06">
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_02}
               <Br />
               {configJSON.CONTENT.PAGE_02.SECTION_01.HEADING_03}

@@ -413,7 +413,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               height={"auto"}
               className="Lottie z-20 maxtablet:w-[50vw]"
             />
-            <h1 className="Heading-text text-white">
+            <h1 className="Heading-text text-white" id="Special-heading-07">
               {configJSON.CONTENT.PAGE_03.SECTION_01.HEADING_01}
               <Br />
               {configJSON.CONTENT.PAGE_03.SECTION_01.HEADING_02}
@@ -426,359 +426,43 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_01.SUB_HEADING_02}
             </h2>
           </section>
-        </section>
-        {/* //?Page 02 */}
-        <section className="Page-section flex-center z-20 h-fit w-full flex-col px-desktop mobile:bg-blue">
-          <section className="Text-section flex-center z-10 flex-col ">
-            <h2 className="Heading-text text-white">
-              {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_01}
-            </h2>
-            <h2 className="Sub-heading-text z-10 text-orange">
-              {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_01}
-            </h2>
-          </section>
-          <div className="Column-container relative flex h-fit w-full max-w-1400px pt-20vh pb-15vh maxtablet:flex-col mobile:py-[10vh]">
-            <div className="Column-text relative flex h-[calc(650px*6)] w-3/5 flex-col items-start gap-52 maxtablet:hidden">
-              <div
-                className="Section-action-container pointer-events-none absolute top-0 h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
-                ref={person01Ref}
-              ></div>
-              <div
-                className="Section-action-container pointer-events-none absolute top-[calc(650px*1)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
-                ref={person02Ref}
-              ></div>
-              <div
-                className="Section-action-container pointer-events-none absolute top-[calc(650px*2)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
-                ref={person03Ref}
-              ></div>
-              <div
-                className="Section-action-container pointer-events-none absolute top-[calc(650px*3)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
-                ref={person04Ref}
-              ></div>
-              <div
-                className="Section-action-container pointer-events-none absolute top-[calc(650px*4)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
-                ref={person05Ref}
-              ></div>
-              <div className="All-text-section sticky top-twenty h-fit maxtablet:static">
+          {/* //?Page 02 */}
+          <section className="Page-section flex-center z-20 h-fit w-full flex-col pt-[25vh] mobile:bg-blue">
+            <section className="Text-section flex-center z-10 flex-col ">
+              <h2 className="Heading-text text-white">
+                {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_01}
+              </h2>
+              <h2 className="Sub-heading-text z-10 text-orange">
+                {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_01}
+              </h2>
+            </section>
+            <div className="Column-container relative flex h-fit w-full max-w-1400px pt-20vh pb-15vh maxtablet:flex-col mobile:py-[10vh]">
+              <div className="Column-text relative flex h-[calc(650px*6)] w-3/5 flex-col items-start gap-52 maxtablet:hidden">
                 <div
-                  className="Column-inside maxtablet:!hidden"
-                  id="Column-inside-01"
-                  ref={person01TextRef}
-                >
-                  <section className="Text-section">
-                    <span className="Upper-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .UPPER_TEXT
-                      }
-                    </span>
-                    <h2 className="Title-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .TITLE_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .TITLE_TEXT_02
-                      }
-                    </h2>
-                    <span className="Description-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .DESCRIPTION_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .DESCRIPTION_TEXT_02
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .DESCRIPTION_TEXT_03
-                      }
-                    </span>
-                    <span className="Sub-description-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .SUB_DESCRIPTION_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .SUB_DESCRIPTION_TEXT_02
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .SUB_DESCRIPTION_TEXT_03
-                      }
-                    </span>
-                  </section>
-                </div>
+                  className="Section-action-container pointer-events-none absolute top-0 h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
+                  ref={person01Ref}
+                ></div>
                 <div
-                  className="Column-inside hidden maxtablet:!hidden"
-                  id="Column-inside-02"
-                  ref={person02TextRef}
-                >
-                  <section className="Text-section">
-                    <span className="Upper-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .UPPER_TEXT
-                      }
-                    </span>
-                    <h2 className="Title-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .TITLE_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .TITLE_TEXT_02
-                      }
-                    </h2>
-                    <span className="Description-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .DESCRIPTION_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .DESCRIPTION_TEXT_02
-                      }
-                    </span>
-                    <span className="Sub-description-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .SUB_DESCRIPTION_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .SUB_DESCRIPTION_TEXT_02
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_02
-                          .SUB_DESCRIPTION_TEXT_03
-                      }
-                    </span>
-                  </section>
-                </div>
+                  className="Section-action-container pointer-events-none absolute top-[calc(650px*1)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
+                  ref={person02Ref}
+                ></div>
                 <div
-                  className="Column-inside hidden maxtablet:!hidden"
-                  id="Column-inside-03"
-                  ref={person03TextRef}
-                >
-                  <section className="Text-section">
-                    <span className="Upper-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_03
-                          .UPPER_TEXT
-                      }
-                    </span>
-                    <h2 className="Title-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_03
-                          .TITLE_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_03
-                          .TITLE_TEXT_02
-                      }
-                    </h2>
-                    <span className="Description-text">
-                      <ul className="List-container">
-                        <li className="List-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_03.DESCRIPTION_TEXT_01
-                            }
-                          </span>
-                        </li>
-                        <li className="List-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_03.DESCRIPTION_TEXT_02
-                            }
-                          </span>
-                        </li>
-                        <li className="List-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_03.DESCRIPTION_TEXT_03
-                            }
-                          </span>
-                        </li>
-                      </ul>
-                    </span>
-                    <span className="Sub-description-text">
-                      <ul className="Sub-list-container">
-                        <li className="Sub-list-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_03.SUB_DESCRIPTION_TEXT_01
-                            }
-                          </span>
-                        </li>
-                        <li className="Sub-list-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_03.SUB_DESCRIPTION_TEXT_02
-                            }
-                          </span>
-                        </li>
-                        <li className="Sub-list-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_03.SUB_DESCRIPTION_TEXT_03
-                            }
-                          </span>
-                        </li>
-                      </ul>
-                    </span>
-                  </section>
-                </div>
+                  className="Section-action-container pointer-events-none absolute top-[calc(650px*2)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
+                  ref={person03Ref}
+                ></div>
                 <div
-                  className="Column-inside hidden maxtablet:!hidden"
-                  id="Column-inside-04"
-                  ref={person04TextRef}
-                >
-                  <section className="Text-section">
-                    <span className="Upper-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_04
-                          .UPPER_TEXT
-                      }
-                    </span>
-                    <h2 className="Title-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_04
-                          .TITLE_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_04
-                          .TITLE_TEXT_02
-                      }
-                    </h2>
-                    <span className="Description-text">
-                      <ul className="List-container">
-                        <li className="List-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_04.DESCRIPTION_TEXT_01
-                            }
-                          </span>
-                        </li>
-                        <li className="List-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_04.DESCRIPTION_TEXT_02
-                            }
-                          </span>
-                        </li>
-                      </ul>
-                    </span>
-                    <span className="Sub-description-text">
-                      <ul className="Sub-list-container">
-                        <li className="Sub-list-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_04.SUB_DESCRIPTION_TEXT_01
-                            }
-                          </span>
-                        </li>
-                        <li className="Sub-list-text">
-                          <span className="Base-text">
-                            {
-                              configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
-                                .TEXT_04.SUB_DESCRIPTION_TEXT_02
-                            }
-                          </span>
-                        </li>
-                      </ul>
-                    </span>
-                  </section>
-                </div>
+                  className="Section-action-container pointer-events-none absolute top-[calc(650px*3)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
+                  ref={person04Ref}
+                ></div>
                 <div
-                  className="Column-inside hidden maxtablet:!hidden"
-                  id="Column-inside-05"
-                  ref={person05TextRef}
-                >
-                  <section className="Text-section">
-                    <span className="Upper-text">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_01
-                          .UPPER_TEXT
-                      }
-                    </span>
-                    <h2 className="Title-text !text-5xl !leading-snug">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
-                          .TITLE_TEXT_01
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
-                          .TITLE_TEXT_02
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
-                          .TITLE_TEXT_03
-                      }
-                    </h2>
-                    <h2 className="Title-text !text-5xl !leading-[1.1em] tracking-tight">
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
-                          .TITLE_TEXT_04
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
-                          .TITLE_TEXT_05
-                      }
-                      <Br />
-                      {
-                        configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW.TEXT_05
-                          .TITLE_TEXT_06
-                      }
-                    </h2>
-                  </section>
-                </div>
-              </div>
-            </div>
-            <div className="Column-animation z-20 flex h-auto w-2/5 justify-center maxtablet:w-full">
-              <div className="Column-lottie sticky top-twenty h-fit maxtablet:static maxtablet:flex maxtablet:flex-col maxtablet:gap-[10vh]">
-                <div
-                  className="Lottie-container maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
-                  ref={person01AnimationRef}
-                >
-                  <Lottie
-                    animationData={person01}
-                    lottieRef={person01LottieRef}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[40vw]"
-                    style={{ height: "auto" }}
-                    loop={true}
-                  />
+                  className="Section-action-container pointer-events-none absolute top-[calc(650px*4)] h-[650px] w-full maxtablet:!static maxtablet:!h-fit"
+                  ref={person05Ref}
+                ></div>
+                <div className="All-text-section sticky top-twenty h-fit maxtablet:static">
                   <div
-                    className="Column-inside !hidden maxtablet:!flex"
-                    id="Column-mobile-inside-01"
+                    className="Column-inside maxtablet:!hidden"
+                    id="Column-inside-01"
+                    ref={person01TextRef}
                   >
                     <section className="Text-section">
                       <span className="Upper-text">
@@ -792,7 +476,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_01.TITLE_TEXT_02
@@ -832,20 +516,10 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                       </span>
                     </section>
                   </div>
-                </div>
-                <div
-                  className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
-                  ref={person02AnimationRef}
-                >
-                  <Lottie
-                    animationData={person02}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[30vw]"
-                    style={{ height: "auto" }}
-                    loop={true}
-                  />
                   <div
-                    className="Column-inside !hidden maxtablet:!flex"
-                    id="Column-mobile-inside-02"
+                    className="Column-inside hidden maxtablet:!hidden"
+                    id="Column-inside-02"
+                    ref={person02TextRef}
                   >
                     <section className="Text-section">
                       <span className="Upper-text">
@@ -859,7 +533,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_02.TITLE_TEXT_02
@@ -894,20 +568,10 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                       </span>
                     </section>
                   </div>
-                </div>
-                <div
-                  className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
-                  ref={person03AnimationRef}
-                >
-                  <Lottie
-                    animationData={person03}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[30vw]"
-                    style={{ height: "auto" }}
-                    loop={true}
-                  />
                   <div
-                    className="Column-inside !hidden maxtablet:!flex"
-                    id="Column-mobile-inside-03"
+                    className="Column-inside hidden maxtablet:!hidden"
+                    id="Column-inside-03"
+                    ref={person03TextRef}
                   >
                     <section className="Text-section">
                       <span className="Upper-text">
@@ -921,7 +585,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_03.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_03.TITLE_TEXT_02
@@ -985,20 +649,10 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                       </span>
                     </section>
                   </div>
-                </div>
-                <div
-                  className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
-                  ref={person04AnimationRef}
-                >
-                  <Lottie
-                    animationData={person04}
-                    className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[50vw]"
-                    style={{ height: "auto" }}
-                    loop={true}
-                  />
                   <div
-                    className="Column-inside !hidden maxtablet:!flex"
-                    id="Column-mobile-inside-04"
+                    className="Column-inside hidden maxtablet:!hidden"
+                    id="Column-inside-04"
+                    ref={person04TextRef}
                   >
                     <section className="Text-section">
                       <span className="Upper-text">
@@ -1012,7 +666,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_04.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_04.TITLE_TEXT_02
@@ -1060,20 +714,10 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                       </span>
                     </section>
                   </div>
-                </div>
-                <div
-                  className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
-                  ref={person05AnimationRef}
-                >
-                  <Lottie
-                    animationData={person05}
-                    className="Lottie-section z-20 mx-auto w-full py-10vh maxtablet:!w-[50vw]"
-                    style={{ height: "auto" }}
-                    loop={true}
-                  />
                   <div
-                    className="Column-inside !hidden maxtablet:!flex"
-                    id="Column-mobile-inside-05"
+                    className="Column-inside hidden maxtablet:!hidden"
+                    id="Column-inside-05"
+                    ref={person05TextRef}
                   >
                     <section className="Text-section">
                       <span className="Upper-text">
@@ -1087,12 +731,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_01
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_02
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_03
@@ -1103,12 +747,12 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_04
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_05
                         }
-                        <br></br>
+                        <Br />
                         {
                           configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
                             .TEXT_05.TITLE_TEXT_06
@@ -1116,24 +760,379 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                       </h2>
                     </section>
                   </div>
+                </div>
+              </div>
+              <div className="Column-animation z-20 flex h-auto w-2/5 justify-center maxtablet:w-full">
+                <div className="Column-lottie sticky top-twenty h-fit maxtablet:static maxtablet:flex maxtablet:flex-col maxtablet:gap-[10vh]">
                   <div
-                    className="Link-container absolute right-full -bottom-20 flex w-full translate-x-[25%] justify-center maxlabtop:-bottom-[15vh] maxtablet:static maxtablet:mt-10 maxtablet:translate-x-0"
-                    ref={linkColumnRef}
+                    className="Lottie-container maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
+                    ref={person01AnimationRef}
                   >
-                    <a
-                      href={configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
-                      className="Link"
-                      target="_blank"
-                      rel="noreferrer"
+                    <Lottie
+                      animationData={person01}
+                      lottieRef={person01LottieRef}
+                      className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[40vw]"
+                      style={{ height: "auto" }}
+                      loop={true}
+                    />
+                    <div
+                      className="Column-inside !hidden maxtablet:!flex"
+                      id="Column-mobile-inside-01"
                     >
-                      {configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
-                    </a>
+                      <section className="Text-section">
+                        <span className="Upper-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.UPPER_TEXT
+                          }
+                        </span>
+                        <h2 className="Title-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.TITLE_TEXT_01
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.TITLE_TEXT_02
+                          }
+                        </h2>
+                        <span className="Description-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.DESCRIPTION_TEXT_01
+                          }
+                          <Br />
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.DESCRIPTION_TEXT_02
+                          }
+                          <Br />
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.DESCRIPTION_TEXT_03
+                          }
+                        </span>
+                        <span className="Sub-description-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.SUB_DESCRIPTION_TEXT_01
+                          }
+                          <Br />
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.SUB_DESCRIPTION_TEXT_02
+                          }
+                          <Br />
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.SUB_DESCRIPTION_TEXT_03
+                          }
+                        </span>
+                      </section>
+                    </div>
+                  </div>
+                  <div
+                    className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
+                    ref={person02AnimationRef}
+                  >
+                    <Lottie
+                      animationData={person02}
+                      className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[30vw]"
+                      style={{ height: "auto" }}
+                      loop={true}
+                    />
+                    <div
+                      className="Column-inside !hidden maxtablet:!flex"
+                      id="Column-mobile-inside-02"
+                    >
+                      <section className="Text-section">
+                        <span className="Upper-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.UPPER_TEXT
+                          }
+                        </span>
+                        <h2 className="Title-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.TITLE_TEXT_01
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.TITLE_TEXT_02
+                          }
+                        </h2>
+                        <span className="Description-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.DESCRIPTION_TEXT_01
+                          }
+                          <Br />
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.DESCRIPTION_TEXT_02
+                          }
+                        </span>
+                        <span className="Sub-description-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.SUB_DESCRIPTION_TEXT_01
+                          }
+                          <Br />
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.SUB_DESCRIPTION_TEXT_02
+                          }
+                          <Br />
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_02.SUB_DESCRIPTION_TEXT_03
+                          }
+                        </span>
+                      </section>
+                    </div>
+                  </div>
+                  <div
+                    className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
+                    ref={person03AnimationRef}
+                  >
+                    <Lottie
+                      animationData={person03}
+                      className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[30vw]"
+                      style={{ height: "auto" }}
+                      loop={true}
+                    />
+                    <div
+                      className="Column-inside !hidden maxtablet:!flex"
+                      id="Column-mobile-inside-03"
+                    >
+                      <section className="Text-section">
+                        <span className="Upper-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_03.UPPER_TEXT
+                          }
+                        </span>
+                        <h2 className="Title-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_03.TITLE_TEXT_01
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_03.TITLE_TEXT_02
+                          }
+                        </h2>
+                        <span className="Description-text">
+                          <ul className="List-container">
+                            <li className="List-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_03.DESCRIPTION_TEXT_01
+                                }
+                              </span>
+                            </li>
+                            <li className="List-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_03.DESCRIPTION_TEXT_02
+                                }
+                              </span>
+                            </li>
+                            <li className="List-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_03.DESCRIPTION_TEXT_03
+                                }
+                              </span>
+                            </li>
+                          </ul>
+                        </span>
+                        <span className="Sub-description-text">
+                          <ul className="Sub-list-container">
+                            <li className="Sub-list-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_03.SUB_DESCRIPTION_TEXT_01
+                                }
+                              </span>
+                            </li>
+                            <li className="Sub-list-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_03.SUB_DESCRIPTION_TEXT_02
+                                }
+                              </span>
+                            </li>
+                            <li className="Sub-list-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_03.SUB_DESCRIPTION_TEXT_03
+                                }
+                              </span>
+                            </li>
+                          </ul>
+                        </span>
+                      </section>
+                    </div>
+                  </div>
+                  <div
+                    className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
+                    ref={person04AnimationRef}
+                  >
+                    <Lottie
+                      animationData={person04}
+                      className="Lottie-section z-20 mx-auto w-full maxtablet:!w-[50vw]"
+                      style={{ height: "auto" }}
+                      loop={true}
+                    />
+                    <div
+                      className="Column-inside !hidden maxtablet:!flex"
+                      id="Column-mobile-inside-04"
+                    >
+                      <section className="Text-section">
+                        <span className="Upper-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_04.UPPER_TEXT
+                          }
+                        </span>
+                        <h2 className="Title-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_04.TITLE_TEXT_01
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_04.TITLE_TEXT_02
+                          }
+                        </h2>
+                        <span className="Description-text">
+                          <ul className="List-container">
+                            <li className="List-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_04.DESCRIPTION_TEXT_01
+                                }
+                              </span>
+                            </li>
+                            <li className="List-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_04.DESCRIPTION_TEXT_02
+                                }
+                              </span>
+                            </li>
+                          </ul>
+                        </span>
+                        <span className="Sub-description-text">
+                          <ul className="Sub-list-container">
+                            <li className="Sub-list-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_04.SUB_DESCRIPTION_TEXT_01
+                                }
+                              </span>
+                            </li>
+                            <li className="Sub-list-text">
+                              <span className="Base-text">
+                                {
+                                  configJSON.CONTENT.PAGE_03.SECTION_02
+                                    .TEXT_SHOW.TEXT_04.SUB_DESCRIPTION_TEXT_02
+                                }
+                              </span>
+                            </li>
+                          </ul>
+                        </span>
+                      </section>
+                    </div>
+                  </div>
+                  <div
+                    className="Lottie-container hidden maxtablet:!flex maxtablet:flex-col maxtablet:gap-[5vh]"
+                    ref={person05AnimationRef}
+                  >
+                    <Lottie
+                      animationData={person05}
+                      className="Lottie-section z-20 mx-auto w-full py-10vh maxtablet:!w-[50vw]"
+                      style={{ height: "auto" }}
+                      loop={true}
+                    />
+                    <div
+                      className="Column-inside !hidden maxtablet:!flex"
+                      id="Column-mobile-inside-05"
+                    >
+                      <section className="Text-section">
+                        <span className="Upper-text">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_01.UPPER_TEXT
+                          }
+                        </span>
+                        <h2 className="Title-text !text-5xl !leading-snug">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_05.TITLE_TEXT_01
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_05.TITLE_TEXT_02
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_05.TITLE_TEXT_03
+                          }
+                        </h2>
+                        <h2 className="Title-text !text-5xl !leading-[1.1em] tracking-tight">
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_05.TITLE_TEXT_04
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_05.TITLE_TEXT_05
+                          }
+                          <br></br>
+                          {
+                            configJSON.CONTENT.PAGE_03.SECTION_02.TEXT_SHOW
+                              .TEXT_05.TITLE_TEXT_06
+                          }
+                        </h2>
+                      </section>
+                    </div>
+                    <div
+                      className="Link-container absolute right-full -bottom-20 flex w-full translate-x-[25%] justify-center maxlabtop:-bottom-[15vh] maxtablet:static maxtablet:mt-10 maxtablet:translate-x-0"
+                      ref={linkColumnRef}
+                    >
+                      <a
+                        href={configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
+                        className="Link"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/*           <div
+            {/*           <div
             className="Link-container mt-14 flex justify-center"
             ref={linkColumnRef}
           >
@@ -1146,17 +1145,19 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_03.SECTION_02.LINK_01}
             </a>
           </div> */}
-          <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col mobile:mt-16 mobile:mb-44">
-            <h2 className="Heading-text text-white" id="Special-heading-01">
-              {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
-              <Br />
-              {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_03}
-            </h2>
-            <h2 className="Sub-heading-text z-10 text-[45px] text-orange">
-              {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_02}
-            </h2>
+            <section className="Text-section flex-center z-10 mt-36 mb-72 flex-col mobile:mt-16 mobile:mb-44">
+              <h2 className="Heading-text text-white" id="Special-heading-01">
+                {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_02}
+                <Br />
+                {configJSON.CONTENT.PAGE_03.SECTION_02.HEADING_03}
+              </h2>
+              <h2 className="Sub-heading-text z-10 text-[45px] text-orange">
+                {configJSON.CONTENT.PAGE_03.SECTION_02.SUB_HEADING_02}
+              </h2>
+            </section>
           </section>
         </section>
+
         {/* //?Page 03 */}
         <section className="Page-section flex-center h-fit w-full flex-col px-desktop">
           <section className="Text-section flex-center z-10 flex-col mobile:pb-[15vh]">
@@ -1615,7 +1616,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
           <section className="Text-section flex-center z-10 flex-col">
             <h2 className="Heading-text text-center text-white">
               {configJSON.CONTENT.PAGE_03.SECTION_06.HEADING_01}
-              <Br />
+              <br />
               {configJSON.CONTENT.PAGE_03.SECTION_06.HEADING_02}
             </h2>
             <h2 className="Sub-heading-text z-10 text-center  text-orange">
