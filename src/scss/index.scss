@@ -354,6 +354,7 @@ $hydro: #0f283e;
             @apply text-lg font-medium;
             @apply maxlabtop:text-[clamp(14px,1.5vw,18px)] #{!important};
             @apply maxtablet:text-center #{!important};
+            @apply mobile:text-[clamp(12px,1.5vw,18px)] #{!important};
           }
           .Description-text {
             @apply text-2xl font-normal text-white;
@@ -481,7 +482,7 @@ $hydro: #0f283e;
 }
 
 #Special-heading-01 {
-  @apply mobile:text-[clamp(1.345rem,3.75vw,2.75rem)] #{!important};
+  @apply mobile:text-[clamp(1.3rem,3.75vw,2.75rem)] #{!important};
 }
 
 #Special-heading-02 {
@@ -505,7 +506,7 @@ $hydro: #0f283e;
 }
 
 #Special-heading-07 {
-  @apply mobile:text-[clamp(1.2rem,3.75vw,2.75rem)] #{!important};
+  @apply mobile:text-[clamp(1.175rem,3.75vw,2.75rem)] #{!important};
 }
 
 #Special-heading-08 {

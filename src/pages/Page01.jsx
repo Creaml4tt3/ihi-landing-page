@@ -310,9 +310,13 @@ export default function Section01({ changeStage, scrollStage }) {
     to: { y: arrowDownIn ? 0 : -275, opacity: arrowDownIn ? 1 : 0 },
   });
 
-  const Br = () => {
+  const Br = ({ isNonActive }) => {
     if (window.innerWidth > 1024) {
       return <br></br>;
+    } else {
+      if (!isNonActive) {
+        return " ";
+      }
     }
   };
 
