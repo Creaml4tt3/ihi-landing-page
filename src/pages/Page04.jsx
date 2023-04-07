@@ -313,11 +313,13 @@ export default function Section03({ changeStage, scrollStage }) {
     return tl;
   }
 
-  const Br = () => {
+  const Br = ({ isNonActive }) => {
     if (window.innerWidth > 1024) {
       return <br></br>;
     } else {
-      return " ";
+      if (!isNonActive) {
+        return " ";
+      }
     }
   };
 
@@ -714,7 +716,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_01
                     }
-                    <Br />
+                    <Br isNonActive />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_02
@@ -748,7 +750,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_01
                     }
-                    <Br />
+                    <Br isNonActive />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_02
@@ -811,7 +813,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_01
                     }
-                    <Br />
+                    <Br isNonActive />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_01
                         .TITLE_02
@@ -845,7 +847,7 @@ export default function Section03({ changeStage, scrollStage }) {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_01
                     }
-                    <Br />
+                    <Br isNonActive />
                     {
                       configJSON.CONTENT.PAGE_04.SECTION_05.ITEM_SHOW.ITEM_02
                         .TITLE_02
@@ -954,7 +956,7 @@ export default function Section03({ changeStage, scrollStage }) {
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_01}
                     <Br />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_02}
-                    <Br />
+                    <Br isNonActive />
                     {configJSON.CONTENT.PAGE_04.SECTION_06.SOLUTION_02.TITLE_03}
                   </h2>
                   <h2 className="Sub-heading-text text-center text-orange">
