@@ -382,7 +382,7 @@ export default function Section03({ changeStage, scrollStage }) {
           onClick={() => changeStage("-")}
         ></section>
         {/* //?Page 01 */}
-        <section className="Page-section flex-center z-0 -mt-[100vh] h-screen w-full flex-col rounded-t-full bg-cream px-desktop mobile:h-fit mobile:py-[15vh]">
+        <section className="Page-section flex-center z-0 -mt-[100vh] h-fit w-full flex-col rounded-t-full bg-cream px-desktop pt-[30vh] mobile:h-fit mobile:pt-[15vh]">
           <section className="Text-section flex-center z-10 flex-col gap-3">
             <span className="Title-text text-center text-40px font-semibold leading-normal text-blue maxlabtop:text-[clamp(0.875rem,2.5vw,2rem)]">
               {configJSON.CONTENT.PAGE_04.SECTION_01.TITLE_01}
@@ -395,40 +395,41 @@ export default function Section03({ changeStage, scrollStage }) {
               {configJSON.CONTENT.PAGE_04.SECTION_01.SUB_TITLE_02}
             </span>
           </section>
-        </section>
-        {/* //?Page 02 */}
-        <section className="Page-section flex-center z-0 h-fit w-full flex-col bg-cream px-desktop pb-52">
-          <section className="Text-section flex-center z-10 flex-col">
-            <h2 className="Heading-text text-center text-blue">
-              {configJSON.CONTENT.PAGE_04.SECTION_02.HEADING_01}
-            </h2>
-            <h2 className="Sub-heading-text text-center text-orange">
-              {configJSON.CONTENT.PAGE_04.SECTION_02.SUB_HEADING_01}
-            </h2>
+          {/* //?Page 02 */}
+          <section className="Page-section flex-center z-0 h-fit w-full flex-col py-52 mobile:py-[15vh]">
+            <section className="Text-section flex-center z-10 flex-col">
+              <h2 className="Heading-text text-center text-blue">
+                {configJSON.CONTENT.PAGE_04.SECTION_02.HEADING_01}
+              </h2>
+              <h2 className="Sub-heading-text text-center text-orange">
+                {configJSON.CONTENT.PAGE_04.SECTION_02.SUB_HEADING_01}
+              </h2>
+            </section>
+            <Picture
+              webp={asrs_webp}
+              normal={asrs_png}
+              alt="asrs_png"
+              classpic="Picture-section z-10"
+              classimg="mx-auto w-full h-auto mb-11 mt-5"
+              lazy
+            />
+            <div className="Link-container">
+              <a
+                href={configJSON.CONTENT.PAGE_04.SECTION_02.LINK_01}
+                className="Link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="Button bg-blue py-5 px-8">
+                  <span className="Text-Button text-xl font-semibold text-white">
+                    {configJSON.CONTENT.PAGE_04.SECTION_02.BUTTON_TEXT_01}
+                  </span>
+                </button>
+              </a>
+            </div>
           </section>
-          <Picture
-            webp={asrs_webp}
-            normal={asrs_png}
-            alt="asrs_png"
-            classpic="Picture-section z-10"
-            classimg="mx-auto w-full h-auto mb-11 mt-5"
-            lazy
-          />
-          <div className="Link-container">
-            <a
-              href={configJSON.CONTENT.PAGE_04.SECTION_02.LINK_01}
-              className="Link"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button className="Button bg-blue py-5 px-8">
-                <span className="Text-Button text-xl font-semibold text-white">
-                  {configJSON.CONTENT.PAGE_04.SECTION_02.BUTTON_TEXT_01}
-                </span>
-              </button>
-            </a>
-          </div>
         </section>
+
         {/* //?Page 03 */}
         <section className="Page-section flex-center z-0 h-fit w-full flex-col px-desktop">
           <div className="Video-container w-full max-w-1360px">

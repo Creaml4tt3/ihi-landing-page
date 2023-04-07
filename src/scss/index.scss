@@ -354,7 +354,7 @@ $hydro: #0f283e;
             @apply text-lg font-medium;
             @apply maxlabtop:text-[clamp(14px,1.5vw,18px)] #{!important};
             @apply maxtablet:text-center #{!important};
-            @apply mobile:text-[clamp(12px,1.5vw,18px)] #{!important};
+            @apply mobile:text-[clamp(13px,1.5vw,18px)] #{!important};
           }
           .Description-text {
             @apply text-2xl font-normal text-white;
