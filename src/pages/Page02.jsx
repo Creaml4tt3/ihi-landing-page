@@ -408,7 +408,7 @@ export default function Section02({ changeStage, scrollStage }) {
           </section>
         </section>
         {/* //?Page 03 */}
-        <section className="Page-section flex-center pb-40v relative h-fit w-full flex-col px-desktop mobile:pb-[15vh]">
+        <section className="Page-section flex-center relative h-fit w-full flex-col px-desktop pb-40vh mobile:pb-[15vh]">
           <section className="Text-section flex-center z-10 flex-col">
             <h2 className="Heading-text text-blue">
               {configJSON.CONTENT.PAGE_02.SECTION_03.HEADING_01}
