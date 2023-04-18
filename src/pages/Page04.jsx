@@ -151,18 +151,32 @@ export default function Section03({ changeStage, scrollStage }) {
   }
 
   function handleWheel(event, el) {
-    const isScrollingUp = event.deltaY < 0;
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
 
-    if (isScrollingUp && isAtTop) {
-      changeStage("-");
-    }
+    if (event.deltaY) {
+      const isScrollingUp = event.deltaY < 0;
 
-    if (!isScrollingUp && isAtBottom) {
-      changeStage("+");
+      if (isScrollingUp && isAtTop) {
+        changeStage("-");
+      }
+
+      if (!isScrollingUp && isAtBottom) {
+        changeStage("+");
+      }
+    } else {
+      const isScrollingUp = el.scrollTop < event.target.scrollTop;
+
+      if (isScrollingUp && isAtTop) {
+        changeStage("-");
+      }
+
+      if (!isScrollingUp && isAtBottom) {
+        changeStage("+");
+      }
     }
   }
+
   function handleScroll(el) {
     const isAtTop = el.scrollTop === 0;
     const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;

@@ -14,17 +14,24 @@ export default function Section05({ changeStage }) {
   const destroyRef = useRef(null);
 
   function handleWheel(event, el) {
-    const isScrollingUp = event.deltaY < 0;
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
 
-    if (isScrollingUp && isAtTop) {
-      changeStage("-");
-    }
+    if (event.deltaY) {
+      const isScrollingUp = event.deltaY < 0;
 
-    if (!isScrollingUp && isAtBottom) {
+      if (isScrollingUp && isAtTop) {
+        changeStage("-");
+      }
+    } else {
+      const isScrollingUp = el.scrollTop < event.target.scrollTop;
+
+      if (isScrollingUp && isAtTop) {
+        changeStage("-");
+      }
     }
   }
+
   function handleScroll(el) {
     const isAtTop = el.scrollTop === 0;
     const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
