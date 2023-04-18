@@ -33,13 +33,9 @@ export default function Section05({ changeStage }) {
 
   function handleScroll(el) {
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.offsetHeight >= el.scrollHeight;
 
     if (isAtTop) {
       changeStage("-");
-    }
-
-    if (isAtBottom) {
     }
   }
 
