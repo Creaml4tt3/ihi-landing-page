@@ -152,7 +152,7 @@ export default function Section03({ changeStage, scrollStage }) {
 
   function handleWheel(event, el) {
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 18;
 
     if (event.deltaY) {
       const isScrollingUp = event.deltaY < 0;

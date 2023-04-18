@@ -197,7 +197,7 @@ export default function Section01({ changeStage, scrollStage }) {
 
   function handleScroll(el) {
     const isAtTop = el.scrollTop === 0;
-    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 18;
 
     if (window.innerWidth <= 1440) {
       if (el.scrollTop + el.clientHeight - el.scrollHeight >= -5) {
