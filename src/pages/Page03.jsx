@@ -1315,7 +1315,7 @@ export default function Section03({ changeStage, pastStage, scrollStage }) {
                 </div>
               </div>
             </div>
-            <div className="Intersection-container" ref={lineRef}></div>
+            <div className="Intersection-container" ref={lineRef} />
           </div>
           <div className="Link-container mt-8 flex justify-center">
             <a

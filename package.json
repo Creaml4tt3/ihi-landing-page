@@ -1,8 +1,7 @@
 {
   "name": "ihilandingpage",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "",
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.2",
     "@testing-library/jest-dom": "^5.16.5",

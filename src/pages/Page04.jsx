@@ -461,8 +461,8 @@ export default function Section03({ changeStage, scrollStage }) {
               playIcon={videoIcon()}
               controls
             />
-            <div className="Intersection-container" ref={videoRef}></div>
           </div>
+          <div className="Intersection-container" ref={videoRef} />
           <div className="Icon-container flex-center mt-5 gap-4 maxlabtop:flex-wrap">
             <div className="Icon-card" id="Icon-card-01">
               <div className="Icon-text">

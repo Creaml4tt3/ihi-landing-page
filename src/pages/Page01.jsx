@@ -218,24 +218,6 @@ export default function Section01({ changeStage, scrollStage }) {
   }
 
   if (graphContainerIn) {
-    /* setTimeout(() => {
-      graph01Ref.current.goToAndPlay(0);
-    }, randomMath(500, 1500));
-    setTimeout(() => {
-      graph02Ref.current.goToAndPlay(0);
-    }, randomMath(500, 1500));
-    setTimeout(() => {
-      graph03Ref.current.goToAndPlay(0);
-    }, randomMath(500, 1500));
-    setTimeout(() => {
-      graph04Ref.current.goToAndPlay(0);
-    }, randomMath(500, 1500));
-    setTimeout(() => {
-      graph05Ref.current.goToAndPlay(0);
-    }, randomMath(500, 1500));
-    setTimeout(() => {
-      graph06Ref.current.goToAndPlay(0);
-    }, randomMath(500, 1500)); */
     graph01Ref.current.goToAndPlay(0);
     graph02Ref.current.goToAndPlay(0);
     graph03Ref.current.goToAndPlay(0);
@@ -664,10 +646,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 <span className="Graph-info">Hydroelectricity</span>
               </div>
             </div>
-            <div
-              className="Intersection-container"
-              ref={graphContainerRef}
-            ></div>
+            <div className="Intersection-container" ref={graphContainerRef} />
           </section>
           <div className="Link-container">
             <a
@@ -695,7 +674,7 @@ export default function Section01({ changeStage, scrollStage }) {
             </h2>
           </section>
           <div className="Graph-line-container relative mt-16 w-full maxlabtop:mt-4">
-            <div className="Intersection-container" ref={graphLineRef}></div>
+            <div className="Intersection-container" ref={graphLineRef} />
             <Lottie
               animationData={graph}
               lottieRef={graphLineLottieRef}
@@ -755,7 +734,7 @@ export default function Section01({ changeStage, scrollStage }) {
               </animated.div>
             </div>
           </div>
-          <div className="Intersection-container" ref={arrowUpRef}></div>
+          <div className="Intersection-container" ref={arrowUpRef} />
           <div className="Arrow-down-container maxtablet:w-full">
             <section className="Text-section z-20 flex flex-col gap-4 mobile:mt-8">
               <h2 className="Heading-text text-white">
@@ -777,7 +756,7 @@ export default function Section01({ changeStage, scrollStage }) {
                 />
               </animated.div>
             </div>
-            <div className="Intersection-container" ref={arrowDownRef}></div>
+            <div className="Intersection-container" ref={arrowDownRef} />
           </div>
         </section>
         {/* //?Page 06 */}

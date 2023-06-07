@@ -11,12 +11,12 @@ import reportWebVitals from "./reportWebVitals";
 
 const route = createBrowserRouter([
   {
-    path: "/",
+    path: "/landing",
     element: <App />,
     errorElement: <Error />,
   },
   {
-    path: "/config",
+    path: "/landing/config",
     element: <Config />,
     errorElement: <Error />,
   },
@@ -28,7 +28,12 @@ const route = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={route} />);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+//root.render(<RouterProvider router={route} />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -835,8 +835,8 @@ export default function Section02({ changeStage, scrollStage }) {
               controls
               lazy="true"
             />
-            <div className="Intersection-container" ref={video_01_ref}></div>
           </div>
+          <div className="Intersection-container" ref={video_01_ref} />
         </section>
         {/* //?Page 07 */}
         <section className="Page-section flex-center relative h-fit w-full flex-col">
@@ -1260,12 +1260,12 @@ export default function Section02({ changeStage, scrollStage }) {
               controls
               lazy
             />
-            <div className="Intersection-container" ref={video_02_ref}></div>
           </div>
+          <div className="Intersection-container" ref={video_02_ref} />
         </section>
         {/* //?Page 08 */}
         <section className="Page-section relative z-20 h-fit w-full max-w-1540px flex-col px-desktop pb-25vh">
-          <div className="Intersection-container" ref={lineRef}></div>
+          <div className="Intersection-container" ref={lineRef} />
           <Lottie
             animationData={line}
             lottieRef={lineLottieRef}

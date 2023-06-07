@@ -15,6 +15,11 @@ $renew: #0e70c6;
 $nuclear: #0d416f;
 $hydro: #0f283e;
 
+.Intersection-container {
+  height: 1px !important;
+  width: 1px !important;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
